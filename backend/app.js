@@ -6,6 +6,9 @@ var logger = require('morgan');
 const csurf = require('csurf');
 const cors = require('cors');
 const { isProduction } = require('./config/keys');
+require('./models/User');
+require('./config/passport');
+const passport = require('passport');
 
 var usersRouter = require('./routes/api/users');
 const csrfRouter = require('./routes/api/csrf');
@@ -17,6 +20,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
+app.use(passport.initialize());
 if(!isProduction) {
     app.use(cors());
 }
