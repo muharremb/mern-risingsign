@@ -17,13 +17,16 @@ const validateRegisterInput = [
     .exists({ checkFalsy: true })
     .isLength({ min: 6, max: 30 })
     .withMessage('Password must be between 6 and 30 characters'),
-    check('birthLocation')
+  check('birthLocation')
     .exists({ checkFalsy: true })
     .withMessage('Birth location should be provided'),
-    check('birthTime')
+  check('birthTime')
     .exists({ checkFalsy: true })
     .withMessage('Birth time should be provided in "YYYY-MM-DDT00:00:00.000Z" format'),
-  handleValidationErrors
+    check('birthDate')
+    .exists({ checkFalsy: true })
+    .withMessage('Birth Date should be provided in "YYYY-MM-DD" format'),
+    handleValidationErrors
 ];
 
 module.exports = validateRegisterInput;
