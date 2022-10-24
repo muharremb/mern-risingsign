@@ -36,7 +36,7 @@ export const login = user => startSession(user, 'api/users/login');
 const startSession = (userInfo, route) => async dispatch => {
   if(route==='api/users/register'){
     userInfo = await getLatLng(userInfo);
-    // birthChart = await generate
+    // birthChart = await ge
   }
   try {  
     const res = await jwtFetch(route, {
