@@ -1,4 +1,5 @@
 import './SetPhoneNumberPage.css';
+import ContinueButton from '../ContinueButton/ContinueButton';
 
 const SetPhoneNumberPage = () => {
    return (
