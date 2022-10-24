@@ -13,9 +13,13 @@ const SignupPage = () => {
    return (
       <div className="signup-page">
          <SignupModePage />
+         <SetPhoneNumberPage />
          <DisclaimerPage />
          <SetFirstNamePage />
          <SetBirthdayPage />
+         <SetGenderPage />
+         <SetSexPrefPage />
+         <SetUserVisibilityPage />
 
          <UserBuild />
          <ContinueButton />
