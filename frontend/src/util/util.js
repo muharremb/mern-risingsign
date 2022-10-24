@@ -2,7 +2,7 @@
 
 export const getLatLng = async (user) => {
     
-    let response = await fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${user.birthLocation}&key=${'Geocode Key Here'}`);
+    let response = await fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${user.birthLocation}&key=${process.env.REACT_APP_GEOCODE}`);
     let data = await response.json();
 
     // let res = await geocoder.geocode({

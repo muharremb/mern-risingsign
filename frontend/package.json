@@ -12,7 +12,10 @@
     "react-router-dom": "^5.3.4",
     "react-scripts": "5.0.1",
     "redux": "^4.2.0",
-    "redux-thunk": "^2.4.1"
+    "redux-thunk": "^2.4.1",
+    "moment": "^2.24.0",
+    "moment-timezone": "^0.5.26",
+    "tz-lookup": "^6.1.24"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -36,7 +39,20 @@
     ]
   },
   "devDependencies": {
-    "redux-logger": "^3.0.6"
+    "redux-logger": "^3.0.6",
+    "@babel/core": "^7.6.0",
+    "@babel/preset-env": "^7.6.0",
+    "babel-jest": "^24.9.0",
+    "eslint": "^7.25.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^4.3.1",
+    "html-webpack-plugin": "^3.2.0",
+    "jest": "^24.9.0",
+    "typescript": "^4.2.3",
+    "webpack": "^4.40.2",
+    "webpack-cli": "^4.5.0"
   },
   "proxy": "http://localhost:5000"
 }
