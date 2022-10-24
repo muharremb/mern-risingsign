@@ -38,7 +38,9 @@ router.post('/register', validateRegisterInput, async (req, res, next) => {
     email: req.body.email,
     birthLocation: req.body.birthLocation,
     birthTime: req.body.birthTime,
-    birthDate: req.body.birthDate
+    birthDate: req.body.birthDate,
+    lat: req.body.lat,
+    lng: req.body.lng 
   });
 
   bcrypt.genSalt(10, (err, salt) => {

@@ -28,7 +28,12 @@ export const clearSessionErrors = () => ({
   type: CLEAR_SESSION_ERRORS
 });
 
-export const signup = user => getLatLng(user) => startSession(user, 'api/users/register');
+// export const signup = user => startSession(user, 'api/users/register');
+
+export const signup = (user) => {
+  let enhanceredUser = getLatLng(user);
+  return startSession(enhanceredUser, 'api/users/register');
+}
 export const login = user => startSession(user, 'api/users/login');
 
 const startSession = (userInfo, route) => async dispatch => {

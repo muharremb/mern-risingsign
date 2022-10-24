@@ -26,6 +26,12 @@ const validateRegisterInput = [
     check('birthDate')
     .exists({ checkFalsy: true })
     .withMessage('Birth Date should be provided in "YYYY-MM-DD" format'),
+  check('lat')
+    .exists('lat')
+    .withMessage('Lat should be value'),
+  check('lng')
+    .exists('lng')
+    .withMessage('Lng should be value'),
     handleValidationErrors
 ];
 
