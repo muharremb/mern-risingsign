@@ -1,0 +1,71 @@
+.user-build {
+   display: flex;
+   justify-content: center;
+   border-radius: 50%;
+   width: 500px;
+   height: 500px;
+   background: linear-gradient(#e66465, #9198e5);
+   border: 1px solid black;
+   /* animation: visible 3s;
+   transition-duration: 3s;
+   transition-property: transform; */
+}
+
+.signup-page {
+   /* #810D93 SAVGING THIS FOR LATER */
+   background-color: rgb(57, 16, 57);
+   display: flex;
+   justify-content: center;
+   width: 100vw;
+   height: 100vw;
+}
+
+.signup-form {
+   display: flex;
+   flex-direction: column;
+   /* justify-content: */
+   width: 65%;
+   border: 1px solid black;
+   background-color: white;
+}
+
+.current-field {
+   /* animation:  */
+}
+
+@keyframes visible {
+   0% { opacity: 0; rotate: 180;}
+   100% { opacity: 1; rotate: 360;}
+}
+
+@keyframes hidden {
+   0% { opacity: 1; rotate: 0;}
+   100% { opacity: 0; rotate: 180;}
+}
+
+@keyframes rotate {
+   100% {transform: rotate(360);}
+}
+
+@keyframes rotate_out {
+   0% {transform: rotate(0);}
+   100% {transform: rotate(180);}
+}
+
+
+.input-field {
+   border-radius: 50%;
+   width: 700px;
+   height: 700px;
+   background: aqua;
+   border: 1px solid black;
+}
+
+.input-field[hidden=true] {
+   animation: hidden 3s;
+
+}
+
+.input-field[hidden=false] {
+   animation: visible 3s;
+}

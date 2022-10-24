@@ -32,10 +32,10 @@ function NavBar () {
   }
 
   return (
-    <>
-      <h1>Rising Sign NavBar</h1>
+    <div className='navbar'>
+      <h3>Rising Sign</h3>
       { getLinks() }
-    </>
+    </div>
   );
 }
 

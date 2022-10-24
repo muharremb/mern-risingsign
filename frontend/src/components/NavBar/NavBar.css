@@ -1,0 +1,7 @@
+.navbar {
+   display: flex;
+   
+   flex-direction: column;
+   height: 3vw;
+   align-items: center;
+}
