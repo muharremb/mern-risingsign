@@ -57,6 +57,9 @@ function SignupForm () {
 
   const userSubmit = e => {
     e.preventDefault();
+    const hour = birthTime.slice(0,2);
+    const minute = birthTime.slice(3,5);
+    // birthDate.setHours(hour, minute);
 
     const user = {
       email,
@@ -68,7 +71,12 @@ function SignupForm () {
     };
 
     dispatch(signup(user));
-    // console.log('birthDate ', birthDate);
+    console.log('birthDate ', birthDate);
+    console.log('birthTime ', birthTime);
+
+    const dateObj = new Date(birthDate);
+    // dateObj.setHours(hour, minute);
+    console.log('dateObj ', dateObj);
   }
 
   return (
@@ -126,7 +134,7 @@ function SignupForm () {
     <div className="errors">{errors?.birthDate}</div>
       <label>
         <span>Birth Date</span>
-        <input type="date"
+        <input type="datetime-local"
           value={birthDate}
           onChange={update('birthDate')}
           placeholder="Birth Date"
