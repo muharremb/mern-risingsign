@@ -30,20 +30,28 @@ export const clearSessionErrors = () => ({
 
 // export const signup = user => startSession(user, 'api/users/register');
 
-export const signup = (user) => {
-  let enhanceredUser = getLatLng(user);
-  return startSession(enhanceredUser, 'api/users/register');
-}
+export const signup = (user) => startSession(user, 'api/users/register');
+
+// {
+//   let enhanceredUser = getLatLng(user);
+//   return startSession(enhanceredUser, 'api/users/register');
+// }
 export const login = user => startSession(user, 'api/users/login');
 
 const startSession = (userInfo, route) => async dispatch => {
+  if(route==='api/users/register'){
+    userInfo = await getLatLng(userInfo);
+  }
   try {  
     const res = await jwtFetch(route, {
       method: "POST",
       body: JSON.stringify(userInfo)
     });
+
     const { user, token } = await res.json();
+
     localStorage.setItem('jwtToken', token);
+
     return dispatch(receiveCurrentUser(user));
   } catch(err) {
     const res = await err.json();
