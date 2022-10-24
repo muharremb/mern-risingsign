@@ -1,7 +1,7 @@
 async function jwtFetch(url, options = {}) {
     options.method = options.method || "GET";
     options.headers = options.headers || {};
-    options.headers["Authorization"] = localStorage.getItem("jwtToken");
+    options.headers["Authorization"] = "Bearer " + localStorage.getItem("jwtToken");
     
     if (options.method.toUpperCase() !== "GET") {
       options.headers["Content-Type"] =

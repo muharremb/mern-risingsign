@@ -1,0 +1,7 @@
+.user-build {
+   border-radius: 50%;
+   width: 500px;
+   height: 500px;
+   background: aqua;
+   border: 1px solid black;
+}
