@@ -57,6 +57,7 @@ function SignupForm () {
 
   const userSubmit = e => {
     e.preventDefault();
+
     const user = {
       email,
       name,
@@ -66,7 +67,8 @@ function SignupForm () {
       birthTime
     };
 
-    dispatch(signup(user)); 
+    dispatch(signup(user));
+    // console.log('birthDate ', birthDate);
   }
 
   return (
