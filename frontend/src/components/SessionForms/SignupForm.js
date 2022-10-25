@@ -67,7 +67,6 @@ function SignupForm () {
     };
 
     dispatch(signup(user));
-
   }
 
   return (

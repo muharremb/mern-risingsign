@@ -44,7 +44,7 @@ export const getHoroscope = (user) => {
         chiron: horoscope.CelestialBodies.chiron,
         sirius: horoscope.CelestialBodies.sirius
     }
-    console.log(output);
+    // console.log(output);
     return output;
 
 }
