@@ -18,11 +18,7 @@ const userSchema = Schema({
         type: String,
         required: true
     }, 
-    birthTime: {
-        type: String,
-        required: true
-    },
-    birthDate: {
+    birthDateTime: {
         type: Date,
         required: true
     },

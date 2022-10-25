@@ -28,15 +28,12 @@ export const clearSessionErrors = () => ({
   type: CLEAR_SESSION_ERRORS
 });
 
-// export const signup = user => startSession(user, 'api/users/register');
-
 export const signup = (user) => startSession(user, 'api/users/register');
 export const login = user => startSession(user, 'api/users/login');
 
 const startSession = (userInfo, route) => async dispatch => {
   if(route==='api/users/register'){
     userInfo = await getLatLng(userInfo);
-    // birthChart = await ge
   }
   try {  
     const res = await jwtFetch(route, {

@@ -5,7 +5,6 @@ import { signup, clearSessionErrors } from '../../store/session';
 
 function SignupForm () {
   const [email, setEmail] = useState('');
-//   const [username, setUsername] = useState('');
   const [name, setName] = useState('');
   const [password, setPassword] = useState('');
   const [password2, setPassword2] = useState('');
@@ -57,26 +56,18 @@ function SignupForm () {
 
   const userSubmit = e => {
     e.preventDefault();
-    const hour = birthTime.slice(0,2);
-    const minute = birthTime.slice(3,5);
-    // birthDate.setHours(hour, minute);
+    const birthDateTime = new Date(`${birthDate}T${birthTime}:00Z`);
 
     const user = {
       email,
       name,
       password,
       birthLocation,
-      birthDate,
-      birthTime
+      birthDateTime    
     };
 
     dispatch(signup(user));
-    console.log('birthDate ', birthDate);
-    console.log('birthTime ', birthTime);
 
-    const dateObj = new Date(birthDate);
-    // dateObj.setHours(hour, minute);
-    console.log('dateObj ', dateObj);
   }
 
   return (
@@ -134,7 +125,7 @@ function SignupForm () {
     <div className="errors">{errors?.birthDate}</div>
       <label>
         <span>Birth Date</span>
-        <input type="datetime-local"
+        <input type="date"
           value={birthDate}
           onChange={update('birthDate')}
           placeholder="Birth Date"

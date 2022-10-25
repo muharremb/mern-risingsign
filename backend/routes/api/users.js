@@ -37,8 +37,7 @@ router.post('/register', validateRegisterInput, async (req, res, next) => {
     name: req.body.name,
     email: req.body.email,
     birthLocation: req.body.birthLocation,
-    birthTime: req.body.birthTime,
-    birthDate: req.body.birthDate,
+    birthDateTime: req.body.birthDateTime,
     lat: req.body.lat,
     lng: req.body.lng 
   });

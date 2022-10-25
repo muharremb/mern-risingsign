@@ -20,12 +20,9 @@ const validateRegisterInput = [
   check('birthLocation')
     .exists({ checkFalsy: true })
     .withMessage('Birth location should be provided'),
-  check('birthTime')
+  check('birthDateTime')
     .exists({ checkFalsy: true })
-    .withMessage('Birth time should be provided in "YYYY-MM-DDT00:00:00.000Z" format'),
-    check('birthDate')
-    .exists({ checkFalsy: true })
-    .withMessage('Birth Date should be provided in "YYYY-MM-DD" format'),
+    .withMessage('Birth date time should be provided in "YYYY-MM-DDT00:00:00.000Z" format'),
   check('lat')
     .exists('lat')
     .withMessage('Lat should be value'),
