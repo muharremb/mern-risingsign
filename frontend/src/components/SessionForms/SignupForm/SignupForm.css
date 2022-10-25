@@ -1,39 +1,64 @@
 .signup-page {
-   /* #810D93 SAVGING THIS FOR LATER */
-   background-color: rgb(57, 16, 57);
+   background: rgb(113,14,143);
+   background: radial-gradient(circle, rgba(113,14,143,1) 0%, rgba(74,23,84,1) 35%, rgba(14,0,20,1) 100%);
    display: flex;
    justify-content: center;
-   width: 100vw;
-   height: 100vw;
+   max-width: 100vw;
+   max-height: 100vh;
    overflow: hidden;
+   box-sizing: border-box;
+   margin: 0;
+   padding: 0;
+}
+
+.space-layer{
+   position: fixed;
+   top: 50%;
+   left: 50%;
+   height: 2px;
+   width: 2px;
+   background-color: rgba(255, 255, 255, 0.75);
+   border-radius: 50%;
+   box-shadow: -16vw -19vh 3px 0px rgba(255, 255, 255, 0.65),27vw 13vh 1px 3px rgba(255, 255, 255, 0.65),41vw -38vh 0px 3px rgba(255, 255, 255, 0.65),23vw -5vh 1px 2px rgba(255, 255, 255, 0.65),9vw 40vh 0px 3px rgba(255, 255, 255, 0.65),-33vw -11vh 2px 2px rgba(255, 255, 255, 0.65),-36vw -37vh 1px 2px rgba(255, 255, 255, 0.65),9vw 48vh 0px 1px rgba(255, 255, 255, 0.65),29vw 35vh 1px 1px rgba(255, 255, 255, 0.65),11vw -5vh 1px 3px rgba(255, 255, 255, 0.65),-44vw -9vh 1px 3px rgba(255, 255, 255, 0.65),44vw -16vh 3px 1px rgba(255, 255, 255, 0.65),-9vw -47vh 0px 0px rgba(255, 255, 255, 0.65),27vw -27vh 1px 0px rgba(255, 255, 255, 0.65),24vw -31vh 2px 2px rgba(255, 255, 255, 0.65),2vw 21vh 1px 0px rgba(255, 255, 255, 0.65),-23vw -12vh 0px 2px rgba(255, 255, 255, 0.65),-18vw 25vh 0px 3px rgba(255, 255, 255, 0.65),50vw -25vh 3px 3px rgba(255, 255, 255, 0.65),49vw -47vh 3px 0px rgba(255, 255, 255, 0.65),18vw 7vh 0px 3px rgba(255, 255, 255, 0.65),-28vw -25vh 3px 3px rgba(255, 255, 255, 0.65),16vw 29vh 3px 0px rgba(255, 255, 255, 0.65),23vw 25vh 1px 3px rgba(255, 255, 255, 0.65),30vw 2vh 3px 1px rgba(255, 255, 255, 0.65),28vw 1vh 1px 0px rgba(255, 255, 255, 0.65),24vw 45vh 0px 1px rgba(255, 255, 255, 0.65),38vw -2vh 1px 0px rgba(255, 255, 255, 0.65),7vw -2vh 1px 3px rgba(255, 255, 255, 0.65),40vw -40vh 2px 1px rgba(255, 255, 255, 0.65),-23vw -7vh 0px 0px rgba(255, 255, 255, 0.65),-40vw -24vh 2px 0px rgba(255, 255, 255, 0.65),-37vw 44vh 1px 3px rgba(255, 255, 255, 0.65),21vw 46vh 2px 1px rgba(255, 255, 255, 0.65),20vw -20vh 3px 3px rgba(255, 255, 255, 0.65),-20vw -17vh 3px 0px rgba(255, 255, 255, 0.65),4vw 33vh 1px 1px rgba(255, 255, 255, 0.65),-38vw -43vh 0px 3px rgba(255, 255, 255, 0.65),9vw 15vh 2px 1px rgba(255, 255, 255, 0.65),-14vw -1vh 0px 0px rgba(255, 255, 255, 0.65),-36vw -27vh 2px 1px rgba(255, 255, 255, 0.65),29vw -26vh 0px 3px rgba(255, 255, 255, 0.65),43vw -7vh 0px 1px rgba(255, 255, 255, 0.65),-3vw 35vh 0px 2px rgba(255, 255, 255, 0.65),-3vw -34vh 0px 1px rgba(255, 255, 255, 0.65),1vw 7vh 3px 1px rgba(255, 255, 255, 0.65),-13vw 10vh 0px 3px rgba(255, 255, 255, 0.65),29vw -23vh 0px 0px rgba(255, 255, 255, 0.65),-38vw -16vh 3px 0px rgba(255, 255, 255, 0.65),-34vw -9vh 0px 2px rgba(255, 255, 255, 0.65),-9vw 2vh 0px 0px rgba(255, 255, 255, 0.65),40vw 20vh 0px 0px rgba(255, 255, 255, 0.65),25vw -48vh 3px 3px rgba(255, 255, 255, 0.65),-32vw 0vh 3px 1px rgba(255, 255, 255, 0.65),-12vw -18vh 1px 0px rgba(255, 255, 255, 0.65),-19vw 46vh 3px 2px rgba(255, 255, 255, 0.65),12vw 43vh 2px 1px rgba(255, 255, 255, 0.65),-46vw 42vh 1px 3px rgba(255, 255, 255, 0.65),-23vw 13vh 0px 2px rgba(255, 255, 255, 0.65),19vw 16vh 0px 2px rgba(255, 255, 255, 0.65),-12vw -13vh 2px 3px rgba(255, 255, 255, 0.65),-34vw 36vh 1px 1px rgba(255, 255, 255, 0.65),-46vw -15vh 2px 3px rgba(255, 255, 255, 0.65),-14vw 22vh 3px 2px rgba(255, 255, 255, 0.65),-44vw 30vh 1px 1px rgba(255, 255, 255, 0.65),-5vw 33vh 2px 3px rgba(255, 255, 255, 0.65),0vw 49vh 2px 1px rgba(255, 255, 255, 0.65),-25vw 4vh 2px 2px rgba(255, 255, 255, 0.65),-33vw -49vh 0px 1px rgba(255, 255, 255, 0.65),-8vw 15vh 0px 1px rgba(255, 255, 255, 0.65),20vw 21vh 0px 2px rgba(255, 255, 255, 0.65),6vw 4vh 2px 2px rgba(255, 255, 255, 0.65),-39vw 46vh 0px 1px rgba(255, 255, 255, 0.65),-41vw -11vh 1px 3px rgba(255, 255, 255, 0.65),50vw 47vh 3px 1px rgba(255, 255, 255, 0.65),-45vw 26vh 1px 2px rgba(255, 255, 255, 0.65),36vw 6vh 2px 0px rgba(255, 255, 255, 0.65),-45vw -43vh 1px 0px rgba(255, 255, 255, 0.65),15vw -14vh 2px 3px rgba(255, 255, 255, 0.65),-50vw -29vh 1px 0px rgba(255, 255, 255, 0.65),-25vw 35vh 2px 0px rgba(255, 255, 255, 0.65),-16vw -15vh 3px 3px rgba(255, 255, 255, 0.65),46vw -45vh 3px 1px rgba(255, 255, 255, 0.65),-17vw 10vh 3px 2px rgba(255, 255, 255, 0.65),-30vw 47vh 2px 3px rgba(255, 255, 255, 0.65),41vw 7vh 3px 2px rgba(255, 255, 255, 0.65),-41vw 3vh 1px 3px rgba(255, 255, 255, 0.65),35vw -11vh 0px 3px rgba(255, 255, 255, 0.65),-15vw 11vh 3px 1px rgba(255, 255, 255, 0.65),40vw -9vh 2px 2px rgba(255, 255, 255, 0.65),43vw -19vh 2px 2px rgba(255, 255, 255, 0.65),-46vw 11vh 0px 0px rgba(255, 255, 255, 0.65),48vw 19vh 0px 1px rgba(255, 255, 255, 0.65),-8vw 4vh 3px 0px rgba(255, 255, 255, 0.65),6vw 5vh 2px 2px rgba(255, 255, 255, 0.65),-44vw -2vh 1px 3px rgba(255, 255, 255, 0.65),3vw -29vh 3px 1px rgba(255, 255, 255, 0.65),-43vw -46vh 3px 0px rgba(255, 255, 255, 0.65),-42vw -6vh 0px 2px rgba(255, 255, 255, 0.65),-38vw -11vh 2px 1px rgba(255, 255, 255, 0.65),-27vw 7vh 2px 2px rgba(255, 255, 255, 0.65),23vw 18vh 3px 0px rgba(255, 255, 255, 0.65),-37vw 24vh 3px 1px rgba(255, 255, 255, 0.65),-22vw 45vh 2px 0px rgba(255, 255, 255, 0.65),35vw -25vh 2px 2px rgba(255, 255, 255, 0.65),5vw -31vh 2px 3px rgba(255, 255, 255, 0.65),-5vw -49vh 0px 1px rgba(255, 255, 255, 0.65),43vw 33vh 3px 1px rgba(255, 255, 255, 0.65),-35vw 13vh 3px 0px rgba(255, 255, 255, 0.65),43vw 8vh 0px 2px rgba(255, 255, 255, 0.65),4vw -32vh 1px 0px rgba(255, 255, 255, 0.65),49vw -28vh 3px 1px rgba(255, 255, 255, 0.65),31vw 37vh 2px 0px rgba(255, 255, 255, 0.65),-25vw -28vh 0px 1px rgba(255, 255, 255, 0.65),39vw 12vh 0px 1px rgba(255, 255, 255, 0.65),4vw 44vh 1px 0px rgba(255, 255, 255, 0.65),10vw -31vh 0px 0px rgba(255, 255, 255, 0.65),-5vw 26vh 3px 0px rgba(255, 255, 255, 0.65),-10vw 50vh 0px 3px rgba(255, 255, 255, 0.65),36vw -25vh 1px 3px rgba(255, 255, 255, 0.65),-34vw -42vh 3px 1px rgba(255, 255, 255, 0.65),-5vw 36vh 0px 3px rgba(255, 255, 255, 0.65),-6vw 31vh 1px 0px rgba(255, 255, 255, 0.65),45vw 17vh 3px 2px rgba(255, 255, 255, 0.65),29vw -14vh 3px 2px rgba(255, 255, 255, 0.65),-32vw 22vh 1px 0px rgba(255, 255, 255, 0.65),28vw -5vh 2px 1px rgba(255, 255, 255, 0.65),-2vw 22vh 2px 1px rgba(255, 255, 255, 0.65),8vw -8vh 0px 1px rgba(255, 255, 255, 0.65),-40vw -9vh 1px 3px rgba(255, 255, 255, 0.65),8vw -36vh 1px 2px rgba(255, 255, 255, 0.65),33vw 23vh 2px 3px rgba(255, 255, 255, 0.65),-15vw -25vh 2px 2px rgba(255, 255, 255, 0.65),-30vw 36vh 2px 3px rgba(255, 255, 255, 0.65),5vw 30vh 0px 2px rgba(255, 255, 255, 0.65),-38vw 50vh 2px 2px rgba(255, 255, 255, 0.65),-32vw -27vh 0px 2px rgba(255, 255, 255, 0.65),12vw -26vh 1px 3px rgba(255, 255, 255, 0.65),-21vw -38vh 2px 1px rgba(255, 255, 255, 0.65),4vw 0vh 2px 1px rgba(255, 255, 255, 0.65),-36vw 30vh 0px 3px rgba(255, 255, 255, 0.65),-17vw -7vh 3px 0px rgba(255, 255, 255, 0.65),-41vw 2vh 3px 0px rgba(255, 255, 255, 0.65),-10vw -31vh 0px 2px rgba(255, 255, 255, 0.65),34vw -17vh 3px 1px rgba(255, 255, 255, 0.65),0vw -5vh 2px 1px rgba(255, 255, 255, 0.65),28vw 23vh 0px 1px rgba(255, 255, 255, 0.65),-19vw 40vh 3px 0px rgba(255, 255, 255, 0.65),32vw -46vh 1px 1px rgba(255, 255, 255, 0.65),36vw -49vh 1px 3px rgba(255, 255, 255, 0.65),-3vw 28vh 2px 1px rgba(255, 255, 255, 0.65),17vw -31vh 1px 3px rgba(255, 255, 255, 0.65),29vw -15vh 0px 2px rgba(255, 255, 255, 0.65),-23vw 50vh 2px 2px rgba(255, 255, 255, 0.65),-44vw 43vh 0px 0px rgba(255, 255, 255, 0.65),-21vw -43vh 1px 3px rgba(255, 255, 255, 0.65),36vw 15vh 3px 3px rgba(255, 255, 255, 0.65),41vw 7vh 2px 3px rgba(255, 255, 255, 0.65),1vw 22vh 1px 0px rgba(255, 255, 255, 0.65),-25vw 12vh 3px 3px rgba(255, 255, 255, 0.65),35vw 1vh 3px 0px rgba(255, 255, 255, 0.65),0vw 49vh 3px 3px rgba(255, 255, 255, 0.65),-46vw -3vh 3px 3px rgba(255, 255, 255, 0.65),45vw 28vh 3px 0px rgba(255, 255, 255, 0.65),36vw 12vh 2px 3px rgba(255, 255, 255, 0.65),20vw -14vh 3px 0px rgba(255, 255, 255, 0.65),-23vw 30vh 3px 1px rgba(255, 255, 255, 0.65),10vw 35vh 1px 0px rgba(255, 255, 255, 0.65),48vw 23vh 0px 2px rgba(255, 255, 255, 0.65),50vw -7vh 3px 2px rgba(255, 255, 255, 0.65),25vw 35vh 0px 3px rgba(255, 255, 255, 0.65),3vw 8vh 0px 2px rgba(255, 255, 255, 0.65),-19vw 41vh 1px 0px rgba(255, 255, 255, 0.65),-8vw 50vh 3px 1px rgba(255, 255, 255, 0.65),-39vw 1vh 1px 3px rgba(255, 255, 255, 0.65),-49vw -27vh 2px 1px rgba(255, 255, 255, 0.65),26vw 36vh 2px 0px rgba(255, 255, 255, 0.65),-24vw 27vh 3px 2px rgba(255, 255, 255, 0.65),-9vw 17vh 0px 0px rgba(255, 255, 255, 0.65),4vw 49vh 2px 2px rgba(255, 255, 255, 0.65),-14vw -46vh 2px 3px rgba(255, 255, 255, 0.65),0vw 37vh 1px 2px rgba(255, 255, 255, 0.65),-35vw -4vh 1px 0px rgba(255, 255, 255, 0.65),29vw 6vh 1px 2px rgba(255, 255, 255, 0.65),14vw 47vh 1px 2px rgba(255, 255, 255, 0.65),5vw 31vh 2px 1px rgba(255, 255, 255, 0.65),34vw -27vh 3px 3px rgba(255, 255, 255, 0.65),47vw 3vh 0px 2px rgba(255, 255, 255, 0.65),-28vw -6vh 2px 3px rgba(255, 255, 255, 0.65),6vw 39vh 3px 2px rgba(255, 255, 255, 0.65),42vw -43vh 0px 1px rgba(255, 255, 255, 0.65),-38vw -24vh 1px 3px rgba(255, 255, 255, 0.65),41vw 24vh 2px 3px rgba(255, 255, 255, 0.65),19vw -35vh 2px 3px rgba(255, 255, 255, 0.65),8vw 8vh 0px 0px rgba(255, 255, 255, 0.65),-25vw -43vh 2px 1px rgba(255, 255, 255, 0.65),9vw -11vh 0px 1px rgba(255, 255, 255, 0.65),25vw -2vh 0px 3px rgba(255, 255, 255, 0.65),1vw 38vh 2px 1px rgba(255, 255, 255, 0.65),22vw 48vh 1px 0px rgba(255, 255, 255, 0.65),-22vw -22vh 2px 1px rgba(255, 255, 255, 0.65),-23vw -45vh 1px 1px rgba(255, 255, 255, 0.65),38vw -14vh 1px 1px rgba(255, 255, 255, 0.65),-32vw 45vh 2px 1px rgba(255, 255, 255, 0.65),33vw -48vh 3px 3px rgba(255, 255, 255, 0.65),-20vw 29vh 2px 3px rgba(255, 255, 255, 0.65),24vw 32vh 2px 3px rgba(255, 255, 255, 0.65),27vw -11vh 0px 0px rgba(255, 255, 255, 0.65),46vw -38vh 1px 2px rgba(255, 255, 255, 0.65),19vw -45vh 2px 2px rgba(255, 255, 255, 0.65),-15vw 38vh 3px 1px rgba(255, 255, 255, 0.65),-43vw 30vh 1px 0px rgba(255, 255, 255, 0.65),-14vw 2vh 0px 3px rgba(255, 255, 255, 0.65),-37vw -44vh 3px 1px rgba(255, 255, 255, 0.65),-35vw -36vh 1px 1px rgba(255, 255, 255, 0.65),-29vw 2vh 3px 2px rgba(255, 255, 255, 0.65),27vw 35vh 1px 1px rgba(255, 255, 255, 0.65),-47vw -15vh 2px 1px rgba(255, 255, 255, 0.65),21vw 33vh 1px 2px rgba(255, 255, 255, 0.65),-12vw -8vh 1px 3px rgba(255, 255, 255, 0.65),32vw -4vh 0px 2px rgba(255, 255, 255, 0.65),30vw 34vh 1px 1px rgba(255, 255, 255, 0.65),46vw 6vh 2px 3px rgba(255, 255, 255, 0.65),-1vw -20vh 1px 3px rgba(255, 255, 255, 0.65),-20vw 43vh 1px 3px rgba(255, 255, 255, 0.65),-18vw 1vh 1px 0px rgba(255, 255, 255, 0.65),43vw 6vh 1px 2px rgba(255, 255, 255, 0.65),-42vw 28vh 1px 1px rgba(255, 255, 255, 0.65),-8vw -41vh 3px 3px rgba(255, 255, 255, 0.65),11vw -42vh 3px 3px rgba(255, 255, 255, 0.65),33vw -48vh 1px 3px rgba(255, 255, 255, 0.65),42vw 2vh 0px 0px rgba(255, 255, 255, 0.65),30vw 43vh 3px 2px rgba(255, 255, 255, 0.65),42vw 34vh 1px 1px rgba(255, 255, 255, 0.65),25vw 40vh 1px 2px rgba(255, 255, 255, 0.65),-16vw -6vh 3px 2px rgba(255, 255, 255, 0.65),-16vw -41vh 3px 0px rgba(255, 255, 255, 0.65),-18vw -30vh 3px 2px rgba(255, 255, 255, 0.65),22vw 20vh 2px 0px rgba(255, 255, 255, 0.65),-43vw -1vh 1px 3px rgba(255, 255, 255, 0.65),20vw -12vh 3px 2px rgba(255, 255, 255, 0.65),-14vw -35vh 1px 2px rgba(255, 255, 255, 0.65),24vw 42vh 2px 2px rgba(255, 255, 255, 0.65),10vw -22vh 3px 2px rgba(255, 255, 255, 0.65),34vw -45vh 1px 1px rgba(255, 255, 255, 0.65),-15vw -38vh 0px 2px rgba(255, 255, 255, 0.65),-37vw -3vh 1px 0px rgba(255, 255, 255, 0.65),21vw 34vh 3px 1px rgba(255, 255, 255, 0.65),-22vw -37vh 0px 3px rgba(255, 255, 255, 0.65),-23vw 37vh 2px 0px rgba(255, 255, 255, 0.65),-15vw -39vh 3px 0px rgba(255, 255, 255, 0.65),-46vw -27vh 3px 0px rgba(255, 255, 255, 0.65),-5vw 32vh 2px 3px rgba(255, 255, 255, 0.65),11vw 26vh 0px 0px rgba(255, 255, 255, 0.65),-8vw 9vh 0px 3px rgba(255, 255, 255, 0.65),-37vw -19vh 0px 1px rgba(255, 255, 255, 0.65),-39vw 10vh 2px 2px rgba(255, 255, 255, 0.65),-14vw -50vh 2px 1px rgba(255, 255, 255, 0.65),-11vw 6vh 3px 2px rgba(255, 255, 255, 0.65),-14vw -16vh 3px 3px rgba(255, 255, 255, 0.65),21vw 48vh 1px 1px rgba(255, 255, 255, 0.65),-44vw 5vh 1px 0px rgba(255, 255, 255, 0.65),38vw 38vh 1px 0px rgba(255, 255, 255, 0.65),35vw -32vh 0px 0px rgba(255, 255, 255, 0.65),50vw 42vh 0px 3px rgba(255, 255, 255, 0.65),-22vw 26vh 1px 0px rgba(255, 255, 255, 0.65),-41vw -21vh 2px 3px rgba(255, 255, 255, 0.65),41vw -29vh 0px 0px rgba(255, 255, 255, 0.65),-31vw 42vh 1px 0px rgba(255, 255, 255, 0.65),-50vw 17vh 2px 1px rgba(255, 255, 255, 0.65),-5vw -2vh 1px 3px rgba(255, 255, 255, 0.65),23vw -43vh 1px 3px rgba(255, 255, 255, 0.65),0vw 0vh 1px 2px rgba(255, 255, 255, 0.65),26vw 45vh 2px 3px rgba(255, 255, 255, 0.65),-33vw 6vh 2px 0px rgba(255, 255, 255, 0.65),47vw 7vh 1px 1px rgba(255, 255, 255, 0.65),38vw -9vh 0px 3px rgba(255, 255, 255, 0.65),2vw 1vh 1px 0px rgba(255, 255, 255, 0.65),-44vw 48vh 2px 0px rgba(255, 255, 255, 0.65),23vw -7vh 3px 0px rgba(255, 255, 255, 0.65),43vw -11vh 1px 2px rgba(255, 255, 255, 0.65),-13vw -21vh 3px 2px rgba(255, 255, 255, 0.65),-2vw -29vh 1px 3px rgba(255, 255, 255, 0.65),-16vw -42vh 0px 3px rgba(255, 255, 255, 0.65),2vw -18vh 3px 3px rgba(255, 255, 255, 0.65),48vw 6vh 0px 3px rgba(255, 255, 255, 0.65),6vw 15vh 1px 3px rgba(255, 255, 255, 0.65),-24vw -31vh 2px 3px rgba(255, 255, 255, 0.65),4vw 7vh 3px 2px rgba(255, 255, 255, 0.65),-29vw -47vh 2px 2px rgba(255, 255, 255, 0.65),-16vw 39vh 1px 1px rgba(255, 255, 255, 0.65),7vw 50vh 2px 3px rgba(255, 255, 255, 0.65),34vw 42vh 1px 0px rgba(255, 255, 255, 0.65),28vw 1vh 2px 1px rgba(255, 255, 255, 0.65),10vw 0vh 3px 1px rgba(255, 255, 255, 0.65),39vw 18vh 0px 0px rgba(255, 255, 255, 0.65),-9vw -23vh 2px 0px rgba(255, 255, 255, 0.65),-45vw 47vh 1px 1px rgba(255, 255, 255, 0.65),-14vw 18vh 1px 1px rgba(255, 255, 255, 0.65),-8vw -27vh 3px 1px rgba(255, 255, 255, 0.65),-18vw -13vh 1px 3px rgba(255, 255, 255, 0.65),19vw 35vh 1px 1px rgba(255, 255, 255, 0.65),35vw -20vh 3px 2px rgba(255, 255, 255, 0.65),-12vw -40vh 0px 0px rgba(255, 255, 255, 0.65),-44vw -19vh 2px 0px rgba(255, 255, 255, 0.65),1vw -11vh 1px 3px rgba(255, 255, 255, 0.65),14vw -40vh 2px 3px rgba(255, 255, 255, 0.65),-46vw -19vh 1px 1px rgba(255, 255, 255, 0.65),-27vw 10vh 2px 0px rgba(255, 255, 255, 0.65),25vw 11vh 2px 3px rgba(255, 255, 255, 0.65),-15vw -3vh 3px 0px rgba(255, 255, 255, 0.65),-2vw 41vh 1px 2px rgba(255, 255, 255, 0.65),-46vw -29vh 3px 2px rgba(255, 255, 255, 0.65),8vw -49vh 2px 2px rgba(255, 255, 255, 0.65),-1vw -50vh 0px 3px rgba(255, 255, 255, 0.65),-15vw 15vh 0px 2px rgba(255, 255, 255, 0.65),15vw 29vh 1px 0px rgba(255, 255, 255, 0.65),-14vw 1vh 1px 2px rgba(255, 255, 255, 0.65),39vw 13vh 0px 0px rgba(255, 255, 255, 0.65),-3vw 11vh 2px 3px rgba(255, 255, 255, 0.65),23vw -2vh 1px 1px rgba(255, 255, 255, 0.65),39vw 10vh 1px 0px rgba(255, 255, 255, 0.65),13vw 37vh 2px 0px rgba(255, 255, 255, 0.65),45vw 30vh 2px 3px rgba(255, 255, 255, 0.65),-39vw -27vh 1px 0px rgba(255, 255, 255, 0.65),-35vw 17vh 0px 1px rgba(255, 255, 255, 0.65),16vw 31vh 1px 1px rgba(255, 255, 255, 0.65),-37vw -7vh 1px 1px rgba(255, 255, 255, 0.65),23vw 11vh 1px 2px rgba(255, 255, 255, 0.65),-30vw 3vh 0px 3px rgba(255, 255, 255, 0.65),18vw -46vh 1px 0px rgba(255, 255, 255, 0.65),-38vw 37vh 1px 3px rgba(255, 255, 255, 0.65),49vw -20vh 1px 3px rgba(255, 255, 255, 0.65),-28vw -41vh 0px 0px rgba(255, 255, 255, 0.65),9vw 18vh 0px 0px rgba(255, 255, 255, 0.65),1vw 13vh 1px 1px rgba(255, 255, 255, 0.65),37vw 3vh 3px 3px rgba(255, 255, 255, 0.65),25vw -29vh 1px 1px rgba(255, 255, 255, 0.65),-1vw 12vh 1px 0px rgba(255, 255, 255, 0.65),47vw -16vh 3px 3px rgba(255, 255, 255, 0.65),-17vw 8vh 3px 3px rgba(255, 255, 255, 0.65),-40vw 22vh 2px 0px rgba(255, 255, 255, 0.65),-14vw -32vh 0px 2px rgba(255, 255, 255, 0.65),22vw 36vh 1px 2px rgba(255, 255, 255, 0.65),42vw -23vh 0px 1px rgba(255, 255, 255, 0.65),-19vw 26vh 1px 2px rgba(255, 255, 255, 0.65),31vw 23vh 3px 2px rgba(255, 255, 255, 0.65),40vw 36vh 3px 2px rgba(255, 255, 255, 0.65),7vw -4vh 3px 1px rgba(255, 255, 255, 0.65),-39vw 18vh 1px 1px rgba(255, 255, 255, 0.65),-26vw -14vh 1px 2px rgba(255, 255, 255, 0.65),-8vw -36vh 3px 1px rgba(255, 255, 255, 0.65),-40vw 3vh 0px 2px rgba(255, 255, 255, 0.65),-21vw 5vh 3px 3px rgba(255, 255, 255, 0.65),-1vw 5vh 1px 3px rgba(255, 255, 255, 0.65),14vw 9vh 0px 0px rgba(255, 255, 255, 0.65),15vw -6vh 2px 0px rgba(255, 255, 255, 0.65),-11vw -34vh 3px 3px rgba(255, 255, 255, 0.65),-7vw -7vh 1px 2px rgba(255, 255, 255, 0.65),2vw 6vh 0px 0px rgba(255, 255, 255, 0.65),-8vw 17vh 1px 2px rgba(255, 255, 255, 0.65),-26vw -6vh 1px 1px rgba(255, 255, 255, 0.65),-29vw -31vh 0px 2px rgba(255, 255, 255, 0.65),37vw -31vh 0px 0px rgba(255, 255, 255, 0.65),-10vw -20vh 3px 2px rgba(255, 255, 255, 0.65),7vw 13vh 2px 0px rgba(255, 255, 255, 0.65),11vw -4vh 2px 0px rgba(255, 255, 255, 0.65),-3vw -19vh 3px 2px rgba(255, 255, 255, 0.65),26vw 19vh 1px 0px rgba(255, 255, 255, 0.65),29vw 15vh 0px 0px rgba(255, 255, 255, 0.65),22vw -48vh 1px 2px rgba(255, 255, 255, 0.65),11vw 8vh 0px 1px rgba(255, 255, 255, 0.65),-27vw -7vh 3px 1px rgba(255, 255, 255, 0.65),-10vw 27vh 3px 0px rgba(255, 255, 255, 0.65),-19vw 31vh 1px 2px rgba(255, 255, 255, 0.65),-2vw -41vh 2px 0px rgba(255, 255, 255, 0.65),22vw -30vh 2px 2px rgba(255, 255, 255, 0.65),-1vw 13vh 0px 0px rgba(255, 255, 255, 0.65),-37vw -39vh 3px 2px rgba(255, 255, 255, 0.65),24vw 24vh 3px 3px rgba(255, 255, 255, 0.65),16vw -25vh 3px 3px rgba(255, 255, 255, 0.65),17vw -7vh 0px 3px rgba(255, 255, 255, 0.65),-1vw -43vh 0px 0px rgba(255, 255, 255, 0.65),36vw -14vh 1px 3px rgba(255, 255, 255, 0.65),40vw -2vh 2px 2px rgba(255, 255, 255, 0.65),33vw -49vh 1px 0px rgba(255, 255, 255, 0.65),20vw -19vh 1px 1px rgba(255, 255, 255, 0.65),8vw 9vh 3px 2px rgba(255, 255, 255, 0.65),47vw -16vh 3px 1px rgba(255, 255, 255, 0.65),-30vw -39vh 1px 2px rgba(255, 255, 255, 0.65),41vw -16vh 1px 1px rgba(255, 255, 255, 0.65),17vw -20vh 2px 1px rgba(255, 255, 255, 0.65),-8vw -15vh 2px 1px rgba(255, 255, 255, 0.65),28vw -13vh 3px 1px rgba(255, 255, 255, 0.65),20vw -23vh 1px 2px rgba(255, 255, 255, 0.65),28vw -44vh 0px 1px rgba(255, 255, 255, 0.65),14vw 44vh 0px 1px rgba(255, 255, 255, 0.65),12vw -30vh 3px 1px rgba(255, 255, 255, 0.65),34vw -42vh 1px 1px rgba(255, 255, 255, 0.65),45vw -8vh 2px 1px rgba(255, 255, 255, 0.65),29vw -43vh 0px 3px rgba(255, 255, 255, 0.65),-27vw -5vh 3px 2px rgba(255, 255, 255, 0.65),36vw -32vh 1px 3px rgba(255, 255, 255, 0.65),-18vw -31vh 2px 1px rgba(255, 255, 255, 0.65),-21vw -36vh 2px 1px rgba(255, 255, 255, 0.65),27vw -20vh 0px 0px rgba(255, 255, 255, 0.65),-1vw -31vh 1px 3px rgba(255, 255, 255, 0.65),37vw 24vh 2px 3px rgba(255, 255, 255, 0.65),-18vw 19vh 2px 1px rgba(255, 255, 255, 0.65),-36vw -8vh 2px 1px rgba(255, 255, 255, 0.65),34vw -10vh 0px 3px rgba(255, 255, 255, 0.65),6vw 22vh 3px 0px rgba(255, 255, 255, 0.65),14vw -4vh 1px 2px rgba(255, 255, 255, 0.65),29vw 14vh 0px 1px rgba(255, 255, 255, 0.65),41vw 2vh 0px 2px rgba(255, 255, 255, 0.65),-32vw -23vh 0px 1px rgba(255, 255, 255, 0.65),-20vw 26vh 3px 1px rgba(255, 255, 255, 0.65),7vw -13vh 2px 0px rgba(255, 255, 255, 0.65),44vw 10vh 2px 3px rgba(255, 255, 255, 0.65),34vw 42vh 1px 0px rgba(255, 255, 255, 0.65),43vw -44vh 2px 2px rgba(255, 255, 255, 0.65),22vw 0vh 3px 0px rgba(255, 255, 255, 0.65),-9vw 47vh 2px 3px rgba(255, 255, 255, 0.65),33vw 7vh 0px 0px rgba(255, 255, 255, 0.65),-8vw 41vh 2px 2px rgba(255, 255, 255, 0.65),-38vw 25vh 1px 1px rgba(255, 255, 255, 0.65),-21vw 14vh 3px 0px rgba(255, 255, 255, 0.65),-34vw -19vh 0px 1px rgba(255, 255, 255, 0.65),6vw -5vh 3px 0px rgba(255, 255, 255, 0.65),21vw -18vh 3px 0px rgba(255, 255, 255, 0.65),-16vw 44vh 2px 2px rgba(255, 255, 255, 0.65),-37vw 28vh 0px 1px rgba(255, 255, 255, 0.65),-40vw 48vh 1px 1px rgba(255, 255, 255, 0.65),-34vw -24vh 3px 1px rgba(255, 255, 255, 0.65),-47vw -18vh 3px 2px rgba(255, 255, 255, 0.65),-12vw -5vh 0px 2px rgba(255, 255, 255, 0.65),45vw -44vh 3px 2px rgba(255, 255, 255, 0.65),22vw -33vh 2px 3px rgba(255, 255, 255, 0.65),34vw -2vh 2px 0px rgba(255, 255, 255, 0.65),21vw 33vh 3px 3px rgba(255, 255, 255, 0.65),9vw 4vh 1px 0px rgba(255, 255, 255, 0.65),20vw -17vh 0px 2px rgba(255, 255, 255, 0.65),-47vw 16vh 1px 0px rgba(255, 255, 255, 0.65),25vw 33vh 3px 2px rgba(255, 255, 255, 0.65),47vw 29vh 2px 3px rgba(255, 255, 255, 0.65),34vw -50vh 3px 2px rgba(255, 255, 255, 0.65),-22vw 38vh 1px 3px rgba(255, 255, 255, 0.65),-1vw -4vh 2px 2px rgba(255, 255, 255, 0.65),40vw 26vh 2px 2px rgba(255, 255, 255, 0.65),0vw -17vh 0px 2px rgba(255, 255, 255, 0.65),-19vw -19vh 3px 1px rgba(255, 255, 255, 0.65),-41vw 16vh 0px 3px rgba(255, 255, 255, 0.65),-43vw 41vh 3px 2px rgba(255, 255, 255, 0.65),-12vw -19vh 2px 3px rgba(255, 255, 255, 0.65),-33vw -21vh 0px 3px rgba(255, 255, 255, 0.65),44vw 25vh 2px 0px rgba(255, 255, 255, 0.65),34vw -10vh 3px 2px rgba(255, 255, 255, 0.65),3vw 22vh 3px 3px rgba(255, 255, 255, 0.65),-30vw 35vh 2px 3px rgba(255, 255, 255, 0.65),5vw -6vh 3px 0px rgba(255, 255, 255, 0.65),42vw -39vh 1px 3px rgba(255, 255, 255, 0.65),-20vw -22vh 3px 2px rgba(255, 255, 255, 0.65),36vw 32vh 3px 0px rgba(255, 255, 255, 0.65),5vw -11vh 0px 1px rgba(255, 255, 255, 0.65),45vw -35vh 3px 1px rgba(255, 255, 255, 0.65),-45vw -25vh 1px 3px rgba(255, 255, 255, 0.65),-25vw -48vh 2px 3px rgba(255, 255, 255, 0.65),-22vw 14vh 2px 3px rgba(255, 255, 255, 0.65),27vw -20vh 2px 3px rgba(255, 255, 255, 0.65),40vw 5vh 2px 1px rgba(255, 255, 255, 0.65),-37vw 9vh 3px 0px rgba(255, 255, 255, 0.65),24vw -36vh 3px 0px rgba(255, 255, 255, 0.65),-32vw -36vh 3px 0px rgba(255, 255, 255, 0.65),4vw 47vh 3px 2px rgba(255, 255, 255, 0.65),-27vw 48vh 3px 3px rgba(255, 255, 255, 0.65),-39vw -21vh 2px 0px rgba(255, 255, 255, 0.65),-36vw -43vh 3px 2px rgba(255, 255, 255, 0.65),26vw 13vh 0px 1px rgba(255, 255, 255, 0.65),-1vw 43vh 3px 2px rgba(255, 255, 255, 0.65),-37vw -36vh 2px 1px rgba(255, 255, 255, 0.65),13vw -43vh 0px 0px rgba(255, 255, 255, 0.65),-20vw 12vh 1px 2px rgba(255, 255, 255, 0.65),47vw 41vh 2px 1px rgba(255, 255, 255, 0.65),47vw 48vh 3px 1px rgba(255, 255, 255, 0.65),-15vw -26vh 0px 1px rgba(255, 255, 255, 0.65),-25vw 45vh 1px 3px rgba(255, 255, 255, 0.65),11vw 24vh 1px 2px rgba(255, 255, 255, 0.65),19vw 7vh 0px 2px rgba(255, 255, 255, 0.65),15vw 20vh 0px 1px rgba(255, 255, 255, 0.65),-49vw 2vh 1px 3px rgba(255, 255, 255, 0.65),30vw -22vh 2px 3px rgba(255, 255, 255, 0.65),-37vw -32vh 0px 1px rgba(255, 255, 255, 0.65),-6vw -38vh 1px 3px rgba(255, 255, 255, 0.65),41vw -4vh 1px 0px rgba(255, 255, 255, 0.65),24vw -6vh 3px 0px rgba(255, 255, 255, 0.65),-25vw 31vh 2px 0px rgba(255, 255, 255, 0.65),8vw -16vh 3px 1px rgba(255, 255, 255, 0.65),-36vw -6vh 0px 3px rgba(255, 255, 255, 0.65),-2vw -14vh 1px 0px rgba(255, 255, 255, 0.65),46vw 10vh 1px 1px rgba(255, 255, 255, 0.65);
+   animation: zoom 20s alternate infinite;
 }
 
 .signup-form {
-   /* display: flex; */
-   /* flex-direction: column; */
-   /* justify-content: flex-end; */
-   /* align-items: center; */
+   display: flex;
+   justify-content: center;
+   align-items: center;
    position: relative;
    vertical-align: middle;
    width: 65vw;
-   height: 100vw;
-   border: 1px solid black;
-   background-color: white;
+   height: 92vh;
+   /* border: 1px solid black; */
+   background-color: transparent;
    z-index: 1;
    overflow: hidden;
 }
 
 .current-field {
-   /* animation:  */
+   display: flex;
    position: absolute;
-   width: 700px;
-   height: 700px;
+   justify-content: center;
+   width: 43vw;
+   height: 800px;
    border-radius: 50%;
    margin: 0 auto;
-   border: 1px solid black;
-   background-color: green;
-   z-index: 2
+   border: 2px solid rgba(233, 193, 93);
+   
+   /* rgba(253, 250, 38, 0.634) */
+   background-color: black;
+   z-index: 2;
+   background-color: transparent;
+   box-shadow: 0em 0em .3em .05em rgba(233, 193, 93), inset 0em 0em .3em .05em rgba(233, 193, 93);
+   /* box */
+}
 
+.email-and-password-input {
+   display: flex;
+   justify-content: center;
+   align-items: flex-start;
 }
 
 .user-build {
@@ -42,13 +67,15 @@
    flex-direction: column;
    /* justify-content: center; */
    border-radius: 50%;
-   bottom: 0;
+   bottom: 12%;
    width: 500px;
    height: 500px;
-   background: linear-gradient(#e66465, #9198e5);
-   border: 1px solid black;
-   margin: 0 auto;
+   background-color: rgb(0, 0, 0, .45);
+   border: 2px solid rgba(233, 193, 93);
+   box-shadow: 0em 0em .3em .05em rgba(233, 193, 93), inset 0em 0em .3em .05em rgba(233, 193, 93);
+   /* margin: 0 auto; */
    z-index: 3;
+   animation: hidden 3s;
    /* animation: visible 3s;
    transition-duration: 3s;
    transition-property: transform; */
@@ -65,12 +92,6 @@
    flex-grow: 1;
 }
 
-
-
-
-
-
-
 @keyframes visible {
    0% { opacity: 0; rotate: 180;}
    100% { opacity: 1; rotate: 360;}
@@ -81,15 +102,27 @@
    100% { opacity: 0; rotate: 180;}
 }
 
-@keyframes rotate {
+@keyframes rotate-in {
    100% {transform: rotate(360);}
 }
 
-@keyframes rotate_out {
-   0% {transform: rotate(0);}
-   100% {transform: rotate(180);}
+@keyframes rotate-out {
+   0% {
+      transform: rotate(0);
+   }
+   100% {
+      transform: rotate(180);
+   }
 }
 
+@keyframes zoom {
+   0%{
+      transform: scale(1);
+   }
+   100%{
+      transform: scale(1.5);
+   }
+}
 
 .input-field {
    border-radius: 50%;
@@ -100,7 +133,7 @@
 }
 
 .input-field[hidden=true] {
-   animation: hidden 3s;
+   
 
 }
 

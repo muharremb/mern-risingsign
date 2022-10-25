@@ -85,42 +85,37 @@ function SignupForm () {
 
   return (
     <div className='signup-page'>
+      <div className='space-layer'></div>
       <form className="signup-form" onSubmit={userSubmit}>
-        <h2>Sign Up Form</h2>
         <div className="current-field">
 
           {currentField === "email-and-password-input" &&     //conditionally render email and password
 
             <div className='email-and-password-input'>
               <div className="errors">{errors?.email}</div>
-              <label>
-                <span>Email</span>
                 <input type="text"
                   value={email}
                   onChange={update("email")}
                   placeholder="Email"
                 />
-              </label>
+              <br />
+              <br />
               <div className="errors">{errors?.password}</div>
-              <label>
-                <span>Password</span>
                 <input type="password"
                   value={password}
                   onChange={update('password')}
                   placeholder="Password"
                 />
-              </label>
+              <br />
+              <br />
               <div className="errors">
                 {password !== password2 && 'Confirm Password field must match'}
               </div>
-              <label>
-                <span>Confirm Password</span>
                 <input type="password"
                   value={password2}
                   onChange={update('password2')}
                   placeholder="Confirm Password"
                 />
-              </label>
             </div>}
 
 
