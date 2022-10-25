@@ -175,12 +175,18 @@ function SignupForm () {
         </div>
 
         <div className='user-build'>
-          <h2>hello</h2>
-          {currentField === "email-and-password-input" && <ContinueButton type={"button"} handleClick={continueClick} disabled={!email || !password || password !== password2}/>}
+          <div className='user-build-upper'>
 
-          {currentField === "name-input" && <ContinueButton type={"button"} handleClick={continueClick} disabled={!name}/>}
+          </div>
 
-          {currentField === "birth-info-input" && <ContinueButton type={"submit"} text={"Sign Up"} disabled={!birthDate || !birthTime || !birthLocation}/>}
+          <div className='user-build-lower'>
+            {currentField === "email-and-password-input" && <ContinueButton type={"button"} handleClick={continueClick} disabled={!email || !password || password !== password2}/>}
+
+            {currentField === "name-input" && <ContinueButton type={"button"} handleClick={continueClick} disabled={!name}/>}
+
+            {currentField === "birth-info-input" && <ContinueButton type={"submit"} text={"Sign Up"} disabled={!birthDate || !birthTime || !birthLocation}/>}
+
+          </div>
         </div>
       </form>
     </div>

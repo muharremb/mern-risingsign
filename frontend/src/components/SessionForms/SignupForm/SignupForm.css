@@ -1,16 +1,3 @@
-.user-build {
-   display: flex;
-   justify-content: center;
-   border-radius: 50%;
-   width: 500px;
-   height: 500px;
-   background: linear-gradient(#e66465, #9198e5);
-   border: 1px solid black;
-   /* animation: visible 3s;
-   transition-duration: 3s;
-   transition-property: transform; */
-}
-
 .signup-page {
    /* #810D93 SAVGING THIS FOR LATER */
    background-color: rgb(57, 16, 57);
@@ -18,20 +5,71 @@
    justify-content: center;
    width: 100vw;
    height: 100vw;
+   overflow: hidden;
 }
 
 .signup-form {
-   display: flex;
-   flex-direction: column;
-   /* justify-content: */
-   width: 65%;
+   /* display: flex; */
+   /* flex-direction: column; */
+   /* justify-content: flex-end; */
+   /* align-items: center; */
+   position: relative;
+   vertical-align: middle;
+   width: 65vw;
+   height: 100vw;
    border: 1px solid black;
    background-color: white;
+   z-index: 1;
+   overflow: hidden;
 }
 
 .current-field {
    /* animation:  */
+   position: absolute;
+   width: 700px;
+   height: 700px;
+   border-radius: 50%;
+   margin: 0 auto;
+   border: 1px solid black;
+   background-color: green;
+   z-index: 2
+
 }
+
+.user-build {
+   display: flex;
+   position: absolute;
+   flex-direction: column;
+   /* justify-content: center; */
+   border-radius: 50%;
+   bottom: 0;
+   width: 500px;
+   height: 500px;
+   background: linear-gradient(#e66465, #9198e5);
+   border: 1px solid black;
+   margin: 0 auto;
+   z-index: 3;
+   /* animation: visible 3s;
+   transition-duration: 3s;
+   transition-property: transform; */
+}
+
+.user-build-upper {
+   display: flex;
+   flex-grow: 4;
+}
+
+.user-build-lower {
+   display: flex;
+   justify-content: center;
+   flex-grow: 1;
+}
+
+
+
+
+
+
 
 @keyframes visible {
    0% { opacity: 0; rotate: 180;}
