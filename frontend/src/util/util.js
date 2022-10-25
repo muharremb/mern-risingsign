@@ -29,8 +29,13 @@ export const getHoroscope = (user) => {
         origin: origin
     })
     
-    console.log("Ascendant ", horoscope.Ascendant);
-    console.log("Sun: ", horoscope.SunSign);
+    const output = {
+        sun: horoscope.SunSign,
+        rising: horoscope.Ascendant.Sign,
+        celestialBodies: horoscope.CelestialBodies
+    }
+    console.log(output);
     debugger;
+    return output;
 
 }

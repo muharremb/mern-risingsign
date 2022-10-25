@@ -36,7 +36,6 @@ export const login = user => startSession(user, 'api/users/login');
 
 const startSession = (userInfo, route) => async dispatch => {
   if(route==='api/users/register'){
-    debugger;
     userInfo = await getLatLng(userInfo);
     userInfo.birthDate = new Date(userInfo.birthDate+"T"+userInfo.birthTime);
     const signs = getHoroscope(userInfo);
