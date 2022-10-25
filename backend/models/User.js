@@ -31,7 +31,7 @@ const userSchema = Schema({
         required: true
     },
     horoscope: {
-        type: String,
+        type: Object,
         required: true
     }
 }, {

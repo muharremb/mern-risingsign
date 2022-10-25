@@ -17,11 +17,12 @@ router.get('/', function(req, res, next) {
   });
 });
 
+
 router.post('/register', validateRegisterInput, async (req, res, next) => {
   const user = await User.findOne({
     email: req.body.email
   });
-
+  
   if(user) {
     const err = new Error("Validation Error");
     err.statusCode = 400;
@@ -32,7 +33,7 @@ router.post('/register', validateRegisterInput, async (req, res, next) => {
     err.errors = errors;
     return next(err);
   }
-
+  
   const newUser = new User({
     name: req.body.name,
     email: req.body.email,
@@ -42,7 +43,7 @@ router.post('/register', validateRegisterInput, async (req, res, next) => {
     lng: req.body.lng,
     horoscope: req.body.horoscope 
   });
-
+  
   bcrypt.genSalt(10, (err, salt) => {
     if (err) throw err;
     bcrypt.hash(req.body.password, salt, async (err, hashedPassword) => {
@@ -85,6 +86,15 @@ router.get('/current', restoreUser, (req, res) => {
     _id: req.user._id,
     name: req.user.name,
     email: req.user.email
+  });
+});
+
+router.get('/:userId', async function(req, res, next) {
+  const userId = req.params.userId;
+  const user = await User.findById(userId).exec();
+  // _id": "6357ea1f4c12fe6ec8efcfb3"
+  res.json({
+    user: user
   });
 });
 
