@@ -1,7 +1,6 @@
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
-import session from './session';
-import errors from './errors';
+import sessionReducer from './session';
 // TODO integrate errors into root reducer
 const rootReducer = combineReducers({
   session,

@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-// import './NavBar.css';
+import './NavBar.css';
 import { getCurrentUser, logout } from '../../store/session';
 import { useEffect } from 'react';
 
@@ -29,18 +29,18 @@ function NavBar () {
     } else {
       return (
         <div className="links-auth">
-          <Link to={'/signup'}>Signup</Link>
-          <Link to={'/login'}>Login</Link>
+          <Link className="signup-link" to={'/signup'}>Signup</Link>
+          <Link className="login-link" to={'/login'}>Login</Link>
         </div>
       );
     }
   }
 
   return (
-    <>
-      <h1>Rising Sign NavBar</h1>
+    <div className='navbar'>
+      <h2>Rising Sign</h2>
       { getLinks() }
-    </>
+    </div>
   );
 }
 

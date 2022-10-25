@@ -5,8 +5,8 @@ import { AuthRoute, ProtectedRoute } from './components/Routes/Routes';
 
 import MainPage from './components/MainPage/MainPage';
 import NavBar from './components/NavBar/NavBar';
-import LoginForm from './components/SessionForms/LoginForm';
-import SignupForm from './components/SessionForms/SignupForm';
+import LoginForm from './components/SessionForms/LoginForm/LoginForm';
+import SignupForm from './components/SessionForms/SignupForm/SignupForm';
 import Profile from './components/Profile/Profile';
 import Feeds from './components/Feeds/Feeds';
 import {getCurrentUser} from './store/session';
@@ -14,6 +14,20 @@ import {getCurrentUser} from './store/session';
 function App() {
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
+
+  const loadPage = () => {
+    const html = document.documentElement;
+    const loading = 'loading-map';
+    html.classList.add(loading);
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        html.classList.remove(loading)
+      }, 1500)
+    })
+  }
+
+  loadPage();
+
   useEffect(() => {
     dispatch(getCurrentUser()).then(() => setLoaded(true));
   }, [dispatch]);
