@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import ContinueButton from '../ContinueButton/ContinueButton';
+import BackButton from '../BackButton/BackButton';
 import './SignupForm.css';
 import { signup, clearSessionErrors } from '../../../store/session';
 
@@ -13,18 +14,29 @@ function SignupForm () {
   const [birthDate, setBirthDate] = useState('');
   const [birthTime, setBirthTime] = useState('');
   const [ hidden, setHidden ] = useState(false);
-
-  const fieldArray = ["email-and-password-input", "name-input", "birth-info-input"];
+  const fieldArray = ["name-input", "birth-info-input", "email-and-password-input"];
   let [ currentField, setCurrentField ] = useState(fieldArray[0]);
-
+  let [ birthLocationError, setBirthLocationError ] = useState("");
+  let [ birthDateError, setBirthDateError ] = useState("");
+  let [ birthTimeError, setBirthTimeError ] = useState("");
+  let [ nameError, setNameError ] = useState("");
   const errors = useSelector(state => state.errors.session);
   const dispatch = useDispatch();
+
+  // if (birthLocation === "") setBirthLocationError("");
+  // if (birthDate === "") setBirthDateError("");
+  // if (birthTime === "") setBirthTimeError("");
+
+
+  // if (email === "" || name === "" || password === "" || password2 === "" || birthLocation === "" || birthDate === "" || birthTime === "") {
+  //   dispatch(clearSessionErrors())
+  // }
 
   useEffect(() => {
     return () => {
       dispatch(clearSessionErrors());
     };
-  }, [dispatch]);
+  }, [dispatch, currentField]);
 
   const update = field => {
     let setState;
@@ -58,15 +70,53 @@ function SignupForm () {
 
     return e => {
       e.preventDefault();
-      console.log(e.currentTarget.value);
       setState(e.currentTarget.value)
     };
   }
 
-  const continueClick = e => {
+  const isValidDate = (date) => {
+    const validDate = /^\d{4}\-\d{1,2}\-\d{1,2}$/;
+    // debugger
+    if (!date.match(validDate)) return false;
+
+    return true;
+  };
+
+  const checkTime = (time) => {
+    const re = /^(\d{1,2}):(\d{2})(:00)?([AP]M)?$/;
+
+    if (!time.match(re)) return false;
+    return true;
+  }
+
+  const continueClickName = e => {
     e.preventDefault();
-    console.log("in continue click")
-    setCurrentField(fieldArray[fieldArray.indexOf(currentField) + 1])
+    if (name.length >= 2 && name.length <= 30) {
+      setCurrentField(fieldArray[fieldArray.indexOf(currentField) + 1]);
+    } else {
+      setNameError("name must be present")
+    }
+  }
+
+
+
+  const continueClickBirthInfo = e => {
+    e.preventDefault();
+    console.log("hi")
+    if (birthLocation !== "" && isValidDate(birthDate) && checkTime(birthTime)) {
+      setCurrentField(fieldArray[fieldArray.indexOf(currentField) + 1]);
+    } else {
+      if (birthLocation === "") {
+        setBirthLocationError("must include place of birth");
+      }
+      if (!isValidDate(birthDate)) setBirthDateError("not a valid date of birth");
+      if (!checkTime(birthTime)) setBirthTimeError("Invalid time of birth");
+    }
+  }
+
+  const backClick = e => {
+    e.preventDefault();
+    setCurrentField(fieldArray[fieldArray.indexOf(currentField) - 1])
   }
 
   const userSubmit = e => {
@@ -101,7 +151,7 @@ function SignupForm () {
                     value={email}
                     onChange={update("email")}
                   />
-                <label htmlFor='email-input'>email</label>
+                <label htmlFor='email-input'>{errors && errors.email ? errors.email.toLowerCase() : "email"}</label>
               </div>
               <div className='input-container'>
                 <div className="errors">{errors?.password}</div>
@@ -110,7 +160,7 @@ function SignupForm () {
                     value={password}
                     onChange={update('password')}
                   />
-                <label htmlFor='password-input'>password</label>
+                <label htmlFor='password-input'>{errors && errors.password ? errors.password.toLowerCase() : "password"}</label>
               </div>
               <div className='input-container'>
                 <div className="errors">
@@ -121,7 +171,7 @@ function SignupForm () {
                     value={password2}
                     onChange={update('password2')}
                   />
-                <label htmlFor='password2-input'>confirm password</label>
+                <label htmlFor='password2-input'>{password !== password2 && password2 !== "" ? 'password fields must match' : "confirm password"}</label>
               </div>
             </div>}
 
@@ -130,15 +180,15 @@ function SignupForm () {
           {currentField === "name-input" &&               //conditionally render name
 
             <div className='name-input'>
-              <div className="errors">{errors?.name}</div>
-              <label>
-                <span>Name</span>
-                <input type="text"
-                  value={name}
-                  onChange={update('name')}
-                  placeholder="Name"
-                />
-              </label>
+              <div className='input-container'>
+                <div className="errors">{errors?.name}</div>
+                  <input type="text"
+                    id="name-input"
+                    value={name}
+                    onChange={update('name')}
+                  />
+                <label htmlFor='name-input'>{nameError !== "" && name !== "" ? nameError : "first name"}</label>
+              </div>
             </div>}
 
 
@@ -146,33 +196,33 @@ function SignupForm () {
           {currentField === "birth-info-input" &&       //conditionally render birthinfo
 
             <div className='birth-info-input'>
-              <div className="errors">{errors?.birthDate}</div>
-              <label>
-                <span>Birth Date</span>
-                <input type="date"
-                  value={birthDate}
-                  onChange={update('birthDate')}
-                  placeholder="Birth Date"
-                />
-              </label>
-              <div className="errors">{errors?.birthTime}</div>
-              <label>
-                <span>Birth Time</span>
-                <input type="time"
-                  value={birthTime}
-                  onChange={update('birthTime')}
-                  placeholder="Birth Time"
-                />
-              </label>
-              <div className="errors">{errors?.birthLocation}</div>
-              <label>
-                <span>Birth Location</span>
-                <input type="text"
-                  value={birthLocation}
-                  onChange={update('birthLocation')}
-                  placeholder="Birth Location"
-                />
-              </label>
+              <div className='input-container'>
+                <div className="errors">{errors?.birthDate}</div>
+                  <input type="date"
+                    value={birthDate}
+                    id="birth-date-input"
+                    onChange={update('birthDate')}
+                  />
+                <label htmlFor='birth-date-input'>{birthDateError !== "" && birthDate !== "" ? birthDateError : "date of birth"}</label>
+              </div>
+              <div className='input-container'>
+                <div className="errors">{errors?.birthTime}</div>
+                  <input type="time"
+                    value={birthTime}
+                    id="birth-time-input"
+                    onChange={update('birthTime')}
+                  />
+                <label htmlFor='birth-time-input'>{birthTimeError !== "" && birthTime !== "" ? birthTimeError : "time of birth"}</label>
+              </div>
+              <div className='input-container'>
+                <div className="errors">{errors?.birthLocation}</div>
+                  <input type="text"
+                    value={birthLocation}
+                    id="birth-location-input"
+                    onChange={update('birthLocation')}
+                  />
+                <label htmlFor='birth-location-input' value>{birthLocationError !== "" && birthLocation !== "" ? birthLocationError : "birth place"}</label>
+              </div>
             </div>}
         </div>
 
@@ -182,11 +232,11 @@ function SignupForm () {
           </div>
 
           <div className='user-build-lower'>
-            {currentField === "email-and-password-input" && <ContinueButton type={"button"} handleClick={continueClick} disabled={!email || !password || password !== password2}/>}
+            {currentField === "email-and-password-input" && <><BackButton type={"button"} handleClick={backClick}/> && <ContinueButton type={"submit"} text="Sign Up" disabled={!email || !password || password !== password2}/></>}
 
-            {currentField === "name-input" && <ContinueButton type={"button"} handleClick={continueClick} disabled={!name}/>}
+            {currentField === "name-input" && <ContinueButton type={"button"} handleClick={continueClickName} disabled={!name}/>}
 
-            {currentField === "birth-info-input" && <ContinueButton type={"submit"} text={"Sign Up"} disabled={!birthDate || !birthTime || !birthLocation}/>}
+            {currentField === "birth-info-input" && <><BackButton type={"button"} handleClick={backClick}/> && <ContinueButton type={"submit"} handleClick={continueClickBirthInfo} disabled={!birthDate || !birthTime || !birthLocation}/></>}
 
           </div>
         </div>

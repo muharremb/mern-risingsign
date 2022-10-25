@@ -86,7 +86,7 @@
    z-index: 2;
    background-color: transparent;
    box-shadow: 0em 0em .2em .05em rgba(233, 193, 93), inset 0em 0em .2em .05em rgba(233, 193, 93);
-   animation: visible 3s;
+   /* animation: visible 3s; */
    /* box */
 }
 
@@ -106,7 +106,7 @@
    flex-direction: column;
    /* justify-content: center; */
    border-radius: 50%;
-   flex-shrink: 1;
+   /* flex-shrink: 1; */
    bottom: 15%;
    /* width: 30vw; */
    width: 350px;
@@ -117,7 +117,7 @@
    box-shadow: 0em 0em .2em .05em rgba(233, 193, 93), inset 0em 0em .2em .05em rgba(233, 193, 93);
    /* margin: 0 auto; */
    z-index: 3;
-   animation: visible 3s;
+   /* animation: visible 3s; */
    /* animation: visible 3s;
    transition-duration: 3s;
    transition-property: transform; */
@@ -125,8 +125,10 @@
 
 .input-container {
    display: flex;
+   top: 30%;
    flex-direction: column;
-   width: 15vw;
+   /* width: 17vw; */
+   width: 300px;
    align-items: space-between;
 }
 
@@ -135,6 +137,7 @@
    color: rgba(233, 193, 93, .8);
    letter-spacing: .40em;
    justify-content: center;
+   text-align: center;
 }
 
 .input-container > input {
@@ -147,8 +150,26 @@
    transition: all .4s ease;
 }
 
+.name-input {
+   display: flex;
+   flex-direction: column;
+   position: absolute;
+   top: 6vh;
+   gap: .6rem;
+}
+
+.birth-info-input {
+   display: flex;
+   flex-direction: column;
+   position: absolute;
+   top: 6vh;
+   gap: .6rem;
+}
+
+
+
 .input-container > input:hover {
-   animation: glow 1s ease-in-out infinite alternate;
+   /* animation: glow 1s ease-in-out infinite alternate; */
 }
 
 .input-container > input:focus {
@@ -163,20 +184,9 @@
 .user-build-lower {
    display: flex;
    justify-content: center;
-   flex-grow: 1;
-}
-
-.signup-link {
-   color: rgba(255, 255, 255, 0.65);
-   cursor: not-allowed;
-}
-
-.login-link {
-   cursor: pointer;
-}
-
-.login-link:hover {
-   animation: glow 1s ease-in-out infinite alternate;
+   /* flex-grow: 1; */
+   gap: 3px;
+   padding: 0px 40px 60px 40px;
 }
 
 
@@ -233,13 +243,4 @@
    to {
      text-shadow: 0 0 20px #fff, 0 0 30px #b24dff, 0 0 40px #b24dff, 0 0 50px #b24dff, 0 0 60px #b24dff, 0 0 70px #b24dff, 0 0 80px #b24dff;
    }
- }
-
-.input-field[hidden=true] {
-   
-
-}
-
-.input-field[hidden=false] {
-   animation: visible 3s;
 }

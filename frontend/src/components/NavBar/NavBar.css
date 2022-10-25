@@ -25,6 +25,12 @@
    color: rgba(233, 193, 93);
    text-decoration: none;
    font-size: 1.5rem;
+   
+}
+
+.signup-link:hover, .login-link:hover {
+   animation: glow 1s ease-in-out infinite alternate;
+   cursor: pointer;
 }
 
 .links-auth {
@@ -32,6 +38,3 @@
    width: 20vw;
    justify-content: space-between;
 }
-
-/* .a{
-   border-color:#b24dff */

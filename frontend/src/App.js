@@ -14,6 +14,20 @@ import {getCurrentUser} from './store/session';
 function App() {
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
+
+  const loadPage = () => {
+    const html = document.documentElement;
+    const loading = 'loading-map';
+    html.classList.add(loading);
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        html.classList.remove(loading)
+      }, 1500)
+    })
+  }
+
+  loadPage();
+
   useEffect(() => {
     dispatch(getCurrentUser()).then(() => setLoaded(true));
   }, [dispatch]);

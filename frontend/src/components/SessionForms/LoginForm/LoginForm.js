@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-// import './SessionForm.css';
+import ContinueButton from '../ContinueButton/ContinueButton';
+import './LoginForm.css';
 
 import { login, clearSessionErrors } from '../../../store/session';
 
@@ -9,6 +10,10 @@ function LoginForm () {
   const [password, setPassword] = useState('');
   const errors = useSelector(state => state.errors.session);
   const dispatch = useDispatch();
+
+  if (email === "" || password === "") {
+    dispatch(clearSessionErrors())
+  }
 
   useEffect(() => {
     return () => {
@@ -27,7 +32,40 @@ function LoginForm () {
   }
 
   return (
-    <form className="session-form" onSubmit={handleSubmit}>
+    <div className='login-page'>
+    <div className='space-layer'></div>
+    <div className='space-layer2'></div>
+    <div className='space-layer3'></div>
+    <form className="login-form" onSubmit={handleSubmit}>
+      <div className="login-field">
+        <div className='email-and-password-input'>
+          <div className='input-container'>
+            <input type="text"
+              id="email-input"
+              value={email}
+              onChange={update("email")}
+            />
+            <label htmlFor='email-input'>{errors && errors.email ? errors.email.toLowerCase() : "email"}</label>
+          </div>
+          <div className='input-container'>
+            <input type="password"
+              id="password-input"
+              value={password}
+              onChange={update('password')}
+            />
+            <label htmlFor='password-input'>{errors && errors.password ? errors.password.toLowerCase() : "password"}</label>
+          </div>
+        </div>
+        <ContinueButton text="Log In" type={"submit"} disabled={!email || !password}/>
+      </div>
+    </form>
+  </div>
+  );
+}
+
+export default LoginForm;
+
+{/* <form className="session-form" onSubmit={handleSubmit}>
       <h2>Rising Sign Log In Form</h2>
       <div className="errors">{errors?.email}</div>
       <label>
@@ -52,8 +90,4 @@ function LoginForm () {
         value="Log In"
         disabled={!email || !password}
       />
-    </form>
-  );
-}
-
-export default LoginForm;
+    </form> */}
