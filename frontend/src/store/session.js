@@ -5,7 +5,7 @@ import jwtFetch from './jwt';
 const RECEIVE_CURRENT_USER = "session/RECEIVE_CURRENT_USER";
 const RECEIVE_SESSION_ERRORS = "session/RECEIVE_SESSION_ERRORS";
 const CLEAR_SESSION_ERRORS = "session/CLEAR_SESSION_ERRORS";
-export const RECEIVE_USER_LOGOUT = "session/RECEIVE_USER_LOGOUT";
+const RECEIVE_USER_LOGOUT = "session/RECEIVE_USER_LOGOUT";
 
 // Dispatch receiveCurrentUser when a user logs in.
 const receiveCurrentUser = currentUser => ({
@@ -94,8 +94,9 @@ export const sessionErrorsReducer = (state = nullErrors, action) => {
 export const getCurrentUser = () => async dispatch => {
     const res = await jwtFetch('/api/users/current');
     const user = await res.json();
+    console.log('getCurrentUser user ', user);
     return dispatch(receiveCurrentUser(user));
 };
-  
-  export default sessionReducer;
+
+export default sessionReducer;
 

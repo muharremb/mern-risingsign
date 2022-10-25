@@ -21,7 +21,7 @@
     "url": "https://github.com/muharremb/mern-risingsign/issues"
   },
   "engines": {
-    "node": "16.x"
+    "node": "16.16.0"
   },
   "homepage": "https://github.com/muharremb/mern-risingsign#readme"
 }
