@@ -87,6 +87,7 @@
    z-index: 2;
    background-color: transparent;
    box-shadow: 0em 0em .3em .05em rgba(233, 193, 93), inset 0em 0em .3em .05em rgba(233, 193, 93);
+   animation: visible 3s;
    /* box */
 }
 
@@ -114,7 +115,7 @@
    box-shadow: 0em 0em .3em .05em rgba(233, 193, 93), inset 0em 0em .3em .05em rgba(233, 193, 93);
    /* margin: 0 auto; */
    z-index: 3;
-   animation: hidden 3s;
+   animation: visible 3s;
    /* animation: visible 3s;
    transition-duration: 3s;
    transition-property: transform; */
