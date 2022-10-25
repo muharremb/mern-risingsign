@@ -86,36 +86,43 @@ function SignupForm () {
   return (
     <div className='signup-page'>
       <div className='space-layer'></div>
+      <div className='space-layer2'></div>
+      <div className='space-layer3'></div>
       <form className="signup-form" onSubmit={userSubmit}>
         <div className="current-field">
 
           {currentField === "email-and-password-input" &&     //conditionally render email and password
 
             <div className='email-and-password-input'>
-              <div className="errors">{errors?.email}</div>
-                <input type="text"
-                  value={email}
-                  onChange={update("email")}
-                  placeholder="Email"
-                />
-              <br />
-              <br />
-              <div className="errors">{errors?.password}</div>
-                <input type="password"
-                  value={password}
-                  onChange={update('password')}
-                  placeholder="Password"
-                />
-              <br />
-              <br />
-              <div className="errors">
-                {password !== password2 && 'Confirm Password field must match'}
+              <div className='input-container'>
+                <div className="errors">{errors?.email}</div>
+                  <input type="text"
+                    id="email-input"
+                    value={email}
+                    onChange={update("email")}
+                  />
+                <label htmlFor='email-input'>email</label>
               </div>
-                <input type="password"
-                  value={password2}
-                  onChange={update('password2')}
-                  placeholder="Confirm Password"
-                />
+              <div className='input-container'>
+                <div className="errors">{errors?.password}</div>
+                  <input type="password"
+                    id="password-input"
+                    value={password}
+                    onChange={update('password')}
+                  />
+                <label htmlFor='password-input'>password</label>
+              </div>
+              <div className='input-container'>
+                <div className="errors">
+                  {password !== password2 && 'Confirm Password field must match'}
+                </div>
+                  <input type="password"
+                    id="password2-input"
+                    value={password2}
+                    onChange={update('password2')}
+                  />
+                <label htmlFor='password2-input'>confirm password</label>
+              </div>
             </div>}
 
 

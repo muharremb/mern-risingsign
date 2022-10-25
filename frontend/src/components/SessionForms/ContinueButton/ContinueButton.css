@@ -1,21 +1,28 @@
 .continue-button {
-   width: 200px;
-   height: 40px;
-   font-size: 1.25rem;
-   box-sizing: border-box;
-   border: 1px solid rgb(209,213,219);
-   border-radius: .5rem;
-   text-align: center;
-   letter-spacing: 6px;
-}
-
-.continue-button[disabled] {
-   color: rgb(199, 199, 199);
+  width: 200px;
+  height: 40px;
+  font-size: 1.25rem;
+  box-sizing: border-box;
+  border: 1px solid rgba(233, 193, 93);
+  border-radius: .5rem;
+  text-align: center;
+  letter-spacing: 6px;
+  color: rgba(233, 193, 93);
+  transition: all 0.4s ease;
+  background-color: transparent;
 }
 
 .continue-button:hover {
-   
+  background-color: rgba(241, 197, 85, 0.46);
 }
+
+.continue-button[disabled] {
+   color: rgb(139, 138, 138);
+   border-color: transparent;
+   background-color: rgb(139, 138, 138, .65);;
+}
+
+
 
 /* <!-- HTML !-->
 <button class="button-39" role="button">Button 39</button>
