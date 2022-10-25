@@ -1,4 +1,5 @@
 import { getLatLng } from '../util/util';
+import { getHoroscope } from '../util/util';
 import jwtFetch from './jwt';
 
 const RECEIVE_CURRENT_USER = "session/RECEIVE_CURRENT_USER";
