@@ -2,10 +2,17 @@ import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import './NavBar.css';
 import { logout } from '../../store/session';
+// import './NavBar.css';
+import { getCurrentUser, logout } from '../../store/session';
+import { useEffect } from 'react';
 
 function NavBar () {
   const loggedIn = useSelector(state => !!state.session.user);
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getCurrentUser());
+  }, [dispatch]);
   
   const logoutUser = e => {
       e.preventDefault();

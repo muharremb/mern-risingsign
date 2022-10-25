@@ -5,7 +5,6 @@ import { signup, clearSessionErrors } from '../../store/session';
 
 function SignupForm () {
   const [email, setEmail] = useState('');
-//   const [username, setUsername] = useState('');
   const [name, setName] = useState('');
   const [password, setPassword] = useState('');
   const [password2, setPassword2] = useState('');
@@ -57,16 +56,17 @@ function SignupForm () {
 
   const userSubmit = e => {
     e.preventDefault();
+    const birthDateTime = new Date(`${birthDate}T${birthTime}:00Z`);
+
     const user = {
       email,
       name,
       password,
       birthLocation,
-      birthDate,
-      birthTime
+      birthDateTime    
     };
 
-    dispatch(signup(user)); 
+    dispatch(signup(user));
   }
 
   return (

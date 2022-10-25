@@ -18,14 +18,22 @@ const userSchema = Schema({
         type: String,
         required: true
     }, 
-    birthTime: {
-        type: String,
-        required: true
-    },
-    birthDate: {
+    birthDateTime: {
         type: Date,
         required: true
     },
+    lat: {
+        type: String,
+        required: true
+    },
+    lng: {
+        type: String,
+        required: true
+    },
+    horoscope: {
+        type: Object,
+        required: true
+    }
 }, {
     timestamps: true
 });
