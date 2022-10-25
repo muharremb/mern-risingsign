@@ -8,7 +8,7 @@ import { LANGUAGE } from './utilities/language';
 import {
   ASPECTS, BODIES, ANGLES, POINTS,
 } from './constants';
-
+ 
 import { getMidheavenSun, getAscendant } from './utilities/astronomy';
 import { createAspects } from './utilities/aspects';
 import {

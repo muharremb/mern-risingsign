@@ -1,4 +1,5 @@
 import { getLatLng } from '../util/util';
+import { getHoroscope } from '../util/util';
 import jwtFetch from './jwt';
 
 const RECEIVE_CURRENT_USER = "session/RECEIVE_CURRENT_USER";
@@ -35,8 +36,10 @@ export const login = user => startSession(user, 'api/users/login');
 
 const startSession = (userInfo, route) => async dispatch => {
   if(route==='api/users/register'){
+    debugger;
     userInfo = await getLatLng(userInfo);
-    // birthChart = await ge
+    userInfo.birthDate = new Date(userInfo.birthDate+"T"+userInfo.birthTime);
+    const signs = getHoroscope(userInfo);
   }
   try {  
     const res = await jwtFetch(route, {
