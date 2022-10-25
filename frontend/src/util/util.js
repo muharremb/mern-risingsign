@@ -16,11 +16,11 @@ export const getLatLng = async (user) => {
 
 export const getHoroscope = (user) => {
     const origin = new Origin({
-        year: user.birthDate.getYear(),
-        month: user.birthDate.getMonth(),
-        date: user.birthDate.getDay(), //.getDate() ?
-        hour: user.birthDate.getHours(),
-        minute: user.birthDate.getMinutes(),
+        year: user.birthDateTime.getYear(),
+        month: user.birthDateTime.getMonth(),
+        date: user.birthDateTime.getDay(), //.getDate() ?
+        hour: user.birthDateTime.getHours(),
+        minute: user.birthDateTime.getMinutes(),
         latitude: user.lat,
         longitude: user.lng
     })
@@ -30,12 +30,21 @@ export const getHoroscope = (user) => {
     })
     
     const output = {
-        sun: horoscope.SunSign,
-        rising: horoscope.Ascendant.Sign,
-        celestialBodies: horoscope.CelestialBodies
+        sun: horoscope.CelestialBodies.sun,
+        rising: horoscope.Ascendant,
+        moon: horoscope.CelestialBodies.moon,
+        mercury: horoscope.CelestialBodies.mercury,
+        venus: horoscope.CelestialBodies.venus,
+        mars: horoscope.CelestialBodies.mars,
+        jupiter: horoscope.CelestialBodies.jupiter,
+        saturn: horoscope.CelestialBodies.saturn,
+        uranus: horoscope.CelestialBodies.uranus,
+        neptune: horoscope.CelestialBodies.neptune,
+        pluto: horoscope.CelestialBodies.pluto,
+        chiron: horoscope.CelestialBodies.chiron,
+        sirius: horoscope.CelestialBodies.sirius
     }
     console.log(output);
-    debugger;
     return output;
 
 }

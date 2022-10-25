@@ -29,6 +29,10 @@ const userSchema = Schema({
     lng: {
         type: String,
         required: true
+    },
+    horoscope: {
+        type: String,
+        required: true
     }
 }, {
     timestamps: true

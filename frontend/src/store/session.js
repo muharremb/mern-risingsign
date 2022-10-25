@@ -35,6 +35,7 @@ export const login = user => startSession(user, 'api/users/login');
 const startSession = (userInfo, route) => async dispatch => {
   if(route==='api/users/register'){
     userInfo = await getLatLng(userInfo);
+    userInfo.horoscope = JSON.stringify(getHoroscope(userInfo));
   }
   try {  
     const res = await jwtFetch(route, {
