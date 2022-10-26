@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import UserCard from '../UserCard/UserCard';
 
 function Profile () {
   const dispatch = useDispatch();
@@ -8,6 +9,7 @@ function Profile () {
   return (
     <>
         <h2>Hi {currentUser.name}, it is your profile page</h2>
+        <UserCard id={currentUser._id}/>
     </>
   )
 //   const userTweets = useSelector(state => Object.values(state.tweets.user))
