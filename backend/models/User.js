@@ -21,7 +21,7 @@ const userSchema = Schema({
     birthLocation: {
         type: String,
         required: true
-    }, 
+    },
     birthDateTime: {
         type: Date,
         required: true
@@ -38,6 +38,14 @@ const userSchema = Schema({
         type: Object,
         required: true
     },
+    status: {
+        type: String,
+        default: 'online'
+    },
+    newMessages: {
+        type: Object,
+        default: {}
+    },
     likes: {
         type: Array,
         required: true
@@ -52,6 +60,6 @@ const userSchema = Schema({
     }
 }, {
     timestamps: true
-});
+}, {minimize: false});
 
 module.exports = mongoose.model('User', userSchema);

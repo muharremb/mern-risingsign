@@ -12,7 +12,7 @@ export const receiveCurrentUser = currentUser => ({
   type: RECEIVE_CURRENT_USER,
   currentUser
 });
-  
+
 // Dispatch receiveErrors to show authentication errors on the frontend.
 const receiveErrors = errors => ({
   type: RECEIVE_SESSION_ERRORS,
@@ -23,6 +23,8 @@ const receiveErrors = errors => ({
 const logoutUser = () => ({
   type: RECEIVE_USER_LOGOUT
 });
+
+// test change for branch
 
 // Dispatch clearSessionErrors to clear any session errors.
 export const clearSessionErrors = () => ({
@@ -37,7 +39,7 @@ const startSession = (userInfo, route) => async dispatch => {
     userInfo = await getLatLng(userInfo);
     userInfo.horoscope = getHoroscope(userInfo);
   }
-  try {  
+  try {
     const res = await jwtFetch(route, {
       method: "POST",
       body: JSON.stringify(userInfo)
@@ -64,7 +66,7 @@ export const logout = () => dispatch => {
   const initialState = {
     user: undefined
   };
-  
+
   const sessionReducer = (state = initialState, action) => {
     switch (action.type) {
       case RECEIVE_CURRENT_USER:
@@ -75,7 +77,7 @@ export const logout = () => dispatch => {
         return state;
     }
   };
-  
+
 const nullErrors = null;
 
 export const sessionErrorsReducer = (state = nullErrors, action) => {

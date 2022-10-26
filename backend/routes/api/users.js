@@ -13,7 +13,6 @@ const validateLoginInput = require('../../validations/login');
 // router.get('/', async function(req, res, next) {
 //   // res.send('respond with a resource');
 //   const users = await User.find({}).exec();
-
 //   res.json({
 //     users: users
 //   });
@@ -38,6 +37,14 @@ router.post('/likes', async (req, res, next) => {
     liker: updatedLiker
   });
 
+  await User.updateOne({_id: liker},
+    {likes: previouslyLiked ? liker.likes.filter((likee) => {likee != req.body.likee}) : liker.likes.concat(req.body.likee)}
+  )
+
+  liker = await User.findById(req.body.liker);
+
+  res.json(liker, likee);
+});
 
   // const updatedLiker = await User.findById(req.body.liker).exec();
   
