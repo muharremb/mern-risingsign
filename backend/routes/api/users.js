@@ -10,10 +10,12 @@ const validateRegisterInput = require('../../validations/register');
 const validateLoginInput = require('../../validations/login');
 
 /* GET users listing. */
-router.get('/', function(req, res, next) {
+router.get('/', async function(req, res, next) {
   // res.send('respond with a resource');
+  const users = await User.find({}).exec();
+
   res.json({
-    message: "GET /users"
+    users: users
   });
 });
 

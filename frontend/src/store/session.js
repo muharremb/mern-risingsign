@@ -35,7 +35,7 @@ export const login = user => startSession(user, 'api/users/login');
 const startSession = (userInfo, route) => async dispatch => {
   if(route==='api/users/register'){
     userInfo = await getLatLng(userInfo);
-    userInfo.horoscope = JSON.stringify(getHoroscope(userInfo));
+    userInfo.horoscope = getHoroscope(userInfo);
   }
   try {  
     const res = await jwtFetch(route, {
@@ -90,11 +90,9 @@ export const sessionErrorsReducer = (state = nullErrors, action) => {
   }
 };
 
-// TODO not implemented getCurrentUser in App
 export const getCurrentUser = () => async dispatch => {
     const res = await jwtFetch('/api/users/current');
     const user = await res.json();
-    console.log('getCurrentUser user ', user);
     return dispatch(receiveCurrentUser(user));
 };
 

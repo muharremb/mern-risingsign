@@ -98,11 +98,8 @@ function SignupForm () {
     }
   }
 
-
-
   const continueClickBirthInfo = e => {
     e.preventDefault();
-    // console.log("hi")
     if (birthLocation !== "" && isValidDate(birthDate) && checkTime(birthTime)) {
       setCurrentField(fieldArray[fieldArray.indexOf(currentField) + 1]);
     } else {
