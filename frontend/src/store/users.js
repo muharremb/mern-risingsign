@@ -1,4 +1,6 @@
 import jwtFetch from './jwt';
+import { receiveCurrentUser } from './session';
+
 
 const RECEIVE_CURRENT_USER = "session/RECEIVE_CURRENT_USER";
 const RECEIVE_USER = "users/RECEIVE_USER";
@@ -37,6 +39,24 @@ export const fetchUsers = (preferences) => async dispatch => {
         dispatch(receiveUsers(users));
     }
 }
+
+export const likeUser = (likerId, likeeId) => async dispatch => {
+    const reqBody = {
+        liker: likerId,
+        likee: likeeId
+    };
+
+    const res = await jwtFetch('api/users/likes', {
+        method: "POST",
+        body: JSON.stringify(reqBody)
+    });
+
+    const {liker} = await res.json();
+    console.log('liker ', liker);
+    dispatch(receiveUser(liker));
+    dispatch(receiveCurrentUser(liker));
+    // dispatch(receiveUser(likee));
+} 
 
 const initialState = {};
 

@@ -10,15 +10,41 @@ const validateRegisterInput = require('../../validations/register');
 const validateLoginInput = require('../../validations/login');
 
 /* GET users listing. */
-router.get('/', async function(req, res, next) {
-  // res.send('respond with a resource');
-  const users = await User.find({}).exec();
+// router.get('/', async function(req, res, next) {
+//   // res.send('respond with a resource');
+//   const users = await User.find({}).exec();
+
+//   res.json({
+//     users: users
+//   });
+// });
+
+router.post('/likes', async (req, res, next) => {
+  const liker = await User.findById(req.body.liker).exec();
+  const likee = await User.findById(req.body.likee).exec();
+  const previouslyLiked = liker.likes.includes(req.body.likee);
+
+  const updatedLiker = await User.findOneAndUpdate({_id: liker},
+    {likes: previouslyLiked ? liker.likes.filter((likee) => {likee != req.body.likee}) : liker.likes.concat(req.body.likee)}, 
+    {new: true}
+  ).exec();
+
+  // const query = {"_id": liker};
+  // const updateDocument = {
+  //   $push: {"likes."}
+  // }
 
   res.json({
-    users: users
+    liker: updatedLiker
   });
-});
 
+
+  // const updatedLiker = await User.findById(req.body.liker).exec();
+  
+  // res.json({
+  //   updatedLiker: updatedLiker
+  // });
+});
 
 router.post('/register', validateRegisterInput, async (req, res, next) => {
   const user = await User.findOne({
