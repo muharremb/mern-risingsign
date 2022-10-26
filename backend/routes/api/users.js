@@ -94,7 +94,8 @@ router.get('/current', restoreUser, (req, res) => {
     birthDateTime: req.user.birthDateTime,
     birthLocation: req.user.birthLocation,
     horoscope: req.user.horoscope,
-    likes: req.user.likes
+    likes: req.user.likes,
+    profileImageURL: req.user.profileImageURL
   });
 });
 
@@ -108,7 +109,8 @@ router.get('/index', async function(req, res, next) {
       birthDateTime: user.birthDateTime,
       birthLocation: user.birthLocation,
       horoscope: user.horoscope,
-      likes: user.likes
+      likes: user.likes,
+      profileImageURL: user.profileImageURL
     })
   })
   res.json(users_clean);
@@ -125,7 +127,8 @@ router.get('/:userId', async function(req, res, next) {
     birthDateTime: user.birthDateTime,
     birthLocation: user.birthLocation,
     horoscope: user.horoscope,
-    likes: user.likes
+    likes: user.likes,
+    profileImageURL: user.profileImageURL
   });
 });
 
