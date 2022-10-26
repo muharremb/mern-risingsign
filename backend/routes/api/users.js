@@ -44,7 +44,9 @@ router.post('/register', validateRegisterInput, async (req, res, next) => {
     lat: req.body.lat,
     lng: req.body.lng,
     horoscope: req.body.horoscope ,
-    likes: []
+    likes: [],
+    profileImageURL: "https://ecsphilly.org/app/uploads/2017/01/blank-profile-picture-973460_960_720-300x300.jpg"
+
   });
   
   bcrypt.genSalt(10, (err, salt) => {
