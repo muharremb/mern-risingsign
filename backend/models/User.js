@@ -6,6 +6,10 @@ const userSchema = Schema({
         type: String,
         required: true
     },
+    bio: {
+        type: String,
+        required: false
+    },
     email: {
         type: String,
         required: true
@@ -41,6 +45,18 @@ const userSchema = Schema({
     newMessages: {
         type: Object,
         default: {}
+    },
+    likes: {
+        type: Array,
+        required: true
+    },
+    imageURLs: {
+        type: Array,
+        required: false
+    },
+    profileImageURL: {
+        type: String,
+        required: true
     }
 }, {
     timestamps: true
