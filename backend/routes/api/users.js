@@ -30,7 +30,7 @@ router.post('/likes', async (req, res, next) => {
 
   liker = await User.findById(req.body.liker);
 
-  res.json(liker);
+  res.json(liker, likee);
 });
 
 router.post('/register', validateRegisterInput, async (req, res, next) => {
