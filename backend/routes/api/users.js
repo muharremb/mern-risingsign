@@ -10,15 +10,28 @@ const validateRegisterInput = require('../../validations/register');
 const validateLoginInput = require('../../validations/login');
 
 /* GET users listing. */
-router.get('/', async function(req, res, next) {
-  // res.send('respond with a resource');
-  const users = await User.find({}).exec();
+// router.get('/', async function(req, res, next) {
+//   // res.send('respond with a resource');
+//   const users = await User.find({}).exec();
 
-  res.json({
-    users: users
-  });
+//   res.json({
+//     users: users
+//   });
+// });
+
+router.post('/likes', async (req, res, next) => {
+  const liker = await User.findById(req.body.liker);
+  const likee = await User.findById(req.body.likee);
+  const previouslyLiked = liker.likes.includes(req.body.likee);
+
+  await User.updateOne({_id: liker},
+    {likes: previouslyLiked ? liker.likes.filter((likee) => {likee != req.body.likee}) : liker.likes.concat(req.body.likee)}
+  )
+
+  liker = await User.findById(req.body.liker);
+
+  res.json(liker);
 });
-
 
 router.post('/register', validateRegisterInput, async (req, res, next) => {
   const user = await User.findOne({
