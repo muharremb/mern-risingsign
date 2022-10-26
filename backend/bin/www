@@ -35,6 +35,8 @@ var server = http.createServer(app);
  .connect(db, { useNewUrlParser: true })
  .then(() => {
   debug("Connected to MongoDB successfully");
+  console.log(`listening to port ${port}`)
+
   server.listen(port);
  })
  .catch(err => debug(err));

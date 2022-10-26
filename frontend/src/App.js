@@ -10,6 +10,8 @@ import SignupForm from './components/SessionForms/SignupForm/SignupForm';
 // import SignupForm from './components/SessionForms/SignupForm'
 import Profile from './components/Profile/Profile';
 import Feeds from './components/Feeds/Feeds';
+
+import Chat from './pages/Chat'
 import {getCurrentUser} from './store/session';
 
 function App() {
@@ -36,6 +38,7 @@ function App() {
   return loaded && (
     <>
     <NavBar />
+    <Chat />
     <Switch>
       <AuthRoute exact path="/" component={MainPage} />
       <AuthRoute exact path="/login" component={LoginForm} />
