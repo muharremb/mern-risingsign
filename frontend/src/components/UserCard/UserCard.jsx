@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { getCurrentUser, logout } from '../../store/session';
 import { useEffect } from 'react';
 import { fetchUser } from '../../store/users';
 
@@ -21,7 +20,7 @@ function UserCard({id}){
     return (
         <div style={{"border":"1px solid red", "border-radius":"8px", "padding": "8px"}}>
             <h1>{user.name}</h1><br/>
-            <img src={user.profileImageURL} alt="Profile Image"/>
+            <img style={{"maxWidth":"50px"}} src={user.profileImageURL} alt="Profile Image"/>
             <div className="user-card-sign sun-sign">
                 {user.horoscope.sun.label}: {user.horoscope.sun.Sign.label}
             </div>
