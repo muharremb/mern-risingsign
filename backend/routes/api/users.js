@@ -41,7 +41,8 @@ router.post('/register', validateRegisterInput, async (req, res, next) => {
     birthDateTime: req.body.birthDateTime,
     lat: req.body.lat,
     lng: req.body.lng,
-    horoscope: req.body.horoscope 
+    horoscope: req.body.horoscope ,
+    likes: []
   });
   
   bcrypt.genSalt(10, (err, salt) => {
@@ -93,13 +94,36 @@ router.get('/current', restoreUser, (req, res) => {
   });
 });
 
+router.get('/index', async function(req, res, next) {
+  const users = await User.find({});
+  const users_clean = users.map((user) => {
+    return ({
+      _id: user._id,
+      name: user.name,
+      email: user.email,
+      birthDateTime: user.birthDateTime,
+      birthLocation: user.birthLocation,
+      horoscope: user.horoscope,
+      likes: user.likes
+    })
+  })
+  res.json(users_clean);
+});
+
 router.get('/:userId', async function(req, res, next) {
   const userId = req.params.userId;
   const user = await User.findById(userId).exec();
   // _id": "6357ea1f4c12fe6ec8efcfb3"
   res.json({
-    user: user
+    _id: user._id,
+    name: user.name,
+    email: user.email,
+    birthDateTime: user.birthDateTime,
+    birthLocation: user.birthLocation,
+    horoscope: user.horoscope,
+    likes: user.likes
   });
 });
+
 
 module.exports = router;
