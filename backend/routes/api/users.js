@@ -36,21 +36,6 @@ router.post('/likes', async (req, res, next) => {
   res.json({
     liker: updatedLiker
   });
-
-  await User.updateOne({_id: liker},
-    {likes: previouslyLiked ? liker.likes.filter((likee) => {likee != req.body.likee}) : liker.likes.concat(req.body.likee)}
-  )
-
-  liker = await User.findById(req.body.liker);
-
-  res.json(liker, likee);
-});
-
-  // const updatedLiker = await User.findById(req.body.liker).exec();
-  
-  // res.json({
-  //   updatedLiker: updatedLiker
-  // });
 });
 
 router.post('/register', validateRegisterInput, async (req, res, next) => {
