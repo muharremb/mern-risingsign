@@ -30,6 +30,7 @@ const userSchema = Schema({
         type: String,
         required: true
     },
+    imageURLs: [],
     horoscope: {
         type: Object,
         required: true
