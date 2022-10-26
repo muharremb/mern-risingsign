@@ -8,6 +8,7 @@ const {loginUser, restoreUser} = require('../../config/passport');
 const {isProduction} = require('../../config/keys');
 const validateRegisterInput = require('../../validations/register');
 const validateLoginInput = require('../../validations/login');
+const { getUserPics } = require('./pics');
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
@@ -97,5 +98,7 @@ router.get('/:userId', async function(req, res, next) {
     user: user
   });
 });
+
+router.get('/:userId/pics', getUserPics);
 
 module.exports = router;
