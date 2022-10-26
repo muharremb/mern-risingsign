@@ -17,7 +17,7 @@ const userSchema = Schema({
     birthLocation: {
         type: String,
         required: true
-    }, 
+    },
     birthDateTime: {
         type: Date,
         required: true
@@ -33,9 +33,17 @@ const userSchema = Schema({
     horoscope: {
         type: Object,
         required: true
+    },
+    status: {
+        type: String,
+        default: 'online'
+    },
+    newMessages: {
+        type: Object,
+        default: {}
     }
 }, {
     timestamps: true
-});
+}, {minimize: false});
 
 module.exports = mongoose.model('User', userSchema);

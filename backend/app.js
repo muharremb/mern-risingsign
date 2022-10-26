@@ -1,7 +1,7 @@
 const debug = require('debug');
-var express = require('express');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
+let express = require('express');
+let cookieParser = require('cookie-parser');
+let logger = require('morgan');
 
 const csurf = require('csurf');
 const cors = require('cors');
@@ -10,14 +10,27 @@ require('./models/User');
 require('./config/passport');
 const passport = require('passport');
 
-var usersRouter = require('./routes/api/users');
+let usersRouter = require('./routes/api/users');
 const csrfRouter = require('./routes/api/csrf');
 
-var app = express();
+let app = express();
+
+
+// chat stuff
+const rooms = ['libra', 'pisces', 'crypto']
+const server = require('http').createServer(app)
+const PORT = 5000; // this this cool?
+
+const io = require('socket.io')(server, {
+  cors: { //calling cors explicitly
+    origin: 'http://localhost:3000', //is this cool?
+    methods: ['GET', 'POST']
+  }
+})
 
 app.use(logger('dev'));
+app.use(express.urlencoded({ extended: true })); //changed to true for chat
 app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
 app.use(passport.initialize());
@@ -66,9 +79,9 @@ app.use((req, res, next) => {
     err.statusCode = 404;
     next(err);
 });
-  
+
 const serverErrorLogger = debug('backend:error');
-  
+
   // Express custom error handler that will be called whenever a route handler or
   // middleware throws an error or invokes the `next` function with a truthy value
 app.use((err, req, res, next) => {
