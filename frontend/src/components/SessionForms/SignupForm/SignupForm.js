@@ -126,6 +126,7 @@ function SignupForm () {
       name,
       password,
       birthLocation,
+      birthDateTime: new Date(`${birthDate}T${birthTime}Z`),
       birthDate,
       birthTime
     };
