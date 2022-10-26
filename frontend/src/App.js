@@ -7,6 +7,7 @@ import MainPage from './components/MainPage/MainPage';
 import NavBar from './components/NavBar/NavBar';
 import LoginForm from './components/SessionForms/LoginForm/LoginForm';
 import SignupForm from './components/SessionForms/SignupForm/SignupForm';
+// import SignupForm from './components/SessionForms/SignupForm'
 import Profile from './components/Profile/Profile';
 import Feeds from './components/Feeds/Feeds';
 import {getCurrentUser} from './store/session';

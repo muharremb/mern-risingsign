@@ -102,7 +102,7 @@ function SignupForm () {
 
   const continueClickBirthInfo = e => {
     e.preventDefault();
-    console.log("hi")
+    // console.log("hi")
     if (birthLocation !== "" && isValidDate(birthDate) && checkTime(birthTime)) {
       setCurrentField(fieldArray[fieldArray.indexOf(currentField) + 1]);
     } else {
@@ -121,13 +121,13 @@ function SignupForm () {
 
   const userSubmit = e => {
     e.preventDefault();
+    const birthDateTime = new Date(`${birthDate}T${birthTime}:00Z`);
     const user = {
       email,
       name,
       password,
       birthLocation,
-      birthDate,
-      birthTime
+      birthDateTime,
     };
 
     dispatch(signup(user)); 
