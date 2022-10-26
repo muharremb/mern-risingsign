@@ -97,5 +97,5 @@ export const getCurrentUser = () => async dispatch => {
     return dispatch(receiveCurrentUser(user));
 };
   
-  export default sessionReducer;
+export default sessionReducer;
 

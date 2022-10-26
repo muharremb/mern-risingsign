@@ -12,7 +12,7 @@ const passport = require('passport');
 
 var usersRouter = require('./routes/api/users');
 const csrfRouter = require('./routes/api/csrf');
-// const picsRouter = require('./routes/api/pics');
+const picsRouter = require('./routes/api/pics');
 
 
 var app = express();
@@ -37,7 +37,7 @@ app.use(
     })
 );
 
-// app.use('/api/users/:userId/pics', picsRouter);
+app.use('/api/pics', picsRouter);
 app.use('/api/users', usersRouter);
 app.use('/api/csrf', csrfRouter);
 
