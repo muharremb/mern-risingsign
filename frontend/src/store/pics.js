@@ -1,19 +1,41 @@
+import { useSelector } from 'react-redux';
 import jwtFetch from './jwt';
 
 const RECEIVE_PIC = "pics/RECEIVE_PIC";
 
-const receivePic = pic => ({
+const receivePic = picData => ({
    type: RECEIVE_PIC,
-   pic
+   picData
 })
 
-const uploadPic = pic => async dispatch => {
+// const handleFile = e => {
+//    const file = e.currentTarget.files[0];
+//    setVideoFile(file);
+// }
+
+// const handleUpload = () => {
+//    const file = e.target
+// }
+
+export const uploadPic = picData => async dispatch => {
+   const { pic, uploaderId } = picData
+   console.log(uploaderId, picData, pic);
    const formData = new FormData();
-   formData.append()
+   formData.append("image-upload", pic)
+   formData.append("uploaderId", uploaderId)
+
+   for (let key in formData.entries()) {
+      console.log()
+   }
+
    let res = await jwtFetch('/api/pics/upload', {
       method: 'POST',
-      body: 
+      body: formData
    })
+
+   let data = await res.json();
+
+   console.log('upload pic data; ', data)
    // try {
 
 

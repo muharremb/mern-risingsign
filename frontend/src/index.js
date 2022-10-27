@@ -5,7 +5,7 @@ import App from './App';
 import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 import configureStore from './store/store';
-import picActions from './store/pics';
+import * as picActions from './store/pics';
 import jwtFetch from './store/jwt';
 
 
