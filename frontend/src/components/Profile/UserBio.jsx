@@ -33,7 +33,7 @@ function UserBio ({user}) {
 
 
   return (
-    <div>
+    <div className='user-bio'>
         <h3>About Me</h3>
         {/* Display Box */}
         {!editing &&

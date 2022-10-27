@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { fetchUser, fetchUsers } from '../../store/users';
 import UserCard from '../UserCard/UserCard';
 
-function Feeds () {
+function Discover () {
     const [filter, setFilter] = useState('all');
     const dispatch = useDispatch()
 
@@ -54,4 +54,4 @@ function Feeds () {
     )
 }
 
-export default Feeds;
+export default Discover;

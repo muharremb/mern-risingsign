@@ -15,17 +15,27 @@
 .navbar > h2 {
    position: absolute;
    color: rgba(233, 193, 93);
-   right: 4rem;
+   left: 3.2rem;
    letter-spacing: .80rem;
    font-stretch: expanded;
    justify-self: flex-end;
 }
 
-.signup-link, .login-link {
+.link-bar {
+   width: 50vw;
+   display: flex;
+   justify-content: space-around;
+}
+
+.signup-link, .login-link, .discover-link, .matches-link, .profile-link {
    color: rgba(233, 193, 93);
    text-decoration: none;
    font-size: 1.5rem;
    
+}
+
+.profile-link {
+   position: absolute;
 }
 
 .signup-link:hover, .login-link:hover {
@@ -37,4 +47,15 @@
    display: flex;
    width: 20vw;
    justify-content: space-between;
+}
+
+.links-nav {
+   display: flex;
+   width: 20vw;
+   justify-content: space-between;
+}
+
+.logout-button {
+   position: fixed;
+   right: 3vw;
 }
