@@ -78,7 +78,7 @@ const picReducer = (state = initialState, action) => {
          newState[action.picData.id] = action.imageURL;
          return newState;
       case RECEIVE_PICS:
-         return { ...newState, ...action.picData};
+         return [ ...newState, ...action.picData];
       case REMOVE_PIC:
          delete newState[action.picData.id];
          return newState;

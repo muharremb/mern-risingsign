@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import UserCard from '../UserCard/UserCard';
 import { getOnePic, uploadPic } from '../../store/pics';
 import UserBio from './UserBio';
+import './Profile.css';
 
 
 function Profile () {
@@ -24,16 +25,33 @@ function Profile () {
   }
 
   return (
-    <>
-      <img src={currentUser.profileImageURL}></img>
+    <div className='profile-page'>
+      <div className='profile-page-upper'>
+      <div className='profile-pic-frame'>
+        
+        <img src={currentUser.profileImageURL}></img>
+      </div>
       <h2>{currentUser.name.toLowerCase()}'s profile</h2>
+
+      </div>
+      <div className='profile-page-middle'>
+      <UserBio user={currentUser} />
+
+
+      </div>
+      <div className='profile-page-bottom'>
+
+
+      </div>
+      
+      
       <form onSubmit={handleSubmit} encType="multipart/form-data">
 
         <input type="file" onChange={e => setPic(e.currentTarget.files[0])}></input>
         <input type="submit" value="submit"></input>
-      </form><hr/>
-      <UserBio user={currentUser} />
-    </>
+      </form>
+      
+    </div>
   )
 }
 

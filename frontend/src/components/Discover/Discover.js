@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { fetchUser, fetchUsers } from '../../store/users';
 import UserCard from '../UserCard/UserCard';
 
-function Feeds () {
+function Discover () {
     // Aries, Taurus, Gemini, Cancer, Leo, Virgo, Libra, Scorpio, Sagittarius, Capricorn, Aquarius, and Pisces,
     const [sign, setSign] = useState('');
     const dispatch = useDispatch()
@@ -41,4 +41,4 @@ function Feeds () {
     )
 }
 
-export default Feeds;
+export default Discover;

@@ -134,7 +134,6 @@ function SignupForm () {
     <div className='signup-page'>
       <div className='space-layer'></div>
       <div className='space-layer2'></div>
-      <div className='space-layer3'></div>
       <form className="signup-form" onSubmit={userSubmit}>
         <div className="current-field">
 
