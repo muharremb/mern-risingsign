@@ -1,21 +1,47 @@
 import { useSelector } from 'react-redux';
 import jwtFetch from './jwt';
 
-const RECEIVE_PIC = "pics/RECEIVE_PIC";
+export const RECEIVE_PIC = "pics/RECEIVE_PIC";
+const RECEIVE_PICS = "pics/RECEIVE_PICS"
+const REMOVE_PIC = "pics/REMOVE_PIC"
 
-const receivePic = picData => ({
+export const receivePic = picData => ({
    type: RECEIVE_PIC,
    picData
 })
 
-// const handleFile = e => {
-//    const file = e.currentTarget.files[0];
-//    setVideoFile(file);
-// }
+const receivePics = picData => ({
+   type: RECEIVE_PICS,
+   picData
+})
 
-// const handleUpload = () => {
-//    const file = e.target
-// }
+const removePic = picData => ({
+   type: REMOVE_PIC,
+   picData
+})
+
+//-----------------------------------------------------
+
+
+export const getOnePic = picData => async dispatch => {
+   const userId = picData;
+
+   let res = await jwtFetch(`/api/users/${userId}`);
+   let data = await res.json();
+
+   if (data) {
+      dispatch(receivePic(data));
+   } else {
+      console.log("No picture there!!!")
+   }
+}
+
+
+export const getAllPics = picData => async dispatch => {
+
+}
+
+
 
 export const uploadPic = picData => async dispatch => {
    const { pic, uploaderId } = picData
@@ -36,29 +62,12 @@ export const uploadPic = picData => async dispatch => {
    let data = await res.json();
 
    console.log('upload pic data; ', data)
-   // try {
 
-
-   //    formData.append("image-upload", pic);
-   //    console.log(formData)
-
-   //    const res = await jwtFetch('/api/pics/upload', {
-   //       method: "POST",
-   //       body: formData
-   //    })
-
-   //    const data = await res.json()
-   //    console.log(data);
-
-   // } catch(err) {
-   //    console.log(err)
-   // }
 }
 
 
-const initialState = {
-   pics: []
-}
+const initialState = [];
+
 
 const picReducer = (state = initialState, action) => {
    Object.freeze(state);
@@ -66,7 +75,12 @@ const picReducer = (state = initialState, action) => {
 
    switch(action.type) {
       case RECEIVE_PIC:
-         newState[action.pic.id] = action.pic;
+         newState[action.picData.id] = action.imageURL;
+         return newState;
+      case RECEIVE_PICS:
+         return { ...newState, ...action.picData};
+      case REMOVE_PIC:
+         delete newState[action.picData.id];
          return newState;
       default:
          return state;
