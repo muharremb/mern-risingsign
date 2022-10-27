@@ -5,15 +5,13 @@ import { fetchUser, fetchUsers } from '../../store/users';
 import UserCard from '../UserCard/UserCard';
 
 function Discover () {
-    // Aries, Taurus, Gemini, Cancer, Leo, Virgo, Libra, Scorpio, Sagittarius, Capricorn, Aquarius, and Pisces,
-    const [sign, setSign] = useState('');
+    const [filter, setFilter] = useState('all');
     const dispatch = useDispatch()
 
     // to fetchUsers() as preferences
-    const criteria = {sun: "libra"};
     useEffect(() => {
-        dispatch(fetchUsers(criteria));
-    }, [dispatch])
+        dispatch(fetchUsers());
+    }, [])
 
     const fetchedUsers = useSelector(state => state.users);
 
