@@ -38,7 +38,7 @@ function App() {
   return loaded && (
     <>
     <NavBar />
-    <Chat />
+    {/* <Chat /> */}
     <Switch>
       <AuthRoute exact path="/" component={MainPage} />
       <AuthRoute exact path="/login" component={LoginForm} />
