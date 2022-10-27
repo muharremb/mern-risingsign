@@ -1,15 +1,18 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import ContinueButton from '../ContinueButton/ContinueButton';
 import './LoginForm.css';
-
 import { login, clearSessionErrors } from '../../../store/session';
+
+import { socket, ChatContext } from '../../../context/chatContext';
 
 function LoginForm () {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const errors = useSelector(state => state.errors.session);
   const dispatch = useDispatch();
+
+  // const { socket } = useContext(ChatContext)
 
   if (email === "" || password === "") {
     dispatch(clearSessionErrors())
@@ -28,7 +31,10 @@ function LoginForm () {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(login({ email, password })); 
+    dispatch(login({ email, password })).then(()=>{
+      console.log("EMITTING NEW USER")
+      socket.emit('new-user')
+    });
   }
 
   return (

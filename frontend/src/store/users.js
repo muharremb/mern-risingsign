@@ -71,8 +71,6 @@ export const likeUser = (likerId, likeeId) => async dispatch => {
 
 const initialState = {};
 
-
-
 const usersReducer = (state = initialState, action) => {
     switch(action.type){
         case RECEIVE_USER:

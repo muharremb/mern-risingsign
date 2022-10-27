@@ -44,7 +44,7 @@ router.post('/register', validateRegisterInput, async (req, res, next) => {
   const user = await User.findOne({
     email: req.body.email
   });
-  
+
   if(user) {
     const err = new Error("Validation Error");
     err.statusCode = 400;
@@ -96,7 +96,7 @@ router.post('/register', validateRegisterInput, async (req, res, next) => {
       profilePic = "https://mern-rising-sign-profile-pics.s3.amazonaws.com/virgo_default.png";
       break;
   }
-  
+
   const newUser = new User({
     name: req.body.name,
     email: req.body.email,
@@ -108,10 +108,12 @@ router.post('/register', validateRegisterInput, async (req, res, next) => {
     horoscope: req.body.horoscope,
     likes: [],
     likers: [],
-    profileImageURL: profilePic
+    profileImageURL: profilePic,
+    status: 'online',
+    newMessages: {}
     
   });
-  
+
   bcrypt.genSalt(10, (err, salt) => {
     if (err) throw err;
     bcrypt.hash(req.body.password, salt, async (err, hashedPassword) => {
@@ -160,7 +162,9 @@ router.get('/current', restoreUser, (req, res) => {
     // birthLocation: req.user.birthLocation,
     horoscope: req.user.horoscope,
     likes: req.user.likes,
-    profileImageURL: req.user.profileImageURL
+    profileImageURL: req.user.profileImageURL,
+    status: 'online',
+    newMessages: {}
   });
 });
 
@@ -178,7 +182,9 @@ router.get('/index', async function(req, res, next) {
       // birthLocation: user.birthLocation,
       horoscope: user.horoscope,
       likes: user.likes,
-      profileImageURL: user.profileImageURL
+      profileImageURL: user.profileImageURL,
+      status: 'online',
+      newMessages: {}
     })
   })
   res.json(users_clean);
@@ -207,7 +213,9 @@ router.get('/:userId', async function(req, res, next) {
     // birthLocation: user.birthLocation,
     horoscope: user.horoscope,
     likes: user.likes,
-    profileImageURL: user.profileImageURL
+    profileImageURL: user.profileImageURL,
+    status: 'online',
+    newMessages: {}
   });
 });
 
