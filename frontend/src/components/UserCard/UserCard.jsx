@@ -24,7 +24,7 @@ function UserCard({id}){
     if (!sessionUser) return null;
 
     return (
-        <div style={{"border":"1px solid red", "border-radius":"8px", "padding": "8px"}}>
+        <div style={{"border":"1px solid red", "borderRadius":"8px", "padding": "8px"}}>
             <h1>{user.name}</h1><br/>
             <img style={{"maxWidth":"50px"}} src={user.profileImageURL} alt="Profile Image"/>
             <div className="user-card-sign sun-sign">

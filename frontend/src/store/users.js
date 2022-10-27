@@ -47,7 +47,6 @@ export const fetchUsers = (preferences) => async dispatch => {
     } else {
         const res = await jwtFetch(`api/users/index?${preferenceParams}`);
         const data = await res.json();
-        console.log('fetchUsers data', data);
         dispatch(receiveUsers(data));
     }
 }
