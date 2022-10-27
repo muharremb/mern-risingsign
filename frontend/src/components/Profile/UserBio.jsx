@@ -1,7 +1,10 @@
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { updateBio } from '../../store/users';
 
 function UserBio ({user}) {
+
+    const dispatch = useDispatch();
 
     const [editing, setEditing] = useState(false);
     const [userBio, setUserBio] = useState(user.bio || "");
@@ -11,7 +14,7 @@ function UserBio ({user}) {
     setUserBio(e.target.value);
   }
 
-  const handleCancel = () => {
+  const handleCancel = (e) => {
     e.preventDefault();
     setEditing(false);
   }
@@ -19,10 +22,11 @@ function UserBio ({user}) {
   const handleUpdate = (e) => {
     e.preventDefault();
     setUserBio(e.target.value);
+    dispatch(updateBio(user._id, userBio))
     setEditing(false);
   }
 
-  const startUpdate = () => {
+  const startUpdate = (e) => {
     e.preventDefault();
     setEditing(true);
   }
@@ -45,8 +49,7 @@ function UserBio ({user}) {
         {/* Editing Box */}
         {editing &&
         <form className="user-bio-editor" id="user-bio-editor">
-            <textarea className="user-bio-edit" id="user-bio-edit" onChange={editBio} rows="5" cols="42" maxlength="200">
-                {userBio}
+            <textarea className="user-bio-edit" id="user-bio-edit" onChange={editBio} rows="5" cols="42" maxLength="200" value={userBio}>
             </textarea>
             <input type="button" value="Update" onClick={handleUpdate}/>
             <input type="button" value="Cancel" onClick={handleCancel}/>
