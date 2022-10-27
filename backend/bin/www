@@ -73,7 +73,7 @@ const setUpChatServer = () => {
     socket.on('join-room', async (room) => {
       console.log(room)
       socket.join(room)
-      const roomMessges = await getMessagesFromRoom(room)
+      const roomMessages = await getMessagesFromRoom(room)
       console.log(roomMessages)
       socket.emit('room-messages', roomMessages)
     })
@@ -91,7 +91,6 @@ const setUpChatServer = () => {
 
       //send message to room
       io.to(room).emit('room-messages', allMessages);
-
       socket.broadcast.emit('notifications', room);
     })
 

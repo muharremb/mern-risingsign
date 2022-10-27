@@ -16,6 +16,8 @@ function Sidebar () {
   useEffect(() => {
     socket.emit("new-user")
     socket.off("new-user").on("new-user", (users) => {
+      setCurrentRoom('general')
+      socket.emit('join-room', 'general')
       console.log(users)
       setMembers(users)
     })

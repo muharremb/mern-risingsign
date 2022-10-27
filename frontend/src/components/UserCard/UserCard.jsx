@@ -13,7 +13,7 @@ function UserCard({id}){
     }, [dispatch]);
 
     const user = useSelector(state => state.users[id])
-    
+
 
     if (!user) return null;
 

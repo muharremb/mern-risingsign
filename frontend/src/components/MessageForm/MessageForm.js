@@ -9,20 +9,35 @@ function MessageForm () {
   const [msg, setMsg] = useState('');
   const { socket, messages, setMessages, currentRoom } = useContext(ChatContext);
 
+  socket.off('room-messages').on('room-messages', (roomMessages) => {
+    console.log("room messages bitch")
+    console.log(roomMessages[0])
+    console.log("room messages bitch")
+
+    setMessages(roomMessages[0])
+  })
+
   const handleSubmit = (e) => {
     e.preventDefault( )
     const dateObj = new Date();
     const date = dateObj.getDate();
     const time = dateObj.getHours() + ":" + dateObj.getMinutes() + ":" + dateObj.getSeconds();
-    console.log("sending messssaaggeeee");
     socket.emit('message-room', currentRoom, msg, user, time, date);
     setMsg("")
   }
+
+  // const messagesList = Object.values(messages.messagesByDate).map((message, i) => <li key={i} id={message._id}>{message.content}</li>)
+
   return (
     <>
     {user && <>
-      <h1>MessageForm</h1>
-      <div className="display-messages">{currentRoom}</div>
+      <h1>{currentRoom}</h1>
+      <div className="display-messages">
+      {"messagesList"}
+
+      <div>
+
+      </div></div>
       <form onSubmit={handleSubmit}>
         <input type="text"
         placeholder="be nice"
