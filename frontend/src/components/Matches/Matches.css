@@ -1,0 +1,23 @@
+.matches-container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 90%;
+    margin-left: 5%;
+    margin-right: 5%;
+    height: 100%;
+}
+
+.matches-container h2{
+    min-width: 100%;
+}
+
+.matches-right{
+    min-height: 100%;
+    min-width: 30%;
+    background-color: mediumpurple;
+}
+
+.matches-left{
+    min-width:70%;
+}
