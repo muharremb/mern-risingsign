@@ -32,11 +32,13 @@
 
 .profile-page {
    display: flex;
-   /* position:  */
+   position: fixed;
    flex-direction: column;
+   background-color:  green;
    width: 100vw;
    height: 100vh;
-   background-color: transparent;
+   /* background-color: transparent; */
+   z-index: -100;
 
 }
 
