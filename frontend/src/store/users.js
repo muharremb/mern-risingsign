@@ -63,7 +63,24 @@ export const likeUser = (likerId, likeeId) => async dispatch => {
     });
 
     const {liker} = await res.json();
-    console.log('liker ', liker);
+    // console.log('liker ', liker);
+    dispatch(receiveUser(liker));
+    dispatch(receiveCurrentUser(liker));
+    // dispatch(receiveUser(likee));
+} 
+export const unmatchUser = (likerId, likeeId) => async dispatch => {
+    const reqBody = {
+        liker: likerId,
+        likee: likeeId
+    };
+
+    const res = await jwtFetch('api/users/unlikes', {
+        method: "POST",
+        body: JSON.stringify(reqBody)
+    });
+
+    const {liker} = await res.json();
+    // console.log('liker ', liker);
     dispatch(receiveUser(liker));
     dispatch(receiveCurrentUser(liker));
     // dispatch(receiveUser(likee));
