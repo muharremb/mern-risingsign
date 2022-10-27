@@ -26,34 +26,41 @@ function Profile () {
   }
 
   return (
-    <div className='profile-page'>
-      <div className='profile-page-upper'>
-      <div className='profile-pic-frame'>
-        <div className='profile-pic-background'></div>
-        <div className='space-layer-profile'></div>
-        <div className='space-layer-profile2'></div>
-        <img src={currentUser.profileImageURL}></img>
-      </div>
-      <h2>{currentUser.name.toLowerCase()}'s profile</h2>
+    <>
+      <div className='profile-background'></div>
+      <div className='profile-page-mid'>
+        <div className='profile-mid-top-buffer'></div>
+        <div className='profile-mid-top'>
+          <div className='profile-pic-frame'>
+            <div className='profile-pic-background'></div>
+            <div className='space-layer-profile'></div>
+            <div className='space-layer-profile2'></div>
+            <img src={currentUser.profileImageURL}></img>
+          </div>
+        </div>
+        <div className='name-tile'>
+          <h2>{currentUser.name.toLowerCase()}</h2>
+        </div>
+        <div className='profile-mid-bottom'>
+          <UserBio user={currentUser} />
+          <form onSubmit={handleSubmit} encType="multipart/form-data">
 
-      </div>
-      <div className='profile-page-middle'>
-      <UserBio user={currentUser} />
-
-
-      </div>
-      <div className='profile-page-bottom'>
-
-
-      </div>
+            <input type="file" onChange={e => setPic(e.currentTarget.files[0])}></input>
+            <input type="submit" value="submit"></input>
+          </form>
+        </div>
       
-      <form onSubmit={handleSubmit} encType="multipart/form-data">
+      </div>
+      {/* <div className='profile-page'>
+        <div className='profile-page-left'>
+        
+        
 
-        <input type="file" onChange={e => setPic(e.currentTarget.files[0])}></input>
-        <input type="submit" value="submit"></input>
-      </form>
-      
-    </div>
+        </div>
+        
+      </div> */}
+    </>
+    
   )
 }
 
