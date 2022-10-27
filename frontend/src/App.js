@@ -10,12 +10,14 @@ import SignupForm from './components/SessionForms/SignupForm/SignupForm';
 // import SignupForm from './components/SessionForms/SignupForm'
 import Profile from './components/Profile/Profile';
 import Feeds from './components/Feeds/Feeds';
+import { getCurrentUser } from './store/session';
 
 import Chat from './pages/Chat'
-import {getCurrentUser} from './store/session';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
+
+
   const dispatch = useDispatch();
 
   const loadPage = () => {
@@ -46,7 +48,6 @@ function App() {
 
       <ProtectedRoute exact path="/profile" component={Profile} />
       <ProtectedRoute exact path="/feeds" component={Feeds} />
-
     </Switch>
     </>
   );

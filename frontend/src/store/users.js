@@ -18,16 +18,6 @@ export const fetchUser = (userId) => async dispatch => {
     const res = await jwtFetch(`api/users/${userId}`);
     const user = await res.json();
     dispatch(receiveUser(user));
-    // try {
-    //     const res = await jwtFetch(`api/users/${userId}`);
-    //     const user = await res.json();
-    //     dispatch(receiveUser(user));
-    // } catch(err) {
-    //     const res = await err.json()
-    //     if (res.statusCode === 400) {
-    //         return dispatch(receiveErrors(res.errors))
-    //     }
-    // }
 }
 
 export const fetchUsers = (preferences) => async dispatch => {
@@ -39,8 +29,6 @@ export const fetchUsers = (preferences) => async dispatch => {
 }
 
 const initialState = {};
-
-
 
 const usersReducer = (state = initialState, action) => {
     switch(action.type){
