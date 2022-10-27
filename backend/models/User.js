@@ -20,7 +20,7 @@ const userSchema = Schema({
     },
     birthLocation: {
         type: String,
-        required: true
+        required: false
     },
     birthDateTime: {
         type: Date,
@@ -28,11 +28,11 @@ const userSchema = Schema({
     },
     lat: {
         type: String,
-        required: true
+        required: false
     },
     lng: {
         type: String,
-        required: true
+        required: false
     },
     imageURLs: [],
     horoscope: {
