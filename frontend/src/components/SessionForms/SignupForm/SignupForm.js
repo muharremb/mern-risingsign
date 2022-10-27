@@ -13,7 +13,10 @@ function SignupForm () {
   const [birthLocation, setBirthLocation] = useState('');
   const [birthDate, setBirthDate] = useState('');
   const [birthTime, setBirthTime] = useState('');
-  const [ hidden, setHidden ] = useState(false);
+  const [sunSign, setSunSign] = useState('');
+  const [moonSign, setMoonSign] = useState('');
+  const [risingSign, setRisingSign] = useState('');
+  // const [ hidden, setHidden ] = useState(false);
   const fieldArray = ["name-input", "birth-info-input", "email-and-password-input"];
   let [ currentField, setCurrentField ] = useState(fieldArray[0]);
   let [ birthLocationError, setBirthLocationError ] = useState("");
@@ -74,9 +77,21 @@ function SignupForm () {
     };
   }
 
+  const handleSun =(e) => {
+    e.preventDefault();
+    setSunSign(e.target.value);
+  }
+  const handleMoon =(e) => {
+    e.preventDefault();
+    setMoonSign(e.target.value);
+  }
+  const handleRising =(e) => {
+    e.preventDefault();
+    setRisingSign(e.target.value);
+  }
+
   const isValidDate = (date) => {
     const validDate = /^\d{4}\-\d{1,2}\-\d{1,2}$/;
-    // debugger
     if (!date.match(validDate)) return false;
 
     return true;
@@ -100,12 +115,13 @@ function SignupForm () {
 
   const continueClickBirthInfo = e => {
     e.preventDefault();
-    if (birthLocation !== "" && isValidDate(birthDate) && checkTime(birthTime)) {
+    // if (birthLocation !== "" && isValidDate(birthDate) && checkTime(birthTime)) {
+    if (isValidDate(birthDate) && checkTime(birthTime)) {
       setCurrentField(fieldArray[fieldArray.indexOf(currentField) + 1]);
     } else {
-      if (birthLocation === "") {
-        setBirthLocationError("must include place of birth");
-      }
+      // if (birthLocation === "") {
+      //   setBirthLocationError("must include place of birth");
+      // }
       if (!isValidDate(birthDate)) setBirthDateError("not a valid date of birth");
       if (!checkTime(birthTime)) setBirthTimeError("Invalid time of birth");
     }
@@ -118,12 +134,17 @@ function SignupForm () {
 
   const userSubmit = e => {
     e.preventDefault();
+    const horoscope = {
+      sun: {key: 'sun', label: 'Sun', Sign: {key: sunSign}},
+      moon: {key: 'moon', label: 'Moon', Sign: {key: moonSign}},
+      rising: {key: 'ascendant', label: 'Rising', Sign: {key: risingSign}}
+    }
     const birthDateTime = new Date(`${birthDate}T${birthTime}:00Z`);
     const user = {
       email,
       name,
       password,
-      birthLocation,
+      horoscope,
       birthDateTime,
     };
 
@@ -134,7 +155,6 @@ function SignupForm () {
     <div className='signup-page'>
       <div className='space-layer'></div>
       <div className='space-layer2'></div>
-      <div className='space-layer3'></div>
       <form className="signup-form" onSubmit={userSubmit}>
         <div className="current-field">
 
@@ -211,7 +231,63 @@ function SignupForm () {
                   />
                 <label htmlFor='birth-time-input'>{birthTimeError !== "" && birthTime !== "" ? birthTimeError : "time of birth"}</label>
               </div>
-              <div className='input-container'>
+              <div calssName='input-container'>
+                <label>Sun Sign:
+                  <select id="sun-sign-selector" className="input-container sign-selector" defaultValue="def" onChange={handleSun}>
+                      <option value="def" disabled>...</option>
+                      <option value="aries">Aries</option>
+                      <option value="taurus">Taurus</option>
+                      <option value="gemini">Gemini</option>
+                      <option value="cancer">Cancer</option>
+                      <option value="leo">Leo</option>
+                      <option value="virgo">Virgo</option>
+                      <option value="libra">Libra</option>
+                      <option value="scorpio">Scorpio</option>
+                      <option value="sagittarius">Sagittarius</option>
+                      <option value="capricorn">Capricorn</option>
+                      <option value="aquarius">Aquarius</option>
+                      <option value="pisces">Pisces</option>
+                  </select>
+                </label>
+                <label>Moon Sign:
+                  <select id="moon-sign-selector" className="input-container sign-selector" defaultValue="def" onChange={handleMoon}>
+                      <option value="def" disabled>...</option>
+                      <option value="aries">Aries</option>
+                      <option value="taurus">Taurus</option>
+                      <option value="gemini">Gemini</option>
+                      <option value="cancer">Cancer</option>
+                      <option value="leo">Leo</option>
+                      <option value="virgo">Virgo</option>
+                      <option value="libra">Libra</option>
+                      <option value="scorpio">Scorpio</option>
+                      <option value="sagittarius">Sagittarius</option>
+                      <option value="capricorn">Capricorn</option>
+                      <option value="aquarius">Aquarius</option>
+                      <option value="pisces">Pisces</option>
+                  </select>
+                </label>
+                <label>Rising Sign:
+                  <select id="rising-sign-selector" className="input-container sign-selector" defaultValue="def" onChange={handleRising}>
+                      <option value="def" disabled>...</option>
+                      <option value="aries">Aries</option>
+                      <option value="taurus">Taurus</option>
+                      <option value="gemini">Gemini</option>
+                      <option value="cancer">Cancer</option>
+                      <option value="leo">Leo</option>
+                      <option value="virgo">Virgo</option>
+                      <option value="libra">Libra</option>
+                      <option value="scorpio">Scorpio</option>
+                      <option value="sagittarius">Sagittarius</option>
+                      <option value="capricorn">Capricorn</option>
+                      <option value="aquarius">Aquarius</option>
+                      <option value="pisces">Pisces</option>
+                  </select>
+                </label>
+
+
+
+              </div>
+              {/* <div className='input-container'>
                 <div className="errors">{errors?.birthLocation}</div>
                   <input type="text"
                     value={birthLocation}
@@ -219,7 +295,7 @@ function SignupForm () {
                     onChange={update('birthLocation')}
                   />
                 <label htmlFor='birth-location-input' value>{birthLocationError !== "" && birthLocation !== "" ? birthLocationError : "birth place"}</label>
-              </div>
+              </div> */}
             </div>}
         </div>
 
@@ -233,7 +309,7 @@ function SignupForm () {
 
             {currentField === "name-input" && <ContinueButton type={"button"} handleClick={continueClickName} disabled={!name}/>}
 
-            {currentField === "birth-info-input" && <><BackButton type={"button"} handleClick={backClick}/> && <ContinueButton type={"submit"} handleClick={continueClickBirthInfo} disabled={!birthDate || !birthTime || !birthLocation}/></>}
+            {currentField === "birth-info-input" && <><BackButton type={"button"} handleClick={backClick}/> && <ContinueButton type={"submit"} handleClick={continueClickBirthInfo} disabled={!birthDate || !birthTime}/></>}
 
           </div>
         </div>

@@ -9,6 +9,8 @@ require('./config/passport');
 const passport = require('passport');
 const usersRouter = require('./routes/api/users');
 const csrfRouter = require('./routes/api/csrf');
+const picsRouter = require('./routes/api/pics');
+
 
 const socketio = require('socket.io')
 const cors = require('cors');
@@ -128,8 +130,10 @@ app.use(
     })
 );
 
+app.use('/api/pics', picsRouter);
 app.use('/api/users', usersRouter);
 app.use('/api/csrf', csrfRouter);
+
 
 if (isProduction) {
   const path = require('path');

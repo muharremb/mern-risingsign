@@ -7,8 +7,17 @@ import { BrowserRouter } from 'react-router-dom';
 import configureStore from './store/store';
 import { ChatContext } from './context/chatContext'
 import { useState } from 'react'
+import * as picActions from './store/pics';
+import jwtFetch from './store/jwt';
 
-let store = configureStore({});
+
+const initialState = {
+  
+
+}
+
+let store = configureStore(initialState);
+
 
 function Root() {
   const [rooms, setRooms] = useState([]);

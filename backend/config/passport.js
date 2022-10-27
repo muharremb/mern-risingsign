@@ -27,10 +27,17 @@ exports.loginUser = async function(user) {
     const userInfo = {
       _id: user._id,
       name: user.name,
-      email: user.email
+      email: user.email,
+      bio: user.bio,
+      birthDateTime: user.birthDateTime,
+      birthLocation: user.birthLocation,
+      horoscope: user.horoscope,
+      likes: user.likes,
+      likers: user.likers,
+      profileImageURL: user.profileImageURL
     };
     const token = await jwt.sign(
-      userInfo, // payload
+      {_id: user._id}, // payload
       secretOrKey, // sign with secret key
       { expiresIn: 3600 } // tell the key to expire in one hour
     );

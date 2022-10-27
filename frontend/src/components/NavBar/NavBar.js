@@ -6,6 +6,7 @@ import { useEffect } from 'react';
 
 function NavBar () {
   const loggedIn = useSelector(state => !!state.session.user);
+  const loggedInPic = useSelector(state => state.session.user ? state.session.user.profileImageURL : "");
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -17,18 +18,26 @@ function NavBar () {
       dispatch(logout());
   }
 
+  const logoutButton = () => {
+    if (loggedIn) {
+      return (
+        <input type="button" className="logout-button" onClick={logoutUser} value="Log Out"></input>
+      )
+    }
+  }
+
   const getLinks = () => {
     if (loggedIn) {
       return (
-        <div className="links-nav">
-          <Link to={'/feeds'}>Feeds Link</Link>
-          <Link to={'/profile'}>Profile</Link>
-          <button onClick={logoutUser}>Logout</button>
+        <div className='navbar-mid'>
+          <Link className="discover-link" to={'/discover'}>discover</Link>
+            <Link className="profile-link" to={'/profile'}>profile</Link>
+            <Link className="matches-link" to={'/matches'}>matches</Link>
         </div>
       );
     } else {
       return (
-        <div className="links-auth">
+        <div className='navbar-mid'>
           <Link className="signup-link" to={'/signup'}>Signup</Link>
           <Link className="login-link" to={'/login'}>Login</Link>
         </div>
@@ -38,8 +47,16 @@ function NavBar () {
 
   return (
     <div className='navbar'>
-      <h2>Rising Sign</h2>
-      { getLinks() }
+      <div className='navbar-left'>
+        <div className='logo'>Rising Sign</div>
+      </div>
+        { getLinks() }
+      <div className='navbar-right'>
+        { logoutButton() }
+        <div className='logged-in-image'>
+          <img hidden={loggedIn ? false : true}src={loggedInPic}></img>
+        </div>
+      </div>
     </div>
   );
 }

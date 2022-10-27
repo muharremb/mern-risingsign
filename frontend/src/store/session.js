@@ -8,7 +8,7 @@ const CLEAR_SESSION_ERRORS = "session/CLEAR_SESSION_ERRORS";
 const RECEIVE_USER_LOGOUT = "session/RECEIVE_USER_LOGOUT";
 
 // Dispatch receiveCurrentUser when a user logs in.
-const receiveCurrentUser = currentUser => ({
+export const receiveCurrentUser = currentUser => ({
   type: RECEIVE_CURRENT_USER,
   currentUser
 });
@@ -35,10 +35,10 @@ export const signup = (user) => startSession(user, 'api/users/register');
 export const login = (user) => startSession(user, 'api/users/login');
 
 const startSession = (userInfo, route) => async dispatch => {
-  if(route==='api/users/register'){
-    userInfo = await getLatLng(userInfo);
-    userInfo.horoscope = getHoroscope(userInfo);
-  }
+  // if(route==='api/users/register'){
+  //   userInfo = await getLatLng(userInfo);
+  //   userInfo.horoscope = getHoroscope(userInfo);
+  // }
   try {
     const res = await jwtFetch(route, {
       method: "POST",
@@ -97,6 +97,6 @@ export const getCurrentUser = () => async dispatch => {
     const user = await res.json();
     return dispatch(receiveCurrentUser(user));
 };
-
+  
 export default sessionReducer;
 

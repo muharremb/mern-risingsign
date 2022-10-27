@@ -7,12 +7,11 @@ import MainPage from './components/MainPage/MainPage';
 import NavBar from './components/NavBar/NavBar';
 import LoginForm from './components/SessionForms/LoginForm/LoginForm';
 import SignupForm from './components/SessionForms/SignupForm/SignupForm';
-// import SignupForm from './components/SessionForms/SignupForm'
 import Profile from './components/Profile/Profile';
-import Feeds from './components/Feeds/Feeds';
-import { getCurrentUser } from './store/session';
-
-import Chat from './pages/Chat'
+import Discover from './components/Discover/Discover';
+import Chat from './components/Chat/Chat';
+import {getCurrentUser} from './store/session';
+import Matches from './components/Matches/Matches';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -40,7 +39,6 @@ function App() {
   return loaded && (
     <>
     <NavBar />
-    <Chat />
     <Switch>
       <AuthRoute exact path="/" component={MainPage} />
       <AuthRoute exact path="/login" component={LoginForm} />
@@ -48,6 +46,7 @@ function App() {
 
       <ProtectedRoute exact path="/profile" component={Profile} />
       <ProtectedRoute exact path="/feeds" component={Feeds} />
+
     </Switch>
     </>
   );
