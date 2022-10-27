@@ -15,7 +15,6 @@ function UserCard({id}){
         dispatch(fetchUser(id));
     }, [dispatch]);
 
-<<<<<<< HEAD
     useEffect(() => {
         if(sessionUser.likes.includes(id) && sessionUser.likers.includes(id)) {
             setIsLiked(true)
@@ -24,10 +23,6 @@ function UserCard({id}){
             setIsLiked(true);
         }
     }, [dispatch, isLiked, isMatched]);
-=======
-    const user = useSelector(state => state.users[id])
-
->>>>>>> 976c7d1bfceb04cb59ddf60c401b2c4336e9dc58
 
     const handleLikeButtonClick = (e) => {
         setIsLiked(true);

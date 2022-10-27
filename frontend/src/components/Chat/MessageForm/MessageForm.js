@@ -1,7 +1,7 @@
 import './MessageForm.css'
 import { useSelector } from 'react-redux'
 import { useState, useContext } from 'react'
-import { ChatContext } from '../../context/chatContext'
+import { ChatContext } from '../../../context/chatContext'
 
 function MessageForm () {
 

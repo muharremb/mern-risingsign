@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-import { socket, ChatContext } from '../../context/chatContext'
+import {socket, ChatContext} from '../../../context/chatContext';
 import io from 'socket.io-client'
 
 function Sidebar () {
