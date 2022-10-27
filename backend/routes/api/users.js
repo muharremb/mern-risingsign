@@ -11,13 +11,33 @@ const validateLoginInput = require('../../validations/login');
 // const { getUserPics } = require('./pics');
 
 /* GET users listing. */
-router.get('/', function(req, res, next) {
-  // res.send('respond with a resource');
+// router.get('/', async function(req, res, next) {
+//   // res.send('respond with a resource');
+//   const users = await User.find({}).exec();
+//   res.json({
+//     users: users
+//   });
+// });
+
+router.post('/likes', async (req, res, next) => {
+  const liker = await User.findById(req.body.liker).exec();
+  const likee = await User.findById(req.body.likee).exec();
+  const previouslyLiked = liker.likes.includes(req.body.likee);
+
+  const updatedLiker = await User.findOneAndUpdate({_id: liker},
+    {likes: previouslyLiked ? liker.likes.filter((likee) => {likee != req.body.likee}) : liker.likes.concat(req.body.likee)}, 
+    {new: true}
+  ).exec();
+
+  // const query = {"_id": liker};
+  // const updateDocument = {
+  //   $push: {"likes."}
+  // }
+
   res.json({
-    message: "GET /users"
+    liker: updatedLiker
   });
 });
-
 
 router.post('/register', validateRegisterInput, async (req, res, next) => {
   const user = await User.findOne({
@@ -42,7 +62,10 @@ router.post('/register', validateRegisterInput, async (req, res, next) => {
     birthDateTime: req.body.birthDateTime,
     lat: req.body.lat,
     lng: req.body.lng,
-    horoscope: req.body.horoscope 
+    horoscope: req.body.horoscope ,
+    likes: [],
+    profileImageURL: "https://ecsphilly.org/app/uploads/2017/01/blank-profile-picture-973460_960_720-300x300.jpg"
+
   });
   
   bcrypt.genSalt(10, (err, salt) => {
@@ -86,8 +109,30 @@ router.get('/current', restoreUser, (req, res) => {
   res.json({
     _id: req.user._id,
     name: req.user.name,
-    email: req.user.email
+    email: req.user.email,
+    birthDateTime: req.user.birthDateTime,
+    birthLocation: req.user.birthLocation,
+    horoscope: req.user.horoscope,
+    likes: req.user.likes,
+    profileImageURL: req.user.profileImageURL
   });
+});
+
+router.get('/index', async function(req, res, next) {
+  const users = await User.find({});
+  const users_clean = users.map((user) => {
+    return ({
+      _id: user._id,
+      name: user.name,
+      email: user.email,
+      birthDateTime: user.birthDateTime,
+      birthLocation: user.birthLocation,
+      horoscope: user.horoscope,
+      likes: user.likes,
+      profileImageURL: user.profileImageURL
+    })
+  })
+  res.json(users_clean);
 });
 
 router.get('/:userId', async function(req, res, next) {
@@ -95,10 +140,20 @@ router.get('/:userId', async function(req, res, next) {
   const user = await User.findById(userId).exec();
   // _id": "6357ea1f4c12fe6ec8efcfb3"
   res.json({
-    user: user
+    _id: user._id,
+    name: user.name,
+    email: user.email,
+    birthDateTime: user.birthDateTime,
+    birthLocation: user.birthLocation,
+    horoscope: user.horoscope,
+    likes: user.likes,
+    profileImageURL: user.profileImageURL
   });
 });
 
+<<<<<<< HEAD
 // router.get('/:userId/pics', getUserPics);
+=======
+>>>>>>> main
 
 module.exports = router;

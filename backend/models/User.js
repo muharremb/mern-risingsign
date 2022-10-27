@@ -6,6 +6,10 @@ const userSchema = Schema({
         type: String,
         required: true
     },
+    bio: {
+        type: String,
+        required: false
+    },
     email: {
         type: String,
         required: true
@@ -17,7 +21,7 @@ const userSchema = Schema({
     birthLocation: {
         type: String,
         required: true
-    }, 
+    },
     birthDateTime: {
         type: Date,
         required: true
@@ -33,9 +37,29 @@ const userSchema = Schema({
     horoscope: {
         type: Object,
         required: true
+    },
+    status: {
+        type: String,
+        default: 'online'
+    },
+    newMessages: {
+        type: Object,
+        default: {}
+    },
+    likes: {
+        type: Array,
+        required: true
+    },
+    imageURLs: {
+        type: Array,
+        required: false
+    },
+    profileImageURL: {
+        type: String,
+        required: true
     }
 }, {
     timestamps: true
-});
+}, {minimize: false});
 
 module.exports = mongoose.model('User', userSchema);
