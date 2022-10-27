@@ -231,7 +231,7 @@ function SignupForm () {
                   />
                 <label htmlFor='birth-time-input'>{birthTimeError !== "" && birthTime !== "" ? birthTimeError : "time of birth"}</label>
               </div>
-              <div calssName='input-container'>
+              <div className='sign-input-container'>
                 <label>Sun Sign:
                   <select id="sun-sign-selector" className="input-container sign-selector" defaultValue="def" onChange={handleSun}>
                       <option value="def" disabled>...</option>
@@ -287,15 +287,6 @@ function SignupForm () {
 
 
               </div>
-              {/* <div className='input-container'>
-                <div className="errors">{errors?.birthLocation}</div>
-                  <input type="text"
-                    value={birthLocation}
-                    id="birth-location-input"
-                    onChange={update('birthLocation')}
-                  />
-                <label htmlFor='birth-location-input' value>{birthLocationError !== "" && birthLocation !== "" ? birthLocationError : "birth place"}</label>
-              </div> */}
             </div>}
         </div>
 

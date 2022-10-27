@@ -114,6 +114,36 @@
    align-items: space-between;
 }
 
+.sign-input-container {
+   all: unset;
+   display: flex;
+   top: 30%;
+   flex-direction: column;
+   /* width: 17vw; */
+   width: 300px;
+   align-items: space-between;
+}
+
+.sign-input-container > label {
+   display: flex;
+   color: rgba(233, 193, 93, .8);
+   letter-spacing: .40em;
+   justify-content: center;
+   text-align: center;
+}
+
+.sign-input-container > select {
+   all: unset;
+   color: rgba(233, 193, 93);
+   height: 2vh;
+   border-top-style: hidden;
+   border-left-style: hidden;
+   border-right-style: hidden;
+   border-bottom-color: rgba(233, 193, 93, .8);
+   background-color: transparent;
+   transition: all .4s ease;
+}
+
 .input-container > label {
    display: flex;
    color: rgba(233, 193, 93, .8);

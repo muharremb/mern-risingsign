@@ -39,7 +39,7 @@ function Profile () {
           </div>
         </div>
         <div className='name-tile'>
-          <h2>{currentUser.name.toLowerCase()}</h2>
+          <h2>{currentUser.name.trim(" ")}</h2>
         </div>
         <div className='profile-mid-bottom'>
           <UserBio user={currentUser} />
@@ -49,16 +49,7 @@ function Profile () {
             <input type="submit" value="submit"></input>
           </form>
         </div>
-      
       </div>
-      {/* <div className='profile-page'>
-        <div className='profile-page-left'>
-        
-        
-
-        </div>
-        
-      </div> */}
     </>
     
   )
