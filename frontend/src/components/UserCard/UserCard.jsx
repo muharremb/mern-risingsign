@@ -1,22 +1,34 @@
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { fetchUser, likeUser } from '../../store/users';
 
 
 function UserCard({id}){
     const dispatch = useDispatch();
+
     const sessionUser = useSelector(state => state.session.user);
-    // console.log('sessionUser ', sessionUser);
+    const user = useSelector(state => state.users[id])
+    const [isMatched, setIsMatched] = useState(false);
+    const [isLiked, setIsLiked] = useState(false);
 
     useEffect(() => {
         dispatch(fetchUser(id));
     }, [dispatch]);
 
-    const user = useSelector(state => state.users[id])
+    useEffect(() => {
+        if(sessionUser.likes.includes(id) && sessionUser.likers.includes(id)) {
+            setIsLiked(true)
+            setIsMatched(true);
+        } else if (sessionUser.likes.includes(id)) {
+            setIsLiked(true);
+        }
+    }, [dispatch]);
+
+    // console.log('isMatched ', isMatched, 'isLiked ', isLiked, 'username', user.name, 'sessionuser ', sessionUser.name);
 
     const handleLikeButtonClick = (e) => {
-        console.log("like button clicked by ", sessionUser._id, "to ", user._id );
+        // console.log("like button clicked by ", sessionUser._id, "to ", user._id );
         dispatch(likeUser(sessionUser._id, user._id));
     }
     
@@ -36,7 +48,14 @@ function UserCard({id}){
             <div className="user-card-sign rising-sign">
                 {user.horoscope.rising.label}: {user.horoscope.rising.Sign.key}
             </div>
-            {sessionUser._id !== user._id && (
+            {isMatched && (
+                <div>MATCHED</div>
+            )}
+
+            {!isMatched && isLiked && (
+                <div>You liked {user.name}</div>
+            )}
+            {!isMatched && !isLiked && sessionUser._id !== user._id && (
                 <button onClick={handleLikeButtonClick}>Like</button>
             )}
         </div>
