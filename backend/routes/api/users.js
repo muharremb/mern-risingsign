@@ -151,9 +151,7 @@ router.get('/:userId', async function(req, res, next) {
   });
 });
 
-<<<<<<< HEAD
 // router.get('/:userId/pics', getUserPics);
-=======
->>>>>>> main
+
 
 module.exports = router;
