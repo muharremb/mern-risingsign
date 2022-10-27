@@ -7,14 +7,14 @@
    /* flex-shrink: 1; */
    bottom: 15%;
    /* width: 30vw; */
-   width: 350px;
+   width: 25vw;
    /* height: 30vw; */
-   height: 350px;
+   height: 25vw;
    background-color: transparent;
    border: 1px solid rgba(233, 193, 93);
    box-shadow: 0em 0em .2em .05em rgba(233, 193, 93), inset 0em 0em .2em .05em rgba(233, 193, 93);
    /* margin: 0 auto; */
-   z-index: 3;
+   z-index: 1;
    overflow: hidden;
    /* animation: visible 3s; */
    /* animation: visible 3s;
@@ -23,23 +23,47 @@
 }
 
 .profile-pic-frame img {
-   z-index: 1;
-   visibility: hidden;
+   position: relative;
+   height: 100%;
+   width: 100%;
+   z-index: 5;
+   background: transparent;
 }
 
 .profile-page {
    display: flex;
+   /* position:  */
    flex-direction: column;
    width: 100vw;
    height: 100vh;
+   background-color: transparent;
 
+}
+
+body {
+   background: transparent;
 }
 
 .profile-page-middle {
    display: flex;
 }
 
-.space-layer{
+.profile-pic-background {
+   display: flex;
+   background: rgb(113,14,143);
+   background: radial-gradient(circle, rgba(113,14,143,1) 0%, rgba(74,23,84,1) 35%, rgba(14,0,20,1) 100%);
+   display: flex;
+   justify-content: center;
+   height: 100%;
+   width: 200px;
+   overflow: hidden;
+   box-sizing: border-box;
+   margin: 0;
+   padding: 0;
+   z-index: 1000;
+}
+
+.space-layer-profile{
    position: fixed;
    top: 50%;
    left: 50%;
@@ -52,5 +76,17 @@
    animation-duration: 13s;
    animation-timing-function: linear;
    animation-iteration-count: infinite;
+}
+
+.space-layer-profile2{
+   position: relative;
+   top: 50%;
+   left: 50%;
+   height: 3px;
+   width: 3px;
+   background-color: rgba(255, 255, 255, 0.65);
+   border-radius: 50%;
+   box-shadow: -31vw -30vh 1px 2px rgba(255, 255, 255, 0.65),17vw 7vh 1px 3px rgba(255, 255, 255, 0.65),42vw -20vh 3px 1px rgba(255, 255, 255, 0.65),38vw 7vh 0px 0px rgba(255, 255, 255, 0.65),-6vw 2vh 0px 0px rgba(255, 255, 255, 0.65),40vw -21vh 0px 2px rgba(255, 255, 255, 0.65),32vw 43vh 2px 2px rgba(255, 255, 255, 0.65),50vw 20vh 0px 1px rgba(255, 255, 255, 0.65),30vw -25vh 1px 3px rgba(255, 255, 255, 0.65),1vw 33vh 1px 1px rgba(255, 255, 255, 0.65),46vw -11vh 2px 2px rgba(255, 255, 255, 0.65),-7vw -22vh 0px 1px rgba(255, 255, 255, 0.65),46vw -25vh 2px 2px rgba(255, 255, 255, 0.65),31vw -14vh 2px 2px rgba(255, 255, 255, 0.65),-25vw 6vh 2px 3px rgba(255, 255, 255, 0.65),-17vw -19vh 3px 2px rgba(255, 255, 255, 0.65),19vw 39vh 0px 0px rgba(255, 255, 255, 0.65),-17vw 40vh 3px 1px rgba(255, 255, 255, 0.65),-6vw -3vh 1px 1px rgba(255, 255, 255, 0.65);
+   animation: delay 2s, zoom 13s linear 2s infinite;
 }
 

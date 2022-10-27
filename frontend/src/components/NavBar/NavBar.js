@@ -6,7 +6,7 @@ import { useEffect } from 'react';
 
 function NavBar () {
   const loggedIn = useSelector(state => !!state.session.user);
-  const loggedInPic = useSelector(state => state.session.user.profileImageURL);
+  const loggedInPic = useSelector(state => state.session.user ? state.session.user.profileImageURL : "");
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -54,7 +54,7 @@ function NavBar () {
       <div className='navbar-right'>
         { logoutButton() }
         <div className='logged-in-image'>
-          <img src={loggedIn ? loggedInPic : ""}></img>
+          <img hidden={loggedIn ? false : true}src={loggedInPic}></img>
         </div>
       </div>
     </div>
