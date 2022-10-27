@@ -29,7 +29,9 @@ function Profile () {
     <div className='profile-page'>
       <div className='profile-page-upper'>
       <div className='profile-pic-frame'>
-        
+        <div className='profile-pic-background'></div>
+        <div className='space-layer-profile'></div>
+        <div className='space-layer-profile2'></div>
         <img src={currentUser.profileImageURL}></img>
       </div>
       <h2>{currentUser.name.toLowerCase()}'s profile</h2>
