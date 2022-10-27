@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import UserCard from '../UserCard/UserCard';
 import { uploadPic } from '../../store/pics';
+import UserBio from './UserBio';
 
 function Profile () {
   const dispatch = useDispatch();
@@ -24,31 +25,10 @@ function Profile () {
 
         <input type="file" onChange={e => setPic(e.currentTarget.files[0])}></input>
         <input type="submit" value="submit"></input>
-      </form>
+      </form><hr/>
+      <UserBio user={currentUser} />
     </>
   )
-//   const userTweets = useSelector(state => Object.values(state.tweets.user))
-  
-//   useEffect(() => {
-//     dispatch(fetchUserTweets(currentUser._id));
-//     return () => dispatch(clearTweetErrors());
-//   }, [currentUser, dispatch]);
-
-//   if (userTweets.length === 0) {
-//     return <div>{currentUser.username} has no Tweets</div>;
-//   } else {
-//     return (
-//       <>
-//         <h2>All of {currentUser.username}'s Tweets</h2>
-//         {userTweets.map(tweet => (
-//           <TweetBox
-//             key={tweet._id}
-//             text={tweet.text}
-//           />
-//         ))}
-//       </>
-//     );
-//   }
 }
 
 export default Profile;
