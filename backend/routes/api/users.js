@@ -27,14 +27,18 @@ router.post('/likes', async (req, res, next) => {
   const updatedLiker = await User.findOneAndUpdate({_id: liker},
     {likes: previouslyLiked ? liker.likes : liker.likes.concat(req.body.likee)}, 
     {new: true}
+
+  ).exec();
+  const updatedLikee = await User.findOneAndUpdate({_id: likee},
+    {likers: previouslyLiked ? likee.likers : likee.likers.concat(req.body.liker)}, 
+    {new: true}
   ).exec();
 
   res.json({
-    liker: updatedLiker
+    liker: updatedLiker,
+    likee: updatedLikee
   });
 });
-
-
 
 router.post('/register', validateRegisterInput, async (req, res, next) => {
   const user = await User.findOne({
@@ -103,6 +107,7 @@ router.post('/register', validateRegisterInput, async (req, res, next) => {
     // lng: req.body.lng,
     horoscope: req.body.horoscope,
     likes: [],
+    likers: [],
     profileImageURL: profilePic
     
   });
@@ -150,6 +155,7 @@ router.get('/current', restoreUser, (req, res) => {
     name: req.user.name,
     email: req.user.email,
     bio: req.user.bio,
+    likers: req.user.likers,
     birthDateTime: req.user.birthDateTime,
     // birthLocation: req.user.birthLocation,
     horoscope: req.user.horoscope,

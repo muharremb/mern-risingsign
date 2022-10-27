@@ -33,6 +33,7 @@ exports.loginUser = async function(user) {
       birthLocation: user.birthLocation,
       horoscope: user.horoscope,
       likes: user.likes,
+      likers: user.likers,
       profileImageURL: user.profileImageURL
     };
     const token = await jwt.sign(

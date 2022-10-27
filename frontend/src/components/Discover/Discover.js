@@ -3,17 +3,18 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useEffect, useState } from 'react';
 import { fetchUser, fetchUsers } from '../../store/users';
 import UserCard from '../UserCard/UserCard';
+import { getCurrentUser } from '../../store/session';
 
 function Discover () {
     const [filter, setFilter] = useState('all');
     const dispatch = useDispatch()
 
-    // to fetchUsers() as preferences
     useEffect(() => {
         dispatch(fetchUsers());
     }, [])
 
     const fetchedUsers = useSelector(state => state.users);
+    const sessionUser = useSelector(state => state.session.user);
 
     const users = Object.values(fetchedUsers);
 
@@ -22,7 +23,6 @@ function Discover () {
         setFilter(e.target.value);
     }
 
-    // Aries, Taurus, Gemini, Cancer, Leo, Virgo, Libra, Scorpio, Sagittarius, Capricorn, Aquarius, and Pisces,
     return (
         <>
             <h2>Users Index</h2>
@@ -46,7 +46,7 @@ function Discover () {
                 {/* <button type="submit">Save</button> */}
             </form>
             {users[0] && users.map((user) => {
-                if ('all' === filter || user.horoscope.sun.Sign.key === filter){
+                if (('all' === filter || user.horoscope.sun.Sign.key === filter) && user._id !== sessionUser._id){
                     return <UserCard id={user._id} />
                 }
             })}
