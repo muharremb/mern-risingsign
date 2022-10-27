@@ -1,12 +1,17 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import UserCard from '../UserCard/UserCard';
-import { uploadPic } from '../../store/pics';
+import { getOnePic, uploadPic } from '../../store/pics';
+
 
 function Profile () {
   const dispatch = useDispatch();
   const currentUser = useSelector(state => state.session.user);
   const [ pic, setPic ] = useState("");
+
+  useEffect(() => {
+      // dispatch(getOnePic(currentUser._id))
+  })
 
   const handleSubmit = e => {
     e.preventDefault();
@@ -19,7 +24,8 @@ function Profile () {
 
   return (
     <>
-      <h2>Hi {currentUser.name}, it is your profile page</h2>
+      <img src={currentUser.profileImageURL}></img>
+      <h2>{currentUser.name.toLowerCase()}'s profile</h2>
       <form onSubmit={handleSubmit} encType="multipart/form-data">
 
         <input type="file" onChange={e => setPic(e.currentTarget.files[0])}></input>
