@@ -5,7 +5,7 @@ import App from './App';
 import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 import configureStore from './store/store';
-import { ChatContext } from './context/chatContext'
+import { ChatContext, socket } from './context/chatContext'
 import { useState } from 'react'
 import * as picActions from './store/pics';
 import jwtFetch from './store/jwt';
@@ -20,16 +20,17 @@ let store = configureStore(initialState);
 
 
 function Root() {
+  //chat stuff sorry everyone we can refactor
   const [rooms, setRooms] = useState([]);
-  const [currentRoom, setCurrentRoom] = useState([]);
+  const [currentRoom, setCurrentRoom] = useState('');
   const [members, setMembers] = useState([]);
   const [messages, setMessages] = useState([]);
-  const [privateMemberMsg, setPrivateMemberMsg] = useState({});
+  const [privateMsg, setPrivateMsg] = useState({});
   const [newMsgs, setNewMsgs] = useState([]);
 
   return (
     <Provider store={store}>
-      <ChatContext.Provider value={{rooms, setRooms, currentRoom, setCurrentRoom, members, setMembers, messages, setMessages, privateMemberMsg, setPrivateMemberMsg, newMsgs, setNewMsgs}}>
+      <ChatContext.Provider value={{ socket, rooms, setRooms, currentRoom, setCurrentRoom, members, setMembers, messages, setMessages, privateMsg, setPrivateMsg, newMsgs, setNewMsgs }}>
         <BrowserRouter>
             <App />
         </BrowserRouter>

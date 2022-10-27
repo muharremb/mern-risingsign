@@ -1,35 +1,37 @@
 import { useContext, useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-import { ChatContext } from '../../context/chatContext'
+import { socket, ChatContext } from '../../context/chatContext'
 import io from 'socket.io-client'
 
 function Sidebar () {
 
-  const ENDPOINT = "http://localhost:5000"
-  const user = useSelector(state => state.session.user)
-  const [socketConnectecd, setSocketConnected] = useState(false)
+  // const ENDPT = "http://localhost:5000"
+  const user = useSelector(state => state.session.user);
 
-  let socket, selectedChat;
+  const { setMembers, members, room, setCurrentRoom } = useContext(ChatContext)
+
+  const userId = user ? user._id : 1;
+  const [socketConnectecd, setSocketConnected] = useState(false);
 
   useEffect(() => {
-    console.log("I'm using an effect")
-    socket = io(ENDPOINT)
-    socket.emit("setup", user._id)
+    socket.emit("new-user")
+    socket.off("new-user").on("new-user", (users) => {
+      setCurrentRoom('general')
+      socket.emit('join-room', 'general')
+      console.log(users)
+      setMembers(users)
+    })
     socket.on("connection", () => setSocketConnected(true))
+  }, [])
 
-
-
-  })
-
-  const rooms = ['kristin', 'kirstin', 'christine'];
-  const roomsList = rooms.map((room, i) => <li key={i}>{room}</li>)
+  const membersList = Object.values(members).map((member, i) => <li key={i} id={member.name} onClick={e=>setCurrentRoom(String(e.target.id))}>{member.name}</li>)
 
 
 
   return (
     <>
       <h2>Available matches</h2>
-      <ul>{roomsList}</ul>
+      <ul>{membersList}</ul>
     </>
 
   )

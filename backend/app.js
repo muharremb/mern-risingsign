@@ -29,6 +29,9 @@ const server = require('http').createServer(app)
 const PORT = process.env.PORT || 5000
 
 
+//chat stuff lmk if we should refactor sorry guys
+
+
 
 // io.on('connection', (socket) => {
 
@@ -58,23 +61,17 @@ const PORT = process.env.PORT || 5000
 
 
 
-
-
-
-
-
-
 app.use(cookieParser());
 
 app.use(passport.initialize());
 // const app.use(express.json())
 
-// chat stuff
-const rooms = ['libra', 'pisces', 'crypto']
+// // chat stuff
+// const rooms = ['libra', 'pisces', 'crypto']
 
-app.get('/rooms', (req, res) => {
-  res.send(rooms)
-}) // is this correct location ?
+// app.get('/rooms', (req, res) => {
+//   res.send(rooms)
+// }) // is this correct location ?
 
 
 

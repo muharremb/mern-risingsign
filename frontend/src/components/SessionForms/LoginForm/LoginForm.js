@@ -4,7 +4,7 @@ import ContinueButton from '../ContinueButton/ContinueButton';
 import './LoginForm.css';
 import { login, clearSessionErrors } from '../../../store/session';
 
-import { ChatContext } from '../../../context/chatContext';
+import { socket, ChatContext } from '../../../context/chatContext';
 
 function LoginForm () {
   const [email, setEmail] = useState('');
@@ -33,7 +33,7 @@ function LoginForm () {
     e.preventDefault();
     dispatch(login({ email, password })).then(()=>{
       console.log("EMITTING NEW USER")
-      // socket.emit('new-user')
+      socket.emit('new-user')
     });
   }
 
