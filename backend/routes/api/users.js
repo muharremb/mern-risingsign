@@ -56,13 +56,13 @@ router.post('/register', validateRegisterInput, async (req, res, next) => {
     name: req.body.name,
     email: req.body.email,
     bio: '',
-    birthLocation: req.body.birthLocation,
+    // birthLocation: req.body.birthLocation,
     birthDateTime: req.body.birthDateTime,
-    lat: req.body.lat,
-    lng: req.body.lng,
-    horoscope: req.body.horoscope ,
+    // lat: req.body.lat,
+    // lng: req.body.lng,
+    horoscope: req.body.horoscope,
     likes: [],
-    profileImageURL: "https://ecsphilly.org/app/uploads/2017/01/blank-profile-picture-973460_960_720-300x300.jpg"
+    profileImageURL: (req.body.profileImageURL || "https://ecsphilly.org/app/uploads/2017/01/blank-profile-picture-973460_960_720-300x300.jpg")
 
   });
   
@@ -110,7 +110,7 @@ router.get('/current', restoreUser, (req, res) => {
     email: req.user.email,
     bio: req.user.bio,
     birthDateTime: req.user.birthDateTime,
-    birthLocation: req.user.birthLocation,
+    // birthLocation: req.user.birthLocation,
     horoscope: req.user.horoscope,
     likes: req.user.likes,
     profileImageURL: req.user.profileImageURL
@@ -128,7 +128,7 @@ router.get('/index', async function(req, res, next) {
       email: user.email,
       bio: user.bio,
       birthDateTime: user.birthDateTime,
-      birthLocation: user.birthLocation,
+      // birthLocation: user.birthLocation,
       horoscope: user.horoscope,
       likes: user.likes,
       profileImageURL: user.profileImageURL
@@ -157,7 +157,7 @@ router.get('/:userId', async function(req, res, next) {
     email: user.email,
     bio: user.bio,
     birthDateTime: user.birthDateTime,
-    birthLocation: user.birthLocation,
+    // birthLocation: user.birthLocation,
     horoscope: user.horoscope,
     likes: user.likes,
     profileImageURL: user.profileImageURL
