@@ -7,55 +7,64 @@
    width: 100vw;
    height: 7vh;
    align-items: center;
-   justify-content: center;
+   justify-content: space-between;
    background-color: rgb(0, 0, 0);
    border-top: 2px solid rgba(233, 193, 93);
 }
 
-.navbar > h2 {
-   position: absolute;
-   color: rgba(233, 193, 93);
-   left: 3.2rem;
-   letter-spacing: .80rem;
-   font-stretch: expanded;
-   justify-self: flex-end;
+.navbar-left {
+   display: flex;
+   width: 25vw;
+   justify-content: center;
+   text-align: center;
 }
 
-.link-bar {
-   width: 50vw;
+.navbar-mid {
    display: flex;
+   width: 50vw;
    justify-content: space-around;
+
+}
+
+.navbar-right{
+   display: flex;
+   width: 25vw;
+   gap: 2vw;
+   justify-content: center;
+}
+
+.logout-button, .logo {
+   all: unset;
+   color: rgba(233, 193, 93);
+   letter-spacing: .80rem;
+   font-stretch: expanded;
+   font-size: 1.5rem;
+}
+
+.logout-button {
+   cursor: pointer;
+}
+
+.logged-in-image img {
+   width: 3vw;
+   border-radius: 50%;
+   height: 3vw;
+}
+
+.logo {
+   cursor: default;
 }
 
 .signup-link, .login-link, .discover-link, .matches-link, .profile-link {
    color: rgba(233, 193, 93);
-   text-decoration: none;
    font-size: 1.5rem;
-   
+   font-weight: 200;
+   text-decoration: underline;
+   text-underline-offset: .5vh;
+   font-family: cursive;
 }
 
-.profile-link {
-   position: absolute;
-}
-
-.signup-link:hover, .login-link:hover {
+.signup-link:hover, .login-link:hover, .discover-link:hover, .matches-link:hover, .profile-link:hover, .logout-button:hover {
    animation: glow 1s ease-in-out infinite alternate;
    cursor: pointer;
-}
-
-.links-auth {
-   display: flex;
-   width: 20vw;
-   justify-content: space-between;
-}
-
-.links-nav {
-   display: flex;
-   width: 20vw;
-   justify-content: space-between;
-}
-
-.logout-button {
-   position: fixed;
-   right: 3vw;
 }

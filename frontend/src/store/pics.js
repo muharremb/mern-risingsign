@@ -23,26 +23,6 @@ const removePic = picData => ({
 //-----------------------------------------------------
 
 
-export const getOnePic = picData => async dispatch => {
-   const userId = picData;
-
-   let res = await jwtFetch(`/api/users/${userId}`);
-   let data = await res.json();
-
-   if (data) {
-      dispatch(receivePic(data));
-   } else {
-      console.log("No picture there!!!")
-   }
-}
-
-
-export const getAllPics = picData => async dispatch => {
-
-}
-
-
-
 export const uploadPic = picData => async dispatch => {
    const { pic, uploaderId } = picData
    console.log(uploaderId, picData, pic);
@@ -79,7 +59,6 @@ const picReducer = (state = initialState, action) => {
          return newState;
       case RECEIVE_PICS:
          return [ ...newState, ...action.picData];
-
       case REMOVE_PIC:
          delete newState[action.picData.id];
          return newState;

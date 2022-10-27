@@ -3,7 +3,6 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useEffect, useState } from 'react';
 import { fetchUser, likeUser } from '../../store/users';
 
-
 function UserCard({id}){
     const dispatch = useDispatch();
 
@@ -14,7 +13,6 @@ function UserCard({id}){
 
     useEffect(() => {
         dispatch(fetchUser(id));
-        console.log("Users fetched")
     }, [dispatch]);
 
     useEffect(() => {
@@ -24,10 +22,7 @@ function UserCard({id}){
         } else if (sessionUser.likes.includes(id)) {
             setIsLiked(true);
         }
-        console.log("isLiked: ", isLiked);
-        console.log("isMatched: ", isMatched);
     }, [dispatch, isLiked, isMatched]);
-
 
     const handleLikeButtonClick = (e) => {
         setIsLiked(true);
