@@ -13,7 +13,6 @@ function UserCard({id}){
 
     useEffect(() => {
         dispatch(fetchUser(id));
-        console.log("Users fetched")
     }, [dispatch]);
 
     useEffect(() => {
