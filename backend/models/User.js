@@ -51,6 +51,10 @@ const userSchema = Schema({
         type: Array,
         required: true
     },
+    likers: {
+        type: Array,
+        required: true
+    },
     imageURLs: {
         type: Array,
         required: false
