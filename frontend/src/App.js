@@ -9,9 +9,9 @@ import LoginForm from './components/SessionForms/LoginForm/LoginForm';
 import SignupForm from './components/SessionForms/SignupForm/SignupForm';
 // import SignupForm from './components/SessionForms/SignupForm'
 import Profile from './components/Profile/Profile';
-import Feeds from './components/Feeds/Feeds';
+import Feeds from './components/Discover/Discover';
 
-import Chat from './components/Chat/Chat'
+import Chat from './components/Matches/Chat/Chat'
 import {getCurrentUser} from './store/session';
 
 function App() {
