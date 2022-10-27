@@ -8,6 +8,7 @@ const {loginUser, restoreUser} = require('../../config/passport');
 const {isProduction} = require('../../config/keys');
 const validateRegisterInput = require('../../validations/register');
 const validateLoginInput = require('../../validations/login');
+// const { getUserPics } = require('./pics');
 
 /* GET users listing. */
 // router.get('/', async function(req, res, next) {
@@ -24,19 +25,16 @@ router.post('/likes', async (req, res, next) => {
   const previouslyLiked = liker.likes.includes(req.body.likee);
 
   const updatedLiker = await User.findOneAndUpdate({_id: liker},
-    {likes: previouslyLiked ? liker.likes.filter((likee) => {likee != req.body.likee}) : liker.likes.concat(req.body.likee)}, 
+    {likes: previouslyLiked ? liker.likes : liker.likes.concat(req.body.likee)}, 
     {new: true}
   ).exec();
-
-  // const query = {"_id": liker};
-  // const updateDocument = {
-  //   $push: {"likes."}
-  // }
 
   res.json({
     liker: updatedLiker
   });
 });
+
+
 
 router.post('/register', validateRegisterInput, async (req, res, next) => {
   const user = await User.findOne({
@@ -136,10 +134,22 @@ router.get('/index', async function(req, res, next) {
   res.json(users_clean);
 });
 
+router.patch('/:userId', async (req, res, next) => {
+  const userId = req.params.userId;
+
+  const updatedUser = await User.findOneAndUpdate({_id: userId},
+    {bio: req.body.bio}, 
+    {new: true}
+  ).exec();
+
+  res.json({
+    user: updatedUser
+  });
+});
+
 router.get('/:userId', async function(req, res, next) {
   const userId = req.params.userId;
   const user = await User.findById(userId).exec();
-  // _id": "6357ea1f4c12fe6ec8efcfb3"
   res.json({
     _id: user._id,
     name: user.name,
@@ -151,6 +161,8 @@ router.get('/:userId', async function(req, res, next) {
     profileImageURL: user.profileImageURL
   });
 });
+
+// router.get('/:userId/pics', getUserPics);
 
 
 module.exports = router;

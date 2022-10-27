@@ -4,8 +4,9 @@ async function jwtFetch(url, options = {}) {
     options.headers["Authorization"] = "Bearer " + localStorage.getItem("jwtToken");
     
     if (options.method.toUpperCase() !== "GET") {
-      options.headers["Content-Type"] =
-        options.headers["Content-Type"] || "application/json";
+      if (!options.headers['Content-Type'] && !(options.body instanceof FormData)) {
+        options.headers['Content-Type'] = 'application/json';
+      }
         options.headers["CSRF-Token"] = getCookie("CSRF-TOKEN");
 
     }
