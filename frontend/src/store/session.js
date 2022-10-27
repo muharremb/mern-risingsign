@@ -35,10 +35,10 @@ export const signup = (user) => startSession(user, 'api/users/register');
 export const login = user => startSession(user, 'api/users/login');
 
 const startSession = (userInfo, route) => async dispatch => {
-  if(route==='api/users/register'){
-    userInfo = await getLatLng(userInfo);
-    userInfo.horoscope = getHoroscope(userInfo);
-  }
+  // if(route==='api/users/register'){
+  //   userInfo = await getLatLng(userInfo);
+  //   userInfo.horoscope = getHoroscope(userInfo);
+  // }
   try {
     const res = await jwtFetch(route, {
       method: "POST",
