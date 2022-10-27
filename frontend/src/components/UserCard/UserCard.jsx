@@ -24,17 +24,17 @@ function UserCard({id}){
     if (!sessionUser) return null;
 
     return (
-        <div style={{"border":"1px solid red", "border-radius":"8px", "padding": "8px"}}>
+        <div style={{"border":"1px solid red", "borderRadius":"8px", "padding": "8px"}}>
             <h1>{user.name}</h1><br/>
             <img style={{"maxWidth":"50px"}} src={user.profileImageURL} alt="Profile Image"/>
             <div className="user-card-sign sun-sign">
-                {user.horoscope.sun.label}: {user.horoscope.sun.Sign.label}
+                {user.horoscope.sun.label}: {user.horoscope.sun.Sign.key}
             </div>
             <div className="user-card-sign moon-sign">
-                {user.horoscope.moon.label}: {user.horoscope.moon.Sign.label}
+                {user.horoscope.moon.label}: {user.horoscope.moon.Sign.key}
             </div>
             <div className="user-card-sign rising-sign">
-                {user.horoscope.rising.label}: {user.horoscope.rising.Sign.label}
+                {user.horoscope.rising.label}: {user.horoscope.rising.Sign.key}
             </div>
             {sessionUser._id !== user._id && (
                 <button onClick={handleLikeButtonClick}>Like</button>

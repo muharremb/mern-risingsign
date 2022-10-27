@@ -41,7 +41,7 @@ function NavBar () {
 
   return (
     <div className='navbar'>
-      <h2>Rising Sign</h2>
+      <h3>Rising Sign</h3>
       { getLinks() }
     </div>
   );

@@ -6,6 +6,7 @@ import UserBio from './UserBio';
 import './Profile.css';
 
 
+
 function Profile () {
   const dispatch = useDispatch();
   const currentUser = useSelector(state => state.session.user);
@@ -43,7 +44,6 @@ function Profile () {
 
 
       </div>
-      
       
       <form onSubmit={handleSubmit} encType="multipart/form-data">
 
