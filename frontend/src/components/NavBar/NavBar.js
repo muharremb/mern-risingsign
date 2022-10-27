@@ -20,17 +20,20 @@ function NavBar () {
   const getLinks = () => {
     if (loggedIn) {
       return (
-        <div className="links-nav">
-          <Link to={'/feeds'}>Feeds Link</Link>
-          <Link to={'/profile'}>Profile</Link>
-          <button onClick={logoutUser}>Logout</button>
+        <div className='link-bar'>
+          <Link className="discover-link" to={'/discover'}>discover</Link>
+            <Link className="profile-link" to={'/profile'}>profile</Link>
+            <Link className="matches-link" to={'/matches'}>matches</Link>
+          <button className="logout-button" onClick={logoutUser}>log out</button>
         </div>
       );
     } else {
       return (
-        <div className="links-auth">
-          <Link className="signup-link" to={'/signup'}>Signup</Link>
-          <Link className="login-link" to={'/login'}>Login</Link>
+        <div className='link-bar'>
+          <div className="links-auth">
+            <Link className="signup-link" to={'/signup'}>Signup</Link>
+            <Link className="login-link" to={'/login'}>Login</Link>
+          </div>
         </div>
       );
     }

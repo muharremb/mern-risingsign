@@ -4,14 +4,16 @@ import { useEffect, useState } from 'react';
 import { fetchUser, fetchUsers } from '../../store/users';
 import UserCard from '../UserCard/UserCard';
 
-function Feeds () {
-    const [filter, setFilter] = useState('all');
+function Discover () {
+    // Aries, Taurus, Gemini, Cancer, Leo, Virgo, Libra, Scorpio, Sagittarius, Capricorn, Aquarius, and Pisces,
+    const [sign, setSign] = useState('');
     const dispatch = useDispatch()
 
     // to fetchUsers() as preferences
+    const criteria = {sun: "libra"};
     useEffect(() => {
-        dispatch(fetchUsers());
-    }, [])
+        dispatch(fetchUsers(criteria));
+    }, [dispatch])
 
     const fetchedUsers = useSelector(state => state.users);
 
@@ -54,4 +56,4 @@ function Feeds () {
     )
 }
 
-export default Feeds;
+export default Discover;

@@ -35,7 +35,6 @@ function LoginForm () {
     <div className='login-page'>
     <div className='space-layer'></div>
     <div className='space-layer2'></div>
-    <div className='space-layer3'></div>
     <form className="login-form" onSubmit={handleSubmit}>
       <div className="login-field">
         <div className='email-and-password-input'>
