@@ -1,8 +1,8 @@
-import {io} from 'socket.io-client';
-import React from 'react';
+import { io } from 'socket.io-client';
+import { createContext } from 'react';
 
-const SOCKET_URL = "http://localhost:5000" //is this correct?
+const ENDPT = "http://localhost:5000" //is this correct/?
 
-// export const socket = io(SOCKET_URL)
+export const socket = io(ENDPT)
 
-export const ChatContext = React.createContext();
+export const ChatContext = createContext();

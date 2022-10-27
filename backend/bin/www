@@ -3,15 +3,13 @@
 /**
  * Module dependencies.
  */
-
+const User = require('../models/User')
+const Message = require('../models/Message')
 const app = require('../app');
 var debug = require('debug')('backend:server');
 const mongoose = require('mongoose');
 const {mongoURI: db} = require('../config/keys');
 
-// const debug = require('debug');
-// const serverLogger = debug('backend:server');
-// const dbLogger = debug('backend:mongodb');
 
 var http = require('http');
 
@@ -45,6 +43,17 @@ let chatServer
  .catch(err => debug(err));
 
 
+ app.get('/rooms', (req, res) => {
+  res.json(rooms)
+ })
+
+ const getMessagesFromRoom = async (room) => {
+  let roomMessages = await Message.aggregate([
+    {$match: {to: room}},
+    {$group: {_id: '$date', messagesByDate: {$push: '$$ROOT'}}}
+  ])
+  return roomMessages;
+}
 const setUpChatServer = () => {
   const io = require('socket.io')(chatServer, {
     pingTimeout: 600000,
@@ -52,8 +61,22 @@ const setUpChatServer = () => {
       origin: 'http://localhost:3000'
     }
   })
+
   io.on('connection', (socket) => {
     console.log("connected to the socket slut")
+
+    socket.on('new-user', async () => {
+      const users = await User.find({});
+      io.emit('new-user', users)
+    })
+
+    socket.on('join-room', async (room) => {
+      console.log(room)
+      socket.join(room)
+      const roomMessges = await getMessagesFromRoom(room)
+      console.log(roomMessages)
+      socket.emit('room-messages', roomMessages)
+    })
 
     socket.on("setup", (userId) => {
       socket.join(userId);
@@ -61,10 +84,17 @@ const setUpChatServer = () => {
       socket.emit("connected");
     })
 
-    socket.on('join-chat', (room) => {
-      socket.join(room);
-      console.log("User joined room" +  room)
+    socket.on('message-room', async (room, content, sender, time, date) => {
+      const newMessage = await Message.create({content, from: sender, time, date, to: room});
+      const allMessages = await getMessagesFromRoom(room);
+      console.log(content)
+
+      //send message to room
+      io.to(room).emit('room-messages', allMessages);
+
+      socket.broadcast.emit('notifications', room);
     })
+
   })
 }
 

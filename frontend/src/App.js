@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Switch } from 'react-router-dom';
 import { AuthRoute, ProtectedRoute } from './components/Routes/Routes';
-
 import MainPage from './components/MainPage/MainPage';
 import NavBar from './components/NavBar/NavBar';
 import LoginForm from './components/SessionForms/LoginForm/LoginForm';
@@ -16,7 +15,6 @@ import Chat from './pages/Chat'
 
 function App() {
   const [loaded, setLoaded] = useState(false);
-
 
   const dispatch = useDispatch();
 
@@ -45,7 +43,6 @@ function App() {
       <AuthRoute exact path="/" component={MainPage} />
       <AuthRoute exact path="/login" component={LoginForm} />
       <AuthRoute exact path="/signup" component={SignupForm} />
-
       <ProtectedRoute exact path="/profile" component={Profile} />
       <ProtectedRoute exact path="/feeds" component={Feeds} />
     </Switch>
