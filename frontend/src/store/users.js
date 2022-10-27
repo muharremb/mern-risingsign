@@ -16,20 +16,25 @@ const receiveUsers = (users) => ({
     users
 })
 
+export const updateBio = (userId, bio) => async dispatch => {
+    const reqBody = {
+        bio
+    }
+
+    const res = await jwtFetch(`api/users/${userId}`, {
+        method: "PATCH",
+        body: JSON.stringify(reqBody)
+    })
+
+    const user = await res.json();
+    dispatch(receiveUser(user));
+    dispatch(receiveCurrentUser(user));
+}
+
 export const fetchUser = (userId) => async dispatch => {
     const res = await jwtFetch(`api/users/${userId}`);
     const user = await res.json();
     dispatch(receiveUser(user));
-    // try {
-    //     const res = await jwtFetch(`api/users/${userId}`);
-    //     const user = await res.json();
-    //     dispatch(receiveUser(user));
-    // } catch(err) {
-    //     const res = await err.json()
-    //     if (res.statusCode === 400) {
-    //         return dispatch(receiveErrors(res.errors))
-    //     }
-    // }
 }
 
 export const fetchUsers = (preferences) => async dispatch => {
