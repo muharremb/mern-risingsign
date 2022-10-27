@@ -119,7 +119,9 @@ router.get('/current', restoreUser, (req, res) => {
 });
 
 router.get('/index', async function(req, res, next) {
-  const users = await User.find({});
+  const criteria = {"horoscope.sun.Sign.key": req.query.sun}
+
+  const users = await User.find(criteria);
   const users_clean = users.map((user) => {
     return ({
       _id: user._id,
