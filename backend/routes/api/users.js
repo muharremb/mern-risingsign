@@ -51,6 +51,47 @@ router.post('/register', validateRegisterInput, async (req, res, next) => {
     err.errors = errors;
     return next(err);
   }
+
+  let profilePic;       //should add default profile pic path to user as they are being created
+
+  switch(req.body.horoscope.sun.Sign.key) {
+    case "aquarius":
+      profilePic = "https://mern-rising-sign-profile-pics.s3.amazonaws.com/aquarius_default.png";
+      break;
+    case "aries":
+      profilePic = "https://mern-rising-sign-profile-pics.s3.amazonaws.com/aries_default.png";
+      break;
+    case "cancer":
+      profilePic = "https://mern-rising-sign-profile-pics.s3.amazonaws.com/cancer_default.png";
+      break;
+    case "capricorn":
+      profilePic = "https://mern-rising-sign-profile-pics.s3.amazonaws.com/capricorn_default.png";
+      break;
+    case "gemini":
+      profilePic = "https://mern-rising-sign-profile-pics.s3.amazonaws.com/gemini_default.png";
+      break;
+    case "leo":
+      profilePic = "https://mern-rising-sign-profile-pics.s3.amazonaws.com/leo_default.png";
+      break;
+    case "libra":
+      profilePic = "https://mern-rising-sign-profile-pics.s3.amazonaws.com/libra_default.png";
+      break;
+    case "pisces":
+      profilePic = "https://mern-rising-sign-profile-pics.s3.amazonaws.com/pisces_default.png";
+      break;
+    case "sagittarius":
+      profilePic = "https://mern-rising-sign-profile-pics.s3.amazonaws.com/sagittarius_default.png";
+      break;
+    case "scorpio":
+      profilePic = "https://mern-rising-sign-profile-pics.s3.amazonaws.com/scorpio_default.png";
+      break;
+    case "taurus":
+      profilePic = "https://mern-rising-sign-profile-pics.s3.amazonaws.com/taurus_default.png";
+      break;
+    case "virgo":
+      profilePic = "https://mern-rising-sign-profile-pics.s3.amazonaws.com/virgo_default.png";
+      break;
+  }
   
   const newUser = new User({
     name: req.body.name,
@@ -62,8 +103,8 @@ router.post('/register', validateRegisterInput, async (req, res, next) => {
     // lng: req.body.lng,
     horoscope: req.body.horoscope,
     likes: [],
-    profileImageURL: (req.body.profileImageURL || "https://ecsphilly.org/app/uploads/2017/01/blank-profile-picture-973460_960_720-300x300.jpg")
-
+    profileImageURL: profilePic
+    
   });
   
   bcrypt.genSalt(10, (err, salt) => {
