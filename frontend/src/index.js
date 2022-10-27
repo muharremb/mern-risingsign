@@ -5,8 +5,25 @@ import App from './App';
 import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 import configureStore from './store/store';
+import * as picActions from './store/pics';
+import jwtFetch from './store/jwt';
 
-let store = configureStore({});
+
+const initialState = {
+  
+
+}
+
+let store = configureStore(initialState);
+
+if (process.env.NODE_ENV !== 'production') {
+  window.store = store;
+  window.picActions = picActions;
+  window.jwtFetch = jwtFetch;
+
+
+}
+
 
 function Root() {
   return (

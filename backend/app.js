@@ -12,6 +12,8 @@ const passport = require('passport');
 
 let usersRouter = require('./routes/api/users');
 const csrfRouter = require('./routes/api/csrf');
+const picsRouter = require('./routes/api/pics');
+
 
 let app = express();
 
@@ -48,8 +50,10 @@ app.use(
     })
 );
 
+app.use('/api/pics', picsRouter);
 app.use('/api/users', usersRouter);
 app.use('/api/csrf', csrfRouter);
+
 
 if (isProduction) {
   const path = require('path');

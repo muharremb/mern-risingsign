@@ -97,6 +97,6 @@ export const getCurrentUser = () => async dispatch => {
     const user = await res.json();
     return dispatch(receiveCurrentUser(user));
 };
-
+  
 export default sessionReducer;
 
