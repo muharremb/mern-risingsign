@@ -55,6 +55,7 @@ router.post('/register', validateRegisterInput, async (req, res, next) => {
   const newUser = new User({
     name: req.body.name,
     email: req.body.email,
+    bio: '',
     birthLocation: req.body.birthLocation,
     birthDateTime: req.body.birthDateTime,
     lat: req.body.lat,
@@ -107,6 +108,7 @@ router.get('/current', restoreUser, (req, res) => {
     _id: req.user._id,
     name: req.user.name,
     email: req.user.email,
+    bio: req.user.bio,
     birthDateTime: req.user.birthDateTime,
     birthLocation: req.user.birthLocation,
     horoscope: req.user.horoscope,
@@ -124,6 +126,7 @@ router.get('/index', async function(req, res, next) {
       _id: user._id,
       name: user.name,
       email: user.email,
+      bio: user.bio,
       birthDateTime: user.birthDateTime,
       birthLocation: user.birthLocation,
       horoscope: user.horoscope,
@@ -142,9 +145,7 @@ router.patch('/:userId', async (req, res, next) => {
     {new: true}
   ).exec();
 
-  res.json({
-    user: updatedUser
-  });
+  res.json(updatedUser);
 });
 
 router.get('/:userId', async function(req, res, next) {
@@ -154,6 +155,7 @@ router.get('/:userId', async function(req, res, next) {
     _id: user._id,
     name: user.name,
     email: user.email,
+    bio: user.bio,
     birthDateTime: user.birthDateTime,
     birthLocation: user.birthLocation,
     horoscope: user.horoscope,
