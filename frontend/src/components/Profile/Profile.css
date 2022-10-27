@@ -46,6 +46,7 @@ body {
 
 .profile-page-middle {
    display: flex;
+   justify-content: center;
 }
 
 .profile-pic-background {
