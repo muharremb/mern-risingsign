@@ -40,8 +40,6 @@ router.post('/likes', async (req, res, next) => {
   });
 });
 
-
-
 router.post('/register', validateRegisterInput, async (req, res, next) => {
   const user = await User.findOne({
     email: req.body.email

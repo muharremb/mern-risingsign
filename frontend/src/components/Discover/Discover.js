@@ -9,7 +9,6 @@ function Discover () {
     const [filter, setFilter] = useState('all');
     const dispatch = useDispatch()
 
-    // to fetchUsers() as preferences
     useEffect(() => {
         dispatch(fetchUsers());
     }, [])
@@ -24,7 +23,6 @@ function Discover () {
         setFilter(e.target.value);
     }
 
-    // Aries, Taurus, Gemini, Cancer, Leo, Virgo, Libra, Scorpio, Sagittarius, Capricorn, Aquarius, and Pisces,
     return (
         <>
             <h2>Users Index</h2>
