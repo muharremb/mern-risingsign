@@ -28,10 +28,8 @@ function UserCard({id}){
         console.log("isMatched: ", isMatched);
     }, [dispatch, isLiked, isMatched]);
 
-    // console.log('isMatched ', isMatched, 'isLiked ', isLiked, 'username', user.name, 'sessionuser ', sessionUser.name);
 
     const handleLikeButtonClick = (e) => {
-        // console.log("like button clicked by ", sessionUser._id, "to ", user._id );
         setIsLiked(true);
         if(sessionUser.likers.includes(id)) {
             setIsMatched(true);

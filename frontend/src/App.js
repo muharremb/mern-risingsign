@@ -44,6 +44,7 @@ function App() {
       <ProtectedRoute exact path="/profile" component={Profile} />
       <ProtectedRoute exact path="/discover" component={Discover} />
       <ProtectedRoute exact path="/chats" component={Chat} />
+      {/* <ProtectedRoute exact path="/matches" component={Matches} /> */}
 
     </Switch>
     </>

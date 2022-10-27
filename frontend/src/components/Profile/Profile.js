@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import UserCard from '../UserCard/UserCard';
 import { getOnePic, uploadPic } from '../../store/pics';
 import UserBio from './UserBio';
 import './Profile.css';
+import BioPics from './BioPics';
 
 
 
@@ -36,7 +36,7 @@ function Profile () {
 
       </div>
       <div className='profile-page-middle'>
-      <UserBio user={currentUser} />
+      <BioPics user={currentUser}/>
 
 
       </div>

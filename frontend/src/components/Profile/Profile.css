@@ -37,6 +37,7 @@
 
 .profile-page-middle {
    display: flex;
+   justify-content: center;
 }
 
 .space-layer{
