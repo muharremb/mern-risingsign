@@ -232,8 +232,8 @@ function SignupForm () {
                 <label htmlFor='birth-time-input'>{birthTimeError !== "" && birthTime !== "" ? birthTimeError : "time of birth"}</label>
               </div>
               <div className='sign-input-container'>
-                <label>Sun Sign:
-                  <select id="sun-sign-selector" className="input-container sign-selector" defaultValue="def" onChange={handleSun}>
+                <label className='sign-selector-label'>Sun Sign:
+                  <select id="sun-sign-selector" className="input-container-sign-selector" defaultValue="def" onChange={handleSun}>
                       <option value="def" disabled>...</option>
                       <option value="aries">Aries</option>
                       <option value="taurus">Taurus</option>
@@ -249,8 +249,8 @@ function SignupForm () {
                       <option value="pisces">Pisces</option>
                   </select>
                 </label>
-                <label>Moon Sign:
-                  <select id="moon-sign-selector" className="input-container sign-selector" defaultValue="def" onChange={handleMoon}>
+                <label className='sign-selector-label'>Moon Sign:
+                  <select id="moon-sign-selector" className="input-container-sign-selector" defaultValue="def" onChange={handleMoon}>
                       <option value="def" disabled>...</option>
                       <option value="aries">Aries</option>
                       <option value="taurus">Taurus</option>
@@ -266,8 +266,8 @@ function SignupForm () {
                       <option value="pisces">Pisces</option>
                   </select>
                 </label>
-                <label>Rising Sign:
-                  <select id="rising-sign-selector" className="input-container sign-selector" defaultValue="def" onChange={handleRising}>
+                <label className='sign-selector-label'>Rising Sign:
+                  <select id="rising-sign-selector" className="input-container-sign-selector" defaultValue="def" onChange={handleRising}>
                       <option value="def" disabled>...</option>
                       <option value="aries">Aries</option>
                       <option value="taurus">Taurus</option>
@@ -296,11 +296,11 @@ function SignupForm () {
           </div>
 
           <div className='user-build-lower'>
-            {currentField === "email-and-password-input" && <><BackButton type={"button"} handleClick={backClick}/> && <ContinueButton type={"submit"} text="Sign Up" disabled={!email || !password || password !== password2}/></>}
+            {currentField === "email-and-password-input" && <><BackButton type={"button"} handleClick={backClick}/><ContinueButton type={"submit"} text="Sign Up" disabled={!email || !password || password !== password2}/></>}
 
             {currentField === "name-input" && <ContinueButton type={"button"} handleClick={continueClickName} disabled={!name}/>}
 
-            {currentField === "birth-info-input" && <><BackButton type={"button"} handleClick={backClick}/> && <ContinueButton type={"submit"} handleClick={continueClickBirthInfo} disabled={!birthDate || !birthTime}/></>}
+            {currentField === "birth-info-input" && <><BackButton type={"button"} handleClick={backClick}/> <ContinueButton type={"submit"} handleClick={continueClickBirthInfo} disabled={!birthDate || !birthTime}/></>}
 
           </div>
         </div>

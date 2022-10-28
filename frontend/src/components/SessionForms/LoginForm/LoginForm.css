@@ -2,6 +2,10 @@
 
 }
 
+.login-page > * {
+   transition: all .4s ease;
+}
+
 .login-page {
    background: rgb(113,14,143);
    background: radial-gradient(circle, rgba(113,14,143,1) 0%, rgba(74,23,84,1) 35%, rgba(14,0,20,1) 100%);
@@ -73,7 +77,7 @@
    z-index: 2;
    background-color: transparent;
    box-shadow: 0em 0em .2em .05em rgba(233, 193, 93), inset 0em 0em .2em .05em rgba(233, 193, 93);
-   animation: visible 3s;
+   /* animation: visible 3s; */
    /* box */
 }
 

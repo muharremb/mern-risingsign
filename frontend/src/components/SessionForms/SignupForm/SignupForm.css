@@ -1,3 +1,7 @@
+.login-page > * {
+   transition: all .4s ease;
+}
+
 .signup-page {
    background: rgb(113,14,143);
    background: radial-gradient(circle, rgba(113,14,143,1) 0%, rgba(74,23,84,1) 35%, rgba(14,0,20,1) 100%);
@@ -72,6 +76,14 @@
    /* box */
 }
 
+::-webkit-calendar-picker-indicator {
+   background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="15" viewBox="0 0 24 24"><path fill="%23bbbbbb" d="M20 3h-1V1h-2v2H7V1H5v2H4c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 18H4V8h16v13z"/></svg>');
+   
+   color: rgba(233, 193, 93);
+}
+
+
+
 .email-and-password-input {
    display: flex;
    flex-direction: column;
@@ -80,6 +92,14 @@
    gap: .6rem;
    /* justify-content: space-between; */
    /* align-items: flex-start; */
+}
+
+#sun-sign-selector {
+   width: 179px;
+}
+
+#moon-sign-selector {
+   width: 160px;
 }
 
 .user-build {
@@ -117,11 +137,24 @@
 .sign-input-container {
    all: unset;
    display: flex;
-   top: 30%;
+   /* top: 30%; */
+   justify-content: flex-start;
    flex-direction: column;
-   /* width: 17vw; */
    width: 300px;
-   align-items: space-between;
+   align-items: flex-start;
+}
+
+.input-container-sign-selector {
+   display: flex;
+   justify-content: flex-start;
+   color: rgba(233, 193, 93);
+   width: 143px;
+   border-top-style: hidden;
+   border-left-style: hidden;
+   border-right-style: hidden;
+   border-bottom-color: rgba(233, 193, 93, .8);
+   background-color: transparent;
+   transition: all .4s ease;
 }
 
 .sign-input-container > label {
@@ -130,6 +163,10 @@
    letter-spacing: .40em;
    justify-content: center;
    text-align: center;
+}
+
+.sign-selector-label {
+   word-wrap: unset;
 }
 
 .sign-input-container > select {
@@ -143,6 +180,7 @@
    background-color: transparent;
    transition: all .4s ease;
 }
+
 
 .input-container > label {
    display: flex;
@@ -197,7 +235,7 @@
    display: flex;
    justify-content: center;
    /* flex-grow: 1; */
-   gap: 3px;
+   gap: 45px;
    padding: 0px 40px 60px 40px;
 }
 
