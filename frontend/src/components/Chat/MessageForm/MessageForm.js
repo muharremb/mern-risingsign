@@ -26,21 +26,18 @@ function MessageForm () {
     setMsg("")
   }
 
-  useEffect(() => {
-    
-  })
+  const [dynamicMessagesList, setDynamicMessagesList] = useState('')
 
+  // const messagesList = Object.values(messages?.messagesByDate).map((message, i) => <li key={i} id={message._id} className="chat-message">{message.content}</li>)
 
-  const messagesList = Object.values(messages?.messagesByDate).map((message, i) => <li key={i} id={message._id} className="chat-message">{message.content}</li>)
-
-
+  const messagesList = Object.values(messages?.messagesByDate).map((message, i) => <li key={i} id={message._id} className="chat-message">{message.content}</li>).reverse()
 
   return (
     <>
     {user && <>
       <h5>{currentRoom}</h5>
       <div className="display-messages">
-        {messagesList ? messagesList : ["hi babe"]}
+        {messagesList}
       <div>
       </div></div>
       <form onSubmit={handleSubmit}>
