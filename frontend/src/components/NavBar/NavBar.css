@@ -53,7 +53,7 @@
 }
 
 .logo {
-   cursor: default;
+   cursor: pointer;
 }
 
 .signup-link, .login-link, .discover-link, .matches-link, .profile-link {

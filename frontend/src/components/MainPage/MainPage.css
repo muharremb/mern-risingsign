@@ -1,0 +1,68 @@
+.main-page-background {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   position: fixed;
+   background: radial-gradient(circle, rgba(113,14,143,1) 0%, rgba(74,23,84,1) 35%, rgba(14,0,20,1) 100%);
+   width: 100vw;
+   height: 100vh;
+}
+
+.main-page-logo-container {
+   display: flex;
+   position: absolute;
+   justify-content: center;
+   flex-grow: .5;
+   width: 600px;
+   height: 600px;
+   /* height: 500px; */
+   border-radius: 50%;
+   bottom: 15%;
+   margin: 0 auto;
+   border: 1px solid rgba(233, 193, 93);
+   background-color: black;
+   z-index: 2;
+   background-color: transparent;
+   box-shadow: 0em 0em .2em .05em rgba(233, 193, 93), inset 0em 0em .2em .05em rgba(233, 193, 93);
+   animation: visible 3s;
+   /* animation: visible 3s; */
+   /* box */
+}
+
+.big-letters {
+   font-family: cursive;
+   font-size: 20rem;
+   color: rgb(226, 171, 33, .2);
+   animation: visible 3s;
+}
+
+.space-layer{
+   position: fixed;
+   top: 50%;
+   left: 50%;
+   height: 3px;
+   width: 3px;
+   background-color: rgba(255, 255, 255, 0.65);
+   border-radius: 50%;
+   box-shadow: -16vw -19vh 3px 0px rgba(255, 255, 255, 0.65),27vw 13vh 1px 3px rgba(255, 255, 255, 0.65),41vw -38vh 0px 3px rgba(255, 255, 255, 0.65),23vw -5vh 1px 2px rgba(255, 255, 255, 0.65),9vw 40vh 0px 3px rgba(255, 255, 255, 0.65),-33vw -11vh 2px 2px rgba(255, 255, 255, 0.65),-36vw -37vh 1px 2px rgba(255, 255, 255, 0.65),9vw 48vh 0px 1px rgba(255, 255, 255, 0.65),29vw 35vh 1px 1px rgba(255, 255, 255, 0.65),11vw -5vh 1px 3px rgba(255, 255, 255, 0.65),-44vw -9vh 1px 3px rgba(255, 255, 255, 0.65),44vw -16vh 3px 1px rgba(255, 255, 255, 0.65),-9vw -47vh 0px 0px rgba(255, 255, 255, 0.65),27vw -27vh 1px 0px rgba(255, 255, 255, 0.65),24vw -31vh 2px 2px rgba(255, 255, 255, 0.65),2vw 21vh 1px 0px rgba(255, 255, 255, 0.65),-23vw -12vh 0px 2px rgba(255, 255, 255, 0.65),-18vw 25vh 0px 3px rgba(255, 255, 255, 0.65),50vw -25vh 3px 3px rgba(255, 255, 255, 0.65),49vw -47vh 3px 0px rgba(255, 255, 255, 0.65),18vw 7vh 0px 3px rgba(255, 255, 255, 0.65),-28vw -25vh 3px 3px rgba(255, 255, 255, 0.65),16vw 29vh 3px 0px rgba(255, 255, 255, 0.65),23vw 25vh 1px 3px rgba(255, 255, 255, 0.65),30vw 2vh 3px 1px rgba(255, 255, 255, 0.65),28vw 1vh 1px 0px rgba(255, 255, 255, 0.65),24vw 45vh 0px 1px rgba(255, 255, 255, 0.65),38vw -2vh 1px 0px rgba(255, 255, 255, 0.65),7vw -2vh 1px 3px rgba(255, 255, 255, 0.65),40vw -40vh 2px 1px rgba(255, 255, 255, 0.65),-23vw -7vh 0px 0px rgba(255, 255, 255, 0.65),-40vw -24vh 2px 0px rgba(255, 255, 255, 0.65);
+   animation-name: zoom;
+   animation-duration: 13s;
+   animation-timing-function: linear;
+   animation-iteration-count: infinite;
+}
+.space-layer2{
+   position: fixed;
+   top: 50%;
+   left: 50%;
+   height: 3px;
+   width: 3px;
+   background-color: rgba(255, 255, 255, 0.65);
+   border-radius: 50%;
+   box-shadow: -31vw -30vh 1px 2px rgba(255, 255, 255, 0.65),17vw 7vh 1px 3px rgba(255, 255, 255, 0.65),42vw -20vh 3px 1px rgba(255, 255, 255, 0.65),38vw 7vh 0px 0px rgba(255, 255, 255, 0.65),-6vw 2vh 0px 0px rgba(255, 255, 255, 0.65),40vw -21vh 0px 2px rgba(255, 255, 255, 0.65),32vw 43vh 2px 2px rgba(255, 255, 255, 0.65),50vw 20vh 0px 1px rgba(255, 255, 255, 0.65),30vw -25vh 1px 3px rgba(255, 255, 255, 0.65),1vw 33vh 1px 1px rgba(255, 255, 255, 0.65),46vw -11vh 2px 2px rgba(255, 255, 255, 0.65),-7vw -22vh 0px 1px rgba(255, 255, 255, 0.65),46vw -25vh 2px 2px rgba(255, 255, 255, 0.65),31vw -14vh 2px 2px rgba(255, 255, 255, 0.65),-25vw 6vh 2px 3px rgba(255, 255, 255, 0.65),-17vw -19vh 3px 2px rgba(255, 255, 255, 0.65),19vw 39vh 0px 0px rgba(255, 255, 255, 0.65),-17vw 40vh 3px 1px rgba(255, 255, 255, 0.65),-6vw -3vh 1px 1px rgba(255, 255, 255, 0.65),44vw -50vh 0px 0px rgba(255, 255, 255, 0.65),38vw 29vh 2px 2px rgba(255, 255, 255, 0.65),-7vw -21vh 1px 2px rgba(255, 255, 255, 0.65),-24vw -21vh 0px 1px rgba(255, 255, 255, 0.65),-32vw 36vh 2px 2px rgba(255, 255, 255, 0.65),-19vw 45vh 3px 2px rgba(255, 255, 255, 0.65),18vw -28vh 1px 3px rgba(255, 255, 255, 0.65),-19vw -34vh 3px 0px rgba(255, 255, 255, 0.65),11vw -39vh 1px 1px rgba(255, 255, 255, 0.65),49vw -24vh 1px 0px rgba(255, 255, 255, 0.65),-49vw -48vh 0px 2px rgba(255, 255, 255, 0.65),45vw 22vh 2px 1px rgba(255, 255, 255, 0.65),-2vw -42vh 1px 2px rgba(255, 255, 255, 0.65);
+   animation: delay 2s, zoom 13s linear 2s infinite;
+}
+
+.app-side-nav-bar {
+   visibility: hidden;
+   animation: visible;
+}
