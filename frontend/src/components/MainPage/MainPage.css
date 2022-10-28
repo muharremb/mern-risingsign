@@ -34,6 +34,7 @@
    font-size: 20rem;
    color: rgb(226, 171, 33, .2);
    animation: visible 3s;
+   margin-bottom: 45vh;
 }
 
 .space-layer{

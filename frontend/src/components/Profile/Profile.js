@@ -11,6 +11,8 @@ function Profile () {
   const dispatch = useDispatch();
   const currentUser = useSelector(state => state.session.user);
   const [ pic, setPic ] = useState("");
+  const [ bio, setBio ] = useState("");
+  const [ picGrid, setPicGrid ] = useState("");
 
   useEffect(() => {
       // dispatch(getOnePic(currentUser._id))
@@ -39,7 +41,7 @@ function Profile () {
           </div>
         </div>
         <div className='name-tile'>
-          <h2>{currentUser.name.trim(" ")}</h2>
+          <h2>{currentUser.name.trim()}</h2>
         </div>
         <div className='profile-mid-bottom'>
           <UserBio user={currentUser} />
