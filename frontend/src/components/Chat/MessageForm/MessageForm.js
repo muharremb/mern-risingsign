@@ -1,6 +1,6 @@
 import './MessageForm.css'
 import { useSelector } from 'react-redux'
-import { useState, useContext } from 'react'
+import { useState, useContext, useEffect } from 'react'
 import { ChatContext } from '../../../context/chatContext'
 
 function MessageForm () {
@@ -9,11 +9,11 @@ function MessageForm () {
   const [msg, setMsg] = useState('');
   const { socket, messages, setMessages, currentRoom } = useContext(ChatContext);
 
+
   socket.off('room-messages').on('room-messages', (roomMessages) => {
     console.log("room messages bitch")
     console.log(roomMessages[0])
     console.log("room messages bitch")
-
     setMessages(roomMessages[0])
   })
 
@@ -26,17 +26,22 @@ function MessageForm () {
     setMsg("")
   }
 
-  // const messagesList = Object.values(messages.messagesByDate).map((message, i) => <li key={i} id={message._id}>{message.content}</li>)
+  useEffect(() => {
+    
+  })
+
+
+  const messagesList = Object.values(messages?.messagesByDate).map((message, i) => <li key={i} id={message._id} className="chat-message">{message.content}</li>)
+
+
 
   return (
     <>
     {user && <>
-      <h1>{currentRoom}</h1>
+      <h5>{currentRoom}</h5>
       <div className="display-messages">
-      {"messagesList"}
-
+        {messagesList ? messagesList : ["hi babe"]}
       <div>
-
       </div></div>
       <form onSubmit={handleSubmit}>
         <input type="text"

@@ -1,6 +1,11 @@
 .display-messages {
-  height: 30vh;
+  height: 10vh;
   width: 100vw;
-  border: 1px solid blue;
+  border: 1px solid red;
   overflow-y: scroll;
+  list-style: none;
+}
+
+.chat-message {
+  border: 1px solid green;
 }
