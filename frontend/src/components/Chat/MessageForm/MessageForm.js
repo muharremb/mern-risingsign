@@ -4,7 +4,7 @@ import { useState, useContext, useEffect } from 'react'
 import { ChatContext } from '../../../context/chatContext'
 
 function MessageForm () {
-  // const user = useSelector(state => state.session.user)
+
 
   const user = useSelector(state => state.session.user)
   const userName = useSelector(state => state.session.user.name)
@@ -22,7 +22,7 @@ function MessageForm () {
   })
 
   const handleSubmit = (e) => {
-    e.preventDefault( )
+    e.preventDefault()
     const dateObj = new Date();
     const date = dateObj.getDate();
     const time = dateObj.getHours() + ":" + dateObj.getMinutes() + ":" + dateObj.getSeconds();
@@ -32,9 +32,10 @@ function MessageForm () {
 
   const [dynamicMessagesList, setDynamicMessagesList] = useState('')
 
-  // const messagesList = Object.values(messages?.messagesByDate).map((message, i) => <li key={i} id={message._id} className="chat-message">{message.content}</li>)
+  let messagesList = messages?.messagesByDate ? Object.values(messages.messagesByDate) : null;
+  messagesList = messagesList?.map((message, i) => <li key={i} id={message._id} className="chat-message">{message.content}</li>)
 
-  const messagesList = Object.values(messages?.messagesByDate).map((message, i) => <li key={i} id={message._id} className="chat-message">{message.content}</li>).reverse()
+  // const messagesList = Object.values(messages?.messagesByDate).map((message, i) => <li key={i} id={message._id} className="chat-message">{message.content}</li>).reverse()
 
   return (
     <>
