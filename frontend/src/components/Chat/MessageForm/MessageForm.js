@@ -5,20 +5,24 @@ import { ChatContext } from '../../../context/chatContext'
 
 function MessageForm () {
 
+
   const user = useSelector(state => state.session.user)
+  const userName = useSelector(state => state.session.user.name)
+
+  // console.log(user)
   const [msg, setMsg] = useState('');
   const { socket, messages, setMessages, currentRoom } = useContext(ChatContext);
 
-
   socket.off('room-messages').on('room-messages', (roomMessages) => {
-    console.log("room messages bitch")
+    console.log("room messages!")
     console.log(roomMessages[0])
-    console.log("room messages bitch")
+    console.log(`user is: ${userName}`)
+    console.log("room messages!")
     setMessages(roomMessages[0])
   })
 
   const handleSubmit = (e) => {
-    e.preventDefault( )
+    e.preventDefault()
     const dateObj = new Date();
     const date = dateObj.getDate();
     const time = dateObj.getHours() + ":" + dateObj.getMinutes() + ":" + dateObj.getSeconds();
@@ -28,9 +32,10 @@ function MessageForm () {
 
   const [dynamicMessagesList, setDynamicMessagesList] = useState('')
 
-  // const messagesList = Object.values(messages?.messagesByDate).map((message, i) => <li key={i} id={message._id} className="chat-message">{message.content}</li>)
+  let messagesList = messages?.messagesByDate ? Object.values(messages.messagesByDate) : null;
+  messagesList = messagesList?.map((message, i) => <li key={i} id={message._id} className="chat-message">{message.content}</li>)
 
-  const messagesList = Object.values(messages?.messagesByDate).map((message, i) => <li key={i} id={message._id} className="chat-message">{message.content}</li>).reverse()
+  // const messagesList = Object.values(messages?.messagesByDate).map((message, i) => <li key={i} id={message._id} className="chat-message">{message.content}</li>).reverse()
 
   return (
     <>
@@ -38,9 +43,13 @@ function MessageForm () {
       <h5>{currentRoom}</h5>
       <div className="display-messages">
         {messagesList}
-      <div>
-      </div></div>
-      <form onSubmit={handleSubmit}>
+      </div>
+      <h1>from: {userName}</h1>
+      {/* </div> */}
+      {/* </div> */}
+
+      <form onSubmit={handleSubmit}
+        className="message-form">
         <input type="text"
         placeholder="be nice"
         value={msg}
