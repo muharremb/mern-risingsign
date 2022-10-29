@@ -2,12 +2,16 @@ import './MainPage.css';
 
 function MainPage() {
     return (
-      <>
-        <p>Rising Sign MainPage Component</p>
-        <footer>
-          Copyright &copy; 2022
-        </footer>
-      </>
+      <div className="main-page-background">
+        <div className="space-layer"></div>
+        <div className="space-layer2"></div>
+        <div className="main-logo">
+          <p className='big-letters'>Rising Sign</p>
+        </div>
+        <div className="main-page-logo-container">
+          
+        </div>
+      </div>
     );
   }
   

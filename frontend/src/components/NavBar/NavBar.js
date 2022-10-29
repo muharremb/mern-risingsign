@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import './NavBar.css';
 import { getCurrentUser, logout } from '../../store/session';
@@ -8,6 +8,18 @@ function NavBar () {
   const loggedIn = useSelector(state => !!state.session.user);
   const loggedInPic = useSelector(state => state.session.user ? state.session.user.profileImageURL : "");
   const dispatch = useDispatch();
+
+  const homePageRedirect = () => {
+    if (!loggedIn) {
+      return (
+        <Link to="/" className='logo'>Rising Sign</Link>
+      )
+    } else {
+      return (
+        <div className='logo'>Rising Sign</div>
+      )
+    }
+  }
 
   useEffect(() => {
     dispatch(getCurrentUser());
@@ -48,7 +60,7 @@ function NavBar () {
   return (
     <div className='navbar'>
       <div className='navbar-left'>
-        <div className='logo'>Rising Sign</div>
+        {homePageRedirect()}
       </div>
         { getLinks() }
       <div className='navbar-right'>

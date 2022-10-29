@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect, useState } from 'react';
-import { fetchUser, likeUser } from '../../store/users';
+import { fetchUser, likeUser, unmatchUser } from '../../store/users';
 
 function UserCard({id}){
     const dispatch = useDispatch();
@@ -15,7 +15,6 @@ function UserCard({id}){
         dispatch(fetchUser(id));
     }, [dispatch]);
 
-<<<<<<< HEAD
     useEffect(() => {
         if(sessionUser.likes.includes(id) && sessionUser.likers.includes(id)) {
             setIsLiked(true)
@@ -24,10 +23,6 @@ function UserCard({id}){
             setIsLiked(true);
         }
     }, [dispatch, isLiked, isMatched]);
-=======
-    const user = useSelector(state => state.users[id])
-
->>>>>>> 976c7d1bfceb04cb59ddf60c401b2c4336e9dc58
 
     const handleLikeButtonClick = (e) => {
         setIsLiked(true);
@@ -35,6 +30,13 @@ function UserCard({id}){
             setIsMatched(true);
         }
         dispatch(likeUser(sessionUser._id, user._id));
+    }
+
+    const handleUnmatch = async (e) => {
+        await dispatch(unmatchUser(sessionUser._id, user._id));        
+        setIsLiked(false);
+        setIsMatched(false);
+        
     }
     
     if (!user) return null;
@@ -54,7 +56,9 @@ function UserCard({id}){
                 {user.horoscope.rising.label}: {user.horoscope.rising.Sign.key}
             </div>
             {isMatched && (
-                <div>MATCHED</div>
+                <div>MATCHED
+                    <button onClick={handleUnmatch}>Unmatch</button>
+                </div>
             )}
 
             {!isMatched && isLiked && (
