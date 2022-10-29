@@ -1,39 +1,47 @@
 import { useContext, useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-import { socket, ChatContext } from '../../context/chatContext'
+import {socket, ChatContext} from '../../../context/chatContext';
 import io from 'socket.io-client'
+import './Sidebar.css'
 
 function Sidebar () {
-
-  // const ENDPT = "http://localhost:5000"
   const user = useSelector(state => state.session.user);
 
-  const { setMembers, members, room, setCurrentRoom } = useContext(ChatContext)
+  const { setMembers, members, room, currentRoom, setCurrentRoom } = useContext(ChatContext)
 
   const userId = user ? user._id : 1;
   const [socketConnectecd, setSocketConnected] = useState(false);
 
+  const [storeRoom, setStoreRoom] = useState('')
+
   useEffect(() => {
     socket.emit("new-user")
     socket.off("new-user").on("new-user", (users) => {
-      setCurrentRoom('general')
-      socket.emit('join-room', 'general')
+      setCurrentRoom(storeRoom)
+      socket.emit('join-room', currentRoom)
       console.log(users)
       setMembers(users)
     })
     socket.on("connection", () => setSocketConnected(true))
   }, [])
 
-  const membersList = Object.values(members).map((member, i) => <li key={i} id={member.name} onClick={e=>setCurrentRoom(String(e.target.id))}>{member.name}</li>)
+  const joinRoom = (e, isPublic = true) => {
+    const room =String(e.target.id)
+    setCurrentRoom(room)
+    setStoreRoom(room)
+    socket.emit('join-room', room)
+  }
 
-
+  const membersList = Object.values(members).map((member, i) =>
+  <li key={i}
+  id={member._id}
+  onClick={joinRoom}>{member.name}</li>)
 
   return (
     <>
-      <h2>Available matches</h2>
-      <ul>{membersList}</ul>
+      <h3>Available matches</h3>
+      <ul className="nothing">{membersList}</ul>
     </>
-
   )
 }
 

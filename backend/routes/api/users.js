@@ -8,16 +8,7 @@ const {loginUser, restoreUser} = require('../../config/passport');
 const {isProduction} = require('../../config/keys');
 const validateRegisterInput = require('../../validations/register');
 const validateLoginInput = require('../../validations/login');
-// const { getUserPics } = require('./pics');
 
-/* GET users listing. */
-// router.get('/', async function(req, res, next) {
-//   // res.send('respond with a resource');
-//   const users = await User.find({}).exec();
-//   res.json({
-//     users: users
-//   });
-// });
 
 router.post('/likes', async (req, res, next) => {
   const liker = await User.findById(req.body.liker).exec();
@@ -31,6 +22,26 @@ router.post('/likes', async (req, res, next) => {
   ).exec();
   const updatedLikee = await User.findOneAndUpdate({_id: likee},
     {likers: previouslyLiked ? likee.likers : likee.likers.concat(req.body.liker)}, 
+    {new: true}
+  ).exec();
+
+  res.json({
+    liker: updatedLiker,
+    likee: updatedLikee
+  });
+});
+
+router.post('/unlikes', async (req, res, next) => {
+  const liker = await User.findById(req.body.liker).exec();
+  const likee = await User.findById(req.body.likee).exec();
+
+  const updatedLiker = await User.findOneAndUpdate({_id: liker},
+    {likes: liker.likes.filter(item => item !== req.body.likee) }, 
+    {new: true}
+
+  ).exec();
+  const updatedLikee = await User.findOneAndUpdate({_id: likee},
+    {likers: likee.likers.filter(item => item !== req.body.liker)}, 
     {new: true}
   ).exec();
 

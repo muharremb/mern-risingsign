@@ -11,10 +11,7 @@ import * as picActions from './store/pics';
 import jwtFetch from './store/jwt';
 
 
-const initialState = {
-  
-
-}
+const initialState = {}
 
 let store = configureStore(initialState);
 

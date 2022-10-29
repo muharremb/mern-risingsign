@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Switch } from 'react-router-dom';
 import { AuthRoute, ProtectedRoute } from './components/Routes/Routes';
+
 import MainPage from './components/MainPage/MainPage';
 import NavBar from './components/NavBar/NavBar';
 import LoginForm from './components/SessionForms/LoginForm/LoginForm';
@@ -14,7 +15,6 @@ import Matches from './components/Matches/Matches';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
-
   const dispatch = useDispatch();
 
   const loadPage = () => {
@@ -41,8 +41,11 @@ function App() {
       <AuthRoute exact path="/" component={MainPage} />
       <AuthRoute exact path="/login" component={LoginForm} />
       <AuthRoute exact path="/signup" component={SignupForm} />
+
       <ProtectedRoute exact path="/profile" component={Profile} />
-      <ProtectedRoute exact path="/feeds" component={Feeds} />
+      <ProtectedRoute exact path="/discover" component={Discover} />
+      <ProtectedRoute exact path="/chat" component={Chat} />
+      <ProtectedRoute exact path="/matches" component={Matches} />
 
     </Switch>
     </>
