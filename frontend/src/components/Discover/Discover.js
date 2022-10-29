@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { fetchUser, fetchUsers } from '../../store/users';
 import UserCard from '../UserCard/UserCard';
 import { getCurrentUser } from '../../store/session';
+import './Discover.css';
 
 function Discover () {
     const [filter, setFilter] = useState('all');
@@ -24,9 +25,9 @@ function Discover () {
     }
 
     return (
-        <>
-            <h2>Users Index</h2>
-            <form >
+        <div id="discover-container">
+            <h1 className="heading" >Discover</h1>
+            <form className="page-filter">
                 <legend>Filter users by their Sun sign:</legend>
                 <select id="user-feed-filter" className="user-feed-filter-dropdown" defaultValue="all" onChange={handleFilter}>
                     <option value="all">All</option>
@@ -45,12 +46,13 @@ function Discover () {
                 </select>
                 {/* <button type="submit">Save</button> */}
             </form>
-            {users[0] && users.map((user) => {
-                if (('all' === filter || user.horoscope.sun.Sign.key === filter) && user._id !== sessionUser._id){
-                    return <UserCard id={user._id} />
-                }
-            })}
-        </>
+            <div id="user-card-container">
+                {users[0] && users.map((user) => {
+                    if (('all' === filter || user.horoscope.sun.Sign.key === filter) && user._id !== sessionUser._id){
+                        return <UserCard id={user._id} />
+                }})}
+            </div>
+        </div>
     )
 }
 
