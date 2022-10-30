@@ -6,25 +6,25 @@ import UserBio from './UserBio';
 import './Profile.css';
 import BioPics from './BioPics';
 import { useParams } from 'react-router-dom';
-import { fetchUser } from '../../store/users';
-
-
+import { fetchUser, fetchUsers } from '../../store/users';
 
 function Profile () {
   const dispatch = useDispatch();
   const {userId} = useParams();
-  const currentUser = useSelector(state => state.users[userId]);
-  debugger;
+  const currentUser = useSelector(state => state.users[userId] ? state.users[userId] : '');
 
+  // debugger;
+ 
   const restoreUser = async () => {
     await dispatch(fetchUser(userId));
+    // await dispatch(fetchUsers());
   }
+
   if (!currentUser){
     restoreUser();
+    // dispatch(fetchUser(userId));
   }
-
-
-
+  
   const [ pic, setPic ] = useState("");
   const [ bio, setBio ] = useState("");
   const [ picGrid, setPicGrid ] = useState("");
@@ -38,10 +38,12 @@ function Profile () {
     }))
   }
 
+
   if(!currentUser){
     return null
   }
-
+ 
+  // console.log('currentUser ', currentUser)
   return (
     <>
       <div className='profile-background'></div>

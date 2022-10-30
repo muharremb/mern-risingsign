@@ -32,7 +32,7 @@ export const updateBio = (userId, bio) => async dispatch => {
 }
 
 export const fetchUser = (userId) => async dispatch => {
-    const res = await jwtFetch(`api/users/${userId}`);
+    const res = await jwtFetch(`/api/users/${userId}`);
     const user = await res.json();
     dispatch(receiveUser(user));
 }
