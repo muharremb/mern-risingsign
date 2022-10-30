@@ -42,7 +42,7 @@ function App() {
       <AuthRoute exact path="/login" component={LoginForm} />
       <AuthRoute exact path="/signup" component={SignupForm} />
 
-      <ProtectedRoute exact path="/profile" component={Profile} />
+      <ProtectedRoute exact path="/profile/:userId" component={Profile} />
       <ProtectedRoute exact path="/discover" component={Discover} />
       <ProtectedRoute exact path="/chat" component={Chat} />
       <ProtectedRoute exact path="/matches" component={Matches} />

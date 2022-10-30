@@ -5,19 +5,29 @@ import { getOnePic, uploadPic } from '../../store/pics';
 import UserBio from './UserBio';
 import './Profile.css';
 import BioPics from './BioPics';
+import { useParams } from 'react-router-dom';
+import { fetchUser } from '../../store/users';
 
 
 
 function Profile () {
   const dispatch = useDispatch();
-  const currentUser = useSelector(state => state.session.user);
+  const {userId} = useParams();
+  const currentUser = useSelector(state => state.users[userId]);
+  debugger;
+
+  const restoreUser = async () => {
+    await dispatch(fetchUser(userId));
+  }
+  if (!currentUser){
+    restoreUser();
+  }
+
+
+
   const [ pic, setPic ] = useState("");
   const [ bio, setBio ] = useState("");
   const [ picGrid, setPicGrid ] = useState("");
-
-  useEffect(() => {
-      // dispatch(getOnePic(currentUser._id))
-  })
 
   const handleSubmit = e => {
     e.preventDefault();
@@ -26,6 +36,10 @@ function Profile () {
       pic,
       uploaderId: currentUser._id
     }))
+  }
+
+  if(!currentUser){
+    return null
   }
 
   return (

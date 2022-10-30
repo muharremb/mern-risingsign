@@ -1,6 +1,6 @@
 .display-messages {
   height: 30vh;
-  width: 100vw;
+  width: 30vw;
   border: 1px solid red;
   overflow-y: scroll;
   list-style: none;
