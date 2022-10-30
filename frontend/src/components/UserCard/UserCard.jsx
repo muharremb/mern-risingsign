@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect, useState } from 'react';
 import { fetchUser, likeUser, unmatchUser } from '../../store/users';
+import './UserCard.css'
 
 function UserCard({id}){
     const dispatch = useDispatch();
@@ -43,31 +44,35 @@ function UserCard({id}){
     if (!sessionUser) return null;
 
     return (
-        <div style={{"border":"1px solid red", "borderRadius":"8px", "padding": "8px"}}>
-            <h1>{user.name}</h1><br/>
-            <img style={{"maxWidth":"50px"}} src={user.profileImageURL} alt="Profile Image"/>
-            <div className="user-card-sign sun-sign">
-                {user.horoscope.sun.label}: {user.horoscope.sun.Sign.key}
+        <div className="user-card">
+            <div className="user-card-left">
+                <h1>{user.name}</h1><br/>
+                <img style={{"maxWidth":"50px"}} src={user.profileImageURL} alt="Profile Image"/>
             </div>
-            <div className="user-card-sign moon-sign">
-                {user.horoscope.moon.label}: {user.horoscope.moon.Sign.key}
-            </div>
-            <div className="user-card-sign rising-sign">
-                {user.horoscope.rising.label}: {user.horoscope.rising.Sign.key}
-            </div>
-            {isMatched && (
-                <div>MATCHED
-                    <button onClick={handleUnmatch}>Unmatch</button>
+            <div className="user-card-right">
+                <div className="user-card-sign sun-sign">
+                    <span className="user-card-label">{user.horoscope.sun.label}:</span> {user.horoscope.sun.Sign.key}
                 </div>
-            )}
+                <div className="user-card-sign moon-sign">
+                    <span className="user-card-label">{user.horoscope.moon.label}:</span> {user.horoscope.moon.Sign.key}
+                </div>
+                <div className="user-card-sign rising-sign">
+                    <span className="user-card-label">{user.horoscope.rising.label}:</span> {user.horoscope.rising.Sign.key}
+                </div>
+                {isMatched && (
+                    <div>MATCHED
+                        <button onClick={handleUnmatch}>Unmatch</button>
+                    </div>
+                )}
 
-            {!isMatched && isLiked && (
-                <div>You liked {user.name}</div>
-            )}
-            {!isMatched && !isLiked && sessionUser._id !== user._id && (
-                <button onClick={handleLikeButtonClick}>Like</button>
-            )}
-        </div>
+                {!isMatched && isLiked && (
+                    <div>You liked {user.name}</div>
+                )}
+                {!isMatched && !isLiked && sessionUser._id !== user._id && (
+                    <button onClick={handleLikeButtonClick}>Like</button>
+                )}
+                </div>
+            </div>
     )
 }
 

@@ -28,7 +28,7 @@ function Matches () {
         <div className="matches-container">
             <h2>{sessionUser.name}'s Matches</h2>
             <div className="matches-left">
-                <form >
+                <form className="page-filter">
                     <legend>Filter users by their Sun sign:</legend>
                     <select id="user-feed-filter" className="user-feed-filter-dropdown" defaultValue="all" onChange={handleFilter}>
                         <option value="all">All</option>
