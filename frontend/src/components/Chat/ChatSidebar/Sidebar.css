@@ -1,5 +1,6 @@
 .matches-list {
   list-style: none;
+  width: 10vw;
 }
 
 .matches-list li {

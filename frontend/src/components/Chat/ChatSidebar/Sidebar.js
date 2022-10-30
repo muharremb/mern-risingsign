@@ -10,7 +10,7 @@ function Sidebar () {
   const { setMembers, members, room, currentRoom, setCurrentRoom } = useContext(ChatContext)
 
   const userId = user ? user._id : 1;
-  const [socketConnectecd, setSocketConnected] = useState(false);
+  const [socketConnected, setSocketConnected] = useState(false);
 
   const [storeRoom, setStoreRoom] = useState('')
 
@@ -33,9 +33,12 @@ function Sidebar () {
   }
 
   const membersList = Object.values(members).map((member, i) =>
-  <li key={i}
-  id={member._id}
-  onClick={joinRoom}>{member.name}</li>)
+  {if(user.likes.includes(member._id) && user.likers.includes(member._id)){
+    return <li key={i}
+    id={member._id}
+    onClick={joinRoom}>{member.name}</li>
+  }}
+  )
 
   return (
     <>

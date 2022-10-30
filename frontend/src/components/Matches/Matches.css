@@ -1,12 +1,24 @@
 .matches-container {
+    display: flex;
+    flex-wrap: wrap;
     background-color: #510e6f;
+    min-height: 90vh;
     height: 100%;
     width: 100%;
     padding-bottom: 50px;
-    margin-top: -1%;
+    margin-top: -4%;
+    padding-top: 2%;
     padding-left: 3%;
     color: #d3a02099;
-    font-family:'Gill Sans';
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+
+.heading {
+    font-size: 3rem;
+    margin-bottom: 0;
+    font-weight: bold;
+    margin: 3% 0 0 0;
 }
 
 .page-filter {
@@ -16,18 +28,22 @@
     width: 35%;
     margin-bottom: 2%;
     font-size: 16px;
+    /* margin-right: 65%; */
 }
 
-.matches-container h2{
+/* .matches-container h2{
     min-width: 100%;
-}
+} */
 
 .matches-right{
-    min-height: 100%;
-    min-width: 30%;
-    background-color: mediumpurple;
+    display: flex;
+    width: 40%;
+    border: 1px solid red;
+    /* background-color: mediumpurple; */
 }
 
 .matches-left{
-    min-width:70%;
+    display: flex;
+    flex-direction: column;
+    width: 50%;
 }

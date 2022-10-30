@@ -6,7 +6,8 @@ import { useEffect } from 'react';
 
 function NavBar () {
   const loggedIn = useSelector(state => !!state.session.user);
-  const loggedInPic = useSelector(state => state.session.user ? state.session.user.profileImageURL : "");
+  const currentUser = useSelector(state => state.session.user);
+  const loggedInPic = currentUser.profileImageURL;
   const dispatch = useDispatch();
 
   const homePageRedirect = () => {
@@ -43,7 +44,7 @@ function NavBar () {
       return (
         <div className='navbar-mid'>
           <Link className="discover-link" to={'/discover'}>discover</Link>
-            <Link className="profile-link" to={'/profile'}>profile</Link>
+            <Link className="profile-link" to={`/profile/${currentUser._id}`}>profile</Link>
             <Link className="matches-link" to={'/matches'}>matches</Link>
         </div>
       );

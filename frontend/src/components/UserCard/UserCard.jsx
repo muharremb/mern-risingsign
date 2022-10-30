@@ -44,7 +44,7 @@ function UserCard({id}){
     if (!sessionUser) return null;
 
     return (
-        <div className="user-card">
+        <Link to={`/profile/${user._id}`} className="user-card">
             <div className="user-card-left">
                 <h1>{user.name}</h1><br/>
                 <img style={{"maxWidth":"50px"}} src={user.profileImageURL} alt="Profile Image"/>
@@ -72,7 +72,7 @@ function UserCard({id}){
                     <button onClick={handleLikeButtonClick}>Like</button>
                 )}
                 </div>
-            </div>
+            </Link>
     )
 }
 

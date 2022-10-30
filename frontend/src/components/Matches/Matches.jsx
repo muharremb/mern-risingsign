@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { fetchUser, fetchUsers } from '../../store/users';
 import UserCard from '../UserCard/UserCard';
 import './Matches.css';
+import Chat from '../Chat/Chat';
 
 function Matches () {
     const [filter, setFilter] = useState('all');
@@ -26,8 +27,7 @@ function Matches () {
 
     return (
         <div className="matches-container">
-            <h2>{sessionUser.name}'s Matches</h2>
-            <div className="matches-left">
+            <span className="heading">{sessionUser.name}'s Matches</span>
                 <form className="page-filter">
                     <legend>Filter users by their Sun sign:</legend>
                     <select id="user-feed-filter" className="user-feed-filter-dropdown" defaultValue="all" onChange={handleFilter}>
@@ -46,13 +46,16 @@ function Matches () {
                         <option value="pisces">Pisces</option>
                     </select>
                 </form>
+            <div className="matches-left">
                 {users[0] && users.map((user) => {
                     if (('all' === filter || user.horoscope.sun.Sign.key === filter) && (sessionUser.likes.includes(user._id) && sessionUser.likers.includes(user._id))){
                         return <UserCard id={user._id} />
                     }
                 })}
             </div>
-            <div className="matches-right"></div>
+            <div className="matches-right">
+                <Chat />
+            </div>
         </div>
     )
 }
