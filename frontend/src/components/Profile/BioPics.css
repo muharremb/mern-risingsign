@@ -1,0 +1,10 @@
+.bio-pics-holder{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+#bio-pics-switch{
+    width: 100px;
+    border-radius: 8px;
+}

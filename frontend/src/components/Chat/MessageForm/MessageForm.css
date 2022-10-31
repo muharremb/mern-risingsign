@@ -1,6 +1,22 @@
 .display-messages {
   height: 30vh;
-  width: 100vw;
-  border: 1px solid blue;
+  width: 30vw;
+  border: 1px solid red;
   overflow-y: scroll;
+  list-style: none;
+}
+
+.chat-message {
+  border: 1px solid yellow;
+}
+
+.chat-message-current-user {
+  border: 1px solid purple;
+}
+
+
+.message-form {
+  margin-bottom: 100px;
+  position: absolute;
+  height: 90%;
 }

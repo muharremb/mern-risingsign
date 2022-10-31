@@ -1,0 +1,9 @@
+.matches-list {
+  list-style: none;
+  width: 10vw;
+}
+
+.matches-list li {
+  border: 1px solid gold;
+  width: 10vw;
+}

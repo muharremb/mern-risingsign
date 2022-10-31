@@ -5,8 +5,13 @@ import { getCurrentUser, logout } from '../../store/session';
 import { useEffect } from 'react';
 
 function NavBar () {
+
   const loggedIn = useSelector(state => !!state.session.user);
-  const loggedInPic = useSelector(state => state.session.user ? state.session.user.profileImageURL : "");
+  
+  // MB added ? operator to both useSelector and current user check
+  const currentUser = useSelector(state => state.session.user ? state.session.user:{});
+  const loggedInPic = currentUser.profileImageURL ? currentUser.profileImageURL:null;
+  
   const dispatch = useDispatch();
 
   const homePageRedirect = () => {
@@ -43,7 +48,7 @@ function NavBar () {
       return (
         <div className='navbar-mid'>
           <Link className="discover-link" to={'/discover'}>discover</Link>
-            <Link className="profile-link" to={'/profile'}>profile</Link>
+            <Link className="profile-link" to={`/profile/${currentUser._id}`}>profile</Link>
             <Link className="matches-link" to={'/matches'}>matches</Link>
         </div>
       );
@@ -56,6 +61,8 @@ function NavBar () {
       );
     }
   }
+  // MB added null check 
+  if(!currentUser) return null;
 
   return (
     <div className='navbar'>

@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { updateBio } from '../../store/users';
+import './UserBio.css'
 
 function UserBio ({user}) {
 
@@ -39,12 +40,14 @@ function UserBio ({user}) {
           
         </div>
       </div>
+
         {!editing &&
         <>
             <div className="user-bio">
+                <span>About Me</span><br/>
                 {user.bio || 'Nothing yet!'}
+                <button onClick={startUpdate}>Edit Bio</button>
             </div>
-            <button onClick={startUpdate}>Edit Bio</button>
         </>
         }
 

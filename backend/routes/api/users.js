@@ -8,16 +8,7 @@ const {loginUser, restoreUser} = require('../../config/passport');
 const {isProduction} = require('../../config/keys');
 const validateRegisterInput = require('../../validations/register');
 const validateLoginInput = require('../../validations/login');
-// const { getUserPics } = require('./pics');
 
-/* GET users listing. */
-// router.get('/', async function(req, res, next) {
-//   // res.send('respond with a resource');
-//   const users = await User.find({}).exec();
-//   res.json({
-//     users: users
-//   });
-// });
 
 router.post('/likes', async (req, res, next) => {
   const liker = await User.findById(req.body.liker).exec();
@@ -40,11 +31,31 @@ router.post('/likes', async (req, res, next) => {
   });
 });
 
+router.post('/unlikes', async (req, res, next) => {
+  const liker = await User.findById(req.body.liker).exec();
+  const likee = await User.findById(req.body.likee).exec();
+
+  const updatedLiker = await User.findOneAndUpdate({_id: liker},
+    {likes: liker.likes.filter(item => item !== req.body.likee) }, 
+    {new: true}
+
+  ).exec();
+  const updatedLikee = await User.findOneAndUpdate({_id: likee},
+    {likers: likee.likers.filter(item => item !== req.body.liker)}, 
+    {new: true}
+  ).exec();
+
+  res.json({
+    liker: updatedLiker,
+    likee: updatedLikee
+  });
+});
+
 router.post('/register', validateRegisterInput, async (req, res, next) => {
   const user = await User.findOne({
     email: req.body.email
   });
-  
+
   if(user) {
     const err = new Error("Validation Error");
     err.statusCode = 400;
@@ -96,7 +107,7 @@ router.post('/register', validateRegisterInput, async (req, res, next) => {
       profilePic = "https://mern-rising-sign-profile-pics.s3.amazonaws.com/virgo_default.png";
       break;
   }
-  
+
   const newUser = new User({
     name: req.body.name,
     email: req.body.email,
@@ -108,10 +119,12 @@ router.post('/register', validateRegisterInput, async (req, res, next) => {
     horoscope: req.body.horoscope,
     likes: [],
     likers: [],
-    profileImageURL: profilePic
+    profileImageURL: profilePic,
+    status: 'online',
+    newMessages: {}
     
   });
-  
+
   bcrypt.genSalt(10, (err, salt) => {
     if (err) throw err;
     bcrypt.hash(req.body.password, salt, async (err, hashedPassword) => {
@@ -160,7 +173,9 @@ router.get('/current', restoreUser, (req, res) => {
     // birthLocation: req.user.birthLocation,
     horoscope: req.user.horoscope,
     likes: req.user.likes,
-    profileImageURL: req.user.profileImageURL
+    profileImageURL: req.user.profileImageURL,
+    status: 'online',
+    newMessages: {}
   });
 });
 
@@ -178,7 +193,9 @@ router.get('/index', async function(req, res, next) {
       // birthLocation: user.birthLocation,
       horoscope: user.horoscope,
       likes: user.likes,
-      profileImageURL: user.profileImageURL
+      profileImageURL: user.profileImageURL,
+      status: 'online',
+      newMessages: {}
     })
   })
   res.json(users_clean);
@@ -207,7 +224,9 @@ router.get('/:userId', async function(req, res, next) {
     // birthLocation: user.birthLocation,
     horoscope: user.horoscope,
     likes: user.likes,
-    profileImageURL: user.profileImageURL
+    profileImageURL: user.profileImageURL,
+    status: 'online',
+    newMessages: {}
   });
 });
 

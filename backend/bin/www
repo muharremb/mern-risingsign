@@ -3,103 +3,160 @@
 /**
  * Module dependencies.
  */
-
-var app = require('../app');
-var debug = require('debug')('backend:server');
-const mongoose = require('mongoose');
-const {mongoURI: db} = require('../config/keys');
-
-// const debug = require('debug');
-// const serverLogger = debug('backend:server');
-// const dbLogger = debug('backend:mongodb');
-
-var http = require('http');
-
-/**
- * Get port from environment and store in Express.
- */
-
-var port = normalizePort(process.env.PORT || '5000');
-app.set('port', port);
-
-/**
- * Create HTTP server.
- */
-
-var server = http.createServer(app);
-
-/**
- * Listen on provided port, on all network interfaces.
- */
- mongoose
- .connect(db, { useNewUrlParser: true })
- .then(() => {
-  debug("Connected to MongoDB successfully");
-  console.log(`listening to port ${port}`)
-
-  server.listen(port);
- })
- .catch(err => debug(err));
-
-server.on('error', onError);
-server.on('listening', onListening);
-
-/**
- * Normalize a port into a number, string, or false.
- */
-
-function normalizePort(val) {
-  var port = parseInt(val, 10);
-
-  if (isNaN(port)) {
-    // named pipe
-    return val;
-  }
-
-  if (port >= 0) {
-    // port number
-    return port;
-  }
-
-  return false;
-}
-
-/**
- * Event listener for HTTP server "error" event.
- */
-
-function onError(error) {
-  if (error.syscall !== 'listen') {
-    throw error;
-  }
-
-  var bind = typeof port === 'string'
-    ? 'Pipe ' + port
-    : 'Port ' + port;
-
-  // handle specific listen errors with friendly messages
-  switch (error.code) {
-    case 'EACCES':
-      console.error(bind + ' requires elevated privileges');
-      process.exit(1);
-      break;
-    case 'EADDRINUSE':
-      console.error(bind + ' is already in use');
-      process.exit(1);
-      break;
-    default:
-      throw error;
-  }
-}
-
-/**
- * Event listener for HTTP server "listening" event.
- */
-
-function onListening() {
-  var addr = server.address();
-  var bind = typeof addr === 'string'
-    ? 'pipe ' + addr
-    : 'port ' + addr.port;
-  debug('Listening on ' + bind);
-}
+ const User = require('../models/User')
+ const Message = require('../models/Message')
+ const app = require('../app');
+ var debug = require('debug')('backend:server');
+ const mongoose = require('mongoose');
+ const {mongoURI: db} = require('../config/keys');
+ 
+ 
+ var http = require('http');
+ 
+ /**
+  * Get port from environment and store in Express.
+  */
+ 
+ const port = normalizePort(process.env.PORT || '5000');
+ app.set('port', port);
+ 
+ /**
+  * Create HTTP server.
+  */
+ 
+ const server = http.createServer(app);
+ 
+ let chatServer
+ /**
+  * Listen on provided port, on all network interfaces.
+  */
+  mongoose
+  .connect(db, { useNewUrlParser: true })
+  .then(() => {
+   debug("Connected to MongoDB successfully");
+   chatServer = server.listen(port, () => {
+     console.log(`socket server is listening ;)`);
+     console.log(`CHAT SERVER:${chatServer} `);
+     setUpChatServer();
+   })
+  })
+  .catch(err => debug(err));
+ 
+ 
+  app.get('/rooms', (req, res) => {
+   res.json(rooms)
+  })
+ 
+  const getMessagesFromRoom = async (room) => {
+   let roomMessages = await Message.aggregate([
+     {$match: {to: room}},
+     {$group: {_id: '$date', messagesByDate: {$push: '$$ROOT'}}}
+   ])
+   return roomMessages;
+ }
+ const setUpChatServer = () => {
+   const io = require('socket.io')(chatServer, {
+     pingTimeout: 600000,
+     cors: {
+       origin: 'http://localhost:3000'
+     }
+   })
+ 
+   io.on('connection', (socket) => {
+     console.log("connected to the socket slut")
+ 
+     socket.on('new-user', async () => {
+       const users = await User.find({});
+       io.emit('new-user', users)
+     })
+ 
+     socket.on('join-room', async (room) => {
+       console.log(room)
+       socket.join(room)
+       const roomMessages = await getMessagesFromRoom(room)
+       console.log(roomMessages)
+       socket.emit('room-messages', roomMessages)
+     })
+ 
+     socket.on("setup", (userId) => {
+       socket.join(userId);
+       console.log(`userId is motherfucking: ${userId}`)
+       socket.emit("connected");
+     })
+ 
+     socket.on('message-room', async (room, content, sender, time, date) => {
+       const newMessage = await Message.create({content, from: sender, time, date, to: room});
+       const allMessages = await getMessagesFromRoom(room);
+       console.log(content)
+ 
+       //send message to room
+       io.to(room).emit('room-messages', allMessages);
+       socket.broadcast.emit('notifications', room);
+     })
+ 
+   })
+ }
+ 
+ server.on('error', onError);
+ server.on('listening', onListening);
+ 
+ /**
+  * Normalize a port into a number, string, or false.
+  */
+ 
+ function normalizePort(val) {
+   var port = parseInt(val, 10);
+ 
+   if (isNaN(port)) {
+     // named pipe
+     return val;
+   }
+ 
+   if (port >= 0) {
+     // port number
+     return port;
+   }
+ 
+   return false;
+ }
+ 
+ /**
+  * Event listener for HTTP server "error" event.
+  */
+ 
+ function onError(error) {
+   if (error.syscall !== 'listen') {
+     throw error;
+   }
+ 
+   var bind = typeof port === 'string'
+     ? 'Pipe ' + port
+     : 'Port ' + port;
+ 
+   // handle specific listen errors with friendly messages
+   switch (error.code) {
+     case 'EACCES':
+       console.error(bind + ' requires elevated privileges');
+       process.exit(1);
+       break;
+     case 'EADDRINUSE':
+       console.error(bind + ' is already in use');
+       process.exit(1);
+       break;
+     default:
+       throw error;
+   }
+ }
+ 
+ /**
+  * Event listener for HTTP server "listening" event.
+  */
+ 
+ function onListening() {
+   var addr = server.address();
+   var bind = typeof addr === 'string'
+     ? 'pipe ' + addr
+     : 'port ' + addr.port;
+   debug('Listening on ' + bind);
+ }
+ 

@@ -4,19 +4,34 @@ import UserCard from '../UserCard/UserCard';
 import { getOnePic, uploadPic } from '../../store/pics';
 import UserBio from './UserBio';
 import './Profile.css';
-
-
+import BioPics from './BioPics';
+import { useParams } from 'react-router-dom';
+import { fetchUser, fetchUsers } from '../../store/users';
 
 function Profile () {
   const dispatch = useDispatch();
-  const currentUser = useSelector(state => state.session.user);
+  // const currentUser = useSelector(state => state.session.user);
+  // const [ pic, setPic ] = useState("");
+  // const [ bio, setBio ] = useState("");
+  // const [ picGrid, setPicGrid ] = useState("");
+  const {userId} = useParams();
+  const currentUser = useSelector(state => state.users[userId] ? state.users[userId] : '');
+
+  // debugger;
+ 
+  const restoreUser = async () => {
+    await dispatch(fetchUser(userId));
+    // await dispatch(fetchUsers());
+  }
+
+  if (!currentUser){
+    restoreUser();
+    // dispatch(fetchUser(userId));
+  }
+  
   const [ pic, setPic ] = useState("");
   const [ bio, setBio ] = useState("");
   const [ picGrid, setPicGrid ] = useState("");
-
-  useEffect(() => {
-      // dispatch(getOnePic(currentUser._id))
-  })
 
   const handleSubmit = e => {
     e.preventDefault();
@@ -27,6 +42,11 @@ function Profile () {
     }))
   }
 
+
+  if(!currentUser){
+    return null
+  }
+ 
   return (
     <>
       <div className='profile-background'></div>
@@ -44,7 +64,9 @@ function Profile () {
           <h2>{currentUser.name.trim()}</h2>
         </div>
         <div className='profile-mid-bottom'>
-          <UserBio user={currentUser} />
+
+          <BioPics user={currentUser}/>
+
           <form onSubmit={handleSubmit} encType="multipart/form-data">
 
             <input type="file" onChange={e => setPic(e.currentTarget.files[0])}></input>

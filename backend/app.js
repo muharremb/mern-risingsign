@@ -1,44 +1,121 @@
 const debug = require('debug');
-let express = require('express');
-let cookieParser = require('cookie-parser');
-let logger = require('morgan');
-
+const express = require('express');
+const cookieParser = require('cookie-parser');
+const logger = require('morgan');
 const csurf = require('csurf');
-const cors = require('cors');
 const { isProduction } = require('./config/keys');
-require('./models/User');
+const User = require('./models/User');
 require('./config/passport');
 const passport = require('passport');
-
-let usersRouter = require('./routes/api/users');
+const usersRouter = require('./routes/api/users');
 const csrfRouter = require('./routes/api/csrf');
 const picsRouter = require('./routes/api/pics');
 
 
-let app = express();
-
-
-// chat stuff
-const rooms = ['libra', 'pisces', 'crypto']
-const server = require('http').createServer(app)
-const PORT = 5000; // this this cool?
-
-const io = require('socket.io')(server, {
-  cors: { //calling cors explicitly
-    origin: 'http://localhost:3000', //is this cool?
-    methods: ['GET', 'POST']
-  }
-})
+const socketio = require('socket.io')
+const cors = require('cors');
+const app = express();
 
 app.use(logger('dev'));
+
+//chat stuff lets go
 app.use(express.urlencoded({ extended: true })); //changed to true for chat
 app.use(express.json());
+app.use(cors()) // should put this in conditional for !production?
+app.use('/usersChat', usersRouter)
+require('./bin/www')
+
+const server = require('http').createServer(app)
+const PORT = process.env.PORT || 5000
+
+
+//chat stuff lmk if we should refactor sorry guys
+
+
+
+// io.on('connection', (socket) => {
+
+//   socket.on('new-user', async () => {
+//     const members = await User.find();
+//     io.emit('new-user', members)
+//   })
+
+//   socket.on('join-room', async(room) => {
+//     socket.join(room);
+//     let roomMessages = await getLastMessagesFromRoom(room);
+//     roomMessages = sortRoomMessagesByDate(roomMessages)
+//     socket.emit('room-messages', roomMessages)
+//   })
+
+//   socket.on('message-room', async(room, content, sender, time, date) => {
+//     console.log('new-message', content)
+//     const newMessage = await Message.create({content, from: sender, time, date, to: room});
+//     let roomMessages = await getLastMessagesFromRoom(room);
+//     roomMessages = sortRoomMessagesByDate(roomMessages);
+
+//     //send message to room
+//     io.to(room).emit('room-messages', roomMessages);
+//     socket.broadcast.emit('notifications', room)
+//   })
+// })
+
+
+
 app.use(cookieParser());
 
 app.use(passport.initialize());
-if(!isProduction) {
-    app.use(cors());
-}
+// const app.use(express.json())
+
+// // chat stuff
+// const rooms = ['libra', 'pisces', 'crypto']
+
+// app.get('/rooms', (req, res) => {
+//   res.send(rooms)
+// }) // is this correct location ?
+
+
+
+// source: www.youtube.com/watch?v=qdZYHbg72WQ&t=11784s -->
+// const getLatestMessagesFromRoom = async (room) => {
+//   let roomMessages = await Message.aggregate([
+//     {$match: {to: room}},
+//     {$group: {_id: '$date'}, messagesByDate: {push: '$$ROOT'}}
+//   ])
+//   return roomMessages
+// }
+
+// const sortMessages = (messages) => {
+//   const sortedMessages = messages.sort((a, b) => {
+//     const dateA = a._id.split('/');
+//     const dateB = b._id.split('/');
+//     const dateAChron = dateA[2] + dateA[0] + dateA[1];
+//     const dateBChron = dateB[2] + dateB[0] + dateB[1];
+//     return dateAChron > dateBChron ? 1 : -1;
+//   })
+// }
+
+//socket conneciton!!!
+// io.on('connection', (socket) => {
+
+//   socket.on('new-user', async() => {
+//     console.log("is anything happening? ???????")
+//     const members = await User.find(); //what does User.find() do?
+//     io.emit('new-user', members)
+//   })
+
+//   socket.on('join-room', async(room) => {
+//     socket.join(room)
+//     const roomMessages = await getLatestMessagesFromRoom(room);
+//     const sortedMessages = sortMessages(roomMessages);
+//     socket.emit('room-messages', sortedMessages)
+//   })
+
+// })
+
+
+// if(!isProduction) { // need to add back in this check
+//     app.use(cors());
+// }
 
 app.use(
     csurf({
@@ -77,7 +154,6 @@ if (isProduction) {
   });
 }
 
-
 app.use((req, res, next) => {
     const err = new Error('Not Found');
     err.statusCode = 404;
@@ -98,5 +174,6 @@ app.use((err, req, res, next) => {
       errors: err.errors
     })
 });
+
 
 module.exports = app;
