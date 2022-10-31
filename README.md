@@ -1,3 +1,6 @@
+![ezgif com-gif-maker](https://user-images.githubusercontent.com/102887694/199009792-a2a3ffd5-6517-4693-ba45-f6969d9eba0b.gif)
+
+
 <h1 align="center">
 	Rising Sign
 </h1>
