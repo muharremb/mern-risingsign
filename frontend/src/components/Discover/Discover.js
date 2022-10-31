@@ -25,7 +25,7 @@ function Discover () {
     }
 
     return (
-        {/* <div className='discover-page'>
+        <>{/* <div className='discover-page'>
             <div className='discover-upper'>
                 <h2>Users Index</h2>
                 <form >
@@ -82,7 +82,7 @@ function Discover () {
                         return <UserCard id={user._id} />
                 }})}
             </div>
-        </div>
+        </div></>
     )
 }
 
