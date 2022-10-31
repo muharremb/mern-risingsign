@@ -63,7 +63,7 @@
    })
  
    io.on('connection', (socket) => {
-     console.log("connected to the socket slut")
+     console.log("connected to the socket!")
  
      socket.on('new-user', async () => {
        const users = await User.find({});

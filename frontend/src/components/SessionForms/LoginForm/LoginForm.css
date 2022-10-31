@@ -98,6 +98,7 @@
 }
 
 .input-container > input {
+   text-align: center;
    color: rgba(233, 193, 93);
    border-top-style: hidden;
    border-left-style: hidden;
