@@ -35,7 +35,12 @@ function UserBio ({user}) {
 
   return (
     <div className='user-bio'>
-        {/* Display Box */}
+      <div className='profile-buttons'>
+        <div className='profile-button-row'>
+          
+        </div>
+      </div>
+
         {!editing &&
         <>
             <div className="user-bio">

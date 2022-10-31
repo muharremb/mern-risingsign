@@ -1,3 +1,22 @@
+.discover-page {
+   display: flex;
+   /* justify-content: flex-start; */
+   /* position: relative; */
+   flex-direction: column;
+   bottom: 20vh;
+   width: 100vw;
+   height: 90vh;
+}
+
+.usercard {
+   display: flex;
+}
+
+.discover-upper {
+   height: 60vh;
+}
+
+
 #discover-container {
     background-color: #510e6f;
     min-height: 90vh;

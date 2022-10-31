@@ -25,6 +25,36 @@ function Discover () {
     }
 
     return (
+        {/* <div className='discover-page'>
+            <div className='discover-upper'>
+                <h2>Users Index</h2>
+                <form >
+                    <legend>Filter users by their Sun sign:</legend>
+                    <select id="user-feed-filter" className="user-feed-filter-dropdown" defaultValue="all" onChange={handleFilter}>
+                        <option value="all">All</option>
+                        <option value="aries">Aries</option>
+                        <option value="taurus">Taurus</option>
+                        <option value="gemini">Gemini</option>
+                        <option value="cancer">Cancer</option>
+                        <option value="leo">Leo</option>
+                        <option value="virgo">Virgo</option>
+                        <option value="libra">Libra</option>
+                        <option value="scorpio">Scorpio</option>
+                        <option value="sagittarius">Sagittarius</option>
+                        <option value="capricorn">Capricorn</option>
+                        <option value="aquarius">Aquarius</option>
+                        <option value="pisces">Pisces</option>
+                    </select>
+                </form>
+            </div>
+            <div className='discover-lower'>
+                {users[0] && users.map((user) => {
+                    if (('all' === filter || user.horoscope.sun.Sign.key === filter) && user._id !== sessionUser._id){
+                        return <UserCard className="user-card" id={user._id} />
+                    }
+                })}
+            </div> */}
+            
         <div id="discover-container">
             <h1 className="heading" >Discover</h1>
             <form className="page-filter">
