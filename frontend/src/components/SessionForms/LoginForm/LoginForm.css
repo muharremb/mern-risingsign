@@ -59,9 +59,11 @@
 .login-field {
    display: flex;
    position: absolute;
+   flex-direction: column;
    justify-content: center;
    align-items: center;
    flex-grow: .5;
+   gap: 1vh;
    width: 600px;
    height: 600px;
    /* height: 500px; */
