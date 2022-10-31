@@ -63,9 +63,11 @@
 .login-field {
    display: flex;
    position: absolute;
+   flex-direction: column;
    justify-content: center;
    align-items: center;
    flex-grow: .5;
+   gap: 1vh;
    width: 600px;
    height: 600px;
    /* height: 500px; */
@@ -100,6 +102,7 @@
 }
 
 .input-container > input {
+   text-align: center;
    color: rgba(233, 193, 93);
    border-top-style: hidden;
    border-left-style: hidden;

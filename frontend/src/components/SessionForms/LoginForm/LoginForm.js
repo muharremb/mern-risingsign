@@ -29,6 +29,17 @@ function LoginForm () {
     return e => setState(e.currentTarget.value);
   }
 
+  const demoLogIn = (e) => {
+    e.preventDefault();
+
+    setEmail("demouser@mgmail.com")
+    setPassword("password")
+    dispatch(login({ email: "demouser@gmail.com", password: "password" })).then(()=>{
+      console.log("EMITTING NEW USER")
+      socket.emit('new-user')
+    });
+  }
+
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(login({ email, password })).then(()=>{
@@ -62,8 +73,10 @@ function LoginForm () {
           </div>
         </div>
         <ContinueButton text="Log In" type={"submit"} disabled={!email || !password}/>
+        <ContinueButton handleClick={demoLogIn} text="Demo User" type="submit"/>
       </div>
     </form>
+    
   </div>
   );
 }
