@@ -7,7 +7,12 @@ import { useEffect } from 'react';
 function NavBar () {
   const loggedIn = useSelector(state => !!state.session.user);
   const currentUser = useSelector(state => state.session.user);
-  const loggedInPic = currentUser.profileImageURL;
+  let loggedInPic 
+  
+  if (currentUser){
+    loggedInPic = currentUser.profileImageURL;
+  }
+  
   const dispatch = useDispatch();
 
   const homePageRedirect = () => {
