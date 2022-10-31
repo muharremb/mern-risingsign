@@ -26,6 +26,7 @@ function UserCard({id}){
     }, [dispatch, isLiked, isMatched]);
 
     const handleLikeButtonClick = (e) => {
+        e.preventDefault();
         setIsLiked(true);
         if(sessionUser.likers.includes(id)) {
             setIsMatched(true);
