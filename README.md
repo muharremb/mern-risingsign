@@ -5,7 +5,7 @@
 ## Overview
 
 
-- **Rising Sign is a dating app with depth, which allows user to filter prospective matches by astrological sign.** Standard features of a dating app are implemented including: live chat, matching and unmatching and picture uploads.
+- **Rising Sign is a dating app with depth, which allows users to filter prospective matches by astrological sign.** Standard features of a dating app are implemented including: live chat, matching and unmatching and picture uploads.
 
 
 The site is live here: https://rising-sign.herokuapp.com/
@@ -43,6 +43,6 @@ A lot of work went into the visual styling of the site, creating a cosmic motif.
 
 ## Development setup
 
-Git clone the repo. Cd into backend and run 'npm install. Do the same in the frontend directory. Then run 'npm start dev' in the backend and 'npm start' on the frontend to fire up backend and frotend servers.
+Git clone the repo. Cd into backend and run 'npm install. Do the same in the frontend directory. Then run `npm run dev` in the backend and `npm start` on the frontend to fire up backend and frotend servers.
 
 
