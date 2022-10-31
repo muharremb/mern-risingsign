@@ -59,6 +59,8 @@ A lot of work went into the visual styling of the site, creating a cosmic motif.
 }
 
  ```
+ 
+We also were pleased to implement real-time chat using the socket io library (https://socket.io/) to integrate websockets, a bidirectional communciation protocol, into the MERN stack! 
 
 ## Development setup
 
