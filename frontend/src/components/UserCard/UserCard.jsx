@@ -44,6 +44,7 @@ function UserCard({id}){
     if (!sessionUser) return null;
 
     return (
+
         <Link to={`/profile/${user._id}`} className="user-card">
             <div className="user-card-left">
                 <h1>{user.name}</h1><br/>

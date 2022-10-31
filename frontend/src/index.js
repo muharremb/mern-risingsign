@@ -15,6 +15,7 @@ const initialState = {}
 
 let store = configureStore(initialState);
 
+window.jwtFetch = jwtFetch;
 
 function Root() {
   //chat stuff sorry everyone we can refactor

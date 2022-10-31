@@ -5,13 +5,14 @@ import { getCurrentUser, logout } from '../../store/session';
 import { useEffect } from 'react';
 
 function NavBar () {
+
   const loggedIn = useSelector(state => !!state.session.user);
   const currentUser = useSelector(state => state.session.user);
   let loggedInPic 
   
   if (currentUser){
     loggedInPic = currentUser.profileImageURL;
-  }
+  
   
   const dispatch = useDispatch();
 
@@ -62,6 +63,8 @@ function NavBar () {
       );
     }
   }
+  // MB added null check 
+  if(!currentUser) return null;
 
   return (
     <div className='navbar'>
