@@ -25,7 +25,8 @@ function Discover () {
     }
 
     return (
-            
+
+                
         <div id="discover-container">
             <h1 className="heading" >Discover</h1>
             <form className="page-filter">

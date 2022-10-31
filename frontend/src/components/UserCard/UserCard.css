@@ -5,8 +5,8 @@
     margin: 0 5% 3% 1%;
     padding: 0.5% 0 3% 3%;
     border-radius: 8px;
-    transition: box-shadow 0.2s;
-    box-shadow: 0 0 10px #00000025;
+    transition: 0.2s ease-in;
+    box-shadow: 0 0 5px #00000035;
     background-color: #530f73;
     cursor: pointer;
 }
@@ -35,11 +35,12 @@ a {
     color: #d3a02099;
     border: 0;
     border-radius: 4px;
+    transition: 0.2s;
     
 }
 
 .user-card button:hover {
-    background-color: #631581;
+    background-color: #661985;
     cursor: pointer;
 }
 
@@ -52,7 +53,8 @@ a {
 }
 
 .user-card:hover {
-    box-shadow: 0 0 20px #e9c15d15;
+    box-shadow: 0 0 50px #e9c15d45;
+    background-color: #4e0b6e;
 }
 
 .user-card:last-child {
