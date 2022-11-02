@@ -35,8 +35,6 @@
   .then(() => {
    debug("Connected to MongoDB successfully");
    chatServer = server.listen(port, () => {
-     console.log(`socket server is listening ;)`);
-     console.log(`CHAT SERVER:${chatServer} `);
      setUpChatServer();
    })
   })
@@ -63,7 +61,6 @@
    })
  
    io.on('connection', (socket) => {
-     console.log("connected to the socket!")
  
      socket.on('new-user', async () => {
        const users = await User.find({});
@@ -71,23 +68,19 @@
      })
  
      socket.on('join-room', async (room) => {
-       console.log(room)
        socket.join(room)
        const roomMessages = await getMessagesFromRoom(room)
-       console.log(roomMessages)
        socket.emit('room-messages', roomMessages)
      })
  
      socket.on("setup", (userId) => {
        socket.join(userId);
-       console.log(`userId is motherfucking: ${userId}`)
        socket.emit("connected");
      })
  
      socket.on('message-room', async (room, content, sender, time, date) => {
        const newMessage = await Message.create({content, from: sender, time, date, to: room});
        const allMessages = await getMessagesFromRoom(room);
-       console.log(content)
  
        //send message to room
        io.to(room).emit('room-messages', allMessages);

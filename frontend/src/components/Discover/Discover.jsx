@@ -1,21 +1,18 @@
-import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect, useState } from 'react';
-import { fetchUser, fetchUsers } from '../../store/users';
+import { fetchUsers } from '../../store/users';
 import UserCard from '../UserCard/UserCard';
-import './Matches.css';
-import Chat from '../Chat/Chat';
+import './Discover.css';
 
-function Matches () {
+function Discover () {
     const [sunFilter, setSunFilter] = useState('all');
     const [moonFilter, setMoonFilter] = useState('all');
     const [risingFilter, setRisingFilter] = useState('all');
-    const dispatch = useDispatch();
+    const dispatch = useDispatch()
 
-    // to fetchUsers() as preferences
     useEffect(() => {
         dispatch(fetchUsers());
-    }, [])
+    }, [dispatch])
 
     const fetchedUsers = useSelector(state => state.users);
     const sessionUser = useSelector(state => state.session.user);
@@ -38,8 +35,10 @@ function Matches () {
     }
 
     return (
-        <div className="matches-outer-container">
-            <div className="heading">{sessionUser.name}'s Matches</div>
+
+                
+        <div id="discover-container">
+            <h1 className="heading" >Discover</h1>
             <div id="filters">Filters | &nbsp;
                 <form className="page-filter">
                     <label>Sun: 
@@ -96,26 +95,19 @@ function Matches () {
                     </select></label>
                 </form>
             </div>
-
-            <div className="matches-container">
-                
-                <div className="matches-left">
-                    {users[0] && users.map((user) => {
-                        if (
-                            ('all' === sunFilter || user.horoscope.sun.Sign.key === sunFilter) &&
-                            ('all' === moonFilter || user.horoscope.moon.Sign.key === moonFilter) &&
-                            ('all' === risingFilter || user.horoscope.rising.Sign.key === risingFilter) && (sessionUser.likes.includes(user._id) && sessionUser.likers.includes(user._id))
-                        ) {return <UserCard id={user._id}/>};
-                        return null;
-                    })} 
-                </div>
-
-                <div className="matches-right">
-                    <Chat />
-                </div>
+            <div id="user-card-container">
+                {users[0] && users.map((user) => {
+                    if (
+                        ('all' === sunFilter || user.horoscope.sun.Sign.key === sunFilter) &&
+                        ('all' === moonFilter || user.horoscope.moon.Sign.key === moonFilter) &&
+                        ('all' === risingFilter || user.horoscope.rising.Sign.key === risingFilter) && user._id !== sessionUser._id
+                        
+                    ) {return <UserCard id={user._id}/>};
+                    return null;
+                })}
             </div>
         </div>
     )
 }
 
-export default Matches;
+export default Discover;

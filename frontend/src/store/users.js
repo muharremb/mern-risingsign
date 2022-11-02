@@ -2,7 +2,6 @@ import jwtFetch from './jwt';
 import { receiveCurrentUser } from './session';
 
 
-const RECEIVE_CURRENT_USER = "session/RECEIVE_CURRENT_USER";
 const RECEIVE_USER = "users/RECEIVE_USER";
 const RECEIVE_USERS = "users/RECEIVE_USERS";
 
@@ -63,10 +62,8 @@ export const likeUser = (likerId, likeeId) => async dispatch => {
     });
 
     const {liker} = await res.json();
-    // console.log('liker ', liker);
     dispatch(receiveUser(liker));
     dispatch(receiveCurrentUser(liker));
-    // dispatch(receiveUser(likee));
 } 
 export const unmatchUser = (likerId, likeeId) => async dispatch => {
     const reqBody = {
@@ -80,10 +77,8 @@ export const unmatchUser = (likerId, likeeId) => async dispatch => {
     });
 
     const {liker} = await res.json();
-    // console.log('liker ', liker);
     dispatch(receiveUser(liker));
     dispatch(receiveCurrentUser(liker));
-    // dispatch(receiveUser(likee));
 } 
 
 const initialState = {};

@@ -1,4 +1,3 @@
-import { useSelector } from 'react-redux';
 import jwtFetch from './jwt';
 
 export const RECEIVE_PIC = "pics/RECEIVE_PIC";
@@ -10,38 +9,33 @@ export const receivePic = picData => ({
    picData
 })
 
-const receivePics = picData => ({
-   type: RECEIVE_PICS,
-   picData
-})
+// const receivePics = picData => ({
+//    type: RECEIVE_PICS,
+//    picData
+// })
 
-const removePic = picData => ({
-   type: REMOVE_PIC,
-   picData
-})
+// const removePic = picData => ({
+//    type: REMOVE_PIC,
+//    picData
+// })
 
 //-----------------------------------------------------
 
 
 export const uploadPic = picData => async dispatch => {
    const { pic, uploaderId } = picData
-   console.log(uploaderId, picData, pic);
    const formData = new FormData();
    formData.append("image-upload", pic)
    formData.append("uploaderId", uploaderId)
 
-   for (let key in formData.entries()) {
-      console.log()
-   }
 
-   let res = await jwtFetch('/api/pics/upload', {
+   // let res = 
+   await jwtFetch('/api/pics/upload', {
       method: 'POST',
       body: formData
    })
 
-   let data = await res.json();
-
-   console.log('upload pic data; ', data)
+   // let data = await res.json();
 
 }
 
