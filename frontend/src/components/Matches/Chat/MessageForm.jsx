@@ -1,4 +1,3 @@
-import './MessageForm.css'
 import { useSelector } from 'react-redux'
 import { useState, useContext } from 'react'
 import { ChatContext } from '../../../context/chatContext'
@@ -34,21 +33,17 @@ function MessageForm () {
   return (
     <>
     {user && <>
-      <h5>{currentRoom}</h5>
+      <h4>Chatting with {currentRoom}</h4>
       <div className="display-messages">
         {messagesList}
       </div>
-      <h1>from: {userName}</h1>
-
-
       <form onSubmit={handleSubmit}
         className="message-form">
         <input type="text"
         placeholder="be nice"
         value={msg}
         onChange={(e) => setMsg(e.target.value)}
-
-        ></input>
+        />
         <button type="submit">
         <i className="fa-solid fa-plane-departure"/></button>
       </form>

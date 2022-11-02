@@ -75,3 +75,7 @@ select {
     margin-left: 20px;
     font-size: 2.1vh;
 }
+
+#filters select {
+    width: 95px;
+}

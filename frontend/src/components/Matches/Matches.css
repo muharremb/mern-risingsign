@@ -1,10 +1,10 @@
 .matches-outer-container {
-    background-color: #510e6f;
+    background-color: #410b5f;
     min-height: 100vh;
     padding-bottom: 50px;
     padding-top: 2%;
     padding-left: 3%;
-    color: #d3a02099;
+    color: #f6b40d99;
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
@@ -22,11 +22,12 @@
 
 
 .matches-right{
+    background-color: #530f73;
     display: flex;
     width: 40%;
     border-radius: 8px;
     box-shadow: 0 0 3px 3px #00000050;
-    width: 60%;
+    width: 45%;
     height: 500px;
     padding: 20px;
 }
@@ -40,3 +41,4 @@
 .matches-left .user-card {
     width: 70%
 }
+
