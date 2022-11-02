@@ -40,10 +40,16 @@
 .display-messages::-webkit-scrollbar {
     background-color: #410b5f;
     border-radius: 0 8px 8px 0;
-    width: 12px;}
+    width: 12px;
+}
+
 
 .display-messages::-webkit-scrollbar-thumb {
     border-radius: 8px;
+    background-color: #ffbb1090;
+}
+
+.display-messages:hover::-webkit-scrollbar-thumb {
     background-color: #ffbb10cf;
 }
 
