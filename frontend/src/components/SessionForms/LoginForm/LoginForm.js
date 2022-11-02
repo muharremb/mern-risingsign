@@ -1,10 +1,10 @@
-import { useEffect, useState, useContext } from 'react';
+import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import ContinueButton from '../ContinueButton/ContinueButton';
 import './LoginForm.css';
 import { login, clearSessionErrors } from '../../../store/session';
 
-import { socket, ChatContext } from '../../../context/chatContext';
+import { socket } from '../../../context/chatContext';
 
 function LoginForm () {
   const [email, setEmail] = useState('');
@@ -12,7 +12,6 @@ function LoginForm () {
   const errors = useSelector(state => state.errors.session);
   const dispatch = useDispatch();
 
-  // const { socket } = useContext(ChatContext)
 
   if (email === "" || password === "") {
     dispatch(clearSessionErrors())
@@ -35,7 +34,6 @@ function LoginForm () {
     setEmail("demouser@mgmail.com")
     setPassword("password")
     dispatch(login({ email: "demouser@gmail.com", password: "password" })).then(()=>{
-      console.log("EMITTING NEW USER")
       socket.emit('new-user')
     });
   }
@@ -43,7 +41,6 @@ function LoginForm () {
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(login({ email, password })).then(()=>{
-      console.log("EMITTING NEW USER")
       socket.emit('new-user')
     });
   }
@@ -82,30 +79,3 @@ function LoginForm () {
 }
 
 export default LoginForm;
-
-{/* <form className="session-form" onSubmit={handleSubmit}>
-      <h2>Rising Sign Log In Form</h2>
-      <div className="errors">{errors?.email}</div>
-      <label>
-        <span>Email</span>
-        <input type="text"
-          value={email}
-          onChange={update('email')}
-          placeholder="Email"
-        />
-      </label>
-      <div className="errors">{errors?.password}</div>
-      <label>
-        <span>Password</span>
-        <input type="password"
-          value={password}
-          onChange={update('password')}
-          placeholder="Password"
-        />
-      </label>
-      <input
-        type="submit"
-        value="Log In"
-        disabled={!email || !password}
-      />
-    </form> */}

@@ -1,12 +1,10 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import UserCard from '../UserCard/UserCard';
-import { getOnePic, uploadPic } from '../../store/pics';
-import UserBio from './UserBio';
+import { uploadPic } from '../../store/pics';
 import './Profile.css';
 import BioPics from './BioPics';
 import { useParams } from 'react-router-dom';
-import { fetchUser, fetchUsers } from '../../store/users';
+import { fetchUser } from '../../store/users';
 
 function Profile () {
   const dispatch = useDispatch();
@@ -30,12 +28,9 @@ function Profile () {
   }
   
   const [ pic, setPic ] = useState("");
-  const [ bio, setBio ] = useState("");
-  const [ picGrid, setPicGrid ] = useState("");
 
   const handleSubmit = e => {
     e.preventDefault();
-    console.log(pic);
     dispatch(uploadPic({
       pic,
       uploaderId: currentUser._id
@@ -57,7 +52,7 @@ function Profile () {
             <div className='profile-pic-background'></div>
             <div className='space-layer-profile'></div>
             <div className='space-layer-profile2'></div>
-            <img src={currentUser.profileImageURL}></img>
+            <img src={currentUser.profileImageURL} alt="profile"></img>
           </div>
         </div>
         <div className='name-tile'>

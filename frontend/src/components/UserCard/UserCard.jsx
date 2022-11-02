@@ -14,7 +14,7 @@ function UserCard({id}){
 
     useEffect(() => {
         dispatch(fetchUser(id));
-    }, [dispatch]);
+    }, [dispatch, id]);
 
     useEffect(() => {
         if(sessionUser.likes.includes(id) && sessionUser.likers.includes(id)) {
@@ -23,7 +23,7 @@ function UserCard({id}){
         } else if (sessionUser.likes.includes(id)) {
             setIsLiked(true);
         }
-    }, [dispatch, isLiked, isMatched]);
+    }, [dispatch, isLiked, isMatched, id, sessionUser]);
 
     const handleLikeButtonClick = (e) => {
         e.preventDefault();
@@ -49,7 +49,7 @@ function UserCard({id}){
         <Link to={`/profile/${user._id}`} className="user-card">
             <div className="user-card-left">
                 <h1>{user.name}</h1><br/>
-                <img style={{"maxWidth":"50px"}} src={user.profileImageURL} alt="Profile Image"/>
+                <img style={{"maxWidth":"50px"}} src={user.profileImageURL} alt="profile"/>
             </div>
             <div className="user-card-right">
                 <div className="user-card-sign sun-sign">
