@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { fetchUser, fetchUsers } from '../../store/users';
 import UserCard from '../UserCard/UserCard';
 import './Matches.css';
-import Chat from '../Chat/Chat';
+import Chat from './Chat/Chat.jsx';
 
 function Matches () {
     const [sunFilter, setSunFilter] = useState('all');
@@ -36,6 +36,15 @@ function Matches () {
         e.preventDefault();
         setRisingFilter(e.target.value);
     }
+
+    const matches = users.map((user) => {
+        if (
+            ('all' === sunFilter || user.horoscope.sun.Sign.key === sunFilter) &&
+            ('all' === moonFilter || user.horoscope.moon.Sign.key === moonFilter) &&
+            ('all' === risingFilter || user.horoscope.rising.Sign.key === risingFilter) && (sessionUser.likes.includes(user._id) && sessionUser.likers.includes(user._id))
+        ) {return <UserCard id={user._id}/>};
+        return null;
+    });
 
     return (
         <div className="matches-outer-container">
@@ -100,14 +109,7 @@ function Matches () {
             <div className="matches-container">
                 
                 <div className="matches-left">
-                    {users[0] && users.map((user) => {
-                        if (
-                            ('all' === sunFilter || user.horoscope.sun.Sign.key === sunFilter) &&
-                            ('all' === moonFilter || user.horoscope.moon.Sign.key === moonFilter) &&
-                            ('all' === risingFilter || user.horoscope.rising.Sign.key === risingFilter) && (sessionUser.likes.includes(user._id) && sessionUser.likers.includes(user._id))
-                        ) {return <UserCard id={user._id}/>};
-                        return null;
-                    })} 
+                    {matches} 
                 </div>
 
                 <div className="matches-right">

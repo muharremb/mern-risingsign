@@ -1,12 +1,12 @@
-import Sidebar from './ChatSidebar/Sidebar'
-import MessageForm from './MessageForm/MessageForm'
+import Sidebar from './Sidebar'
+import MessageForm from './MessageForm'
 import './Chat.css';
 
 function Chat () {
 
   return (
     <div id="chat">
-      <Sidebar/>
+      <Sidebar />
       <MessageForm/>
     </div>
   )

@@ -9,7 +9,7 @@ import LoginForm from './components/SessionForms/LoginForm/LoginForm';
 import SignupForm from './components/SessionForms/SignupForm/SignupForm';
 import Profile from './components/Profile/Profile';
 import Discover from './components/Discover/Discover';
-import Chat from './components/Chat/Chat';
+import Chat from './components/Matches/Chat/Chat.jsx';
 import {getCurrentUser} from './store/session';
 import Matches from './components/Matches/Matches';
 
