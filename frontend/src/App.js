@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, useRouteMatch } from 'react-router-dom';
 import { AuthRoute, ProtectedRoute } from './components/Routes/Routes';
 
 import MainPage from './components/MainPage/MainPage';
@@ -15,9 +15,11 @@ import Matches from './components/Matches/Matches';
 import Developers from './components/Developers/Developers';
 import DevButton from './components/Developers/DevButton';
 
+
 function App() {
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
+  const onDevPage = useRouteMatch("/developers");
 
   const loadPage = () => {
     const html = document.documentElement;
@@ -38,9 +40,8 @@ function App() {
 
   return loaded && (
     <>
-
     <NavBar />
-    <DevButton />
+  {!onDevPage && <DevButton />}
     <Switch>
       <Route exact path="/developers" component={Developers} />
       <AuthRoute exact path="/" component={MainPage} />
