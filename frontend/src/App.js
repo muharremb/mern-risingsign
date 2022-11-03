@@ -13,6 +13,7 @@ import Chat from './components/Matches/Chat/Chat.jsx';
 import {getCurrentUser} from './store/session';
 import Matches from './components/Matches/Matches';
 import Developers from './components/Developers/Developers';
+import DevButton from './components/Developers/DevButton';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -39,6 +40,7 @@ function App() {
     <>
 
     <NavBar />
+    <DevButton />
     <Switch>
       <Route exact path="/developers" component={Developers} />
       <AuthRoute exact path="/" component={MainPage} />

@@ -1,7 +1,6 @@
 #chat {
     padding: 5px;
     width: 70%;
-    color: #ffbb10cf;
 }
 
 .matches-list {
@@ -21,6 +20,7 @@
     padding-left: 10px;
     transition: 0.2s;
     border-radius: 4px;
+    color: #ffbb10cf;
 }
 
 .matches-list li:hover {
@@ -35,6 +35,7 @@
     border: 1px solid #ffffff55;
     padding: 5px 10px;
     border-radius: 8px;
+    color: #ffbb10cf;
 }
 
 .display-messages::-webkit-scrollbar {
@@ -74,8 +75,8 @@
     border-radius: 3px;
     border: none;
     padding: 6px;
-    color: #ffbb10cf;
     background-color: #410b5f;
+    color: #ffbb10;
 }
 
 .message-form input::placeholder {
@@ -95,7 +96,7 @@
 .message-form button:hover, .message-form:hover button {
     width: 10%;
     background-color: #410b5f;
-    color: #ffbb10cf;
+    color: #ffbb10e0;
     border: 0;
     padding: 6px;
     border-radius: 5px;

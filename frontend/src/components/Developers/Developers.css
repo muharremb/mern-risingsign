@@ -83,3 +83,38 @@
 .dev-card:hover a {
     text-decoration: underline;
 }
+
+#dev-button {
+    display: flex;
+    align-items: center;
+    width: 65px;
+    height: 65px;
+    font-size: 12px;
+    text-align: center;
+    vertical-align: middle;
+    background-image: radial-gradient(#180431, #330548, #530f73);
+    color:#ffa11e;
+    position: fixed;
+    top: 15px;
+    right: 15px;
+    border-radius: 50%;
+    font-family: 'Lucida Sans';
+    z-index: 2;
+}
+
+.pulse {
+    animation-duration: 2s;
+    animation-name: pulse;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+@keyframes pulse {
+    from {
+        box-shadow: 0 0 6px 1px #e9c15d30;
+    }
+
+    to {
+        box-shadow: 0 0 6px 6px #e9c15d55;
+    }
+}

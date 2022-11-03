@@ -37,8 +37,23 @@ function Developers() {
             link: "https://mebook-2022.herokuapp.com/"
         }
     };
-    const ben = {};
-    const dan = {};
+    const dan = {
+        photo: "https://mern-rising-sign-profile-pics.s3.amazonaws.com/dan_prof_pic.jpg",
+        role: "Frontend Lead",
+        job_description: "Construct frontend component structures and make the CSS look good",
+        name: "Dan Lay",
+        blurb: "In love with electronic soundscapes, classical instruments, and using technology to blur the lines of both. Tater tots are the best snack, period. Always looking for productive input to help me become a better programmer :).",
+        github: "https://github.com/dan-lay",
+        linkedIn: "www.linkedin.com/in/dan-lay",
+        project_1: {
+           name: "stepSeq (Music Gadget)",
+           link: "https://dan-lay.github.io/stepSeq/"
+        },
+        project_2: {
+           name: "BooooTube (YouTube Clone)",
+           link: "https://booootube.herokuapp.com/"
+        }
+     };    const ben = {};
     
 
     return (
@@ -51,7 +66,7 @@ function Developers() {
                 <DevCard dev={dan}/> */}
                 <DevCard dev={muharrem}/>
                 <DevCard dev={clarence}/>
-                <DevCard dev={muharrem}/>
+                <DevCard dev={dan}/>
                 <DevCard dev={clarence}/>
             </div>
         </div>
