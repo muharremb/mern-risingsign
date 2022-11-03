@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { Switch } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 import { AuthRoute, ProtectedRoute } from './components/Routes/Routes';
 
 import MainPage from './components/MainPage/MainPage';
@@ -12,6 +12,7 @@ import Discover from './components/Discover/Discover';
 import Chat from './components/Matches/Chat/Chat.jsx';
 import {getCurrentUser} from './store/session';
 import Matches from './components/Matches/Matches';
+import Developers from './components/Developers/Developers';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -39,6 +40,7 @@ function App() {
 
     <NavBar />
     <Switch>
+      <Route exact path="/developers" component={Developers} />
       <AuthRoute exact path="/" component={MainPage} />
       <AuthRoute exact path="/login" component={LoginForm} />
       <AuthRoute exact path="/signup" component={SignupForm} />
