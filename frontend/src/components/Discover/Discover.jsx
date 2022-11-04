@@ -102,7 +102,7 @@ function Discover () {
                         ('all' === moonFilter || user.horoscope.moon.Sign.key === moonFilter) &&
                         ('all' === risingFilter || user.horoscope.rising.Sign.key === risingFilter) && user._id !== sessionUser._id
                         
-                    ) {return <UserCard id={user._id}/>};
+                    ) {return <UserCard key={user._id} user={user}/>};
                     return null;
                 })}
             </div>
