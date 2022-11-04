@@ -45,10 +45,18 @@
     background-color: powderblue;
     display: flex;
     justify-content: right;
+    scroll-snap-align: end;
 }
 
 .you {
-    background-color: palevioletred;
+    background-color: green;
     display: flex;
     justify-content: left;
+    /* scroll-snap-align: end; */
+    /* scroll-behavior: auto; */
+}
+
+.you:last-child{
+    scroll-snap-align: end;
+    scroll-margin-block-end: 6rem;
 }

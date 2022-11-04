@@ -38,12 +38,18 @@
     color: #ffbb10cf;
     display: flex;
     flex-direction: column;
+    justify-content: flex-end;
+}
+
+.display-messages:last-child {
+    /* background-color: green; */
 }
 
 .display-messages::-webkit-scrollbar {
     background-color: #410b5f;
     border-radius: 0 8px 8px 0;
     width: 12px;
+    overflow:scroll;
 }
 
 
