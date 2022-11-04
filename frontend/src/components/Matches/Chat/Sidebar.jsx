@@ -26,8 +26,8 @@ function Sidebar () {
     localStorage.removeItem('current-room')
     setCurrentRoom(retrievedRoom);
     setStoreRoom(retrievedRoom);
-    console.log(`retrieved room is ${retrievedRoom}`)
-    socket.emit('join-room', retrievedRoom);
+    // console.log(`retrieved room is ${retrievedRoom}`)
+    if (retrievedRoom) socket.emit('join-room', retrievedRoom);
   }, [] )
 
   const joinRoom = (e, isPublic = true) => {
