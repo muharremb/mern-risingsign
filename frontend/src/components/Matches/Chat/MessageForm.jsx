@@ -27,7 +27,12 @@ function MessageForm () {
   // const [dynamicMessagesList, setDynamicMessagesList] = useState('')
 
   let messagesList = messages?.messagesByDate ? Object.values(messages.messagesByDate) : null;
-  messagesList = messagesList?.map((message, i) => <li key={i} id={message._id} className="chat-message">{message.content}</li>)
+  console.log(messagesList)
+  messagesList = messagesList?.map((message, i) => <li key={i} id={message._id} className="chat-message"
+  className={message.from._id === user._id ? "you" : "them"}
+
+
+  >{message.content}</li>)
 
 
   return (

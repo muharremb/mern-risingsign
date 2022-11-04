@@ -41,3 +41,14 @@
     width: 70%
 }
 
+.them {
+    background-color: powderblue;
+    display: flex;
+    justify-content: right;
+}
+
+.you {
+    background-color: palevioletred;
+    display: flex;
+    justify-content: left;
+}

@@ -35,12 +35,13 @@ function UserCard({id}){
     }
 
     const handleUnmatch = async (e) => {
-        await dispatch(unmatchUser(sessionUser._id, user._id));        
+        e.preventDefault();
+        await dispatch(unmatchUser(sessionUser._id, user._id));
         setIsLiked(false);
         setIsMatched(false);
-        
+
     }
-    
+
     if (!user) return null;
     if (!sessionUser) return null;
 

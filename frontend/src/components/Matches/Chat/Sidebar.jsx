@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import {socket, ChatContext} from '../../../context/chatContext';
+import './Sidebar.css'
 
 function Sidebar () {
   const user = useSelector(state => state.session.user);
@@ -15,20 +16,30 @@ function Sidebar () {
       setCurrentRoom(storeRoom);
       socket.emit('join-room', currentRoom);
       setMembers(users);
+      console.log("current room:", currentRoom)
+
     });
-  }, [storeRoom, currentRoom, setCurrentRoom, setMembers]);
+  }, [storeRoom, currentRoom]);
+
+  const makeRoomName = (name1, name2) => {
+    return name1 < name2 ? name1 + "-" + name2 : name2 + "-" + name1
+  }
 
   const joinRoom = (e, isPublic = true) => {
-    const room = String(e.target.id);
-    setCurrentRoom(room);
-    setStoreRoom(room);
-    socket.emit('join-room', room);
+    const memberId = (e.currentTarget.id)
+    const userId = (user._id)
+    // console.log("user id is", userId)
+    const roomName = makeRoomName(userId, memberId)
+    console.log("room name", roomName)
+    setCurrentRoom(roomName);
+    setStoreRoom(roomName);
+    socket.emit('join-room', roomName);
   };
 
   const membersList = Object.values(members).map((member, i) =>
   {if(user.likes.includes(member._id) && user.likers.includes(member._id)){
     return <li key={i}
-    id={member.name}
+    id={member._id}
     onClick={joinRoom}>{member.name}</li>
     };
     return null;
