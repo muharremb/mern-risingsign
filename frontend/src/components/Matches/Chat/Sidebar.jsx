@@ -5,9 +5,7 @@ import './Sidebar.css'
 
 function Sidebar () {
   const user = useSelector(state => state.session.user);
-
   const { setMembers, members, currentRoom, setCurrentRoom } = useContext(ChatContext)
-
   const [storeRoom, setStoreRoom] = useState('')
 
   useEffect(() => {
@@ -16,23 +14,29 @@ function Sidebar () {
       setCurrentRoom(storeRoom);
       socket.emit('join-room', currentRoom);
       setMembers(users);
-      console.log("current room:", currentRoom)
-
     });
-  }, [storeRoom, currentRoom]);
+  }, [storeRoom]);
 
   const makeRoomName = (name1, name2) => {
     return name1 < name2 ? name1 + "-" + name2 : name2 + "-" + name1
   }
 
+  useEffect(()=> {
+    const retrievedRoom = localStorage.getItem('currentRoom')
+    localStorage.removeItem('current-room')
+    setCurrentRoom(retrievedRoom);
+    setStoreRoom(retrievedRoom);
+    console.log(`retrieved room is ${retrievedRoom}`)
+    socket.emit('join-room', retrievedRoom);
+  }, [] )
+
   const joinRoom = (e, isPublic = true) => {
     const memberId = (e.currentTarget.id)
     const userId = (user._id)
-    // console.log("user id is", userId)
     const roomName = makeRoomName(userId, memberId)
-    console.log("room name", roomName)
     setCurrentRoom(roomName);
     setStoreRoom(roomName);
+    localStorage.setItem('currentRoom', roomName)
     socket.emit('join-room', roomName);
   };
 

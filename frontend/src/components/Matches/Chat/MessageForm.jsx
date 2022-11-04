@@ -1,15 +1,13 @@
 import { useSelector } from 'react-redux'
-import { useState, useContext } from 'react'
+import { useState, useContext, useEffect } from 'react'
 import { ChatContext } from '../../../context/chatContext'
 
 function MessageForm () {
-
-
   const user = useSelector(state => state.session.user)
   const userName = useSelector(state => state.session.user.name)
 
   const [msg, setMsg] = useState('');
-  const { socket, messages, setMessages, currentRoom } = useContext(ChatContext);
+  const { rememberRoom, setRememberRoom, socket, messages, setMessages, currentRoom, setCurrentRoom, storeRoom } = useContext(ChatContext);
 
   socket.off('room-messages').on('room-messages', (roomMessages) => {
     setMessages(roomMessages[0])
@@ -24,14 +22,16 @@ function MessageForm () {
     setMsg("")
   }
 
-  // const [dynamicMessagesList, setDynamicMessagesList] = useState('')
+  useEffect(()=> {
+    messagesList = messages?.messagesByDate ? Object.values(messages.messagesByDate) : null;
+    messagesList = messagesList?.map((message, i) => <li key={i} id={message._id} className="chat-message"
+  className={message.from._id === user._id ? "you" : "them"}
+  >{message.content}</li>)
+  }, [msg])
 
   let messagesList = messages?.messagesByDate ? Object.values(messages.messagesByDate) : null;
-  console.log(messagesList)
   messagesList = messagesList?.map((message, i) => <li key={i} id={message._id} className="chat-message"
   className={message.from._id === user._id ? "you" : "them"}
-
-
   >{message.content}</li>)
 
 
