@@ -1,8 +1,69 @@
 /* TODO Add site wide styles */
-body {
+* {
    box-sizing: border-box;
    margin: 0;
    padding: 0;
-   background: #510e6f;
-   color: #e9c15d;
+}
+
+.clear-box {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   position: fixed;
+   width: 100vw;
+   height: 100vh;
+}
+
+@keyframes visible {
+   0% { opacity: 0; rotate: 180;}
+   100% { opacity: 1; rotate: 360;}
+}
+
+@keyframes hidden {
+   0% { opacity: 1; rotate: 0;}
+   100% { opacity: 0; rotate: 180;}
+}
+
+@keyframes rotate-in {
+   100% {transform: rotate(360);}
+}
+
+@keyframes delay {
+   0% {opacity: 0}
+   100% {opacity: 0}
+}
+
+@keyframes rotate-out {
+   0% {
+      transform: rotate(0);
+   }
+   100% {
+      transform: rotate(180);
+   }
+}
+
+@keyframes zoom {
+   0%{
+      transform: scale(.75);
+      opacity: 0;
+   }
+   10%{
+      opacity: .15;
+   }
+   40%{
+      opacity: 1;
+   }
+   100%{
+      transform: scale(1.5);
+      opacity: 0;
+   }
+}
+
+@keyframes glow {
+   from {
+     text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #8e00e6, 0 0 40px #8e00e6, 0 0 50px #8e00e6, 0 0 60px #8e00e6, 0 0 70px #8e00e6;
+   }
+   to {
+     text-shadow: 0 0 20px #fff, 0 0 30px #b24dff, 0 0 40px #b24dff, 0 0 50px #b24dff, 0 0 60px #b24dff, 0 0 70px #b24dff, 0 0 80px #b24dff;
+   }
 }

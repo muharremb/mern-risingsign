@@ -14,6 +14,8 @@ import {getCurrentUser} from './store/session';
 import Matches from './components/Matches/Matches';
 import Developers from './components/Developers/Developers';
 import DevButton from './components/Developers/DevButton';
+import Background from './components/Background/Background';
+import DisplayCircle from './components/DisplayCircle/DisplayCircle';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -38,10 +40,15 @@ function App() {
 
   return loaded && (
     <>
-
-    <NavBar />
+    <Background />
+    <div className='clear-box'>
+      <DisplayCircle />
+      <NavBar />
+    </div>
+    
+    
     <DevButton />
-    <Switch>
+    {/* <Switch>
       <Route exact path="/developers" component={Developers} />
       <AuthRoute exact path="/" component={MainPage} />
       <AuthRoute exact path="/login" component={LoginForm} />
@@ -52,7 +59,7 @@ function App() {
       <ProtectedRoute exact path="/chat" component={Chat} />
       <ProtectedRoute exact path="/matches" component={Matches} />
 
-    </Switch>
+    </Switch> */}
     </>
   );
 }
