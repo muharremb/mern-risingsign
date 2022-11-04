@@ -42,7 +42,7 @@ function Matches () {
             ('all' === sunFilter || user.horoscope.sun.Sign.key === sunFilter) &&
             ('all' === moonFilter || user.horoscope.moon.Sign.key === moonFilter) &&
             ('all' === risingFilter || user.horoscope.rising.Sign.key === risingFilter) && (sessionUser.likes.includes(user._id) && sessionUser.likers.includes(user._id))
-        ) {return <UserCard id={user._id}/>};
+        ) {return <UserCard key={user._id} user={user}/>};
         return null;
     });
 

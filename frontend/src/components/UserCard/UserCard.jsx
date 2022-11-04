@@ -4,31 +4,26 @@ import { useEffect, useState } from 'react';
 import { fetchUser, likeUser, unmatchUser } from '../../store/users';
 import './UserCard.css'
 
-function UserCard({id}){
+function UserCard({user}){
     const dispatch = useDispatch();
 
     const sessionUser = useSelector(state => state.session.user);
-    const user = useSelector(state => state.users[id])
     const [isMatched, setIsMatched] = useState(false);
     const [isLiked, setIsLiked] = useState(false);
 
     useEffect(() => {
-        dispatch(fetchUser(id));
-    }, [dispatch, id]);
-
-    useEffect(() => {
-        if(sessionUser.likes.includes(id) && sessionUser.likers.includes(id)) {
+        if(sessionUser.likes.includes(user._id) && sessionUser.likers.includes(user._id)) {
             setIsLiked(true)
             setIsMatched(true);
-        } else if (sessionUser.likes.includes(id)) {
+        } else if (sessionUser.likes.includes(user._id)) {
             setIsLiked(true);
         }
-    }, [dispatch, isLiked, isMatched, id, sessionUser]);
+    }, [dispatch, isLiked, isMatched, user._id, sessionUser]);
 
     const handleLikeButtonClick = (e) => {
         e.preventDefault();
         setIsLiked(true);
-        if(sessionUser.likers.includes(id)) {
+        if(sessionUser.likers.includes(user._id)) {
             setIsMatched(true);
         }
         dispatch(likeUser(sessionUser._id, user._id));
