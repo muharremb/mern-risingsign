@@ -180,9 +180,10 @@ router.get('/current', restoreUser, (req, res) => {
 });
 
 router.get('/index', async function(req, res, next) {
-  const criteria = {"horoscope.sun.Sign.key": req.query.sun}
 
-  const users = await User.find({});
+  const options = {skip: parseInt(req.query.skip), limit: parseInt(req.query.limit)}
+
+  const users = await User.find({}, null, options);
   const users_clean = users.map((user) => {
     return ({
       _id: user._id,
@@ -190,7 +191,6 @@ router.get('/index', async function(req, res, next) {
       email: user.email,
       bio: user.bio,
       birthDateTime: user.birthDateTime,
-      // birthLocation: user.birthLocation,
       horoscope: user.horoscope,
       likes: user.likes,
       profileImageURL: user.profileImageURL,
@@ -229,8 +229,6 @@ router.get('/:userId', async function(req, res, next) {
     newMessages: {}
   });
 });
-
-// router.get('/:userId/pics', getUserPics);
 
 
 module.exports = router;

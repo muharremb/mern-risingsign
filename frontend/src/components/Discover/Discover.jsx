@@ -3,16 +3,37 @@ import { useEffect, useState } from 'react';
 import { fetchUsers } from '../../store/users';
 import UserCard from '../UserCard/UserCard';
 import './Discover.css';
+import { useRef } from 'react';
 
 function Discover () {
     const [sunFilter, setSunFilter] = useState('all');
     const [moonFilter, setMoonFilter] = useState('all');
     const [risingFilter, setRisingFilter] = useState('all');
+    const [isFetching, setIsFetching] = useState(false);
+    const userCount = useRef(0);
+    
     const dispatch = useDispatch()
 
     useEffect(() => {
-        dispatch(fetchUsers());
-    }, [dispatch])
+        window.addEventListener('scroll', handleScroll);
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
+
+    useEffect(() => {
+        debugger;
+        async function fetchData() {
+            await dispatch(fetchUsers({skip: userCount.current, limit: 8}));
+            setIsFetching(false);
+            userCount.current += 8;
+        }
+        fetchData();
+    }, [isFetching]);
+
+    const handleScroll = () => {
+        debugger;
+        if (window.innerHeight + document.querySelector("body").scrollTop !== document.querySelector("body").offsetHeight || isFetching) return;
+        setIsFetching(true);
+    }
 
     const fetchedUsers = useSelector(state => state.users);
     const sessionUser = useSelector(state => state.session.user);

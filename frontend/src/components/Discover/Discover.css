@@ -1,3 +1,7 @@
+html {
+    /* overflow: hidden; */
+}
+
 .discover-page {
    display: flex;
    flex-direction: column;
@@ -18,8 +22,6 @@
 #discover-container {
     background-image: radial-gradient(#330548, #430958, #530f73);
     min-height: 90vh;
-    height: 100%;
-    width: 100%;
     padding-bottom: 50px;
     margin-top: -1%;
     padding-left: 3%;
@@ -33,12 +35,11 @@
 #user-card-container {
     display: flex;
     flex-wrap: wrap;
+    justify-content: space-around;
 }
-
 
 .heading {
     font-size: 3rem;
-
 }
 
 select {
