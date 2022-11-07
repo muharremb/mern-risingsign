@@ -23,21 +23,26 @@ function Sidebar () {
 
   useEffect(()=> {
     const retrievedRoom = localStorage.getItem('currentRoom')
-    localStorage.removeItem('current-room')
+    localStorage.removeItem('currentRoom')
+    const retrievedRoomName = localStorage.getItem('currentRoomName')
+    localStorage.removeItem('currentRoomName')
+    setCurrentRoomName(retrievedRoomName)
     setCurrentRoom(retrievedRoom);
     setStoreRoom(retrievedRoom);
     socket.emit('join-room', retrievedRoom);
   }, [] )
 
   const joinRoom = (e, isPublic = true) => {
-    const memberId = (e.currentTarget.id)
-    const userId = (user._id)
-    const roomName = makeRoomName(userId, memberId)
+    const memberId = (e.currentTarget.id);
+    const userId = (user._id);
+    const roomName = makeRoomName(userId, memberId);
     setCurrentRoom(roomName);
     setStoreRoom(roomName);
-    setCurrentRoomName(e.currentTarget.className)
-    console.log(e.currentTarget.className)
-    localStorage.setItem('currentRoom', roomName)
+    const currRoomName = e.currentTarget.className;
+    setCurrentRoomName(currRoomName);
+    console.log(e.currentTarget.className);
+    localStorage.setItem('currentRoom', roomName);
+    localStorage.setItem('currentRoomName',currRoomName)
     socket.emit('join-room', roomName);
   };
 
@@ -49,12 +54,12 @@ function Sidebar () {
     onClick={joinRoom}>{member.name}</li>
     };
     return null;
-  }
+    }
   )
 
   return (
     <>
-      <h2>Available Chats</h2>
+      <h2>Available Matches</h2>
       <ul className="matches-list">{membersList}</ul>
     </>
   )

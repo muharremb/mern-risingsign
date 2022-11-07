@@ -29,7 +29,6 @@ function MessageForm () {
 
   useEffect(()=> {
     messagesList = messages?.messagesByDate ? Object.values(messages.messagesByDate) : null;
-    console.log(messagesList)
     messagesList = messagesList?.map((message, i) => <li key={i} id={message._id} className= {`chat-message
   ${message.from._id === user._id ? "you" : "them"}`}
   ><span>{message.time}</span>{message.time}</li>)
