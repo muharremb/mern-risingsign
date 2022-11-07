@@ -18,7 +18,7 @@ function SignupForm () {
   const [risingSign, setRisingSign] = useState('');
   const [ profilePic, setProfilePic ] = useState(null);
   // const [ hidden, setHidden ] = useState(false);
-  const fieldArray = ["name-input", "birth-info-input", "email-and-password-input"];
+  const fieldArray = ["name-input", "birth-info-input", "email-and-password-input", "picture-upload"];
   let [ currentField, setCurrentField ] = useState(fieldArray[0]);
   let [ birthLocationError, setBirthLocationError ] = useState("");
   let [ birthDateError, setBirthDateError ] = useState("");
@@ -26,6 +26,8 @@ function SignupForm () {
   let [ nameError, setNameError ] = useState("");
   const errors = useSelector(state => state.errors.session);
   const dispatch = useDispatch();
+
+  if (profilePic) console.log(profilePic);
 
 
   useEffect(() => {
@@ -97,6 +99,10 @@ function SignupForm () {
     return true;
   }
 
+  const uploadPic = () => {
+    document.getElementById('hidden-input').click();
+  }
+
   const continueClickName = e => {
     e.preventDefault();
     if (name.length >= 2 && name.length <= 30) {
@@ -114,6 +120,12 @@ function SignupForm () {
       if (!isValidDate(birthDate)) setBirthDateError("not a valid date of birth");
       if (!checkTime(birthTime)) setBirthTimeError("Invalid time of birth");
     }
+  }
+
+  const continueClickEmailPassword = e => {
+    e.preventDefault();
+    setCurrentField(fieldArray[fieldArray.indexOf(currentField) + 1]);
+
   }
 
   const backClick = e => {
@@ -145,25 +157,24 @@ function SignupForm () {
   return (
     <form className="signup-form" onSubmit={userSubmit}>
       <div className='signup-upper'>
-        {currentField === "birth-info-input" &&               //displays name
+        {currentField !== "name-input" &&               //displays name
 
         <div className='name-display'>
-          <p>{name}</p>
+          <p>{name.charAt(0).toUpperCase() + name.slice(1).toLowerCase()}</p>
         </div>}
 
-        {currentField === "email-and-password-input" &&       //displays birth info
+        {(currentField !== "name-input" && currentField !== "birth-info-input") &&       //displays birth info
 
         <div className='birth-info-display'>
           <p>{birthDate}</p>
           <p>{birthTime}</p>
-          <p>{birthLocation}</p>
+          {/* <p>{birthLocation}</p> */}
         </div>}
 
-        {currentField === "photo-upload" &&                   //displays email and hidden password
+        {(currentField !== "name-input" && currentField !== "birth-info-input" && currentField !== "email-and-password-input") &&                   //displays email and hidden password
 
-        <div className='email-password-display'>
+        <div className='email-display'>
           <p>{email}</p>
-          <p>{password}</p>
         </div>}
 
       
@@ -184,24 +195,24 @@ function SignupForm () {
 
         {currentField === "birth-info-input" &&       //conditionally render birthinfo
 
-          <div className='birth-info-input'>
-            <div className='input-container'>
+          <div className='birth-info-container'>
+            <div className='birthdate-input-container'>
               <div className="errors">{errors?.birthDate}</div>
                 <input type="date"
                   value={birthDate}
-                  id="birth-date-input"
+                  id="birthdate-input"
                   onChange={update('birthDate')}
                 />
-              <label htmlFor='birth-date-input'>{birthDateError !== "" && birthDate !== "" ? birthDateError : "date of birth"}</label>
+              <label htmlFor='birthdate-input'>{birthDateError !== "" && birthDate !== "" ? birthDateError : "date of birth"}</label>
             </div>
-            <div className='input-container'>
+            <div className='birthtime-input-container'>
               <div className="errors">{errors?.birthTime}</div>
                 <input type="time"
                   value={birthTime}
-                  id="birth-time-input"
+                  id="birthtime-input"
                   onChange={update('birthTime')}
                 />
-              <label htmlFor='birth-time-input'>{birthTimeError !== "" && birthTime !== "" ? birthTimeError : "time of birth"}</label>
+              <label htmlFor='birthtime-input'>{birthTimeError !== "" && birthTime !== "" ? birthTimeError : "time of birth"}</label>
             </div>
             <div className='sign-input-container'>
               <div className='sun-sign-container'>
@@ -265,7 +276,7 @@ function SignupForm () {
 
           <div className='email-and-password-input'>
             <div className='input-container'>
-              <div className="errors">{errors?.email}</div>
+              {/* <div className="errors">{errors?.email}</div> */}
                 <input type="text"
                   id="email-input"
                   value={email}
@@ -283,9 +294,9 @@ function SignupForm () {
               <label htmlFor='password-input'>{errors && errors.password ? errors.password.toLowerCase() : "password"}</label>
             </div>
             <div className='input-container'>
-              <div className="errors">
+              {/* <div className="errors">
                 {password !== password2 && 'Confirm Password field must match'}
-              </div>
+              </div> */}
                 <input type="password"
                   id="password2-input"
                   value={password2}
@@ -294,14 +305,28 @@ function SignupForm () {
               <label htmlFor='password2-input'>{password !== password2 && password2 !== "" ? 'password fields must match' : "confirm password"}</label>
             </div>
           </div>}
+
+        {currentField === "picture-upload" &&
+
+          <div className='picture-upload-container'>
+            <input className='hidden-input' id='hidden-input' onChange={e => setProfilePic(e.target.files[0])} type="file" style={{display: "none"}}/>
+            <div className='picture-input' id='picture-input'>
+              <ContinueButton text="choose file" type={"button"} handleClick={uploadPic}/>
+              <input className='file-text' value={profilePic ? `${profilePic.name}` : ""}></input>
+            </div>
+            <label htmlFor='picture-input'>upload a picture or continue</label>
+            {/* {profilePic ? } */}
+          </div>}
+
       </div>
       <div className='signup-button-container'>
-        {currentField === "email-and-password-input" && <><BackButton type={"button"} handleClick={backClick}/><ContinueButton type={"submit"} text="Sign Up" disabled={!email || !password || password !== password2}/></>}
-
         {currentField === "name-input" && <ContinueButton type={"button"} handleClick={continueClickName} disabled={!name}/>}
 
         {currentField === "birth-info-input" && <><BackButton type={"button"} handleClick={backClick}/> <ContinueButton type={"submit"} handleClick={continueClickBirthInfo} disabled={!birthDate || !birthTime}/></>}
 
+        {currentField === "email-and-password-input" && <><BackButton type={"button"} handleClick={backClick}/><ContinueButton type={"submit"} handleClick={continueClickEmailPassword} disabled={!email || !password || password !== password2}/></>}
+
+        {currentField === "picture-upload" && <><BackButton type={"button"} handleClick={backClick}/><ContinueButton type={"submit"} handleClick={userSubmit} text="Sign Up"/></>}
       </div>
     </form>
   );
