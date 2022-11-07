@@ -15,24 +15,23 @@ function Discover () {
     const dispatch = useDispatch()
 
     useEffect(() => {
-        window.addEventListener('scroll', handleScroll);
-        return () => window.removeEventListener('scroll', handleScroll);
+        document.addEventListener('scroll', handleScroll);
+        dispatch(fetchUsers({skip: userCount.current, limit: 8}));
+        handleScroll();
+        return () => {
+            document.removeEventListener('scroll', handleScroll);
+        };
     }, []);
 
-    useEffect(() => {
-        debugger;
+    const handleScroll = () => {
+        if (window.innerHeight + document.querySelector("html").scrollTop !== document.querySelector("html").offsetHeight || isFetching) return;
+        setIsFetching(true);
         async function fetchData() {
             await dispatch(fetchUsers({skip: userCount.current, limit: 8}));
             setIsFetching(false);
             userCount.current += 8;
         }
         fetchData();
-    }, [isFetching]);
-
-    const handleScroll = () => {
-        debugger;
-        if (window.innerHeight + document.querySelector("body").scrollTop !== document.querySelector("body").offsetHeight || isFetching) return;
-        setIsFetching(true);
     }
 
     const fetchedUsers = useSelector(state => state.users);

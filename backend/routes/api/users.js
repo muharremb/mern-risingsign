@@ -66,8 +66,7 @@ router.post('/register', validateRegisterInput, async (req, res, next) => {
     err.errors = errors;
     return next(err);
   }
-
-  let profilePic;       //should add default profile pic path to user as they are being created
+  let profilePic;       
 
   switch(req.body.horoscope.sun.Sign.key) {
     case "aquarius":
@@ -156,9 +155,6 @@ router.post('/login', validateLoginInput, async (req, res, next) => {
 
 router.get('/current', restoreUser, (req, res) => {
   if (!isProduction) {
-    // In development, allow React server to gain access to the CSRF token
-    // whenever the current user information is first loaded into the
-    // React application
     const csrfToken = req.csrfToken();
     res.cookie("CSRF-TOKEN", csrfToken);
   }
