@@ -3,8 +3,8 @@ import { useState, useContext, useEffect } from 'react'
 import { ChatContext } from '../../../context/chatContext'
 
 function MessageForm () {
-  const user = useSelector(state => state.session.user)
-  const userName = useSelector(state => state.session.user.name)
+  const user = useSelector(state => state.session.user);
+  const userName = useSelector(state => state.session.user.name);
 
   const [msg, setMsg] = useState('');
   const { rememberRoom, setRememberRoom, socket, messages, setMessages, currentRoom, setCurrentRoom, storeRoom } = useContext(ChatContext);
@@ -24,16 +24,12 @@ function MessageForm () {
 
   useEffect(()=> {
     messagesList = messages?.messagesByDate ? Object.values(messages.messagesByDate) : null;
-    messagesList = messagesList?.map((message, i) => <li key={i} id={message._id} className="chat-message"
-  className={message.from._id === user._id ? "you" : "them"}
-  >{message.content}</li>)
+    messagesList = messagesList?.map((message, i) => <li key={i} id={message._id} className={`chat-message ${message.from._id === user._id ? "you" : "them"}`}>{message.content}</li>)
   }, [msg])
 
   let messagesList = messages?.messagesByDate ? Object.values(messages.messagesByDate) : null;
-  messagesList = messagesList?.map((message, i) => <li key={i} id={message._id} className="chat-message"
-  className={message.from._id === user._id ? "you" : "them"}
-  >{message.content}</li>)
-
+  messagesList = messagesList?.map((message, i) => <li key={i} id={message._id} className={`chat-message ${message.from._id === user._id ? "you" : "them"}`}>{message.content}</li>)
+debugger;
 
   return (
     <>
