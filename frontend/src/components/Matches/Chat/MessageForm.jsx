@@ -13,35 +13,46 @@ function MessageForm () {
     setMessages(roomMessages[0])
   })
 
+  const formatMinutes = (minutes) => {
+    if (minutes < 10) return '0' + String(minutes)
+    return minutes
+  }
+
   const handleSubmit = (e) => {
     e.preventDefault()
     const dateObj = new Date();
-    const date = dateObj.getDate();
-    const time = dateObj.getHours() + ":" + dateObj.getMinutes() + ":" + dateObj.getSeconds();
+    const date = (dateObj.getMonth() + 1) + '/' + dateObj.getDate() +  '/' + (dateObj.getYear() - 100);
+    const time = dateObj.getHours() + ":" + formatMinutes(dateObj.getMinutes()) //+ ":" + dateObj.getSeconds();
     socket.emit('message-room', currentRoom, msg, user, time, date);
     setMsg("")
   }
 
   useEffect(()=> {
     messagesList = messages?.messagesByDate ? Object.values(messages.messagesByDate) : null;
+    console.log(messagesList)
     messagesList = messagesList?.map((message, i) => <li key={i} id={message._id} className="chat-message"
   className={message.from._id === user._id ? "you" : "them"}
-  >{message.content}</li>)
+  ><span>{message.time}</span>{message.time}</li>)
   }, [msg])
 
-  let messagesList = messages?.messagesByDate ? Object.values(messages.messagesByDate) : null;
-  messagesList = messagesList?.map((message, i) => <li key={i} id={message._id} className="chat-message"
+  let messagesList = messages?.messagesByDate ? Object.values(messages.messagesByDate).reverse() : null;
+  messagesList = messagesList?.map((message, i) =>
+  <li key={i} id={message._id}
+  className="chat-message"
   className={message.from._id === user._id ? "you" : "them"}
-  >{message.content}</li>)
-
+  >
+  <span>{message.date} &nbsp;</span>
+  <span>{message.time.slice(0, 5)} &nbsp;</span>{message.content}</li>)
 
   return (
     <>
     {user && <>
       <h4>Chatting with {currentRoom}</h4>
-      <div className="display-messages">
-        {messagesList}
-      </div>
+
+        <div className="display-messages">
+          {messagesList}
+        </div>
+
       <form onSubmit={handleSubmit}
         className="message-form">
         <input type="text"

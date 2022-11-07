@@ -12,13 +12,11 @@
     margin: 0 2% 0 1%;
 }
 
-
 .heading {
     font-size: 3rem;
     font-weight: bold;
     margin: 0;
 }
-
 
 .matches-right{
     background-color: #530f73;
@@ -45,18 +43,35 @@
     background-color: powderblue;
     display: flex;
     justify-content: right;
-    scroll-snap-align: end;
+    /* scroll-snap-align: end; */
 }
 
 .you {
     background-color: green;
     display: flex;
-    justify-content: left;
-    /* scroll-snap-align: end; */
-    /* scroll-behavior: auto; */
+    margin-top: auto;
 }
 
-.you:last-child{
+/* ul{
+    overflow: auto;
+} */
+
+/* .you:last-child{
     scroll-snap-align: end;
     scroll-margin-block-end: 6rem;
+} */
+
+#messages-list{
+    background-color:black;
+    display: flex;
+    flex-direction: column;
+    overflow-y:scroll;
+    /* justify-content:end; */
+    margin-top: auto;
+}
+
+#messages-container {
+    border: 3px solid black;
+    display: flex;
+    flex-flow: column;
 }
