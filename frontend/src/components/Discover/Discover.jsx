@@ -16,7 +16,6 @@ function Discover () {
 
     useEffect(() => {
         document.addEventListener('scroll', handleScroll);
-        dispatch(fetchUsers({skip: userCount.current, limit: 8}));
         handleScroll();
         return () => {
             document.removeEventListener('scroll', handleScroll);
@@ -24,7 +23,7 @@ function Discover () {
     }, []);
 
     const handleScroll = () => {
-        if (window.innerHeight + document.querySelector("html").scrollTop !== document.querySelector("html").offsetHeight || isFetching) return;
+        if (window.innerHeight + document.querySelector("html").scrollTop < document.querySelector("html").offsetHeight || isFetching) return;
         setIsFetching(true);
         async function fetchData() {
             await dispatch(fetchUsers({skip: userCount.current, limit: 8}));

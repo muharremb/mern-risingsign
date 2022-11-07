@@ -8,23 +8,15 @@ import { fetchUser } from '../../store/users';
 
 function Profile () {
   const dispatch = useDispatch();
-  // const currentUser = useSelector(state => state.session.user);
-  // const [ pic, setPic ] = useState("");
-  // const [ bio, setBio ] = useState("");
-  // const [ picGrid, setPicGrid ] = useState("");
   const {userId} = useParams();
   const currentUser = useSelector(state => state.users[userId] ? state.users[userId] : '');
-
-  // debugger;
  
   const restoreUser = async () => {
     await dispatch(fetchUser(userId));
-    // await dispatch(fetchUsers());
   }
 
   if (!currentUser){
     restoreUser();
-    // dispatch(fetchUser(userId));
   }
   
   const [ pic, setPic ] = useState("");

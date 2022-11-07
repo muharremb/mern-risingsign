@@ -26,9 +26,6 @@ function NavBar () {
     }
   }
 
-  useEffect(() => {
-    dispatch(getCurrentUser());
-  }, [dispatch]);
   
   const logoutUser = e => {
       e.preventDefault();
