@@ -66,8 +66,7 @@ router.post('/register', validateRegisterInput, async (req, res, next) => {
     err.errors = errors;
     return next(err);
   }
-
-  let profilePic;       //should add default profile pic path to user as they are being created
+  let profilePic;       
 
   switch(req.body.horoscope.sun.Sign.key) {
     case "aquarius":
@@ -156,9 +155,6 @@ router.post('/login', validateLoginInput, async (req, res, next) => {
 
 router.get('/current', restoreUser, (req, res) => {
   if (!isProduction) {
-    // In development, allow React server to gain access to the CSRF token
-    // whenever the current user information is first loaded into the
-    // React application
     const csrfToken = req.csrfToken();
     res.cookie("CSRF-TOKEN", csrfToken);
   }
@@ -180,9 +176,10 @@ router.get('/current', restoreUser, (req, res) => {
 });
 
 router.get('/index', async function(req, res, next) {
-  const criteria = {"horoscope.sun.Sign.key": req.query.sun}
 
-  const users = await User.find({});
+  const options = {skip: parseInt(req.query.skip), limit: parseInt(req.query.limit)}
+
+  const users = await User.find({}, null, options);
   const users_clean = users.map((user) => {
     return ({
       _id: user._id,
@@ -190,7 +187,6 @@ router.get('/index', async function(req, res, next) {
       email: user.email,
       bio: user.bio,
       birthDateTime: user.birthDateTime,
-      // birthLocation: user.birthLocation,
       horoscope: user.horoscope,
       likes: user.likes,
       profileImageURL: user.profileImageURL,
@@ -229,8 +225,6 @@ router.get('/:userId', async function(req, res, next) {
     newMessages: {}
   });
 });
-
-// router.get('/:userId/pics', getUserPics);
 
 
 module.exports = router;
