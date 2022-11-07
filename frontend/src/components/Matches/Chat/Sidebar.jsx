@@ -5,8 +5,8 @@ import './Sidebar.css'
 
 function Sidebar () {
   const user = useSelector(state => state.session.user);
-  const { setMembers, members, currentRoom, setCurrentRoom } = useContext(ChatContext)
-  const [storeRoom, setStoreRoom] = useState('')
+  const { setMembers, members, currentRoom, setCurrentRoom, setCurrentRoomName } = useContext(ChatContext);
+  const [storeRoom, setStoreRoom] = useState('');
 
   useEffect(() => {
     socket.emit("new-user");
@@ -35,6 +35,8 @@ function Sidebar () {
     const roomName = makeRoomName(userId, memberId)
     setCurrentRoom(roomName);
     setStoreRoom(roomName);
+    setCurrentRoomName(e.currentTarget.className)
+    console.log(e.currentTarget.className)
     localStorage.setItem('currentRoom', roomName)
     socket.emit('join-room', roomName);
   };
@@ -43,6 +45,7 @@ function Sidebar () {
   {if(user.likes.includes(member._id) && user.likers.includes(member._id)){
     return <li key={i}
     id={member._id}
+    className={member.name}
     onClick={joinRoom}>{member.name}</li>
     };
     return null;

@@ -7,7 +7,7 @@ function MessageForm () {
   const userName = useSelector(state => state.session.user.name)
 
   const [msg, setMsg] = useState('');
-  const { rememberRoom, setRememberRoom, socket, messages, setMessages, currentRoom, setCurrentRoom, storeRoom } = useContext(ChatContext);
+  const { rememberRoom, setRememberRoom, socket, messages, setMessages, currentRoom, setCurrentRoom, storeRoom, currentRoomName } = useContext(ChatContext);
 
   socket.off('room-messages').on('room-messages', (roomMessages) => {
     setMessages(roomMessages[0])
@@ -47,7 +47,7 @@ function MessageForm () {
   return (
     <>
     {user && <>
-      <h4>Chatting with {currentRoom}</h4>
+      <h4>Chatting with {currentRoomName}</h4>
 
         <div className="display-messages">
           {messagesList}
