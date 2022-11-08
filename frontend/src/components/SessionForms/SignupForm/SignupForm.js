@@ -17,7 +17,7 @@ function SignupForm () {
   const [moonSign, setMoonSign] = useState('');
   const [risingSign, setRisingSign] = useState('');
   const [ pic, setPic ] = useState(null);
-  const [ preview, setPreview ] = useState("");
+  const [ preview, setPreview ] = useState(null);
   // const [ hidden, setHidden ] = useState(false);
   const fieldArray = ["name-input", "birth-info-input", "email-and-password-input", "picture-upload"];
   let [ currentField, setCurrentField ] = useState(fieldArray[0]);
@@ -35,9 +35,16 @@ function SignupForm () {
     };
   }, [dispatch, currentField]);
 
-  useEffect(() => {                   //sets the preview of the picture
+  useEffect(() => {      
+    if (!pic) {
+      setPreview(undefined)
+      return
+    }             //sets the preview of the picture
+    const previewUrl = URL.createObjectURL(pic)
+    setPreview(previewUrl)
 
-  }, [preview])
+    return () => URL.revokeObjectURL(previewUrl)
+  }, [pic])
 
   useEffect(() => {
     if (pic) {
@@ -116,6 +123,10 @@ function SignupForm () {
     document.getElementById('hidden-input').click();
   }
 
+  const handlePreview = e => {
+    setPreview(e.currentTarget.files[0])
+  }
+
   const continueClickName = e => {
     e.preventDefault();
     if (name.length >= 2 && name.length <= 30) {
@@ -143,6 +154,8 @@ function SignupForm () {
 
   const backClick = e => {
     e.preventDefault();
+    setPreview(null);
+    setPic(null);
     setCurrentField(fieldArray[fieldArray.indexOf(currentField) - 1])
   }
 
@@ -325,11 +338,14 @@ function SignupForm () {
             <input className='hidden-input' id='hidden-input' onChange={e => setPic(e.target.files[0])} type="file" style={{display: "none"}}/>
             <div className='picture-input' id='picture-input'>
               <Button text="choose file" type={"button"} handleClick={hiddenClick}/>
-              <input className='file-text' onChange={() => {}} value={pic ? `${pic.name}` : ""}></input>
+              <input className='file-text' onChange={e => handlePreview(e)} value={pic ? `${pic.name}` : ""}></input>
             </div>
-            <label htmlFor='picture-input'>upload a picture or continue</label>
-            
+            <label htmlFor='picture-input'>{ pic ? "" : "upload a picture or continue"}</label>
           </div>}
+
+        {preview && <div className='preview-frame'>
+                      <img className="picture-preview" src={preview} alt=""></img>
+                    </div>}
 
       </div>
       <div className='signup-button-container'>

@@ -16,8 +16,11 @@
 }
 
 .display-circle[data-page="/"] {
-   width: 600px;
-   height: 600px;
+   display: block;
+   min-width: 0;
+   overflow: visible;
+   width: 700px;
+   height: 700px;
    transition: all 1.2s ease;
 }
 
@@ -32,3 +35,5 @@
    height: 600px;
    transition: all 1.2s ease;
 }
+
+/* .display */

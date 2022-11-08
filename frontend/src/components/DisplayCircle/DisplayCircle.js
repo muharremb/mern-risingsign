@@ -3,6 +3,7 @@ import { useLocation } from 'react-router-dom';
 
 import LoginForm from '../SessionForms/LoginForm/LoginForm';
 import SignupForm from '../SessionForms/SignupForm/SignupForm';
+import Title from '../Title/Title';
 
 const DisplayCircle = () => {
    const location = useLocation();
@@ -14,6 +15,10 @@ const DisplayCircle = () => {
             break;
          case '/signup':
             return <SignupForm />
+            break;
+         case '/':
+            return <Title />;
+            break;
          default:
             return null
       }

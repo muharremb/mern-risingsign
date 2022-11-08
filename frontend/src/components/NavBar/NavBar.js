@@ -9,8 +9,8 @@ function NavBar () {
   const loggedIn = useSelector(state => !!state.session.user);
   
   // MB added ? operator to both useSelector and current user check
-  const currentUser = useSelector(state => state.session.user ? state.session.user:{});
-  const loggedInPic = currentUser.profileImageURL ? currentUser.profileImageURL:null;
+  const currentUser = useSelector(state => state.session.user ? state.session.user : {});
+  const loggedInPic = currentUser.profileImageURL ? currentUser.profileImageURL : null;
   
   const dispatch = useDispatch();
 

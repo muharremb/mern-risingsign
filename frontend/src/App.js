@@ -41,25 +41,25 @@ function App() {
   return loaded && (
     <>
     <Background />
+
     <div className='clear-box'>
+      <Switch>
+        <Route exact path="/developers" component={Developers} />
+        {/* <AuthRoute exact path="/" component={DisplayCircle} /> */}
+        {/* <AuthRoute exact path="/login" component={} /> */}
+        {/* <AuthRoute exact path="/signup" component={DisplayCircle} /> */}
+
+        <ProtectedRoute exact path="/profile/:userId" component={Profile} />
+        <ProtectedRoute exact path="/discover" component={Discover} />
+        <ProtectedRoute exact path="/chat" component={Chat} />
+        <ProtectedRoute exact path="/matches" component={Matches} />
+      </Switch>
       <DisplayCircle />
       <NavBar />
     </div>
-    
-    
+
     <DevButton />
-    {/* <Switch>
-      <Route exact path="/developers" component={Developers} />
-      <AuthRoute exact path="/" component={MainPage} />
-      <AuthRoute exact path="/login" component={LoginForm} />
-      <AuthRoute exact path="/signup" component={SignupForm} />
-
-      <ProtectedRoute exact path="/profile/:userId" component={Profile} />
-      <ProtectedRoute exact path="/discover" component={Discover} />
-      <ProtectedRoute exact path="/chat" component={Chat} />
-      <ProtectedRoute exact path="/matches" component={Matches} />
-
-    </Switch> */}
+    
     </>
   );
 }
