@@ -5,6 +5,7 @@ import './LoginForm.css';
 import { login, clearSessionErrors } from '../../../store/session';
 
 import { socket } from '../../../context/chatContext';
+import { Redirect } from 'react-router-dom';
 
 function LoginForm () {
   const [email, setEmail] = useState('');
@@ -28,7 +29,7 @@ function LoginForm () {
     return e => setState(e.currentTarget.value);
   }
 
-  const demoLogIn = (e) => {
+  const demoLogIn = e => {
     e.preventDefault();
 
     setEmail("demouser@mgmail.com")
@@ -38,7 +39,7 @@ function LoginForm () {
     });
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = e => {
     e.preventDefault();
     dispatch(login({ email, password })).then(()=>{
       socket.emit('new-user')

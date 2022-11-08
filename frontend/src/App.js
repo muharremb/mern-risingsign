@@ -43,20 +43,22 @@ function App() {
     <Background />
 
     <div className='clear-box'>
-      <Switch>
+      
+      <DisplayCircle />
+      <NavBar />
+    </div>
+
+    <Switch>
         <Route exact path="/developers" component={Developers} />
-        {/* <AuthRoute exact path="/" component={DisplayCircle} /> */}
-        {/* <AuthRoute exact path="/login" component={} /> */}
-        {/* <AuthRoute exact path="/signup" component={DisplayCircle} /> */}
+        <AuthRoute exact path="/" component={DisplayCircle} />
+        <AuthRoute exact path="/login" component={DisplayCircle} />
+        <AuthRoute exact path="/signup" component={DisplayCircle} />
 
         <ProtectedRoute exact path="/profile/:userId" component={Profile} />
         <ProtectedRoute exact path="/discover" component={Discover} />
         <ProtectedRoute exact path="/chat" component={Chat} />
         <ProtectedRoute exact path="/matches" component={Matches} />
       </Switch>
-      <DisplayCircle />
-      <NavBar />
-    </div>
 
     <DevButton />
     

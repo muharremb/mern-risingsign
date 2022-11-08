@@ -36,4 +36,12 @@
    transition: all 1.2s ease;
 }
 
+.display-circle[data-page="/discover"] {
+   width: 2000px;
+   height: 2000px;
+   border: none;
+   box-shadow: none;
+   transition: all 1.5s ease-in;
+}
+
 /* .display */
