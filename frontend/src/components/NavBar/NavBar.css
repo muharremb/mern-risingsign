@@ -11,7 +11,6 @@
    background-color: rgb(0, 0, 0);
    border-top: 2px solid rgba(233, 193, 93);
    z-index: 100;
-   animation: visible 3s;
 }
 
 .navbar-left {
@@ -57,16 +56,16 @@
    cursor: pointer;
 }
 
-.discover-link, .matches-link, .profile-link {
+.signup-link, .login-link, .discover-link, .matches-link, .profile-link {
    color: rgba(233, 193, 93);
    font-size: 1.5rem;
    font-weight: 200;
    text-decoration: underline;
    text-underline-offset: .5vh;
-   font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+   font-family: cursive;
 }
 
-.discover-link:hover, .matches-link:hover, .profile-link:hover, .logout-button:hover {
+.signup-link:hover, .login-link:hover, .discover-link:hover, .matches-link:hover, .profile-link:hover, .logout-button:hover {
    animation: glow 1s ease-in-out infinite alternate;
    cursor: pointer;
 }

@@ -23,28 +23,21 @@ export const receivePic = picData => ({
 
 
 export const uploadPic = picData => async dispatch => {
-   // debugger
-   console.log("in upload pic");
-   const { pic, uploaderId, isProfile } = picData
+   const { pic, uploaderId } = picData
    const formData = new FormData();
    formData.append("image-upload", pic)
    formData.append("uploaderId", uploaderId)
-   formData.append("isProfile", isProfile)
 
 
-   const res = await jwtFetch('/api/pics/upload', {
+   // let res = 
+   await jwtFetch('/api/pics/upload', {
       method: 'POST',
       body: formData
    })
-   
-   let data = await res.json();
 
-   return data;
+   // let data = await res.json();
+
 }
-
-// export const uploadProfPic = picData => async dispatch => {
-//    const {}
-// }
 
 
 const initialState = [];

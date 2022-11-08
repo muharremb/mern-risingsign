@@ -1,10 +1,9 @@
 import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import Button from '../../Button/Button';
+import ContinueButton from '../ContinueButton/ContinueButton';
+import BackButton from '../BackButton/BackButton';
 import './SignupForm.css';
 import { signup, clearSessionErrors } from '../../../store/session';
-import { uploadPic } from '../../../store/pics';
-import { Link } from 'react-router-dom';
 
 function SignupForm () {
   const [email, setEmail] = useState('');
@@ -17,10 +16,8 @@ function SignupForm () {
   const [sunSign, setSunSign] = useState('');
   const [moonSign, setMoonSign] = useState('');
   const [risingSign, setRisingSign] = useState('');
-  const [ pic, setPic ] = useState(null);
-  const [ preview, setPreview ] = useState(null);
   // const [ hidden, setHidden ] = useState(false);
-  const fieldArray = ["name-input", "birth-info-input", "email-and-password-input", "picture-upload"];
+  const fieldArray = ["name-input", "birth-info-input", "email-and-password-input"];
   let [ currentField, setCurrentField ] = useState(fieldArray[0]);
   let [ birthLocationError, setBirthLocationError ] = useState("");
   let [ birthDateError, setBirthDateError ] = useState("");
@@ -28,34 +25,21 @@ function SignupForm () {
   let [ nameError, setNameError ] = useState("");
   const errors = useSelector(state => state.errors.session);
   const dispatch = useDispatch();
-  const currentUser = useSelector(state => state.session.user ? state.session.user : null)
+
+  // if (birthLocation === "") setBirthLocationError("");
+  // if (birthDate === "") setBirthDateError("");
+  // if (birthTime === "") setBirthTimeError("");
+
+
+  // if (email === "" || name === "" || password === "" || password2 === "" || birthLocation === "" || birthDate === "" || birthTime === "") {
+  //   dispatch(clearSessionErrors())
+  // }
 
   useEffect(() => {
     return () => {
       dispatch(clearSessionErrors());
     };
   }, [dispatch, currentField]);
-
-  useEffect(() => {      
-    if (!pic) {
-      setPreview(undefined)
-      return
-    }             //sets the preview of the picture
-    const previewUrl = URL.createObjectURL(pic)
-    setPreview(previewUrl)
-
-    return () => URL.revokeObjectURL(previewUrl)
-  }, [pic])
-
-  useEffect(() => {
-    if (pic) {
-      dispatch(uploadPic({
-        pic,
-        uploaderId: currentUser._id,
-        isProfile: true
-      }))
-    }
-  }, [currentUser])
 
   const update = field => {
     let setState;
@@ -120,14 +104,6 @@ function SignupForm () {
     return true;
   }
 
-  const hiddenClick = () => {
-    document.getElementById('hidden-input').click();
-  }
-
-  const handlePreview = e => {
-    setPreview(e.currentTarget.files[0])
-  }
-
   const continueClickName = e => {
     e.preventDefault();
     if (name.length >= 2 && name.length <= 30) {
@@ -139,24 +115,20 @@ function SignupForm () {
 
   const continueClickBirthInfo = e => {
     e.preventDefault();
+    // if (birthLocation !== "" && isValidDate(birthDate) && checkTime(birthTime)) {
     if (isValidDate(birthDate) && checkTime(birthTime)) {
       setCurrentField(fieldArray[fieldArray.indexOf(currentField) + 1]);
     } else {
+      // if (birthLocation === "") {
+      //   setBirthLocationError("must include place of birth");
+      // }
       if (!isValidDate(birthDate)) setBirthDateError("not a valid date of birth");
       if (!checkTime(birthTime)) setBirthTimeError("Invalid time of birth");
     }
   }
 
-  const continueClickEmailPassword = e => {
-    e.preventDefault();
-    setCurrentField(fieldArray[fieldArray.indexOf(currentField) + 1]);
-
-  }
-
   const backClick = e => {
     e.preventDefault();
-    setPreview(null);
-    setPic(null);
     setCurrentField(fieldArray[fieldArray.indexOf(currentField) - 1])
   }
 
@@ -173,138 +145,24 @@ function SignupForm () {
       name,
       password,
       horoscope,
-      birthDateTime
+      birthDateTime,
     };
 
-    dispatch(signup(user));
-    // console.log(currentUser)
-    
+    dispatch(signup(user)); 
   }
 
   return (
-    <>
+    <div className='signup-page'>
+      <div className='space-layer'></div>
+      <div className='space-layer2'></div>
       <form className="signup-form" onSubmit={userSubmit}>
-        <div className='signup-upper'>
-          {currentField !== "name-input" &&               //displays name
-
-          <div className='name-display'>
-            <p>{name.charAt(0).toUpperCase() + name.slice(1).toLowerCase()}</p>
-          </div>}
-
-          {(currentField !== "name-input" && currentField !== "birth-info-input") &&       //displays birth info
-
-          <div className='birth-info-display'>
-            <p>{birthDate}</p>
-            <p>{birthTime}</p>
-            {/* <p>{birthLocation}</p> */}
-          </div>}
-
-          {(currentField !== "name-input" && currentField !== "birth-info-input" && currentField !== "email-and-password-input") &&                   //displays email and hidden password
-
-          <div className='email-display'>
-            <p>{email}</p>
-          </div>}
-
-        
-
-        
-
-          {currentField === "name-input" &&               //conditionally render name
-
-          <div className='name-input-container'>
-            <div className="errors">{errors?.name}</div>
-              <input type="text"
-                id="name-input"
-                value={name}
-                onChange={update('name')}
-              />
-            <label htmlFor='name-input'>{nameError !== "" && name !== "" ? nameError : "first name"}</label>
-          </div>}
-
-          {currentField === "birth-info-input" &&       //conditionally render birthinfo
-
-            <div className='birth-info-container'>
-              <div className='birthdate-input-container'>
-                <div className="errors">{errors?.birthDate}</div>
-                  <input type="date"
-                    value={birthDate}
-                    id="birthdate-input"
-                    onChange={update('birthDate')}
-                  />
-                <label htmlFor='birthdate-input'>{birthDateError !== "" && birthDate !== "" ? birthDateError : "date of birth"}</label>
-              </div>
-              <div className='birthtime-input-container'>
-                <div className="errors">{errors?.birthTime}</div>
-                  <input type="time"
-                    value={birthTime}
-                    id="birthtime-input"
-                    onChange={update('birthTime')}
-                  />
-                <label htmlFor='birthtime-input'>{birthTimeError !== "" && birthTime !== "" ? birthTimeError : "time of birth"}</label>
-              </div>
-              <div className='sign-input-container'>
-                <div className='sun-sign-container'>
-                  <label htmlFor="sun-sign-selector" className='sign-selector-label'>Sun Sign:</label>
-                  <select id="sun-sign-selector" className="input-container-sign-selector" defaultValue="def" onChange={handleSun}>
-                      <option value="def" disabled>...</option>
-                      <option value="aries">Aries</option>
-                      <option value="taurus">Taurus</option>
-                      <option value="gemini">Gemini</option>
-                      <option value="cancer">Cancer</option>
-                      <option value="leo">Leo</option>
-                      <option value="virgo">Virgo</option>
-                      <option value="libra">Libra</option>
-                      <option value="scorpio">Scorpio</option>
-                      <option value="sagittarius">Sagittarius</option>
-                      <option value="capricorn">Capricorn</option>
-                      <option value="aquarius">Aquarius</option>
-                      <option value="pisces">Pisces</option>
-                  </select>
-                </div>
-                <div className='moon-sign-container'>
-                  <label htmlFor='moon-sign-selector' className='sign-selector-label'>Moon Sign:</label>
-                  <select id="moon-sign-selector" className="input-container-sign-selector" defaultValue="def" onChange={handleMoon}>
-                      <option value="def" disabled>...</option>
-                      <option value="aries">Aries</option>
-                      <option value="taurus">Taurus</option>
-                      <option value="gemini">Gemini</option>
-                      <option value="cancer">Cancer</option>
-                      <option value="leo">Leo</option>
-                      <option value="virgo">Virgo</option>
-                      <option value="libra">Libra</option>
-                      <option value="scorpio">Scorpio</option>
-                      <option value="sagittarius">Sagittarius</option>
-                      <option value="capricorn">Capricorn</option>
-                      <option value="aquarius">Aquarius</option>
-                      <option value="pisces">Pisces</option>
-                  </select>
-                </div>
-                <div className='rising-sign-container'>
-                  <label htmlFor='rising-sign-selector' className='sign-selector-label'>Rising Sign:</label>
-                    <select id="rising-sign-selector" className="input-container-sign-selector" defaultValue="def" onChange={handleRising}>
-                        <option value="def" disabled>...</option>
-                        <option value="aries">Aries</option>
-                        <option value="taurus">Taurus</option>
-                        <option value="gemini">Gemini</option>
-                        <option value="cancer">Cancer</option>
-                        <option value="leo">Leo</option>
-                        <option value="virgo">Virgo</option>
-                        <option value="libra">Libra</option>
-                        <option value="scorpio">Scorpio</option>
-                        <option value="sagittarius">Sagittarius</option>
-                        <option value="capricorn">Capricorn</option>
-                        <option value="aquarius">Aquarius</option>
-                        <option value="pisces">Pisces</option>
-                    </select>
-                </div>
-              </div>
-            </div>}
+        <div className="current-field">
 
           {currentField === "email-and-password-input" &&     //conditionally render email and password
 
             <div className='email-and-password-input'>
               <div className='input-container'>
-                {/* <div className="errors">{errors?.email}</div> */}
+                <div className="errors">{errors?.email}</div>
                   <input type="text"
                     id="email-input"
                     value={email}
@@ -322,9 +180,9 @@ function SignupForm () {
                 <label htmlFor='password-input'>{errors && errors.password ? errors.password.toLowerCase() : "password"}</label>
               </div>
               <div className='input-container'>
-                {/* <div className="errors">
+                <div className="errors">
                   {password !== password2 && 'Confirm Password field must match'}
-                </div> */}
+                </div>
                   <input type="password"
                     id="password2-input"
                     value={password2}
@@ -334,36 +192,120 @@ function SignupForm () {
               </div>
             </div>}
 
-          {currentField === "picture-upload" &&
 
-            <div className='picture-upload-container'>
-              <input className='hidden-input' id='hidden-input' onChange={e => setPic(e.target.files[0])} type="file" style={{display: "none"}}/>
-              <div className='picture-input' id='picture-input'>
-                <Button text="choose file" type={"button"} handleClick={hiddenClick}/>
-                <input className='file-text' onChange={e => handlePreview(e)} value={pic ? `${pic.name}` : ""}></input>
+
+          {currentField === "name-input" &&               //conditionally render name
+
+            <div className='name-input'>
+              <div className='input-container'>
+                <div className="errors">{errors?.name}</div>
+                  <input type="text"
+                    id="name-input"
+                    value={name}
+                    onChange={update('name')}
+                  />
+                <label htmlFor='name-input'>{nameError !== "" && name !== "" ? nameError : "first name"}</label>
               </div>
-              <label htmlFor='picture-input'>{ pic ? "" : "upload a picture or continue"}</label>
             </div>}
 
-          {preview && <div className='preview-frame'>
-                        <img className="picture-preview" src={preview} alt=""></img>
-                      </div>}
 
+
+          {currentField === "birth-info-input" &&       //conditionally render birthinfo
+
+            <div className='birth-info-input'>
+              <div className='input-container'>
+                <div className="errors">{errors?.birthDate}</div>
+                  <input type="date"
+                    value={birthDate}
+                    id="birth-date-input"
+                    onChange={update('birthDate')}
+                  />
+                <label htmlFor='birth-date-input'>{birthDateError !== "" && birthDate !== "" ? birthDateError : "date of birth"}</label>
+              </div>
+              <div className='input-container'>
+                <div className="errors">{errors?.birthTime}</div>
+                  <input type="time"
+                    value={birthTime}
+                    id="birth-time-input"
+                    onChange={update('birthTime')}
+                  />
+                <label htmlFor='birth-time-input'>{birthTimeError !== "" && birthTime !== "" ? birthTimeError : "time of birth"}</label>
+              </div>
+              <div className='sign-input-container'>
+                <label className='sign-selector-label'>Sun Sign:
+                  <select id="sun-sign-selector" className="input-container-sign-selector" defaultValue="def" onChange={handleSun}>
+                      <option value="def" disabled>...</option>
+                      <option value="aries">Aries</option>
+                      <option value="taurus">Taurus</option>
+                      <option value="gemini">Gemini</option>
+                      <option value="cancer">Cancer</option>
+                      <option value="leo">Leo</option>
+                      <option value="virgo">Virgo</option>
+                      <option value="libra">Libra</option>
+                      <option value="scorpio">Scorpio</option>
+                      <option value="sagittarius">Sagittarius</option>
+                      <option value="capricorn">Capricorn</option>
+                      <option value="aquarius">Aquarius</option>
+                      <option value="pisces">Pisces</option>
+                  </select>
+                </label>
+                <label className='sign-selector-label'>Moon Sign:
+                  <select id="moon-sign-selector" className="input-container-sign-selector" defaultValue="def" onChange={handleMoon}>
+                      <option value="def" disabled>...</option>
+                      <option value="aries">Aries</option>
+                      <option value="taurus">Taurus</option>
+                      <option value="gemini">Gemini</option>
+                      <option value="cancer">Cancer</option>
+                      <option value="leo">Leo</option>
+                      <option value="virgo">Virgo</option>
+                      <option value="libra">Libra</option>
+                      <option value="scorpio">Scorpio</option>
+                      <option value="sagittarius">Sagittarius</option>
+                      <option value="capricorn">Capricorn</option>
+                      <option value="aquarius">Aquarius</option>
+                      <option value="pisces">Pisces</option>
+                  </select>
+                </label>
+                <label className='sign-selector-label'>Rising Sign:
+                  <select id="rising-sign-selector" className="input-container-sign-selector" defaultValue="def" onChange={handleRising}>
+                      <option value="def" disabled>...</option>
+                      <option value="aries">Aries</option>
+                      <option value="taurus">Taurus</option>
+                      <option value="gemini">Gemini</option>
+                      <option value="cancer">Cancer</option>
+                      <option value="leo">Leo</option>
+                      <option value="virgo">Virgo</option>
+                      <option value="libra">Libra</option>
+                      <option value="scorpio">Scorpio</option>
+                      <option value="sagittarius">Sagittarius</option>
+                      <option value="capricorn">Capricorn</option>
+                      <option value="aquarius">Aquarius</option>
+                      <option value="pisces">Pisces</option>
+                  </select>
+                </label>
+
+
+
+              </div>
+            </div>}
         </div>
-        <div className='signup-button-container'>
-          {currentField === "name-input" && <Button type={"button"} text="Continue" handleClick={continueClickName} disabled={!name}/>}
 
-          {currentField === "birth-info-input" && <><Button text="Back" type={"button"} handleClick={backClick}/> <Button type={"submit"} text="Continue" handleClick={continueClickBirthInfo} disabled={!birthDate || !birthTime}/></>}
+        <div className='user-build'>
+          <div className='user-build-upper'>
 
-          {currentField === "email-and-password-input" && <><Button text="Back" type={"button"} handleClick={backClick}/><Button type={"submit"} text="Continue" handleClick={continueClickEmailPassword} disabled={!email || !password || password !== password2}/></>}
+          </div>
 
-          {currentField === "picture-upload" && <><Button text="Back" type={"button"} handleClick={backClick}/><Button type={"submit"} handleClick={userSubmit} text="Sign Up"/></>}
+          <div className='user-build-lower'>
+            {currentField === "email-and-password-input" && <><BackButton type={"button"} handleClick={backClick}/><ContinueButton type={"submit"} text="Sign Up" disabled={!email || !password || password !== password2}/></>}
+
+            {currentField === "name-input" && <ContinueButton type={"button"} handleClick={continueClickName} disabled={!name}/>}
+
+            {currentField === "birth-info-input" && <><BackButton type={"button"} handleClick={backClick}/> <ContinueButton type={"submit"} handleClick={continueClickBirthInfo} disabled={!birthDate || !birthTime}/></>}
+
+          </div>
         </div>
       </form>
-      <Link className="home-link" to={'/'}>Rising Sign</Link>
-      <Link className="bottom-login-link" to={'/login'}>Log In</Link>
-    </>
-    
+    </div>
   );
 }
 
