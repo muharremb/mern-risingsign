@@ -5,14 +5,11 @@
    align-items: center;
    border-radius: 50%;
    bottom: 15%;
-   width: 30vw;
-   height: 30vw;
-   background: radial-gradient(circle, rgba(113,14,143,1) 0%, rgba(74,23,84,1) 35%, rgba(14,0,20,1) 100%);
-   border-top: .8vw ridge rgba(233, 193, 93);
-   border-left: .8vw ridge rgba(233, 193, 93);
-   border-bottom: .8vw groove rgba(233, 193, 93);
-   border-right: .8vw groove rgba(233, 193, 93);
-   box-shadow: 0em 0em .4em .08em rgb(78, 78, 78);
+   width: 20vw;
+   height: 20vw;
+   background: transparent;
+   border: 1px solid rgba(233, 193, 93);
+   box-shadow: 0em 0em .2em .05em rgba(233, 193, 93), inset 0em 0em .2em .05em rgba(233, 193, 93);
    z-index: 1;
    overflow: hidden;
    /* animation: visible 3s; */
@@ -31,8 +28,8 @@
 }
 
 .profile-mid-top-buffer {
-   height: 6vh;
-   margin-bottom: 5%;
+   height: 8vh;
+   margin-bottom: 3rem;
 }
 
 .profile-mid-top {
@@ -59,12 +56,6 @@
    border-right: .8vw groove rgba(233, 193, 93);
    background-color: aliceblue;
    box-shadow: 0em 0em .3em .08em rgb(78, 78, 78), inset 0em 0em .4em .08em rgb(78, 78, 78);
-}
-
-.profile-background {
-   position: fixed;
-   background: radial-gradient(circle, rgba(113,14,143,1) 0%, rgba(74,23,84,1) 35%, rgba(14,0,20,1) 100%);
-   width: 100vw;
 }
 
 .name-tile {
@@ -107,51 +98,20 @@
    
 }
 
-
-.profile-page-mid {
-   position: absolute;
+.profile-container {
+   position: relative;
    display: flex;
    flex-direction: column;
-   width: 56vw;
-   min-height: 150vh;
-   top: 0;
-   bottom: 0;
-   background-color:rgb(255, 255, 255);
-   /* right: calc(100% / 5); */
-   left: calc(100% / 4.9);
-   border-left: 1.3vw ridge rgba(233, 193, 93);
-   border-right: 1.3vw groove rgba(233, 193, 93);
-   border-top: 1vw ridge rgba(233, 193, 93);
-   border-bottom: 1vw groove rgba(233, 193, 93);
-   box-shadow: inset 0em 0em .4em .15em rgb(78, 78, 78);
+   height: 100vh;
+   width: 50vw;
+   bottom: 1.7rem;
+   border-left: 1px solid rgba(233, 193, 93);
+   border-right: 1px solid rgba(233, 193, 93);
+   box-shadow: 0em 0em .2em .05em rgba(233, 193, 93), inset 0em 0em .2em .05em rgba(233, 193, 93);
+   /* border-top: .5rem ridge rgba(233, 193, 93); */
+   /* border-bottom: .5rem groove rgba(233, 193, 93); */
+   /* box-shadow: inset 0em 0em .4em .15em rgb(78, 78, 78); */
    /* box-sizing: border-box; */
   
    
-}
-
-.space-layer-profile{
-   position: fixed;
-   top: 50%;
-   left: 50%;
-   height: 3px;
-   width: 3px;
-   background-color: rgba(255, 255, 255, 0.65);
-   border-radius: 50%;
-   box-shadow: -16vw -19vh 3px 0px rgba(255, 255, 255, 0.65),27vw 13vh 1px 3px rgba(255, 255, 255, 0.65),41vw -38vh 0px 3px rgba(255, 255, 255, 0.65),23vw -5vh 1px 2px rgba(255, 255, 255, 0.65),9vw 40vh 0px 3px rgba(255, 255, 255, 0.65),-33vw -11vh 2px 2px rgba(255, 255, 255, 0.65),-36vw -37vh 1px 2px rgba(255, 255, 255, 0.65),9vw 48vh 0px 1px rgba(255, 255, 255, 0.65),29vw 35vh 1px 1px rgba(255, 255, 255, 0.65),11vw -5vh 1px 3px rgba(255, 255, 255, 0.65),-44vw -9vh 1px 3px rgba(255, 255, 255, 0.65),44vw -16vh 3px 1px rgba(255, 255, 255, 0.65),-9vw -47vh 0px 0px rgba(255, 255, 255, 0.65),27vw -27vh 1px 0px rgba(255, 255, 255, 0.65),24vw -31vh 2px 2px rgba(255, 255, 255, 0.65),2vw 21vh 1px 0px rgba(255, 255, 255, 0.65),-23vw -12vh 0px 2px rgba(255, 255, 255, 0.65),-18vw 25vh 0px 3px rgba(255, 255, 255, 0.65),50vw -25vh 3px 3px rgba(255, 255, 255, 0.65),49vw -47vh 3px 0px rgba(255, 255, 255, 0.65),18vw 7vh 0px 3px rgba(255, 255, 255, 0.65),-28vw -25vh 3px 3px rgba(255, 255, 255, 0.65),16vw 29vh 3px 0px rgba(255, 255, 255, 0.65),23vw 25vh 1px 3px rgba(255, 255, 255, 0.65),30vw 2vh 3px 1px rgba(255, 255, 255, 0.65),28vw 1vh 1px 0px rgba(255, 255, 255, 0.65),24vw 45vh 0px 1px rgba(255, 255, 255, 0.65),38vw -2vh 1px 0px rgba(255, 255, 255, 0.65),7vw -2vh 1px 3px rgba(255, 255, 255, 0.65),40vw -40vh 2px 1px rgba(255, 255, 255, 0.65),-23vw -7vh 0px 0px rgba(255, 255, 255, 0.65),-40vw -24vh 2px 0px rgba(255, 255, 255, 0.65);
-   animation-name: zoom;
-   animation-duration: 13s;
-   animation-timing-function: linear;
-   animation-iteration-count: infinite;
-}
-
-.space-layer-profile2{
-   position: relative;
-   top: 50%;
-   left: 50%;
-   height: 3px;
-   width: 3px;
-   background-color: rgba(255, 255, 255, 0.65);
-   border-radius: 50%;
-   box-shadow: -31vw -30vh 1px 2px rgba(255, 255, 255, 0.65),17vw 7vh 1px 3px rgba(255, 255, 255, 0.65),42vw -20vh 3px 1px rgba(255, 255, 255, 0.65),38vw 7vh 0px 0px rgba(255, 255, 255, 0.65),-6vw 2vh 0px 0px rgba(255, 255, 255, 0.65),40vw -21vh 0px 2px rgba(255, 255, 255, 0.65),32vw 43vh 2px 2px rgba(255, 255, 255, 0.65),50vw 20vh 0px 1px rgba(255, 255, 255, 0.65),30vw -25vh 1px 3px rgba(255, 255, 255, 0.65),1vw 33vh 1px 1px rgba(255, 255, 255, 0.65),46vw -11vh 2px 2px rgba(255, 255, 255, 0.65),-7vw -22vh 0px 1px rgba(255, 255, 255, 0.65),46vw -25vh 2px 2px rgba(255, 255, 255, 0.65),31vw -14vh 2px 2px rgba(255, 255, 255, 0.65),-25vw 6vh 2px 3px rgba(255, 255, 255, 0.65),-17vw -19vh 3px 2px rgba(255, 255, 255, 0.65),19vw 39vh 0px 0px rgba(255, 255, 255, 0.65),-17vw 40vh 3px 1px rgba(255, 255, 255, 0.65),-6vw -3vh 1px 1px rgba(255, 255, 255, 0.65);
-   animation: delay 2s, zoom 13s linear 2s infinite;
 }

@@ -14,6 +14,29 @@
    height: 100vh;
 }
 
+.home-link {
+   left: 3.8%;
+}
+
+.bottom-login-link, .bottom-signup-link {
+   right: 3.8%;
+}
+
+.home-link, .bottom-login-link, .bottom-signup-link {
+   position: fixed;
+   bottom: 2%;
+   color: rgba(233, 193, 93);
+   letter-spacing: .80rem;
+   font-stretch: expanded;
+   font-size: 1.5rem;
+   animation: visible 1.2s;
+}
+
+.home-link:hover, .bottom-login-link:hover, .bottom-signup-link:hover {
+   animation: glow 1s ease-in-out infinite alternate;
+   cursor: pointer;
+}
+
 @keyframes visible {
    0% { opacity: 0; rotate: 180;}
    100% { opacity: 1; rotate: 360;}

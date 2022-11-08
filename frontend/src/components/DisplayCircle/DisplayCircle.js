@@ -3,7 +3,6 @@ import { useLocation, Route } from 'react-router-dom';
 
 import LoginForm from '../SessionForms/LoginForm/LoginForm';
 import SignupForm from '../SessionForms/SignupForm/SignupForm';
-import Title from '../Title/Title';
 import Profile from '../Profile/Profile';
 import Discover from '../Discover/Discover';
 import Chat from '../Matches/Chat/Chat';
@@ -13,6 +12,7 @@ import { AuthRoute, ProtectedRoute } from '../Routes/Routes';
 
 const DisplayCircle = () => {
    const location = useLocation();
+   console.log()
 
    const authSwitch = () => {
       switch(location.pathname) {
@@ -22,9 +22,6 @@ const DisplayCircle = () => {
          case '/signup':
             return <SignupForm />
             break;
-         // case '/':
-         //    return <Title />;
-         //    break;
          default:
             return null
       }
@@ -32,9 +29,6 @@ const DisplayCircle = () => {
 
    const protectedSwitch = () => {
       switch(location.pathname) {
-         case '/profile/:userId':
-            return <Profile />
-            break;
          case '/discover':
             return <Discover />
             break;
@@ -50,9 +44,10 @@ const DisplayCircle = () => {
    }
 
    return (
-      <div className='display-circle' data-page={location.pathname}>
+      <div className='display-circle' data-page={location.pathname.split("/")[1]}>
          <AuthRoute exact path={location.pathname} component={authSwitch}/>
          <ProtectedRoute exact path={location.pathname} component={protectedSwitch}/>
+         <ProtectedRoute exact path='/profile/:userId' component={Profile} />
          <Route exact path='/developers' component={Developers} />
       </div>
    )

@@ -36,8 +36,3 @@
    animation: visible 3s;
    margin-bottom: 45vh;
 }
-
-.app-side-nav-bar {
-   visibility: hidden;
-   animation: visible;
-}

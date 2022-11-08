@@ -1,10 +1,9 @@
 import { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { Switch, Route } from 'react-router-dom';
-import { AuthRoute, ProtectedRoute } from './components/Routes/Routes';
+import { useDispatch, useSelector } from 'react-redux';
+import { useLocation } from 'react-router-dom';
 
 import NavBar from './components/NavBar/NavBar';
-import Title from './components/Title/Title';
+import TitlePage from './components/TitlePage/TitlePage';
 import Chat from './components/Matches/Chat/Chat.jsx';
 import {getCurrentUser} from './store/session';
 import DevButton from './components/Developers/DevButton';
@@ -15,6 +14,8 @@ import DisplayCircle from './components/DisplayCircle/DisplayCircle';
 function App() {
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
+  const location = useLocation();
+  const loggedIn = useSelector(state => !!state.session.user);
 
   const loadPage = () => {
     const html = document.documentElement;
@@ -35,14 +36,14 @@ function App() {
 
   return loaded && (
     <>
+      <Background />
+      
 
-    <NavBar />
-    <DevButton />
-    <Switch>
-      <Route exact path="/developers" component={Developers} />
-      <AuthRoute exact path="/" component={MainPage} />
-      <AuthRoute exact path="/login" component={LoginForm} />
-      <AuthRoute exact path="/signup" component={SignupForm} />
+      <div className='clear-box'>
+        <DisplayCircle />
+        { location.pathname === "/" && <TitlePage/>}
+        { loggedIn && <NavBar />}
+      </div>
 
       { location.pathname !== "/developers" && <DevButton /> }
     
