@@ -1,5 +1,6 @@
 import DevCard from './DevCard';
 import './Developers.css';
+import { Link } from 'react-router-dom';
 
 function Developers() {
 
@@ -74,7 +75,7 @@ function Developers() {
     
     return (
 
-                
+        <>
         <div id="developers">
             <p className="heading" >Development Team</p>
             <div id="dev-card-container">
@@ -84,6 +85,9 @@ function Developers() {
                 <DevCard dev={clarence}/>
             </div>
         </div>
+            <Link className="home-link" to={'/'}>Rising Sign</Link>
+        </>     
+        
     )
 }
 

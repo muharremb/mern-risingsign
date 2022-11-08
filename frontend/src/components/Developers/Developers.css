@@ -2,7 +2,7 @@
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
-    background-color: #410b5f;
+    background: transparent;
     min-height: 100vh;
     overflow-x: hidden;
 }
