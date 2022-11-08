@@ -14,7 +14,7 @@
    transition: all 3s ease;
 }
 
-.display-circle[data-page="/"] {
+.display-circle[data-page=""] {
    display: block;
    min-width: 0;
    overflow: visible;
@@ -23,19 +23,19 @@
    transition: all 1.2s ease;
 }
 
-.display-circle[data-page="/login"] {
+.display-circle[data-page="login"] {
    width: 400px;
    height: 400px;
    transition: all 1.2s ease;
 }
 
-.display-circle[data-page="/signup"] {
+.display-circle[data-page="signup"] {
    width: 600px;
    height: 600px;
    transition: all 1.2s ease;
 }
 
-.display-circle[data-page="/discover"], .display-circle[data-page="/developers"] {
+.display-circle[data-page="discover"], .display-circle[data-page="developers"] {
    width: 2000px;
    height: 2000px;
    border-radius: 25%;

@@ -7,7 +7,7 @@ import Profile from '../Profile/Profile';
 import Discover from '../Discover/Discover';
 import Chat from '../Matches/Chat/Chat';
 import Matches from '../Matches/Matches';
-import Developers from '../Developers/Developers';
+import Developers from '../Developers/Developers'
 import { AuthRoute, ProtectedRoute } from '../Routes/Routes';
 
 const DisplayCircle = () => {
@@ -27,17 +27,17 @@ const DisplayCircle = () => {
    }
 
    const protectedSwitch = () => {
-      switch(location.pathname) {
-         case '/profile/:userId':
+      switch(location.pathname.split("/")[1]) {
+         case 'profile':
             return <Profile />
             break;
-         case '/discover':
+         case 'discover':
             return <Discover />
             break;
-         case '/chat':
+         case 'chat':
             return <Chat />
             break;
-         case '/matches':
+         case 'matches':
             return <Matches />
             break;
          default:
@@ -46,7 +46,7 @@ const DisplayCircle = () => {
    }
 
    return (
-      <div className='display-circle' data-page={location.pathname}>
+      <div className='display-circle' data-page={location.pathname.split("/")[1]}>
          <AuthRoute exact path={location.pathname} component={authSwitch}/>
          <ProtectedRoute exact path={location.pathname} component={protectedSwitch}/>
          <Route exact path='/developers' component={Developers} />
