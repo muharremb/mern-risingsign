@@ -1,6 +1,7 @@
 import { useSelector } from 'react-redux'
 import { useState, useContext, useEffect } from 'react'
 import { ChatContext } from '../../../context/chatContext'
+import "./Chat.css"
 
 function MessageForm () {
   const user = useSelector(state => state.session.user)
@@ -37,11 +38,11 @@ function MessageForm () {
   let messagesList = messages?.messagesByDate ? Object.values(messages.messagesByDate).reverse() : null;
   messagesList = messagesList?.map((message, i) =>
   <li key={i} id={message._id}
-  className="chat-message"
-  className={message.from._id === user._id ? "you" : "them"}
-  >
-  <span>{message.date} &nbsp;</span>
-  <span>{message.time.slice(0, 5)} &nbsp;</span>{message.content}</li>)
+  className={`chat-message ${message.from._id === user._id ? "you" : "them"}`}>
+  <span id="message-date">{message.date} &nbsp;</span><div>
+    <span>{message.time.slice(0, 5)} &nbsp;</span>{message.content}
+  </div>
+  </li>)
 
   return (
     <>

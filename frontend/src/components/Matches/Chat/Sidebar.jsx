@@ -23,9 +23,7 @@ function Sidebar () {
 
   useEffect(()=> {
     const retrievedRoom = localStorage.getItem('currentRoom')
-    localStorage.removeItem('currentRoom')
     const retrievedRoomName = localStorage.getItem('currentRoomName')
-    localStorage.removeItem('currentRoomName')
     setCurrentRoomName(retrievedRoomName)
     setCurrentRoom(retrievedRoom);
     setStoreRoom(retrievedRoom);

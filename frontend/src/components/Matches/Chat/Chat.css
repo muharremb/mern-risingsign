@@ -61,14 +61,10 @@
 }
 
 .chat-message {
-    border-bottom: 1px solid #ffffff55;
-    padding-bottom: 5px;
-}
+    display: flex;
+    flex-direction: column;
 
-.chat-message-current-user {
-    border: 1px solid purple;
 }
-
 
 .message-form {
     margin-top: 10px;
@@ -111,6 +107,27 @@
 #chat h2 {
     margin: 0;
 }
+
+#message-date {
+    display: flex;
+    justify-content: center;
+    align-items: left;
+    background-color: black;
+}
+
+.you {
+    background-color: green;
+    display: flex;
+    margin-top: auto;
+}
+
+.them {
+    background-color: powderblue;
+    display: flex;
+    justify-content: right;
+}
+
+
 
 /* .messages-list{
     overflow-y: scroll;
