@@ -39,8 +39,8 @@ function Developers() {
     };
     const dan = {
         photo: "https://mern-rising-sign-profile-pics.s3.amazonaws.com/dan_prof_pic.jpg",
-        role: "Frontend Lead",
-        job_description: "Construct frontend component structures and make the CSS look good",
+        role: "Frontend Developer",
+        job_description: "Construct frontend component structures and make the CSS look good.",
         name: "Dan Lay",
         blurb: "In love with electronic soundscapes, classical instruments, and using technology to blur the lines of both. Tater tots are the best snack, period. Always looking for productive input to help me become a better programmer :).",
         github: "https://github.com/dan-lay",
@@ -53,19 +53,33 @@ function Developers() {
            name: "BooooTube (YouTube Clone)",
            link: "https://booootube.herokuapp.com/"
         }
-     };    const ben = {};
+    };    
+    const ben = {
+        photo: "https://rising-sign-profile-pics-schwartz.s3.amazonaws.com/Rising_Schwartz_Prof.png",
+        role: "Project Lead",
+        job_description: "Envision application from experiential standpoint and work on chat feature.",
+        name: "Benjamin Schwartz",
+        blurb: "I am interested in the notion of \"romantic engineering,\" building technology that supports individual and collective emotional expression.",
+        github: "https://github.com/bwschwartz",
+        linkedIn: "https://www.linkedin.com/in/benjamin-schwartz-b98622255/",
+        project_1: {
+            name: "Synth Site (Modular Synth)",
+            link: "https://bwschwartz.github.io/synth_site/"
+        },
+        project_2: {
+            name: "Slick (Slack Clone)",
+            link: "https://slick-slack-clone-one.herokuapp.com/"
+        }
+    };
     
-
     return (
 
                 
         <div id="developers">
             <p className="heading" >Development Team</p>
             <div id="dev-card-container">
-                {/* <DevCard dev={ben}/>
-                <DevCard dev={dan}/> */}
+                <DevCard dev={ben}/>
                 <DevCard dev={muharrem}/>
-                <DevCard dev={clarence}/>
                 <DevCard dev={dan}/>
                 <DevCard dev={clarence}/>
             </div>

@@ -22,7 +22,6 @@ function UserBio ({user}) {
 
   const handleUpdate = (e) => {
     e.preventDefault();
-    setUserBio(e.target.value);
     dispatch(updateBio(user._id, userBio))
     setEditing(false);
   }
@@ -45,7 +44,7 @@ function UserBio ({user}) {
         <>
             <div className="user-bio">
                 <span>About Me</span><br/>
-                {user.bio || 'Nothing yet!'}
+                {userBio || 'Nothing yet!'}
                 <button onClick={startUpdate}>Edit Bio</button>
             </div>
         </>

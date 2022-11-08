@@ -36,18 +36,17 @@ export const fetchUser = (userId) => async dispatch => {
     dispatch(receiveUser(user));
 }
 
-export const fetchUsers = (preferences) => async dispatch => {
-    const preferenceParams = new URLSearchParams(preferences);
-
-    if(!preferences){
-        const res = await jwtFetch(`api/users/index`);
-        const users = await res.json();
-        dispatch(receiveUsers(users));
+export const fetchUsers = (options) => async dispatch => {
+    const optionsParams = new URLSearchParams(options);
+    let res;
+    if(!options){
+        res = await jwtFetch(`api/users/index`);
     } else {
-        const res = await jwtFetch(`api/users/index?${preferenceParams}`);
-        const data = await res.json();
-        dispatch(receiveUsers(data));
+        res = await jwtFetch(`api/users/index?${optionsParams}`);
     }
+
+    const users = await res.json();
+    dispatch(receiveUsers(users));
 }
 
 export const likeUser = (likerId, likeeId) => async dispatch => {

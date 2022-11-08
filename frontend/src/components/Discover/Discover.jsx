@@ -3,16 +3,35 @@ import { useEffect, useState } from 'react';
 import { fetchUsers } from '../../store/users';
 import UserCard from '../UserCard/UserCard';
 import './Discover.css';
+import { useRef } from 'react';
 
 function Discover () {
     const [sunFilter, setSunFilter] = useState('all');
     const [moonFilter, setMoonFilter] = useState('all');
     const [risingFilter, setRisingFilter] = useState('all');
+    const [isFetching, setIsFetching] = useState(false);
+    const userCount = useRef(0);
+    
     const dispatch = useDispatch()
 
     useEffect(() => {
-        dispatch(fetchUsers());
-    }, [dispatch])
+        document.addEventListener('scroll', handleScroll);
+        handleScroll();
+        return () => {
+            document.removeEventListener('scroll', handleScroll);
+        };
+    }, []);
+
+    const handleScroll = () => {
+        if (window.innerHeight + document.querySelector("html").scrollTop < document.querySelector("html").offsetHeight || isFetching) return;
+        setIsFetching(true);
+        async function fetchData() {
+            await dispatch(fetchUsers({skip: userCount.current, limit: 8}));
+            setIsFetching(false);
+            userCount.current += 8;
+        }
+        fetchData();
+    }
 
     const fetchedUsers = useSelector(state => state.users);
     const sessionUser = useSelector(state => state.session.user);
@@ -102,7 +121,7 @@ function Discover () {
                         ('all' === moonFilter || user.horoscope.moon.Sign.key === moonFilter) &&
                         ('all' === risingFilter || user.horoscope.rising.Sign.key === risingFilter) && user._id !== sessionUser._id
                         
-                    ) {return <UserCard id={user._id}/>};
+                    ) {return <UserCard key={user._id} user={user}/>};
                     return null;
                 })}
             </div>

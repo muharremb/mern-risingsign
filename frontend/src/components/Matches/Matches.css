@@ -1,6 +1,4 @@
 .matches-outer-container {
-    background-image: radial-gradient(#330548, #430958, #530f73);
-    min-height: 100vh;
     padding-bottom: 50px;
     padding-top: 2%;
     padding-left: 3%;
@@ -41,3 +39,22 @@
     width: 70%
 }
 
+.them {
+    background-color: powderblue;
+    display: flex;
+    justify-content: right;
+    scroll-snap-align: end;
+}
+
+.you {
+    background-color: green;
+    display: flex;
+    justify-content: left;
+    /* scroll-snap-align: end; */
+    /* scroll-behavior: auto; */
+}
+
+.you:last-child{
+    scroll-snap-align: end;
+    scroll-margin-block-end: 6rem;
+}

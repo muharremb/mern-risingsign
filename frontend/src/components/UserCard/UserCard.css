@@ -1,8 +1,7 @@
 .user-card {
     display: flex;
-    width: 35%;
+    width: 80%;
     min-width: 300px;
-    margin: 0 5% 3% 1%;
     padding: 0.5% 0 3% 3%;
     border-radius: 8px;
     transition: 0.2s ease-in;
@@ -55,8 +54,4 @@ a {
 .user-card:hover {
     box-shadow: 0 0 50px #e9c15d45;
     background-color: #4e0b6e;
-}
-
-.user-card:last-child {
-    margin-bottom: 30px;
 }

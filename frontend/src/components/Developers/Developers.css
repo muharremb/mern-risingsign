@@ -25,6 +25,7 @@
     align-items: center;
     max-width: 18%;
     background-color: #530f73;
+    background-image: radial-gradient(#410c5a, #460d60, #530f73);
     border-radius: 50px;
     padding: 20px;
     max-height: 80%;
@@ -92,7 +93,7 @@
     font-size: 12px;
     text-align: center;
     vertical-align: middle;
-    background-image: radial-gradient(#180431, #330548, #530f73);
+    background-image: radial-gradient(#0e021e, #330548, #530f73);
     color:#ffa11e;
     position: fixed;
     top: 15px;
@@ -103,7 +104,7 @@
 }
 
 .pulse {
-    animation-duration: 2s;
+    animation-duration: 3s;
     animation-name: pulse;
     animation-iteration-count: infinite;
     animation-direction: alternate;
@@ -111,10 +112,10 @@
 
 @keyframes pulse {
     from {
-        box-shadow: 0 0 6px 1px #e9c15d30;
+        box-shadow: 0 0 3px 1px #e9c15d20;
     }
 
     to {
-        box-shadow: 0 0 6px 6px #e9c15d55;
+        box-shadow: 0 0 8px 5px #e9c15d50;
     }
 }
