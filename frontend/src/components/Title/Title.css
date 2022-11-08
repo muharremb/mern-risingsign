@@ -1,14 +1,12 @@
 .title {
-   font-size: 18rem;
+   font-size: 18vw;
+   text-align: center;
    position: absolute;
-   width: 90vw;
-   /* flex-shrink: 1; */
-   /* width: max-content; */
+   width: 100vw;
    min-width: 0;
-   top: 11rem;
-   left: -25rem;
+   top: 25%;
+   text-indent: 1vw;
    letter-spacing: .80rem;
-   /* border: 1px solid pink; */
    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
    color: rgba(243, 190, 57, 0.188);
    animation: visible 2s;

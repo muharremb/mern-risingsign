@@ -36,12 +36,12 @@
    transition: all 1.2s ease;
 }
 
-.display-circle[data-page="/discover"] {
+.display-circle[data-page="/discover"], .display-circle[data-page="/developers"] {
    width: 2000px;
    height: 2000px;
+   border-radius: 25%;
    border: none;
    box-shadow: none;
    transition: all 1.5s ease-in;
+   overflow: hidden;
 }
-
-/* .display */
