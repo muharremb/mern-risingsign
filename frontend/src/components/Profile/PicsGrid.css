@@ -2,12 +2,12 @@
     display: grid;
     grid-template-columns: auto auto auto;
     gap: 10px;
-    min-width: 500px;
-    min-height: 500px;
 }
 
 .user-pics-grid-item{
-    background-color: lightgray;
-    min-width: 150px;
-    min-height: 150px;
+    min-width: 100px;
+    min-height: 100px;
+    border-radius: 15px;
+    overflow: hidden;
+    background-color: #aaaaaa55;
 }
