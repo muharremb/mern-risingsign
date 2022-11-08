@@ -23,15 +23,6 @@ function PicGrid ({user}) {
         {images[5] && 
         <img src={images[5]} className="user-pics-grid-item"/>||
         <div className="user-pics-grid-item"></div>}
-        {images[6] && 
-        <img src={images[6]} className="user-pics-grid-item"/>||
-        <div className="user-pics-grid-item"></div>}
-        {images[7] && 
-        <img src={images[7]} className="user-pics-grid-item"/>||
-        <div className="user-pics-grid-item"></div>}
-        {images[8] && 
-        <img src={images[8]} className="user-pics-grid-item"/>||
-        <div className="user-pics-grid-item"></div>}
     </div>
   )
 }

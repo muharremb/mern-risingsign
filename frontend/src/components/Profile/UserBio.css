@@ -1,3 +1,8 @@
-a.user-bio {
+.user-bio-editor {
+    display: flex;
+    flex-direction: column;
+}
 
+.user-bio-editor button {
+    width: 80px;
 }

@@ -14,11 +14,8 @@ function BioPics ({user}) {
 
   return (
     <div className='bio-pics-holder'>
-        {mode === 'bio' &&
-        <UserBio user={user} />}
-        {mode === 'pics' && 
-        <PicGrid user={user} />}
-        <button id="bio-pics-switch" onClick={handleClick}>{mode === 'bio' ? 'View Pics' : 'View Bio'}</button>
+      <UserBio user={user} />
+      <PicGrid user={user} />
     </div>
   )
 }
