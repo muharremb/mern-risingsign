@@ -26,7 +26,8 @@ function Profile () {
     e.preventDefault();
     dispatch(uploadPic({
       pic,
-      uploaderId: user._id
+      uploaderId: currentUser._id,
+      isProfile: false
 
     }))
   }
@@ -39,6 +40,7 @@ function Profile () {
  
   return (
     <>
+
       
       <div className='profile-container'>
       

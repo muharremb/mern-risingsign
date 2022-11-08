@@ -43,7 +43,6 @@
    box-shadow: 0em 0em .3em .08em rgb(78, 78, 78), inset 0em 0em .4em .08em rgb(78, 78, 78);
 }
 
-
 .name-tile {
    display: flex;
    justify-content: center;
@@ -84,11 +83,13 @@
    
 }
 
-
-.profile-page-mid {
-   position: absolute;
+.profile-container {
+   position: relative;
    display: flex;
    flex-direction: column;
+
+}
+
    width: 56vw;
    min-height: 150vh;
    top: 0;
@@ -101,4 +102,3 @@
    border-bottom: 1vw groove rgba(233, 193, 93);
    box-shadow: inset 0em 0em .4em .15em rgb(78, 78, 78);
 }
-

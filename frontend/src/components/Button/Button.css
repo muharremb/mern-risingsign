@@ -1,4 +1,4 @@
-.continue-button {
+.button {
   width: 140px;
   height: 30px;
   align-items: center;
@@ -6,6 +6,9 @@
   box-sizing: border-box;
   border: 1px solid rgba(233, 193, 93);
   border-radius: .3rem;
+  border-top-style: hidden;
+  border-left-style: hidden;
+  border-right-style: hidden;
   text-align: center;
   letter-spacing: 3px;
   color: rgba(233, 193, 93);
@@ -15,11 +18,11 @@
   padding-bottom: 2rem;
 }
 
-.continue-button:hover {
+.button:hover {
   background-color: rgba(241, 197, 85, 0.46);
 }
 
-.continue-button[disabled] {
+.button[disabled] {
    color: rgb(139, 138, 138);
    border-color: transparent;
    background-color: rgb(139, 138, 138, .65);;
