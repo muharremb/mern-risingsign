@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
 import Button from '../../Button/Button';
 import './LoginForm.css';
 import { login, clearSessionErrors } from '../../../store/session';
@@ -47,31 +48,35 @@ function LoginForm () {
   }
 
   return (
-    <form className="login-form" onSubmit={handleSubmit}>
-      <div className='login-form-upper'>
-        <div className='email-input-container'>
-          <input type="text"
-            id="email-input"
-            value={email}
-            onChange={update("email")}
-          />
-          <label htmlFor='email-input'>{errors && errors.email ? errors.email.toLowerCase() : "email"}</label>
+    <>
+      <form className="login-form" onSubmit={handleSubmit}>
+        <div className='login-form-upper'>
+          <div className='email-input-container'>
+            <input type="text"
+              id="email-input"
+              value={email}
+              onChange={update("email")}
+            />
+            <label htmlFor='email-input'>{errors && errors.email ? errors.email.toLowerCase() : "email"}</label>
+          </div>
+          <div className='password-input-container'>
+            <input type="password"
+              id="password-input"
+              value={password}
+              onChange={update('password')}
+            />
+            <label htmlFor='password-input'>{errors && errors.password ? errors.password.toLowerCase() : "password"}</label>
+          </div>
         </div>
-        <div className='password-input-container'>
-          <input type="password"
-            id="password-input"
-            value={password}
-            onChange={update('password')}
-          />
-          <label htmlFor='password-input'>{errors && errors.password ? errors.password.toLowerCase() : "password"}</label>
+        <div className='login-button-container'>
+          <Button text="Log In" type={"submit"} disabled={!email || !password}/>
+          <Button handleClick={demoLogIn} text="Demo User" type="submit"/>
         </div>
-      </div>
-      <div className='login-button-container'>
-        <Button text="Log In" type={"submit"} disabled={!email || !password}/>
-        <Button handleClick={demoLogIn} text="Demo User" type="submit"/>
-      </div>
-      
-    </form>
+      </form>
+      <Link className="home-link" to={'/'}>Rising Sign</Link>
+      <Link className="bottom-signup-link" to={'/signup'}>Sign Up</Link>
+    </>
+    
   );
 }
 

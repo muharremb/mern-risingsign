@@ -44,22 +44,13 @@ function NavBar () {
   }
 
   const getLinks = () => {
-    if (loggedIn) {
-      return (
-        <div className='navbar-mid'>
-          <Link className="discover-link" to={'/discover'}>discover</Link>
-            <Link className="profile-link" to={`/profile/${currentUser._id}`}>profile</Link>
-            <Link className="matches-link" to={'/matches'}>matches</Link>
-        </div>
-      );
-    } else {
-      return (
-        <div className='navbar-mid'>
-          <Link className="signup-link" to={'/signup'}>Signup</Link>
-          <Link className="login-link" to={'/login'}>Login</Link>
-        </div>
-      );
-    }
+    return (
+      <div className='navbar-mid'>
+        <Link className="discover-link" to={'/discover'}>discover</Link>
+          <Link className="profile-link" to={`/profile/${currentUser._id}`}>profile</Link>
+          <Link className="matches-link" to={'/matches'}>matches</Link>
+      </div>
+    );
   }
   // MB added null check 
   if(!currentUser) return null;

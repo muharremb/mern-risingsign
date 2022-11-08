@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 
 import NavBar from './components/NavBar/NavBar';
-import Title from './components/Title/Title';
+import TitlePage from './components/TitlePage/TitlePage';
 import Chat from './components/Matches/Chat/Chat.jsx';
 import {getCurrentUser} from './store/session';
 import DevButton from './components/Developers/DevButton';
@@ -14,6 +14,7 @@ function App() {
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
   const location = useLocation();
+  const loggedIn = useSelector(state => !!state.session.user);
 
   const loadPage = () => {
     const html = document.documentElement;
@@ -39,8 +40,9 @@ function App() {
 
       <div className='clear-box'>
         <DisplayCircle />
-        { location.pathname === "/" && <Title/>}
-        <NavBar />
+        { location.pathname === "/" && <TitlePage/>}
+        { loggedIn && <NavBar />}
+        {/* <NavBar /> */}
       </div>
 
       { location.pathname !== "/developers" && <DevButton /> }

@@ -56,7 +56,7 @@
    cursor: pointer;
 }
 
-.signup-link, .login-link, .discover-link, .matches-link, .profile-link {
+.discover-link, .matches-link, .profile-link {
    color: rgba(233, 193, 93);
    font-size: 1.5rem;
    font-weight: 200;
@@ -65,7 +65,7 @@
    font-family: cursive;
 }
 
-.signup-link:hover, .login-link:hover, .discover-link:hover, .matches-link:hover, .profile-link:hover, .logout-button:hover {
+.discover-link:hover, .matches-link:hover, .profile-link:hover, .logout-button:hover {
    animation: glow 1s ease-in-out infinite alternate;
    cursor: pointer;
 }
