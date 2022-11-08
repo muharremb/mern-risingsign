@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import ContinueButton from '../ContinueButton/ContinueButton';
+import Button from '../../Button/Button';
 import './LoginForm.css';
 import { login, clearSessionErrors } from '../../../store/session';
 
@@ -66,8 +66,8 @@ function LoginForm () {
         </div>
       </div>
       <div className='login-button-container'>
-        <ContinueButton text="Log In" type={"submit"} disabled={!email || !password}/>
-        <ContinueButton handleClick={demoLogIn} text="Demo User" type="submit"/>
+        <Button text="Log In" type={"submit"} disabled={!email || !password}/>
+        <Button handleClick={demoLogIn} text="Demo User" type="submit"/>
       </div>
       
     </form>

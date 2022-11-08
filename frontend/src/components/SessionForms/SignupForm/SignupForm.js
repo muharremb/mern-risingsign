@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import ContinueButton from '../ContinueButton/ContinueButton';
-import BackButton from '../BackButton/BackButton';
+import Button from '../../Button/Button';
 import './SignupForm.css';
 import { signup, clearSessionErrors } from '../../../store/session';
 import { uploadPic } from '../../../store/pics';
@@ -18,6 +17,7 @@ function SignupForm () {
   const [moonSign, setMoonSign] = useState('');
   const [risingSign, setRisingSign] = useState('');
   const [ pic, setPic ] = useState(null);
+  const [ preview, setPreview ] = useState("");
   // const [ hidden, setHidden ] = useState(false);
   const fieldArray = ["name-input", "birth-info-input", "email-and-password-input", "picture-upload"];
   let [ currentField, setCurrentField ] = useState(fieldArray[0]);
@@ -29,20 +29,18 @@ function SignupForm () {
   const dispatch = useDispatch();
   const currentUser = useSelector(state => state.session.user ? state.session.user : null)
 
-  if (pic) console.log(pic);
-
-
   useEffect(() => {
     return () => {
       dispatch(clearSessionErrors());
     };
   }, [dispatch, currentField]);
 
+  useEffect(() => {                   //sets the preview of the picture
+
+  }, [preview])
+
   useEffect(() => {
-    if (currentUser) console.log(currentUser);
     if (pic) {
-      debugger
-      // let userId = 
       dispatch(uploadPic({
         pic,
         uploaderId: currentUser._id,
@@ -326,22 +324,22 @@ function SignupForm () {
           <div className='picture-upload-container'>
             <input className='hidden-input' id='hidden-input' onChange={e => setPic(e.target.files[0])} type="file" style={{display: "none"}}/>
             <div className='picture-input' id='picture-input'>
-              <ContinueButton text="choose file" type={"button"} handleClick={hiddenClick}/>
+              <Button text="choose file" type={"button"} handleClick={hiddenClick}/>
               <input className='file-text' onChange={() => {}} value={pic ? `${pic.name}` : ""}></input>
             </div>
             <label htmlFor='picture-input'>upload a picture or continue</label>
-            {/* {profilePic ? } */}
+            
           </div>}
 
       </div>
       <div className='signup-button-container'>
-        {currentField === "name-input" && <ContinueButton type={"button"} handleClick={continueClickName} disabled={!name}/>}
+        {currentField === "name-input" && <Button type={"button"} text="Continue" handleClick={continueClickName} disabled={!name}/>}
 
-        {currentField === "birth-info-input" && <><BackButton type={"button"} handleClick={backClick}/> <ContinueButton type={"submit"} handleClick={continueClickBirthInfo} disabled={!birthDate || !birthTime}/></>}
+        {currentField === "birth-info-input" && <><Button text="Back" type={"button"} handleClick={backClick}/> <Button type={"submit"} text="Continue" handleClick={continueClickBirthInfo} disabled={!birthDate || !birthTime}/></>}
 
-        {currentField === "email-and-password-input" && <><BackButton type={"button"} handleClick={backClick}/><ContinueButton type={"submit"} handleClick={continueClickEmailPassword} disabled={!email || !password || password !== password2}/></>}
+        {currentField === "email-and-password-input" && <><Button text="Back" type={"button"} handleClick={backClick}/><Button type={"submit"} text="Continue" handleClick={continueClickEmailPassword} disabled={!email || !password || password !== password2}/></>}
 
-        {currentField === "picture-upload" && <><BackButton type={"button"} handleClick={backClick}/><ContinueButton type={"submit"} handleClick={userSubmit} text="Sign Up"/></>}
+        {currentField === "picture-upload" && <><Button text="Back" type={"button"} handleClick={backClick}/><Button type={"submit"} handleClick={userSubmit} text="Sign Up"/></>}
       </div>
     </form>
   );
