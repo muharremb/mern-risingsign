@@ -16,7 +16,7 @@ function SignupForm () {
   const [sunSign, setSunSign] = useState('');
   const [moonSign, setMoonSign] = useState('');
   const [risingSign, setRisingSign] = useState('');
-  const [ profilePic, setProfilePic ] = useState(null);
+  const [ pic, setPic ] = useState(null);
   // const [ hidden, setHidden ] = useState(false);
   const fieldArray = ["name-input", "birth-info-input", "email-and-password-input", "picture-upload"];
   let [ currentField, setCurrentField ] = useState(fieldArray[0]);
@@ -26,8 +26,9 @@ function SignupForm () {
   let [ nameError, setNameError ] = useState("");
   const errors = useSelector(state => state.errors.session);
   const dispatch = useDispatch();
+  const currentUser = useSelector(state => state.session.user ? state.session.user : null)
 
-  if (profilePic) console.log(profilePic);
+  if (pic) console.log(pic);
 
 
   useEffect(() => {
@@ -146,12 +147,23 @@ function SignupForm () {
       name,
       password,
       horoscope,
-      birthDateTime,
-      profilePic
-
+      birthDateTime
     };
 
-    dispatch(signup(user)); 
+    dispatch(signup(user)).then(() => {
+      console.log(currentUser);
+      debugger
+      if (pic) {
+        // let userId = 
+        dispatch(uploadPic({
+          pic,
+          uploaderId: currentUser._id,
+          isProfile: true
+        }))
+      }
+    });
+    // console.log(currentUser)
+    
   }
 
   return (
@@ -216,7 +228,7 @@ function SignupForm () {
             </div>
             <div className='sign-input-container'>
               <div className='sun-sign-container'>
-                <label for="sun-sign-selector" className='sign-selector-label'>Sun Sign:</label>
+                <label htmlFor="sun-sign-selector" className='sign-selector-label'>Sun Sign:</label>
                 <select id="sun-sign-selector" className="input-container-sign-selector" defaultValue="def" onChange={handleSun}>
                     <option value="def" disabled>...</option>
                     <option value="aries">Aries</option>
@@ -234,7 +246,7 @@ function SignupForm () {
                 </select>
               </div>
               <div className='moon-sign-container'>
-                <label for='moon-sign-selector' className='sign-selector-label'>Moon Sign:</label>
+                <label htmlFor='moon-sign-selector' className='sign-selector-label'>Moon Sign:</label>
                 <select id="moon-sign-selector" className="input-container-sign-selector" defaultValue="def" onChange={handleMoon}>
                     <option value="def" disabled>...</option>
                     <option value="aries">Aries</option>
@@ -252,7 +264,7 @@ function SignupForm () {
                 </select>
               </div>
               <div className='rising-sign-container'>
-                <label for='rising-sign-selector' className='sign-selector-label'>Rising Sign:</label>
+                <label htmlFor='rising-sign-selector' className='sign-selector-label'>Rising Sign:</label>
                   <select id="rising-sign-selector" className="input-container-sign-selector" defaultValue="def" onChange={handleRising}>
                       <option value="def" disabled>...</option>
                       <option value="aries">Aries</option>
@@ -309,10 +321,10 @@ function SignupForm () {
         {currentField === "picture-upload" &&
 
           <div className='picture-upload-container'>
-            <input className='hidden-input' id='hidden-input' onChange={e => setProfilePic(e.target.files[0])} type="file" style={{display: "none"}}/>
+            <input className='hidden-input' id='hidden-input' onChange={e => setPic(e.target.files[0])} type="file" style={{display: "none"}}/>
             <div className='picture-input' id='picture-input'>
               <ContinueButton text="choose file" type={"button"} handleClick={uploadPic}/>
-              <input className='file-text' value={profilePic ? `${profilePic.name}` : ""}></input>
+              <input className='file-text' onChange={() => {}} value={pic ? `${pic.name}` : ""}></input>
             </div>
             <label htmlFor='picture-input'>upload a picture or continue</label>
             {/* {profilePic ? } */}

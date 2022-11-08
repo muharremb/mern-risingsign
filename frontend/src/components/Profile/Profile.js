@@ -33,7 +33,8 @@ function Profile () {
     e.preventDefault();
     dispatch(uploadPic({
       pic,
-      uploaderId: currentUser._id
+      uploaderId: currentUser._id,
+      isProfile: false
     }))
   }
 
