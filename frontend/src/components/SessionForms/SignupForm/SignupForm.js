@@ -4,6 +4,7 @@ import ContinueButton from '../ContinueButton/ContinueButton';
 import BackButton from '../BackButton/BackButton';
 import './SignupForm.css';
 import { signup, clearSessionErrors } from '../../../store/session';
+import { uploadPic } from '../../../store/pics';
 
 function SignupForm () {
   const [email, setEmail] = useState('');
@@ -36,6 +37,19 @@ function SignupForm () {
       dispatch(clearSessionErrors());
     };
   }, [dispatch, currentField]);
+
+  useEffect(() => {
+    if (currentUser) console.log(currentUser);
+    if (pic) {
+      debugger
+      // let userId = 
+      dispatch(uploadPic({
+        pic,
+        uploaderId: currentUser._id,
+        isProfile: true
+      }))
+    }
+  }, [currentUser])
 
   const update = field => {
     let setState;
@@ -100,7 +114,7 @@ function SignupForm () {
     return true;
   }
 
-  const uploadPic = () => {
+  const hiddenClick = () => {
     document.getElementById('hidden-input').click();
   }
 
@@ -150,18 +164,7 @@ function SignupForm () {
       birthDateTime
     };
 
-    dispatch(signup(user)).then(() => {
-      console.log(currentUser);
-      debugger
-      if (pic) {
-        // let userId = 
-        dispatch(uploadPic({
-          pic,
-          uploaderId: currentUser._id,
-          isProfile: true
-        }))
-      }
-    });
+    dispatch(signup(user));
     // console.log(currentUser)
     
   }
@@ -323,7 +326,7 @@ function SignupForm () {
           <div className='picture-upload-container'>
             <input className='hidden-input' id='hidden-input' onChange={e => setPic(e.target.files[0])} type="file" style={{display: "none"}}/>
             <div className='picture-input' id='picture-input'>
-              <ContinueButton text="choose file" type={"button"} handleClick={uploadPic}/>
+              <ContinueButton text="choose file" type={"button"} handleClick={hiddenClick}/>
               <input className='file-text' onChange={() => {}} value={pic ? `${pic.name}` : ""}></input>
             </div>
             <label htmlFor='picture-input'>upload a picture or continue</label>

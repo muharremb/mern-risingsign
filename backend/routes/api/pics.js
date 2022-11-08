@@ -46,15 +46,14 @@ const upload = multer({
 
 router.post('/upload', upload.single('image-upload'), async (req, res) => {
    const urlBeginning = req.file.location.substr(0, 8);
-   console.log(req.file);
-   const urlEnding = req.file.location.substr(38, (req.file.location.length -1))       // url is being doubled somewhere in multer for some reason
+   const urlEnding = req.file.location.substr(38, (req.file.location.length - 1))       // url is being doubled somewhere in multer for some reason
    const goodUrl = urlBeginning + urlEnding;
 
-   const user = await User.findById(req.body.formData.uploaderId);
+   const user = await User.findById(req.body.uploaderId);
    const isProfile = req.body.isProfile;
 
    if (isProfile) {
-      await user.profileImageURL.set(goodUrl);
+      user.profileImageURL = goodUrl;
    } else {
       await user.imageURLs.push(goodUrl);
    }
