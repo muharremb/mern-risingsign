@@ -1,53 +1,33 @@
-.profile-pic-frame {
+.profile-container img {
+   height: 150px;
+   width: 150px;
+}
+
+.profile-container {
+   position: fixed;
+   bottom: 200px;
+   top: 1%;
+   left: 5%;
+   right: 5%;
+   width: 75vw;
+   height: 70vh;
+   padding: 2% 3% 2% 3%;
+   margin-top: 5%;
+   margin-left: 2%;
+   border-radius: 16px;
+   background-color: #0e001490;
+}
+
+.picture {
    display: flex;
    flex-direction: column;
-   justify-content: center;
    align-items: center;
-   border-radius: 50%;
-   bottom: 15%;
-   width: 30vw;
-   height: 30vw;
-   background: radial-gradient(circle, rgba(113,14,143,1) 0%, rgba(74,23,84,1) 35%, rgba(14,0,20,1) 100%);
-   border-top: .8vw ridge rgba(233, 193, 93);
-   border-left: .8vw ridge rgba(233, 193, 93);
-   border-bottom: .8vw groove rgba(233, 193, 93);
-   border-right: .8vw groove rgba(233, 193, 93);
-   box-shadow: 0em 0em .4em .08em rgb(78, 78, 78);
-   z-index: 1;
-   overflow: hidden;
-   /* animation: visible 3s; */
-   /* animation: visible 3s;
-   transition-duration: 3s;
-   transition-property: transform; */
-}
-
-.profile-pic-frame img {
-   height: 95%;
-   width: 95%;
-   z-index: 5;
-   background: transparent;
-   overflow: auto;
-
-}
-
-.profile-mid-top-buffer {
-   height: 6vh;
-   margin-bottom: 5%;
-}
-
-.profile-mid-top {
-   display: flex;
-   flex-direction: row;
    justify-content: center;
-   align-items: center;
-   height: 60vh;
-   width: 100%;
 }
 
-.profile-mid-bottom {
+.profile-mid {
    display: flex;
    flex-direction: column;
-   height: 90%;
    width: 80%;
    margin-left: 9%;
    margin-right: 10%;
@@ -66,7 +46,7 @@
    background: radial-gradient(circle, rgba(113,14,143,1) 0%, rgba(74,23,84,1) 35%, rgba(14,0,20,1) 100%);
    width: 100vw;
    height: 100vh;
-
+   z-index: -1;
 }
 
 .name-tile {
@@ -81,7 +61,7 @@
    justify-content: center;
    width: 40%;
    padding-top: 6%;
-   font-size: 4vw;
+   font-size: 3vw;
    margin-top: 0;
    margin-bottom: -7%;
    letter-spacing: .1em;
@@ -122,19 +102,16 @@ body {
    top: 0;
    bottom: 0;
    background-color:rgb(255, 255, 255);
-   /* right: calc(100% / 5); */
    left: calc(100% / 4.9);
    border-left: 1.3vw ridge rgba(233, 193, 93);
    border-right: 1.3vw groove rgba(233, 193, 93);
    border-top: 1vw ridge rgba(233, 193, 93);
    border-bottom: 1vw groove rgba(233, 193, 93);
    box-shadow: inset 0em 0em .4em .15em rgb(78, 78, 78);
-   /* box-sizing: border-box; */
-  
-   
 }
 
 .space-layer-profile{
+   z-index: -1;
    position: fixed;
    top: 50%;
    left: 50%;
@@ -150,6 +127,7 @@ body {
 }
 
 .space-layer-profile2{
+   z-index: -1;
    position: relative;
    top: 50%;
    left: 50%;
