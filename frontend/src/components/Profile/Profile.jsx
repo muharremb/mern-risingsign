@@ -27,11 +27,13 @@ function Profile () {
     dispatch(uploadPic({
       pic,
       uploaderId: user._id
+
     }))
   }
 
 
   if(!user){
+
     return null
   }
  
@@ -52,6 +54,7 @@ function Profile () {
           <input type="file" onChange={e => setPic(e.currentTarget.files[0])}></input>
           <input type="submit" value="submait"></input>
         </form> */}
+
       </div>
     </>
     

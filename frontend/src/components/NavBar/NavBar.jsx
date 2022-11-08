@@ -1,14 +1,12 @@
-import { Link, Redirect } from 'react-router-dom';
+import { Link }from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import './NavBar.css';
-import { getCurrentUser, logout } from '../../store/session';
-import { useEffect } from 'react';
+import { logout } from '../../store/session';
 
 function NavBar () {
 
   const loggedIn = useSelector(state => !!state.session.user);
   
-  // MB added ? operator to both useSelector and current user check
   const currentUser = useSelector(state => state.session.user ? state.session.user:{});
   const loggedInPic = currentUser.profileImageURL ? currentUser.profileImageURL:null;
   
@@ -26,9 +24,6 @@ function NavBar () {
     }
   }
 
-  useEffect(() => {
-    dispatch(getCurrentUser());
-  }, [dispatch]);
   
   const logoutUser = e => {
       e.preventDefault();
@@ -61,7 +56,6 @@ function NavBar () {
       );
     }
   }
-  // MB added null check 
   if(!currentUser) return null;
 
   return (
@@ -73,7 +67,7 @@ function NavBar () {
       <div className='navbar-right'>
         { logoutButton() }
         <div className='logged-in-image'>
-          <img hidden={loggedIn ? false : true}src={loggedInPic}></img>
+          <img hidden={loggedIn ? false : true} src={loggedInPic} alt="thumbnail"></img>
         </div>
       </div>
     </div>

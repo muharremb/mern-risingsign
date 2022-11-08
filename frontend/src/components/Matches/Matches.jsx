@@ -12,7 +12,6 @@ function Matches () {
     const [risingFilter, setRisingFilter] = useState('all');
     const dispatch = useDispatch();
 
-    // to fetchUsers() as preferences
     useEffect(() => {
         dispatch(fetchUsers());
     }, [])

@@ -50,6 +50,7 @@ function UserBio ({user}) {
                 {user.bio || 'Nothing yet!'}
                 {canEdit && 
                 <button onClick={startUpdate}>Edit Bio</button>}
+
             </div>
         </>
         }

@@ -30,6 +30,7 @@ function Sidebar () {
     setCurrentRoom(retrievedRoom);
     setStoreRoom(retrievedRoom);
     socket.emit('join-room', retrievedRoom);
+
   }, [] )
 
   const joinRoom = (e, isPublic = true) => {

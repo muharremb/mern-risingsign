@@ -1,8 +1,7 @@
 .user-card {
     display: flex;
-    width: 35%;
+    width: 80%;
     min-width: 300px;
-    margin: 0 5% 3% 1%;
     padding: 0.5% 0 3% 3%;
     border-radius: 8px;
     transition: 0.2s ease-in;
@@ -59,4 +58,5 @@ a {
 
 .user-card:last-child {
     margin-bottom: 30px;
+
 }

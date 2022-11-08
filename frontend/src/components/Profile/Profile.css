@@ -44,7 +44,6 @@
 }
 
 
-
 .name-tile {
    display: flex;
    justify-content: center;
@@ -85,9 +84,6 @@
    
 }
 
-body {
-   background: transparent;
-}
 
 .profile-page-mid {
    position: absolute;
