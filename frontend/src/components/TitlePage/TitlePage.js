@@ -6,8 +6,8 @@ const Title = () => {
       <>
          <p className='title'>Rising Sign</p>
          <div className='entrance-links'>
-            <Link className="signup-link" to={'/signup'}>Sign Up</Link>
-            <Link className="login-link" to={'/login'}>Log In</Link>
+            <Link className="signup-link" to={'/signup'}>Signup</Link>
+            <Link className="login-link" to={'/login'}>Login</Link>
          </div>
       </>
       

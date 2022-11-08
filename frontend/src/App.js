@@ -43,6 +43,7 @@ function App() {
         <DisplayCircle />
         { location.pathname === "/" && <TitlePage/>}
         { loggedIn && <NavBar />}
+        {/* <NavBar /> */}
       </div>
 
       { location.pathname !== "/developers" && <DevButton /> }

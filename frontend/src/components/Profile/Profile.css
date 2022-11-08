@@ -8,19 +8,40 @@
    flex-direction: column;
    align-items: center;
    justify-content: center;
-   position: fixed;
-   bottom: 200px;
-   top: 1%;
-   left: 5%;
-   right: 5%;
-   width: 75vw;
-   height: 70vh;
-   padding: 2% 3% 2% 3%;
-   margin-top: 5%;
-   margin-left: 2%;
+   align-items: center;
+   border-radius: 50%;
+   bottom: 15%;
+   width: 30vw;
+   height: 30vw;
+   background: radial-gradient(circle, rgba(113,14,143,1) 0%, rgba(74,23,84,1) 35%, rgba(14,0,20,1) 100%);
+   border-top: .8vw ridge rgba(233, 193, 93);
+   border-left: .8vw ridge rgba(233, 193, 93);
+   border-bottom: .8vw groove rgba(233, 193, 93);
+   border-right: .8vw groove rgba(233, 193, 93);
+   box-shadow: 0em 0em .4em .08em rgb(78, 78, 78);
+   z-index: 1;
+   overflow: hidden;
+   /* animation: visible 3s; */
+   /* animation: visible 3s;
+   transition-duration: 3s;
+   transition-property: transform; */
 }
 
-.picture {
+.profile-pic-frame img {
+   height: 95%;
+   width: 95%;
+   z-index: 5;
+   background: transparent;
+   overflow: auto;
+
+}
+
+.profile-mid-top-buffer {
+   height: 6vh;
+   margin-bottom: 5%;
+}
+
+.profile-mid-top {
    display: flex;
    flex-direction: column;
    align-items: center;
@@ -41,6 +62,14 @@
    border-right: .8vw groove rgba(233, 193, 93);
    background-color: aliceblue;
    box-shadow: 0em 0em .3em .08em rgb(78, 78, 78), inset 0em 0em .4em .08em rgb(78, 78, 78);
+}
+
+.profile-background {
+   position: fixed;
+   background: radial-gradient(circle, rgba(113,14,143,1) 0%, rgba(74,23,84,1) 35%, rgba(14,0,20,1) 100%);
+   width: 100vw;
+   height: 100vh;
+
 }
 
 .name-tile {
@@ -83,22 +112,27 @@
    
 }
 
-.profile-container {
-   position: relative;
-   display: flex;
-   flex-direction: column;
-
+body {
+   background: transparent;
 }
 
+.profile-page-mid {
+   position: absolute;
+   display: flex;
+   flex-direction: column;
    width: 56vw;
    min-height: 150vh;
    top: 0;
    bottom: 0;
    background-color:rgb(255, 255, 255);
+   /* right: calc(100% / 5); */
    left: calc(100% / 4.9);
    border-left: 1.3vw ridge rgba(233, 193, 93);
    border-right: 1.3vw groove rgba(233, 193, 93);
    border-top: 1vw ridge rgba(233, 193, 93);
    border-bottom: 1vw groove rgba(233, 193, 93);
    box-shadow: inset 0em 0em .4em .15em rgb(78, 78, 78);
+   /* box-sizing: border-box; */
+  
+   
 }
