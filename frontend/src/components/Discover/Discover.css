@@ -12,6 +12,10 @@
 
 
 #discover-container {
+    min-height: 90vh;
+    height: 100%;
+    width: 100%;
+
     padding-bottom: 50px;
     padding-left: 3%;
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;

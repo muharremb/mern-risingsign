@@ -48,26 +48,23 @@
 .display-messages {
     height: 27vh;
     width: 30vw;
-    overflow-y: scroll;
+    overflow: auto;
+    /* overflow: scroll-y; */
     list-style: none;
     border: 1px solid #ffffff55;
     padding: 5px 10px;
     border-radius: 8px;
     color: #ffbb10cf;
     display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-}
-
-.display-messages:last-child {
-    /* background-color: green; */
+    flex-direction: column-reverse;
+    /* justify-content: flex-end; */
 }
 
 .display-messages::-webkit-scrollbar {
     background-color: #410b5f;
     border-radius: 0 8px 8px 0;
     width: 12px;
-    overflow:scroll;
+    /* overflow:scroll; */
 }
 
 
@@ -78,6 +75,7 @@
 
 .display-messages:hover::-webkit-scrollbar-thumb {
     background-color: #ffbb10cf;
+    overflow-y: scroll;
 }
 
 .chat-message {
@@ -131,3 +129,7 @@
 #chat h2 {
     margin: 0;
 }
+
+/* .messages-list{
+    overflow-y: scroll;
+} */

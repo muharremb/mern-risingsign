@@ -3,7 +3,9 @@
    box-sizing: border-box;
    margin: 0;
    padding: 0;
+   color: #e9c15d;
 }
+
 
 .clear-box {
    display: flex;
@@ -88,5 +90,5 @@
    }
    to {
      text-shadow: 0 0 20px #fff, 0 0 30px #b24dff, 0 0 40px #b24dff, 0 0 50px #b24dff, 0 0 60px #b24dff, 0 0 70px #b24dff, 0 0 80px #b24dff;
-   }
+     }
 }

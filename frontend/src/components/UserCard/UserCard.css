@@ -6,7 +6,7 @@
     border-radius: 8px;
     transition: 0.2s ease-in;
     box-shadow: 0 0 5px #00000035;
-    background-color: #530f73;
+    background-color: #00000050;
     cursor: pointer;
 }
 
@@ -53,5 +53,10 @@ a {
 
 .user-card:hover {
     box-shadow: 0 0 50px #e9c15d45;
-    background-color: #4e0b6e;
+    background-color: #00000060;
+}
+
+.user-card:last-child {
+    margin-bottom: 30px;
+
 }

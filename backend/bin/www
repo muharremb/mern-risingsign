@@ -52,16 +52,16 @@
    ])
    return roomMessages;
  }
+
  const setUpChatServer = () => {
    const io = require('socket.io')(chatServer, {
      pingTimeout: 600000,
      cors: {
-       origin: 'http://localhost:3000'
+       origin: 'http://localhost:3000'  //https://rising-sign.herokuapp.com/
      }
    })
 
    io.on('connection', (socket) => {
-
      socket.on('new-user', async () => {
        const users = await User.find({});
        io.emit('new-user', users)
@@ -80,12 +80,12 @@
 
      socket.on('message-room', async (room, content, sender, time, date) => {
        const newMessage = await Message.create({content, from: sender, time, date, to: room});
-       console.log(content)
+      //  console.log(content)
        const allMessages = await getMessagesFromRoom(room);
 
        //send message to room
        io.to(room).emit('room-messages', allMessages);
-       socket.broadcast.emit('notifications', room);
+      //  socket.broadcast.emit('notifications', room);
      })
 
    })
