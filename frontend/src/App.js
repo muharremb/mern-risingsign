@@ -41,6 +41,9 @@ function App() {
   return loaded && (
     <>
     <NavBar />
+    <div id="background"></div>
+    <div className='space-layer-profile'></div>
+    <div className='space-layer-profile2'></div>
   {!onDevPage && <DevButton />}
     <Switch>
       <Route exact path="/developers" component={Developers} />

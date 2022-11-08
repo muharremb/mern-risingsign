@@ -24,8 +24,8 @@ function UserBio ({user}) {
 
   const handleUpdate = (e) => {
     e.preventDefault();
-    setUserBio(e.target.value);
-    dispatch(updateBio(user._id, userBio))
+    setUserBio(document.querySelector('#user-bio-edit').value);
+    dispatch(updateBio(user._id, userBio));
     setEditing(false);
   }
 

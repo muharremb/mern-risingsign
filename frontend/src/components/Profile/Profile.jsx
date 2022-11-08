@@ -37,9 +37,6 @@ function Profile () {
  
   return (
     <>
-      <div className='profile-background'></div>
-      <div className='space-layer-profile'></div>
-      <div className='space-layer-profile2'></div>
       
       <div className='profile-container'>
       
