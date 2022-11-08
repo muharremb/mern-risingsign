@@ -1,5 +1,6 @@
 import DevCard from './DevCard';
 import './Developers.css';
+import { Link } from 'react-router-dom';
 
 function Developers() {
 
@@ -58,18 +59,21 @@ function Developers() {
 
     return (
 
-                
-        <div id="developers">
-            <p className="heading" >Development Team</p>
-            <div id="dev-card-container">
-                {/* <DevCard dev={ben}/>
-                <DevCard dev={dan}/> */}
-                <DevCard dev={muharrem}/>
-                <DevCard dev={clarence}/>
-                <DevCard dev={dan}/>
-                <DevCard dev={clarence}/>
+        <>
+            <div id="developers">
+                <p className="heading" >Development Team</p>
+                <div id="dev-card-container">
+                    {/* <DevCard dev={ben}/>
+                    <DevCard dev={dan}/> */}
+                    <DevCard dev={muharrem}/>
+                    <DevCard dev={clarence}/>
+                    <DevCard dev={dan}/>
+                    <DevCard dev={clarence}/>
+                </div>
             </div>
-        </div>
+            <Link className="home-link" to={'/'}>Rising Sign</Link>
+        </>      
+        
     )
 }
 

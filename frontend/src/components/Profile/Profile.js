@@ -45,8 +45,7 @@ function Profile () {
  
   return (
     <>
-      <div className='profile-background'></div>
-      <div className='profile-page-mid'>
+      <div className='profile-container'>
         <div className='profile-mid-top-buffer'></div>
         <div className='profile-mid-top'>
           <div className='profile-pic-frame'>
