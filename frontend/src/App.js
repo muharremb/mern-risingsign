@@ -7,15 +7,19 @@ import TitlePage from './components/TitlePage/TitlePage';
 import Chat from './components/Matches/Chat/Chat.jsx';
 import {getCurrentUser} from './store/session';
 import DevButton from './components/Developers/DevButton';
+import MatchedModal from './components/MatchedModal/MatchedModal';
 import Background from './components/Background/Background';
 import DisplayCircle from './components/DisplayCircle/DisplayCircle';
+
 
 
 function App() {
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
+
+  const onMatchPage = useRouteMatch("/matches");
   const location = useLocation();
-  const loggedIn = useSelector(state => !!state.session.user);
+  const loggedIn = useSelector(state => !!state.session.user)
 
   const loadPage = () => {
     const html = document.documentElement;
@@ -36,6 +40,9 @@ function App() {
 
   return loaded && (
     <>
+
+    {!onMatchPage && <MatchedModal />}
+
       <Background />
       
       <div className='clear-box'>

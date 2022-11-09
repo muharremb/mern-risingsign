@@ -2,7 +2,7 @@
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
-    background: transparent;
+    background-color: transparent;
     min-height: 100vh;
     overflow-x: hidden;
 }
@@ -24,8 +24,7 @@
     flex-direction: column;
     align-items: center;
     max-width: 18%;
-    background-color: #530f73;
-    background-image: radial-gradient(#410c5a, #460d60, #530f73);
+    background-color: #00000060;
     border-radius: 50px;
     padding: 20px;
     max-height: 80%;
@@ -36,7 +35,8 @@
 }
 
 .dev-card img {
-    max-width: 120px;
+    width: 120px;
+    height: 120px;
     border-radius: 50%;
 }
 

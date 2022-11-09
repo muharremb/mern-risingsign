@@ -7,6 +7,9 @@
    color: #e9c15d;
 }
 
+button {
+   cursor: pointer;
+}
 
 .clear-box {
    display: flex;

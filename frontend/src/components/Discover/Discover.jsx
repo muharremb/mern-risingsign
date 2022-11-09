@@ -14,7 +14,7 @@ function Discover () {
     const displayCircle = document.getElementsByClassName('display-circle')[0];
     console.log(displayCircle)
     
-    const dispatch = useDispatch()
+    const dispatch = useDispatch();
 
     useEffect(() => {
         document.addEventListener('scroll', handleScroll);

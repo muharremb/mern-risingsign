@@ -1,0 +1,26 @@
+#matched-modal {
+    min-height: 25vh;
+    min-width: 35.2vh;
+    background: radial-gradient(circle, rgba(113,14,143,1) 0%, rgba(74,23,84,0.8) 40%, rgba(14,0,20,0) 100%);
+    color: inherit;
+    border: none;
+    border-radius: 10%;
+    z-index: 5;
+}
+
+#matched-modal::backdrop {
+    background-color: #00000090;
+}
+
+#matched-modal a {
+    color: orange;
+    text-decoration: underline;
+}
+
+#matched-modal-contents {
+    display: flex;
+    flex-direction: column;
+    height: 25vh;
+    justify-content: space-around;
+    align-items: center;
+}
