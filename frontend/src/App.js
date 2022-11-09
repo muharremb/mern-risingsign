@@ -38,12 +38,10 @@ function App() {
     <>
       <Background />
       
-
       <div className='clear-box'>
         <DisplayCircle />
         { location.pathname === "/" && <TitlePage/>}
         { loggedIn && <NavBar />}
-        {/* <NavBar /> */}
       </div>
 
       { location.pathname !== "/developers" && <DevButton /> }
