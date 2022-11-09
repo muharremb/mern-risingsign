@@ -20,6 +20,7 @@
     padding-bottom: 50px;
     padding-left: 3%;
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    animation: visible 1.2s;
 }
 
 #discover-container h1 {

@@ -3,7 +3,7 @@ import { useLocation, Route } from 'react-router-dom';
 
 import LoginForm from '../SessionForms/LoginForm/LoginForm';
 import SignupForm from '../SessionForms/SignupForm/SignupForm';
-import Profile from '../Profile/Profile';
+import Profile from '../Profile/Profile.jsx';
 import Discover from '../Discover/Discover';
 import Chat from '../Matches/Chat/Chat';
 import Matches from '../Matches/Matches';

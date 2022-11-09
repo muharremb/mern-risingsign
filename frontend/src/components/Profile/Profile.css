@@ -8,23 +8,27 @@
    flex-direction: column;
    align-items: center;
    justify-content: center;
-   align-items: center;
-   border-radius: 50%;
-   bottom: 15%;
-   width: 30vw;
-   height: 30vw;
-   background: radial-gradient(circle, rgba(113,14,143,1) 0%, rgba(74,23,84,1) 35%, rgba(14,0,20,1) 100%);
-   border-top: .8vw ridge rgba(233, 193, 93);
-   border-left: .8vw ridge rgba(233, 193, 93);
-   border-bottom: .8vw groove rgba(233, 193, 93);
-   border-right: .8vw groove rgba(233, 193, 93);
+   gap: 1rem;
+   min-height: 40vh;
+   position: relative;
+   bottom: 3.5vh;
+   height: 93vh;
+   width: 100%;
+   background: transparent;
    box-shadow: 0em 0em .4em .08em rgb(78, 78, 78);
    z-index: 1;
-   overflow: hidden;
-   /* animation: visible 3s; */
-   /* animation: visible 3s;
-   transition-duration: 3s;
-   transition-property: transform; */
+   animation: visible 1.2s;
+}
+
+.picture {
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   letter-spacing: 3px;
+   text-indent: .2rem;
+   gap: .5rem;
+   width: max-content;
 }
 
 .profile-pic-frame img {

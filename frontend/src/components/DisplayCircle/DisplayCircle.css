@@ -35,7 +35,7 @@
    transition: all 1.2s ease;
 }
 
-.display-circle[data-page="discover"], .display-circle[data-page="developers"] {
+.display-circle[data-page="discover"], .display-circle[data-page="developers"], .display-circle[data-page="profile"] {
    width: 2000px;
    height: 2000px;
    border-radius: 25%;
