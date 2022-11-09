@@ -28,32 +28,15 @@ const DisplayCircle = () => {
       }
    }
 
-   const protectedSwitch = () => {
-      switch(location.pathname.split("/")[1]) {
-         case 'profile':
-            return <Profile />
-            break;
-         case 'discover':
-            return <Discover />
-            break;
-         case 'chat':
-            return <Chat />
-            break;
-         case 'matches':
-            return <Matches />
-            break;
-         default:
-            return null;
-      }
-   }
-
    return (
       <div className='display-circle' data-page={location.pathname.split("/")[1]}>
          {allowOrbiter && <div className='orbiter-container'>
             <div className='orbiter'></div>
          </div> }
          <AuthRoute exact path={location.pathname} component={authSwitch}/>
-         <ProtectedRoute exact path={location.pathname} component={protectedSwitch}/>
+         <ProtectedRoute exact path='/discover' component={Discover}/>
+         <ProtectedRoute exact path='/profile/:userId' component={Profile}/>
+         <ProtectedRoute exact path='/matches' component={Matches}/>
          <Route exact path='/developers' component={Developers} />
       </div>
    )

@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useRouteMatch } from 'react-router-dom';
 
 import NavBar from './components/NavBar/NavBar';
 import TitlePage from './components/TitlePage/TitlePage';

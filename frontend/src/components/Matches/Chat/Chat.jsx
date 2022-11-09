@@ -6,7 +6,7 @@ function Chat () {
 
   return (
     <div id="chat">
-      {/* <Sidebar /> */}
+      <Sidebar />
       <MessageForm/>
     </div>
   )

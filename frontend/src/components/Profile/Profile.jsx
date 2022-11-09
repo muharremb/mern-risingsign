@@ -9,7 +9,7 @@ import { fetchUser } from '../../store/users';
 function Profile () {
   const dispatch = useDispatch();
   const {userId} = useParams();
-  const user = useSelector(state => state.session.user ? state.session.user : '');
+  const user = useSelector(state => state.users[userId] ? state.users[userId] : '');
 
  
   const restoreUser = async () => {
