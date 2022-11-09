@@ -45,7 +45,7 @@ function App() {
 
       <Background />
       
-      <div className='clear-box'>
+      <div className='clear-box' id='clear-box'>
         <DisplayCircle />
         { location.pathname === "/" && <TitlePage/>}
         { loggedIn && <NavBar />}

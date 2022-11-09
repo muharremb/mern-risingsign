@@ -1,19 +1,6 @@
-/* .discover-page {
-   display: flex;
-   flex-direction: column;
-   bottom: 20vh;
-   width: 100vw;
-   height: 90vh;
-}
-
-.discover-upper {
-   height: 60vh;
-} */
-
-
 #discover-container {
     min-height: 90vh;
-    position: relative;
+    position: static;
     top: 39rem;
     height: 100%;
     width: 100%;
@@ -31,6 +18,7 @@
     display: grid;
     grid-template-columns: auto auto;
     row-gap: 50px;
+    padding-bottom: 80px;
 }
 
 .heading {
