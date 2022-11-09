@@ -1,10 +1,12 @@
 import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import ContinueButton from '../ContinueButton/ContinueButton';
+import { Link } from 'react-router-dom';
+import Button from '../../Button/Button';
 import './LoginForm.css';
 import { login, clearSessionErrors } from '../../../store/session';
 
 import { socket } from '../../../context/chatContext';
+import { Redirect } from 'react-router-dom';
 
 function LoginForm () {
   const [email, setEmail] = useState('');
@@ -28,7 +30,7 @@ function LoginForm () {
     return e => setState(e.currentTarget.value);
   }
 
-  const demoLogIn = (e) => {
+  const demoLogIn = e => {
     e.preventDefault();
 
     setEmail("demouser@mgmail.com")
@@ -38,7 +40,7 @@ function LoginForm () {
     });
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = e => {
     e.preventDefault();
     dispatch(login({ email, password })).then(()=>{
       socket.emit('new-user')
@@ -46,13 +48,10 @@ function LoginForm () {
   }
 
   return (
-    <div className='login-page'>
-    <div className='space-layer'></div>
-    <div className='space-layer2'></div>
-    <form className="login-form" onSubmit={handleSubmit}>
-      <div className="login-field">
-        <div className='email-and-password-input'>
-          <div className='input-container'>
+    <>
+      <form className="login-form" onSubmit={handleSubmit}>
+        <div className='login-form-upper'>
+          <div className='email-input-container'>
             <input type="text"
               id="email-input"
               value={email}
@@ -60,7 +59,7 @@ function LoginForm () {
             />
             <label htmlFor='email-input'>{errors && errors.email ? errors.email.toLowerCase() : "email"}</label>
           </div>
-          <div className='input-container'>
+          <div className='password-input-container'>
             <input type="password"
               id="password-input"
               value={password}
@@ -69,12 +68,15 @@ function LoginForm () {
             <label htmlFor='password-input'>{errors && errors.password ? errors.password.toLowerCase() : "password"}</label>
           </div>
         </div>
-        <ContinueButton text="Log In" type={"submit"} disabled={!email || !password}/>
-        <ContinueButton handleClick={demoLogIn} text="Demo User" type="submit"/>
-      </div>
-    </form>
+        <div className='login-button-container'>
+          <Button text="Log In" type={"submit"} disabled={!email || !password}/>
+          <Button handleClick={demoLogIn} text="Demo User" type="submit"/>
+        </div>
+      </form>
+      <Link className="home-link" to={'/'}>Rising Sign</Link>
+      <Link className="bottom-signup-link" to={'/signup'}>Sign Up</Link>
+    </>
     
-  </div>
   );
 }
 

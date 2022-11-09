@@ -11,6 +11,8 @@ function Discover () {
     const [risingFilter, setRisingFilter] = useState('all');
     const [isFetching, setIsFetching] = useState(false);
     const userCount = useRef(0);
+    const displayCircle = document.getElementsByClassName('display-circle')[0];
+    console.log(displayCircle)
     
     const dispatch = useDispatch();
 
@@ -23,6 +25,7 @@ function Discover () {
     }, []);
 
     const handleScroll = () => {
+        console.log("handling scroll")
         if (window.innerHeight + document.querySelector("html").scrollTop < document.querySelector("html").offsetHeight || isFetching) return;
         setIsFetching(true);
         async function fetchData() {
