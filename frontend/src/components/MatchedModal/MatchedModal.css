@@ -1,4 +1,5 @@
 #matched-modal {
+    position: fixed;
     min-height: 25vh;
     min-width: 35.2vh;
     background: radial-gradient(circle, rgba(113,14,143,1) 0%, rgba(74,23,84,0.8) 40%, rgba(14,0,20,0) 100%);

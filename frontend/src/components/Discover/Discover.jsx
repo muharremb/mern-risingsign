@@ -12,19 +12,19 @@ function Discover () {
     const [isFetching, setIsFetching] = useState(false);
     const userCount = useRef(0);
     const displayCircle = document.getElementsByClassName('display-circle')[0];
-    console.log(displayCircle)
     
     const dispatch = useDispatch();
 
     useEffect(() => {
-        document.addEventListener('scroll', handleScroll);
+        document.getElementById('clear-box').addEventListener('scroll', handleScroll);
         handleScroll();
         return () => {
-            document.removeEventListener('scroll', handleScroll);
+            document.getElementById('clear-box').removeEventListener('scroll', handleScroll);
         };
     }, []);
 
     const handleScroll = () => {
+        debugger;
         console.log("handling scroll")
         if (window.innerHeight + document.querySelector("html").scrollTop < document.querySelector("html").offsetHeight || isFetching) return;
         setIsFetching(true);
