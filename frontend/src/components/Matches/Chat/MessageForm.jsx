@@ -27,22 +27,50 @@ function MessageForm () {
     socket.emit('message-room', currentRoom, msg, user, time, date);
     setMsg("")
   }
+  const [test, setTest] = useState(false)
 
-  useEffect(()=> {
-    messagesList = messages?.messagesByDate ? Object.values(messages.messagesByDate) : null;
-    messagesList = messagesList?.map((message, i) => <li key={i} id={message._id} className= {`chat-message
-  ${message.from._id === user._id ? "you" : "them"}`}
-  ><span>{message.time}</span>{message.time}</li>)
-  }, [msg])
+  const testButton = () => {
+    setTest(test => !test)
+    console.log(test)
+  }
+
+
+  const showMessageDate =  (date, i) => {
+    const dateObj = new Date();
+    const today = (dateObj.getMonth() + 1) + '/' + dateObj.getDate() +  '/' + (dateObj.getYear() - 100);
+    const displayedDates = document.getElementsByClassName("message-date");
+    let dateName = date
+    let displayedDatesList = []
+
+    if (date === today) {
+      dateName = 'Today'
+    }
+    // if (displayedDates.length != 0) {
+    //   for (let date of displayedDates) {
+    //     displayedDatesList.push(date.innerText.trim())
+    //   }
+    // }
+    // const displayDatesLen = displayedDatesList.length
+
+    // if (displayedDatesList.includes(dateName) && (id !== displayedDatesList.length - 1) ) {
+    // if (displayedDatesList.includes(dateName) && (id !== 0) ) {
+    if (i !== 0 ) {
+      return ''
+    } else {
+      return dateName
+    }
+  }
 
   let messagesList = messages?.messagesByDate ? Object.values(messages.messagesByDate).reverse() : null;
+
   messagesList = messagesList?.map((message, i) =>
   <li key={i} id={message._id}
   className={`chat-message ${message.from._id === user._id ? "you" : "them"}`}>
-  <span id="message-date">{message.date} &nbsp;</span><div>
+  <span className="message-date">{showMessageDate(message.date, i)} &nbsp;</span><div>
     <span>{message.time.slice(0, 5)} &nbsp;</span>{message.content}
   </div>
   </li>)
+
 
   return (
     <>

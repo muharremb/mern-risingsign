@@ -108,11 +108,11 @@
     margin: 0;
 }
 
-#message-date {
+.message-date {
     display: flex;
     justify-content: center;
     align-items: left;
-    background-color: black;
+    /* background-color: black; */
 }
 
 .you {
