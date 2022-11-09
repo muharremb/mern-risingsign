@@ -45,12 +45,35 @@
    overflow: hidden;
 }
 
+.orbiter-container {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  /* border: 1px solid pink; */
+  animation: orbit 15s linear infinite;
+  -webkit-animation: orbit 15s linear infinite;
+}
+
 .orbiter {
    position: absolute;
-   left: -1.5rem;
+   left: -1.7vw;
+   top: 45%;
    width: 3em;
    height: 3em;
    border: 1px solid rgba(233, 193, 93);
    box-shadow: 0em 0em .2em .05em rgba(233, 193, 93), inset 0em 0em .2em .05em rgba(233, 193, 93);
    border-radius: 100%;
+   background-color: rgba(155, 150, 138, 0.145);
+   animation: visible 1.2s;
+}
+
+
+@-webkit-keyframes orbit {
+	from {-webkit-transform: rotate(0);transform: rotate(0);}
+	to {-webkit-transform: rotate(360deg);transform: rotate(360deg);}	
+}
+
+@keyframes orbit {
+	from {-webkit-transform: rotate(0);transform: rotate(0);}
+	to {-webkit-transform: rotate(360deg);transform: rotate(360deg);}	
 }

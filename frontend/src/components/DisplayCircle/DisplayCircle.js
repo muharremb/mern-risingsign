@@ -13,6 +13,8 @@ import { AuthRoute, ProtectedRoute } from '../Routes/Routes';
 const DisplayCircle = () => {
    const location = useLocation();
 
+   const allowOrbiter = (location.pathname === "/" || location.pathname === "/signup" || location.pathname === "/login")
+
    const authSwitch = () => {
       switch(location.pathname) {
          case '/login':
@@ -47,7 +49,9 @@ const DisplayCircle = () => {
 
    return (
       <div className='display-circle' data-page={location.pathname.split("/")[1]}>
-         <div className='orbiter'></div>
+         {allowOrbiter && <div className='orbiter-container'>
+            <div className='orbiter'></div>
+         </div> }
          <AuthRoute exact path={location.pathname} component={authSwitch}/>
          <ProtectedRoute exact path={location.pathname} component={protectedSwitch}/>
          <Route exact path='/developers' component={Developers} />
