@@ -55,8 +55,3 @@ a {
     box-shadow: 0 0 50px #e9c15d45;
     background-color: #00000060;
 }
-
-.user-card:last-child {
-    margin-bottom: 30px;
-
-}
