@@ -6,6 +6,10 @@ body {
    color: #e9c15d;
 }
 
+button {
+   cursor: pointer;
+}
+
 #background {
    position: fixed;
    background: radial-gradient(circle, rgba(113,14,143,1) 0%, rgba(74,23,84,1) 35%, rgba(14,0,20,1) 100%);

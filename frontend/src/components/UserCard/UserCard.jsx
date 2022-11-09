@@ -25,6 +25,7 @@ function UserCard({user}){
         setIsLiked(true);
         if(sessionUser.likers.includes(user._id)) {
             setIsMatched(true);
+            document.getElementById('matched-modal').showModal();
         }
         dispatch(likeUser(sessionUser._id, user._id));
     }

@@ -14,12 +14,14 @@ import {getCurrentUser} from './store/session';
 import Matches from './components/Matches/Matches';
 import Developers from './components/Developers/Developers';
 import DevButton from './components/Developers/DevButton';
+import MatchedModal from './components/MatchedModal/MatchedModal';
 
 
 function App() {
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
   const onDevPage = useRouteMatch("/developers");
+  const onMatchPage = useRouteMatch("/matches");
 
   const loadPage = () => {
     const html = document.documentElement;
@@ -44,7 +46,8 @@ function App() {
     <div id="background"></div>
     <div className='space-layer-profile'></div>
     <div className='space-layer-profile2'></div>
-  {!onDevPage && <DevButton />}
+    {!onMatchPage && <MatchedModal />}
+    {!onDevPage && <DevButton />}
     <Switch>
       <Route exact path="/developers" component={Developers} />
       <AuthRoute exact path="/" component={MainPage} />

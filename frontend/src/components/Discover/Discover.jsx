@@ -12,7 +12,7 @@ function Discover () {
     const [isFetching, setIsFetching] = useState(false);
     const userCount = useRef(0);
     
-    const dispatch = useDispatch()
+    const dispatch = useDispatch();
 
     useEffect(() => {
         document.addEventListener('scroll', handleScroll);
