@@ -199,7 +199,7 @@ router.get('/index', async function(req, res, next) {
 
 router.patch('/:userId', async (req, res, next) => {
   const userId = req.params.userId;
-  const bio = JSON.parse(req.body.bio);
+  const bio = req.body.bio;
 
   const updatedUser = await User.findOneAndUpdate({_id: userId},
     {bio}, 

@@ -20,7 +20,7 @@ export const updateBio = (userId, bio) => async dispatch => {
         bio
     }
 
-    const res = await jwtFetch(`api/users/${userId}`, {
+    const res = await jwtFetch(`/api/users/${userId}`, {
         method: "PATCH",
         body: JSON.stringify(reqBody)
     })
