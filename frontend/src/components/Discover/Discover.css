@@ -1,4 +1,4 @@
-.discover-page {
+/* .discover-page {
    display: flex;
    flex-direction: column;
    bottom: 20vh;
@@ -8,17 +8,19 @@
 
 .discover-upper {
    height: 60vh;
-}
+} */
 
 
 #discover-container {
     min-height: 90vh;
+    position: relative;
+    top: 39rem;
     height: 100%;
     width: 100%;
-
     padding-bottom: 50px;
     padding-left: 3%;
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    animation: visible 1.2s;
 }
 
 #discover-container h1 {

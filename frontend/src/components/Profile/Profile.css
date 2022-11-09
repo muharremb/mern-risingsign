@@ -8,19 +8,44 @@
    flex-direction: column;
    align-items: center;
    justify-content: center;
-   position: fixed;
-   bottom: 200px;
-   top: 1%;
-   left: 5%;
-   right: 5%;
-   width: 75vw;
-   height: 70vh;
-   padding: 2% 3% 2% 3%;
-   margin-top: 5%;
-   margin-left: 2%;
+   gap: 1rem;
+   min-height: 40vh;
+   position: relative;
+   bottom: 3.5vh;
+   height: 93vh;
+   width: 100%;
+   background: transparent;
+   box-shadow: 0em 0em .4em .08em rgb(78, 78, 78);
+   z-index: 1;
+   animation: visible 1.2s;
 }
 
 .picture {
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   letter-spacing: 3px;
+   text-indent: .2rem;
+   gap: .5rem;
+   width: max-content;
+}
+
+.profile-pic-frame img {
+   height: 95%;
+   width: 95%;
+   z-index: 5;
+   background: transparent;
+   overflow: auto;
+
+}
+
+.profile-mid-top-buffer {
+   height: 6vh;
+   margin-bottom: 5%;
+}
+
+.profile-mid-top {
    display: flex;
    flex-direction: column;
    align-items: center;
@@ -43,6 +68,13 @@
    box-shadow: 0em 0em .3em .08em rgb(78, 78, 78), inset 0em 0em .4em .08em rgb(78, 78, 78);
 }
 
+.profile-background {
+   position: fixed;
+   background: radial-gradient(circle, rgba(113,14,143,1) 0%, rgba(74,23,84,1) 35%, rgba(14,0,20,1) 100%);
+   width: 100vw;
+   height: 100vh;
+
+}
 
 .name-tile {
    display: flex;
@@ -84,6 +116,9 @@
    
 }
 
+body {
+   background: transparent;
+}
 
 .profile-page-mid {
    position: absolute;
@@ -94,11 +129,14 @@
    top: 0;
    bottom: 0;
    background-color:rgb(255, 255, 255);
+   /* right: calc(100% / 5); */
    left: calc(100% / 4.9);
    border-left: 1.3vw ridge rgba(233, 193, 93);
    border-right: 1.3vw groove rgba(233, 193, 93);
    border-top: 1vw ridge rgba(233, 193, 93);
    border-bottom: 1vw groove rgba(233, 193, 93);
    box-shadow: inset 0em 0em .4em .15em rgb(78, 78, 78);
+   /* box-sizing: border-box; */
+  
+   
 }
-

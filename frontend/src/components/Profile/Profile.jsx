@@ -9,7 +9,7 @@ import { fetchUser } from '../../store/users';
 function Profile () {
   const dispatch = useDispatch();
   const {userId} = useParams();
-  const user = useSelector(state => state.users[userId] ? state.users[userId] : '');
+  const user = useSelector(state => state.session.user ? state.session.user : '');
 
  
   const restoreUser = async () => {
@@ -26,7 +26,8 @@ function Profile () {
     e.preventDefault();
     dispatch(uploadPic({
       pic,
-      uploaderId: user._id
+      uploaderId: user._id,
+      isProfile: false
 
     }))
   }
@@ -39,9 +40,7 @@ function Profile () {
  
   return (
     <>
-      
       <div className='profile-container'>
-      
         <div className='picture'>
           <img src={user.profileImageURL} alt="profile"></img>
           <h1>{user.name.trim()}</h1>

@@ -4,7 +4,7 @@ import {socket, ChatContext} from '../../../context/chatContext';
 import './Sidebar.css'
 
 function Sidebar () {
-  const user = useSelector(state => state.session.user);
+  const user = useSelector(state => state.session.user ? state.session.user : null);
   const { setMembers, members, currentRoom, setCurrentRoom, setCurrentRoomName } = useContext(ChatContext);
   const [storeRoom, setStoreRoom] = useState('');
 
