@@ -80,7 +80,6 @@
 
      socket.on('message-room', async (room, content, sender, time, date) => {
        const newMessage = await Message.create({content, from: sender, time, date, to: room});
-      //  console.log(content)
        const allMessages = await getMessagesFromRoom(room);
 
        //send message to room
