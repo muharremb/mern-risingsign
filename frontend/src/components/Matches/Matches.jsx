@@ -13,6 +13,7 @@ function Matches () {
     const dispatch = useDispatch();
 
     useEffect(() => {
+        // debugger
         dispatch(fetchUsers());
     }, [])
 

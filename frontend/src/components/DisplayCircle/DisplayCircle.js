@@ -47,6 +47,7 @@ const DisplayCircle = () => {
 
    return (
       <div className='display-circle' data-page={location.pathname.split("/")[1]}>
+         <div className='orbiter'></div>
          <AuthRoute exact path={location.pathname} component={authSwitch}/>
          <ProtectedRoute exact path={location.pathname} component={protectedSwitch}/>
          <Route exact path='/developers' component={Developers} />

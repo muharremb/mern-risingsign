@@ -3,7 +3,7 @@ import { useState, useContext, useEffect } from 'react'
 import { ChatContext } from '../../../context/chatContext'
 
 function MessageForm () {
-  const user = useSelector(state => state.session.user);
+  const user = useSelector(state => state.session.user ? state.session.user : null);
   const userName = useSelector(state => state.session.user.name);
 
   const [msg, setMsg] = useState('');
