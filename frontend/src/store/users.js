@@ -38,14 +38,12 @@ export const fetchUser = (userId) => async dispatch => {
 
 export const fetchUsers = (options) => async dispatch => {
     const optionsParams = new URLSearchParams(options);
-    // debugger
     let res;
     if(!options){
         res = await jwtFetch(`/api/users/index`);
     } else {
         res = await jwtFetch(`/api/users/index?${optionsParams}`);
     }
-    // debugger
     const users = await res.json();
     dispatch(receiveUsers(users));
 }
