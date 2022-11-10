@@ -29,7 +29,7 @@ function Discover () {
         };
         isFetching.current = true;
         async function fetchData() {
-            await dispatch(fetchUsers({skip: userCount.current, limit: 8}));
+            await dispatch(fetchUsers({skip: userCount.current, limit: 8, likes: sessionUser.likes}));
             isFetching.current = false;
             userCount.current += 8;
         }
