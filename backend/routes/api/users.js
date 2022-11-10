@@ -178,7 +178,15 @@ router.get('/current', restoreUser, (req, res) => {
 router.get('/index', async function(req, res, next) {
 
   const options = {skip: parseInt(req.query.skip), limit: parseInt(req.query.limit)}
-  const users = await User.find({_id: { $nin: req.query?.likes?.split(",")}}, null, options);
+  let query;
+  if(req.query.likes) {
+    query = {_id: {$nin: req.query.likes.split(",")}}
+  } else if (req.query.matches) {
+    query = {_id: {$in: req.query.matches.split(",")}}
+  } else {
+    query = {};
+  }
+  const users = await User.find(query, null, options);
   const users_clean = users.map((user) => {
     return ({
       _id: user._id,

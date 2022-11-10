@@ -13,8 +13,11 @@ function Matches () {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        // debugger
-        dispatch(fetchUsers());
+        const likes = sessionUser.likes;
+        const likers = sessionUser.likers;
+
+        const matches = likes.filter((like) => likers.includes(like));
+        dispatch(fetchUsers({matches}));
     }, [])
 
     const fetchedUsers = useSelector(state => state.users);
