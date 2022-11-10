@@ -12,7 +12,7 @@ function Discover () {
     const isFetching = useRef(false);
     const userCount = useRef(0);
     const displayCircle = document.getElementsByClassName('display-circle')[0];
-    
+
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -24,7 +24,9 @@ function Discover () {
     }, []);
 
     const handleScroll = () => {
+        // debugger;
         if (window.innerHeight + document.querySelector("#clear-box").scrollTop < document.querySelector("#clear-box").scrollHeight || isFetching.current) {
+            // console.log("returning early")
             return;
         };
         isFetching.current = true;
@@ -32,7 +34,9 @@ function Discover () {
             await dispatch(fetchUsers({skip: userCount.current, limit: 8, likes: sessionUser.likes}));
             isFetching.current = false;
             userCount.current += 8;
+            handleScroll();
         }
+
         fetchData();
     }
 
@@ -58,12 +62,12 @@ function Discover () {
 
     return (
 
-                
+
         <div id="discover-container">
             <h1 className="heading" >Discover</h1>
             <div id="filters">Filters | &nbsp;
                 <form className="page-filter">
-                    <label>Sun: 
+                    <label>Sun:
                     <select id="user-feed-filter" className="user-feed-filter-dropdown" defaultValue="all" onChange={filterSun}>
                         <option value="all">All</option>
                         <option value="aries">Aries</option>
@@ -79,9 +83,9 @@ function Discover () {
                         <option value="aquarius">Aquarius</option>
                         <option value="pisces">Pisces</option>
                     </select></label>
-                
-                
-                    <label>Moon: 
+
+
+                    <label>Moon:
                     <select id="user-feed-filter" className="user-feed-filter-dropdown" defaultValue="all" onChange={filterMoon}>
                         <option value="all">All</option>
                         <option value="aries">Aries</option>
@@ -97,9 +101,9 @@ function Discover () {
                         <option value="aquarius">Aquarius</option>
                         <option value="pisces">Pisces</option>
                     </select></label>
-                
-                
-                    <label>Rising: 
+
+
+                    <label>Rising:
                     <select id="user-feed-filter" className="user-feed-filter-dropdown" defaultValue="all" onChange={filterRising}>
                         <option value="all">All</option>
                         <option value="aries">Aries</option>
@@ -124,7 +128,7 @@ function Discover () {
                         ('all' === moonFilter || user.horoscope.moon.Sign.key === moonFilter) &&
                         ('all' === risingFilter || user.horoscope.rising.Sign.key === risingFilter) && user._id !== sessionUser._id &&
                         (!sessionUser.likes.includes(user._id))
-                        
+
                     ) {return <UserCard key={user._id} user={user}/>};
                     return null;
                 })}
