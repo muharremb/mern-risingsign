@@ -9,7 +9,7 @@ function Discover () {
     const [sunFilter, setSunFilter] = useState('all');
     const [moonFilter, setMoonFilter] = useState('all');
     const [risingFilter, setRisingFilter] = useState('all');
-    const [isFetching, setIsFetching] = useState(false);
+    const isFetching = useRef(false);
     const userCount = useRef(0);
     const displayCircle = document.getElementsByClassName('display-circle')[0];
     
@@ -24,13 +24,13 @@ function Discover () {
     }, []);
 
     const handleScroll = () => {
-        debugger;
-        console.log("handling scroll")
-        if (window.innerHeight + document.querySelector("html").scrollTop < document.querySelector("html").offsetHeight || isFetching) return;
-        setIsFetching(true);
+        if (window.innerHeight + document.querySelector("#clear-box").scrollTop < document.querySelector("#clear-box").scrollHeight || isFetching.current) {
+            return;
+        };
+        isFetching.current = true;
         async function fetchData() {
             await dispatch(fetchUsers({skip: userCount.current, limit: 8}));
-            setIsFetching(false);
+            isFetching.current = false;
             userCount.current += 8;
         }
         fetchData();
@@ -122,7 +122,8 @@ function Discover () {
                     if (
                         ('all' === sunFilter || user.horoscope.sun.Sign.key === sunFilter) &&
                         ('all' === moonFilter || user.horoscope.moon.Sign.key === moonFilter) &&
-                        ('all' === risingFilter || user.horoscope.rising.Sign.key === risingFilter) && user._id !== sessionUser._id
+                        ('all' === risingFilter || user.horoscope.rising.Sign.key === risingFilter) && user._id !== sessionUser._id &&
+                        (!sessionUser.likes.includes(user._id))
                         
                     ) {return <UserCard key={user._id} user={user}/>};
                     return null;
