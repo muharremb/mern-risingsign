@@ -178,8 +178,7 @@ router.get('/current', restoreUser, (req, res) => {
 router.get('/index', async function(req, res, next) {
 
   const options = {skip: parseInt(req.query.skip), limit: parseInt(req.query.limit)}
-  // debugger
-  const users = await User.find({}, null, options);
+  const users = await User.find({_id: { $nin: req.query?.likes?.split(",")}}, null, options);
   const users_clean = users.map((user) => {
     return ({
       _id: user._id,
