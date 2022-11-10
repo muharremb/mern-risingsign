@@ -17,7 +17,7 @@ export const AuthRoute = ({ component: Component, path, exact }) => {
 
 export const ProtectedRoute = ({ component: Component, ...rest }) => {
     const loggedIn = useSelector(state => !!state.session.user);
-  
+
     return (
       <Route
         {...rest}
