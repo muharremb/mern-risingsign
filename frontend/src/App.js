@@ -48,7 +48,7 @@ function App() {
       <div className='clear-box' id='clear-box'>
         <DisplayCircle />
         { location.pathname === "/" && <TitlePage/>}
-        { loggedIn && <NavBar />}
+        { (loggedIn && location.pathname !== '/newprofilepic') && <NavBar />}
       </div>
 
       { location.pathname !== "/developers" && <DevButton /> }

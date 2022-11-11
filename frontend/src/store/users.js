@@ -28,7 +28,6 @@ const receiveUsers = (users) => ({
 // })
 
 export const uploadPic = picData => async dispatch => {
-    console.log("in upload pic");
     const { pic, uploaderId, isProfile } = picData
     const formData = new FormData();
     formData.append("image-upload", pic)
@@ -43,7 +42,7 @@ export const uploadPic = picData => async dispatch => {
     
     let data = await res.json();
  
-    return dispatch(receiveUser(data));
+    return dispatch(receiveCurrentUser(data));
 }
 
 export const updateBio = (userId, bio) => async dispatch => {

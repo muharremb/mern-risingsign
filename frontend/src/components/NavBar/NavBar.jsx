@@ -2,11 +2,14 @@ import { Link }from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import './NavBar.css';
 import { logout } from '../../store/session';
+import { useEffect} from 'react';
+// import { ChatContext } from '../../context/chatContext';
+// import { fetchUser } from '../../store/users';
 
 function NavBar () {
 
   const loggedIn = useSelector(state => !!state.session.user);
-  
+  // const { picSent, setPicSent } = useContext(ChatContext);
   const currentUser = useSelector(state => state.session.user ? state.session.user:{});
   const loggedInPic = currentUser.profileImageURL ? currentUser.profileImageURL:null;
   
@@ -24,7 +27,12 @@ function NavBar () {
     }
   }
 
-  
+  // useEffect(() => {
+  //   dispatch(fetchUser(currentUser._id))
+  //   console.log("navbar has rerendered!!!!!")
+  //   console.log(picSent);
+  // }, [picSent])
+
   const logoutUser = e => {
       e.preventDefault();
       dispatch(logout());
