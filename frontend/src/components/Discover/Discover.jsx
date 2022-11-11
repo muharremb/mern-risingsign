@@ -17,16 +17,14 @@ function Discover () {
 
     useEffect(() => {
         document.getElementById('clear-box').addEventListener('scroll', handleScroll);
-        handleScroll();
+        setInterval(handleScroll, 2000);
         return () => {
             document.getElementById('clear-box').removeEventListener('scroll', handleScroll);
         };
     }, []);
 
     const handleScroll = () => {
-        // debugger;
         if (window.innerHeight + document.querySelector("#clear-box").scrollTop < document.querySelector("#clear-box").scrollHeight || isFetching.current) {
-            // console.log("returning early")
             return;
         };
         isFetching.current = true;
@@ -34,7 +32,6 @@ function Discover () {
             await dispatch(fetchUsers({skip: userCount.current, limit: 8, likes: sessionUser.likes}));
             isFetching.current = false;
             userCount.current += 8;
-            handleScroll();
         }
 
         fetchData();
