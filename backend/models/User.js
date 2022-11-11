@@ -55,6 +55,10 @@ const userSchema = Schema({
         type: Array,
         required: true
     },
+    prevMatches: {
+        type: Array,
+        required: true
+    },
     imageURLs: {
         type: Array,
         required: false
