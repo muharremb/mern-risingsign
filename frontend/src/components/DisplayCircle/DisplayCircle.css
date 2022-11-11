@@ -17,7 +17,6 @@
 .display-circle[data-page=""] {
    display: block;
    min-width: 0;
-   overflow: visible;
    width: 700px;
    height: 700px;
    transition: all 1.2s ease;
@@ -35,7 +34,7 @@
    transition: all 1.2s ease;
 }
 
-.display-circle[data-page="discover"], .display-circle[data-page="developers"], .display-circle[data-page="profile"] {
+.display-circle[data-page="discover"], .display-circle[data-page="developers"], .display-circle[data-page="profile"], .display-circle[data-page="matches"]{
    width: 100vw;
    height: 100%;
    border-radius: 0;
@@ -49,7 +48,6 @@
   width: 100%;
   height: 100%;
   position: absolute;
-  /* border: 1px solid pink; */
   animation: orbit 15s linear infinite;
   -webkit-animation: orbit 15s linear infinite;
 }
