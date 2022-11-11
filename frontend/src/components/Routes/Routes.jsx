@@ -6,11 +6,9 @@ export const AuthRoute = ({ component: Component, path, exact }) => {
 
   return (
     <Route path={path} exact={exact} render={(props) => (
-      !loggedIn ? (
-        <Component {...props} />
-      ) : (
-        <Redirect to="/discover" />
-      )
+      !loggedIn ? (<Component {...props} />)
+      : path === '/signup' ? (<Redirect to='/newprofilepic' />) : (<Redirect to='/discover' />)
+      
     )} />
   );
 };

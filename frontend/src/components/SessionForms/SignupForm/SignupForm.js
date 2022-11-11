@@ -4,7 +4,7 @@ import Button from '../../Button/Button';
 import './SignupForm.css';
 import { signup, clearSessionErrors } from '../../../store/session';
 import { uploadPic } from '../../../store/pics';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 
 function SignupForm () {
   const [email, setEmail] = useState('');
@@ -177,7 +177,6 @@ function SignupForm () {
     };
 
     dispatch(signup(user));
-    // console.log(currentUser)
     
   }
 

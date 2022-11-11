@@ -34,6 +34,7 @@ exports.loginUser = async function(user) {
       horoscope: user.horoscope,
       likes: user.likes,
       likers: user.likers,
+      imageURLs: user.imageURLs,
       profileImageURL: user.profileImageURL
     };
     const token = await jwt.sign(
