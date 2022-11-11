@@ -28,10 +28,6 @@
    color: rgba(233, 193, 93);
 }
 
-.signup-form > * {
-   /* border: 1px solid green; */
-}
-
 .name-display {
    display: flex;
    justify-content: flex-end;

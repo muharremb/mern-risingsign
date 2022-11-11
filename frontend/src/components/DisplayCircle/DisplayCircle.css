@@ -28,7 +28,7 @@
    transition: all 1.2s ease;
 }
 
-.display-circle[data-page="signup"] {
+.display-circle[data-page="signup"], .display-circle[data-page="newprofilepic"] {
    width: 600px;
    height: 600px;
    transition: all 1.2s ease;

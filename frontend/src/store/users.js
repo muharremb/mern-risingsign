@@ -4,6 +4,8 @@ import { receiveCurrentUser } from './session';
 
 const RECEIVE_USER = "users/RECEIVE_USER";
 const RECEIVE_USERS = "users/RECEIVE_USERS";
+// const RECEIVE_PIC = "pics/RECEIVE_PIC";
+// const RECEIVE_PROF_PIC = "pics/RECEIVE_PROF_PIC";
 
 const receiveUser = (user) => ({
     type: RECEIVE_USER,
@@ -14,6 +16,35 @@ const receiveUsers = (users) => ({
     type: RECEIVE_USERS,
     users
 })
+
+// const receivePic = picData => ({
+//     type: RECEIVE_PIC,
+//     picData
+// })
+
+// const receiveProfPic = picData => ({
+//     type: RECEIVE_PROF_PIC,
+//     picData
+// })
+
+export const uploadPic = picData => async dispatch => {
+    console.log("in upload pic");
+    const { pic, uploaderId, isProfile } = picData
+    const formData = new FormData();
+    formData.append("image-upload", pic)
+    formData.append("uploaderId", uploaderId)
+    formData.append("isProfile", isProfile)
+ 
+ 
+    const res = await jwtFetch('/api/pics/upload', {
+       method: 'POST',
+       body: formData
+    })
+    
+    let data = await res.json();
+ 
+    return dispatch(receiveUser(data));
+}
 
 export const updateBio = (userId, bio) => async dispatch => {
     const reqBody = {
