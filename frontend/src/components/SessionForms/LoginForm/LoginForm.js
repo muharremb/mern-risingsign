@@ -33,7 +33,7 @@ function LoginForm () {
   const demoLogIn = e => {
     e.preventDefault();
 
-    setEmail("demouser@mgmail.com")
+    setEmail("demouser@gmail.com")
     setPassword("password")
     dispatch(login({ email: "demouser@gmail.com", password: "password" })).then(()=>{
       socket.emit('new-user')
