@@ -6,7 +6,6 @@ import './LoginForm.css';
 import { login, clearSessionErrors } from '../../../store/session';
 
 import { socket } from '../../../context/chatContext';
-import { Redirect } from 'react-router-dom';
 
 function LoginForm () {
   const [email, setEmail] = useState('');
