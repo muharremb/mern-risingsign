@@ -34,6 +34,7 @@
    animation: gold-glow 3s ease-in-out infinite alternate;
    border-radius: 50%;
    overflow: hidden;
+   /* border: 8px solid rgba(246, 205, 41, 0.847); */
 }
 
 .picture > img {
@@ -43,7 +44,8 @@
    height: 132%;
    position: relative;
    top: 3.1px;
-   left: 1px;
+   right: 0;
+   
 
    
 }

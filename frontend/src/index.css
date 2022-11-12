@@ -5,10 +5,15 @@
    background: transparent;
    padding: 0;
    color: #e9c15d;
+   font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 
 button {
    cursor: pointer;
+}
+
+input {
+   font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 
 .clear-box {
