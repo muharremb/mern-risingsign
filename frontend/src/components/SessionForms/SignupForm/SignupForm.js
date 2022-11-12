@@ -4,6 +4,8 @@ import Button from '../../Button/Button';
 import './SignupForm.css';
 import { signup, clearSessionErrors } from '../../../store/session';
 import { Link, Redirect } from 'react-router-dom';
+import { useContext } from 'react';
+import { ChatContext } from '../../../context/chatContext';
 
 function SignupForm () {
   const [email, setEmail] = useState('');
@@ -16,6 +18,7 @@ function SignupForm () {
   const [sunSign, setSunSign] = useState('');
   const [moonSign, setMoonSign] = useState('');
   const [risingSign, setRisingSign] = useState('');
+  const { signupLevel, setSignupLevel } = useContext(ChatContext);
   // const [ hidden, setHidden ] = useState(false);
   const fieldArray = ["name-input", "birth-info-input", "email-and-password-input"];
   let [ currentField, setCurrentField ] = useState(fieldArray[0]);
@@ -100,6 +103,7 @@ function SignupForm () {
     e.preventDefault();
     if (name.length >= 2 && name.length <= 30) {
       setCurrentField(fieldArray[fieldArray.indexOf(currentField) + 1]);
+      setSignupLevel(2);
     } else {
       setNameError("name must be present")
     }
@@ -109,6 +113,7 @@ function SignupForm () {
     e.preventDefault();
     if (isValidDate(birthDate) && checkTime(birthTime)) {
       setCurrentField(fieldArray[fieldArray.indexOf(currentField) + 1]);
+      setSignupLevel(3)
     } else {
       if (!isValidDate(birthDate)) setBirthDateError("not a valid date of birth");
       if (!checkTime(birthTime)) setBirthTimeError("Invalid time of birth");
@@ -120,6 +125,7 @@ function SignupForm () {
     // setPreview(null);
     // setPic(null);
     setCurrentField(fieldArray[fieldArray.indexOf(currentField) - 1])
+    setSignupLevel(signupLevel - 1)
   }
 
   const userSubmit = e => {

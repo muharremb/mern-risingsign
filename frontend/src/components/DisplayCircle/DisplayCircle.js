@@ -1,6 +1,6 @@
 import './DisplayCircle.css'
 import { useLocation, Route } from 'react-router-dom';
-
+import { useContext } from 'react';
 import LoginForm from '../SessionForms/LoginForm/LoginForm';
 import SignupForm from '../SessionForms/SignupForm/SignupForm';
 import Profile from '../Profile/Profile.jsx';
@@ -10,12 +10,36 @@ import Matches from '../Matches/Matches';
 import Developers from '../Developers/Developers'
 import NewProfilePicForm from '../SessionForms/NewProfilePicForm/NewProfilePicForm';
 import { AuthRoute, ProtectedRoute } from '../Routes/Routes';
+import { ChatContext } from '../../context/chatContext';
 
 const DisplayCircle = () => {
    const location = useLocation();
+   const { signupLevel } = useContext(ChatContext);
+   const allowOrbiter = (location.pathname === "/" || location.pathname === "/signup" || location.pathname === "/login" || location.pathname === "/newprofilepic");
 
-   const allowOrbiter = (location.pathname === "/" || location.pathname === "/signup" || location.pathname === "/login")
+   const spinSwitch = () => {
+      console.log(location.pathname)
+      let spinSpeed;
 
+      switch(location.pathname) {
+         case "/":
+            spinSpeed = 0;
+            break;
+         case "/login":
+            spinSpeed = 5;
+            break;
+         case "/signup":
+            spinSpeed = signupLevel;
+            break;
+         case "/newprofilepic":
+            spinSpeed = 4;
+            break;
+         default:
+            spinSpeed = "nope";
+      }
+
+      return spinSpeed;
+   } 
    // const authSwitch = () => {
    //    switch(location.pathname) {
    //       case '/login':
@@ -31,7 +55,7 @@ const DisplayCircle = () => {
 
    return (
       <div className='display-circle' data-page={location.pathname.split("/")[1]}>
-         {allowOrbiter && <div className='orbiter-container'>
+         {allowOrbiter && <div data-spin={spinSwitch()} className='orbiter-container'>
             <div className='orbiter'></div>
          </div> }
          {/* <AuthRoute exact path={location.pathname} component={authSwitch}/> */}

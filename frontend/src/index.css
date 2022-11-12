@@ -103,3 +103,12 @@ button {
      text-shadow: 0 0 20px #fff, 0 0 30px #b24dff, 0 0 40px #b24dff, 0 0 50px #b24dff, 0 0 60px #b24dff, 0 0 70px #b24dff, 0 0 80px #b24dff;
      }
 }
+
+@keyframes gold-glow {
+   from {
+     box-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e66b00, 0 0 40px #e66b00, 0 0 50px #e66b00, 0 0 60px #e66b00, 0 0 70px #e66b00;
+   }
+   to {
+     box-shadow: 0 0 20px #fff, 0 0 30px #ffe37c, 0 0 40px #ffe37c, 0 0 50px #ffe37c, 0 0 60px #ffe37c, 0 0 70px #ffe37c, 0 0 80px #ffe37c;
+     }
+}

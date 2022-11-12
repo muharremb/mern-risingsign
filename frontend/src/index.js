@@ -26,12 +26,12 @@ function Root() {
   const [privateMsg, setPrivateMsg] = useState({});
   const [newMsgs, setNewMsgs] = useState([]);
   const [currentRoomName, setCurrentRoomName] = useState('');
-  // const [ picSent, setPicSent ] = useState(false);
+  const [ signupLevel, setSignupLevel ] = useState(1);
 
 
   return (
     <Provider store={store}>
-      <ChatContext.Provider value={{ socket, rooms, setRooms, currentRoom, setCurrentRoom, members, setMembers, messages, setMessages, privateMsg, setPrivateMsg, newMsgs, setNewMsgs, currentRoomName, setCurrentRoomName }}>
+      <ChatContext.Provider value={{ signupLevel, setSignupLevel, socket, rooms, setRooms, currentRoom, setCurrentRoom, members, setMembers, messages, setMessages, privateMsg, setPrivateMsg, newMsgs, setNewMsgs, currentRoomName, setCurrentRoomName }}>
         <BrowserRouter>
             <App />
         </BrowserRouter>

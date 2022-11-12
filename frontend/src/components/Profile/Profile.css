@@ -29,14 +29,35 @@
    letter-spacing: 3px;
    text-indent: .2rem;
    gap: .5rem;
-   width: max-content;
+   width: 10rem;
+   height: 10rem;
+   animation: gold-glow 3s ease-in-out infinite alternate;
+   border-radius: 50%;
+   overflow: hidden;
+}
+
+.picture > img {
+   
+   border-radius: 50%;
+   width: 122%;
+   height: 132%;
+   position: relative;
+   top: 3.1px;
+   left: 1px;
+
+   
 }
 
 
-.profile-pic-frame img {
+.profile-pic-frame {
+   display: flex;
+   align-items: center;
+   flex-direction: column;
+   justify-content: flex-end;
    height: 95%;
    width: 95%;
    z-index: 5;
+   gap: 2.5rem;
    background: transparent;
    overflow: auto;
 }

@@ -38,6 +38,7 @@
    width: 100vw;
    height: 100%;
    border-radius: 0;
+   animation: none;
    border: none;
    box-shadow: none;
    transition: all 1.5s ease-in;
@@ -48,8 +49,45 @@
   width: 100%;
   height: 100%;
   position: absolute;
-  animation: orbit 15s linear infinite;
-  -webkit-animation: orbit 15s linear infinite;
+  animation-name: orbit;
+  animation-duration: 15s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  -webkit-animation-name: orbit;
+  -webkit-animation-duration: 15s;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-timing-function: linear;
+  transition: all 1.2s ease;
+}
+
+.orbiter-container[data-spin="0"] {
+   animation-duration: 250s;
+   -webkit-animation-duration: 250s;
+}
+
+.orbiter-container[data-spin="1"] {
+   animation-duration: 70s;
+   -webkit-animation-duration: 70s;
+}
+
+.orbiter-container[data-spin="2"] {
+   animation-duration: 20s;
+   -webkit-animation-duration: 20s;
+}
+
+.orbiter-container[data-spin="3"] {
+   animation-duration: 5s;
+   -webkit-animation-duration: 5s;
+}
+
+.orbiter-container[data-spin="4"] {
+   animation-duration: 3s;
+   -webkit-animation-duration: 3s;
+}
+
+.orbiter-container[data-spin="5"] {
+   animation-duration: 10s;
+   -webkit-animation-duration: 10s;
 }
 
 .orbiter {
@@ -61,8 +99,12 @@
    border: 1px solid rgba(233, 193, 93);
    box-shadow: 0em 0em .2em .05em rgba(233, 193, 93), inset 0em 0em .2em .05em rgba(233, 193, 93);
    border-radius: 100%;
-   background-color: rgba(155, 150, 138, 0.145);
+   background-color: rgba(26, 26, 26, 0.68);
    animation: visible 1.2s;
+}
+
+.orbiter, .display-circle {
+   animation: gold-glow 3s ease-in-out infinite alternate;
 }
 
 

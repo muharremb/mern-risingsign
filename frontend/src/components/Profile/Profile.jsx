@@ -41,10 +41,13 @@ function Profile () {
   return (
     <>
       <div className='profile-container'>
-        <div className='picture'>
-          <img src={user.profileImageURL} alt="profile"></img>
+        <div className='profile-pic-frame'>
+          <div className='picture'>
+            <img src={user.profileImageURL} alt="profile"></img>
+          </div>
           <h1>{user.name.trim()}</h1>
         </div>
+        
 
         <BioPics user={user}/>
 
