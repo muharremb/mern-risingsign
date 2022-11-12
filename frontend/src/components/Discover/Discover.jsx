@@ -16,9 +16,10 @@ function Discover () {
 
     useEffect(() => {
         document.getElementById('clear-box').addEventListener('scroll', handleScroll);
-        setInterval(handleScroll, 2000);
+        const interval = setInterval(handleScroll, 2000);
         return () => {
             document.getElementById('clear-box').removeEventListener('scroll', handleScroll);
+            clearInterval(interval);
         };
     }, []);
 
