@@ -4,6 +4,9 @@ import { receiveCurrentUser } from './session';
 
 const RECEIVE_USER = "users/RECEIVE_USER";
 const RECEIVE_USERS = "users/RECEIVE_USERS";
+const CLEAR_ALL_USERS = "user/CLEAR_ALL_USERS";
+// const RECEIVE_PIC = "pics/RECEIVE_PIC";
+// const RECEIVE_PROF_PIC = "pics/RECEIVE_PROF_PIC";
 
 const receiveUser = (user) => ({
     type: RECEIVE_USER,
@@ -14,6 +17,38 @@ const receiveUsers = (users) => ({
     type: RECEIVE_USERS,
     users
 })
+
+const clearUsers = () => ({
+    type: CLEAR_ALL_USERS
+})
+
+// const receivePic = picData => ({
+//     type: RECEIVE_PIC,
+//     picData
+// })
+
+// const receiveProfPic = picData => ({
+//     type: RECEIVE_PROF_PIC,
+//     picData
+// })
+
+export const uploadPic = picData => async dispatch => {
+    const { pic, uploaderId, isProfile } = picData
+    const formData = new FormData();
+    formData.append("image-upload", pic)
+    formData.append("uploaderId", uploaderId)
+    formData.append("isProfile", isProfile)
+ 
+ 
+    const res = await jwtFetch('/api/pics/upload', {
+       method: 'POST',
+       body: formData
+    })
+    
+    let data = await res.json();
+ 
+    return dispatch(receiveCurrentUser(data));
+}
 
 export const updateBio = (userId, bio) => async dispatch => {
     const reqBody = {
@@ -46,6 +81,10 @@ export const fetchUsers = (options) => async dispatch => {
     }
     const users = await res.json();
     dispatch(receiveUsers(users));
+}
+
+export const clearAllUsers = () => dispatch => {
+    dispatch(clearUsers());
 }
 
 export const likeUser = (likerId, likeeId) => async dispatch => {
@@ -82,7 +121,6 @@ export const unmatchUser = (likerId, likeeId) => async dispatch => {
 const initialState = {};
 
 
-
 const usersReducer = (state = initialState, action) => {
     switch(action.type){
         case RECEIVE_USER:
@@ -95,6 +133,8 @@ const usersReducer = (state = initialState, action) => {
                 newState[user._id] = user
             });
             return newState
+        case CLEAR_ALL_USERS:
+            return initialState;
         default:
             return state;
     }

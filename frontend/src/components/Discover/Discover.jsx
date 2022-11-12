@@ -11,7 +11,6 @@ function Discover () {
     const [risingFilter, setRisingFilter] = useState('all');
     const isFetching = useRef(false);
     const userCount = useRef(0);
-    const displayCircle = document.getElementsByClassName('display-circle')[0];
 
     const dispatch = useDispatch();
 

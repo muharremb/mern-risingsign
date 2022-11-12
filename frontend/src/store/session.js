@@ -1,6 +1,7 @@
 import { getLatLng } from '../util/util';
 import { getHoroscope } from '../util/util';
 import jwtFetch from './jwt';
+import { clearAllUsers } from './users';
 
 const RECEIVE_CURRENT_USER = "session/RECEIVE_CURRENT_USER";
 const RECEIVE_SESSION_ERRORS = "session/RECEIVE_SESSION_ERRORS";
@@ -31,8 +32,8 @@ export const clearSessionErrors = () => ({
   type: CLEAR_SESSION_ERRORS
 });
 
-export const signup = (user) => startSession(user, 'api/users/register');
-export const login = (user) => startSession(user, 'api/users/login');
+export const signup = (user) => startSession(user, '/api/users/register');
+export const login = (user) => startSession(user, '/api/users/login');
 
 const startSession = (userInfo, route) => async dispatch => {
   // if(route==='api/users/register'){
@@ -60,7 +61,9 @@ const startSession = (userInfo, route) => async dispatch => {
 
 export const logout = () => dispatch => {
     localStorage.removeItem('jwtToken');
+    console.log("in logout")
     dispatch(logoutUser());
+    dispatch(clearAllUsers());
   };
 
   const initialState = {

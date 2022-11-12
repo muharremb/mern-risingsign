@@ -4,7 +4,6 @@ import { useLocation, useRouteMatch } from 'react-router-dom';
 
 import NavBar from './components/NavBar/NavBar';
 import TitlePage from './components/TitlePage/TitlePage';
-import Chat from './components/Matches/Chat/Chat.jsx';
 import {getCurrentUser} from './store/session';
 import DevButton from './components/Developers/DevButton';
 import MatchedModal from './components/MatchedModal/MatchedModal';
@@ -38,6 +37,7 @@ function App() {
     dispatch(getCurrentUser()).then(() => setLoaded(true));
   }, [dispatch]);
 
+
   return loaded && (
     <>
 
@@ -48,7 +48,7 @@ function App() {
       <div className='clear-box' id='clear-box'>
         <DisplayCircle />
         { location.pathname === "/" && <TitlePage/>}
-        { loggedIn && <NavBar />}
+        { (loggedIn && location.pathname !== '/newprofilepic') && <NavBar />}
       </div>
 
       { location.pathname !== "/developers" && <DevButton /> }

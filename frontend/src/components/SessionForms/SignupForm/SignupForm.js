@@ -3,8 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import Button from '../../Button/Button';
 import './SignupForm.css';
 import { signup, clearSessionErrors } from '../../../store/session';
-import { uploadPic } from '../../../store/pics';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 
 function SignupForm () {
   const [email, setEmail] = useState('');
@@ -17,10 +16,8 @@ function SignupForm () {
   const [sunSign, setSunSign] = useState('');
   const [moonSign, setMoonSign] = useState('');
   const [risingSign, setRisingSign] = useState('');
-  const [ pic, setPic ] = useState(null);
-  const [ preview, setPreview ] = useState(null);
   // const [ hidden, setHidden ] = useState(false);
-  const fieldArray = ["name-input", "birth-info-input", "email-and-password-input", "picture-upload"];
+  const fieldArray = ["name-input", "birth-info-input", "email-and-password-input"];
   let [ currentField, setCurrentField ] = useState(fieldArray[0]);
   let [ birthLocationError, setBirthLocationError ] = useState("");
   let [ birthDateError, setBirthDateError ] = useState("");
@@ -35,27 +32,6 @@ function SignupForm () {
       dispatch(clearSessionErrors());
     };
   }, [dispatch, currentField]);
-
-  useEffect(() => {      
-    if (!pic) {
-      setPreview(undefined)
-      return
-    }             //sets the preview of the picture
-    const previewUrl = URL.createObjectURL(pic)
-    setPreview(previewUrl)
-
-    return () => URL.revokeObjectURL(previewUrl)
-  }, [pic])
-
-  useEffect(() => {
-    if (pic) {
-      dispatch(uploadPic({
-        pic,
-        uploaderId: currentUser._id,
-        isProfile: true
-      }))
-    }
-  }, [currentUser])
 
   const update = field => {
     let setState;
@@ -120,14 +96,6 @@ function SignupForm () {
     return true;
   }
 
-  const hiddenClick = () => {
-    document.getElementById('hidden-input').click();
-  }
-
-  const handlePreview = e => {
-    setPreview(e.currentTarget.files[0])
-  }
-
   const continueClickName = e => {
     e.preventDefault();
     if (name.length >= 2 && name.length <= 30) {
@@ -147,16 +115,10 @@ function SignupForm () {
     }
   }
 
-  const continueClickEmailPassword = e => {
-    e.preventDefault();
-    setCurrentField(fieldArray[fieldArray.indexOf(currentField) + 1]);
-
-  }
-
   const backClick = e => {
     e.preventDefault();
-    setPreview(null);
-    setPic(null);
+    // setPreview(null);
+    // setPic(null);
     setCurrentField(fieldArray[fieldArray.indexOf(currentField) - 1])
   }
 
@@ -177,7 +139,6 @@ function SignupForm () {
     };
 
     dispatch(signup(user));
-    // console.log(currentUser)
     
   }
 
@@ -196,14 +157,13 @@ function SignupForm () {
           <div className='birth-info-display'>
             <p>{birthDate}</p>
             <p>{birthTime}</p>
-            {/* <p>{birthLocation}</p> */}
           </div>}
 
-          {(currentField !== "name-input" && currentField !== "birth-info-input" && currentField !== "email-and-password-input") &&                   //displays email and hidden password
+          {/* {(currentField !== "name-input" && currentField !== "birth-info-input" && currentField !== "email-and-password-input") &&                   //displays email and hidden password
 
           <div className='email-display'>
             <p>{email}</p>
-          </div>}
+          </div>} */}
 
         
 
@@ -334,7 +294,7 @@ function SignupForm () {
               </div>
             </div>}
 
-          {currentField === "picture-upload" &&
+          {/* {currentField === "picture-upload" &&
 
             <div className='picture-upload-container'>
               <input className='hidden-input' id='hidden-input' onChange={e => setPic(e.target.files[0])} type="file" style={{display: "none"}}/>
@@ -347,7 +307,7 @@ function SignupForm () {
 
           {preview && <div className='preview-frame'>
                         <img className="picture-preview" src={preview} alt=""></img>
-                      </div>}
+                      </div>} */}
 
         </div>
         <div className='signup-button-container'>
@@ -355,9 +315,9 @@ function SignupForm () {
 
           {currentField === "birth-info-input" && <><Button text="Back" type={"button"} handleClick={backClick}/> <Button type={"submit"} text="Continue" handleClick={continueClickBirthInfo} disabled={!birthDate || !birthTime}/></>}
 
-          {currentField === "email-and-password-input" && <><Button text="Back" type={"button"} handleClick={backClick}/><Button type={"submit"} text="Continue" handleClick={continueClickEmailPassword} disabled={!email || !password || password !== password2}/></>}
+          {currentField === "email-and-password-input" && <><Button text="Back" type={"button"} handleClick={backClick}/><Button type={"submit"} text="Sign Up" handleClick={userSubmit} disabled={!email || !password || password !== password2}/></>}
 
-          {currentField === "picture-upload" && <><Button text="Back" type={"button"} handleClick={backClick}/><Button type={"submit"} handleClick={userSubmit} text="Sign Up"/></>}
+          {/* {currentField === "picture-upload" && <><Button text="Back" type={"button"} handleClick={backClick}/><Button type={"submit"} handleClick={userSubmit} text="Sign Up"/></>} */}
         </div>
       </form>
       <Link className="home-link" to={'/'}>Rising Sign</Link>

@@ -118,6 +118,7 @@ router.post('/register', validateRegisterInput, async (req, res, next) => {
     horoscope: req.body.horoscope,
     likes: [],
     likers: [],
+    imageURLs: [],
     profileImageURL: profilePic,
     status: 'online',
     newMessages: {}
@@ -170,6 +171,7 @@ router.get('/current', restoreUser, (req, res) => {
     horoscope: req.user.horoscope,
     likes: req.user.likes,
     profileImageURL: req.user.profileImageURL,
+    imageURLs: req.user.imageURLs,
     status: 'online',
     newMessages: {}
   });
@@ -197,6 +199,7 @@ router.get('/index', async function(req, res, next) {
       horoscope: user.horoscope,
       likes: user.likes,
       profileImageURL: user.profileImageURL,
+      imageURLs: user.imageURLs,
       status: 'online',
       newMessages: {}
     })
@@ -229,6 +232,7 @@ router.get('/:userId', async function(req, res, next) {
     horoscope: user.horoscope,
     likes: user.likes,
     profileImageURL: user.profileImageURL,
+    imageURLs: user.imageURLs,
     status: 'online',
     newMessages: {}
   });

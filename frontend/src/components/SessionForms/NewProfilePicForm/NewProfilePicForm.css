@@ -1,0 +1,41 @@
+.new-profile-pic {
+   width: 100vw;
+   height: 100%;
+   border: 1px solid pink;
+   display: flex;
+   flex-direction: column;
+   justify-content: space-between;
+   align-items: center;
+   position: relative;
+   background-color: transparent;
+   animation: visible 1.2s;
+}
+
+.new-profile-pic-upper {
+   display: flex;
+   position: relative;
+   flex-direction: column;
+   border: 1px solid black;
+   width: 75%;
+   height: 82%;
+   align-items: center;
+   gap: 15px;
+
+}
+
+.name-display {
+   display: flex;
+   justify-content: flex-end;
+   align-items: center;
+   flex-direction: column;
+   height: 100px;
+   width: 300px;
+   /* border: 1px solid red; */
+}
+
+.name-display > p {
+   font-size: 2rem;
+   animation: visible 1.2s;
+   color: rgba(233, 193, 93, .8);
+   
+}

@@ -6,7 +6,6 @@ import './LoginForm.css';
 import { login, clearSessionErrors } from '../../../store/session';
 
 import { socket } from '../../../context/chatContext';
-import { Redirect } from 'react-router-dom';
 
 function LoginForm () {
   const [email, setEmail] = useState('');
@@ -33,7 +32,7 @@ function LoginForm () {
   const demoLogIn = e => {
     e.preventDefault();
 
-    setEmail("demouser@mgmail.com")
+    setEmail("demouser@gmail.com")
     setPassword("password")
     dispatch(login({ email: "demouser@gmail.com", password: "password" })).then(()=>{
       socket.emit('new-user')

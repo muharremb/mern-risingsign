@@ -8,6 +8,7 @@ import Discover from '../Discover/Discover';
 import Chat from '../Matches/Chat/Chat';
 import Matches from '../Matches/Matches';
 import Developers from '../Developers/Developers'
+import NewProfilePicForm from '../SessionForms/NewProfilePicForm/NewProfilePicForm';
 import { AuthRoute, ProtectedRoute } from '../Routes/Routes';
 
 const DisplayCircle = () => {
@@ -40,6 +41,7 @@ const DisplayCircle = () => {
          <ProtectedRoute exact path='/discover' component={Discover}/>
          <ProtectedRoute exact path='/profile/:userId' component={Profile}/>
          <ProtectedRoute exact path='/matches' component={Matches}/>
+         <ProtectedRoute exact path='/newprofilepic' component={NewProfilePicForm} />
          <Route exact path='/developers' component={Developers} />
       </div>
    )

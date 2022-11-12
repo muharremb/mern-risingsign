@@ -19,7 +19,13 @@ button {
    width: 100vw;
    height: 100vh;
    overflow: scroll;
+   -ms-overflow-style: none;
+   scrollbar-width: none;
 }
+
+.clear-box::-webkit-scrollbar {
+   display: none;
+ }
 
 .home-link {
    left: 3.8%;

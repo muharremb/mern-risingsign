@@ -14,8 +14,10 @@ function BioPics ({user}) {
 
   return (
     <div className='bio-pics-holder'>
-      <UserBio user={user} />
-      <PicGrid user={user} />
+      <div className='bio-pics-slider'>
+        <UserBio user={user} />
+        <PicGrid user={user} />
+      </div>
     </div>
   )
 }

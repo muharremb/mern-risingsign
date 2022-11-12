@@ -4,7 +4,7 @@
     top: 39rem;
     height: 100%;
     width: 100%;
-    padding-bottom: 50px;
+    padding-bottom: 3.5rem;
     padding-left: 3%;
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     animation: visible 1.2s;
@@ -17,8 +17,8 @@
 #user-card-container {
     display: grid;
     grid-template-columns: auto auto;
-    row-gap: 50px;
-    padding-bottom: 80px;
+    row-gap: .5%;
+    padding-bottom: 3.5rem;
 }
 
 .heading {

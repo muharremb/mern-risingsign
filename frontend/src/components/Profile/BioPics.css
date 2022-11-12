@@ -1,12 +1,20 @@
 .bio-pics-holder{
-    display: flex;
-    padding: 2% 2% 2% 5%;
+    /* display: flex; */
+    position: relative;
     justify-content: space-between;
     align-items: flex-start;
     background-color: #00000030;
-    min-height: 45%;
+    min-height: 60%;
     width: 65%;
     border-radius: 8px;
+    overflow: hidden;
+}
+
+.bio-pics-slider {
+    position: relative;
+    height: 100%;
+    display: flex;
+    width: 200%;
 }
 
 #bio-pics-switch{
