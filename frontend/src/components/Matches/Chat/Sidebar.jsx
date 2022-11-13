@@ -5,17 +5,17 @@ import './Sidebar.css'
 
 function Sidebar () {
   const user = useSelector(state => state.session.user ? state.session.user : null);
-  const { setMembers, members, currentRoom, setCurrentRoom, setCurrentRoomName } = useContext(ChatContext);
+  const { setMembers, members, currentRoom, setCurrentRoom, setCurrentRoomName, currentRoomName } = useContext(ChatContext);
   const [storeRoom, setStoreRoom] = useState('');
 
   useEffect(() => {
     socket.emit("new-user");
     socket.off("new-user").on("new-user", (users) => {
-      setCurrentRoom(storeRoom);
+      // setCurrentRoom(storeRoom);
       socket.emit('join-room', currentRoom);
       setMembers(users);
     });
-  }, [storeRoom]);
+  }, []); //used to have storeRoom
 
   const makeRoomName = (name1, name2) => {
     return name1 < name2 ? name1 + "-" + name2 : name2 + "-" + name1
@@ -30,22 +30,26 @@ function Sidebar () {
     setCurrentRoom(retrievedRoom);
     setStoreRoom(retrievedRoom);
     socket.emit('join-room', retrievedRoom);
-
   }, [] )
 
   const joinRoom = (e, isPublic = true) => {
     const memberId = (e.currentTarget.id);
     const userId = (user._id);
     const roomName = makeRoomName(userId, memberId);
-    setCurrentRoom(roomName);
-    setStoreRoom(roomName);
+    // setCurrentRoom(roomName);
+    // setStoreRoom(roomName);
     const currRoomName = e.currentTarget.className;
     setCurrentRoomName(currRoomName);
-    console.log(e.currentTarget.className);
     localStorage.setItem('currentRoom', roomName);
     localStorage.setItem('currentRoomName',currRoomName)
+    console.log(`roomName is ${roomName}`)
     socket.emit('join-room', roomName);
   };
+
+  useEffect(() => {
+    console.log("joined room you slut")
+
+  }, [currentRoomName])
 
   const membersList = Object.values(members).map((member, i) =>
   {if(user.likes.includes(member._id) && user.likers.includes(member._id)){

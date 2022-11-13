@@ -53,6 +53,14 @@
    return roomMessages;
  }
 
+ const sortMessages = (messages) => {
+  return messages.sort((a, b) =>{
+    const [monthA, dayA, yearA] = a._id.split("/")
+    const [monthB, dayB, yearB] = b._id.split("/")
+    return yearA + monthA + dayA > yearB + monthB + dayB ? 1 : -1
+  })
+ }
+
  const setUpChatServer = () => {
    const io = require('socket.io')(chatServer, {
      pingTimeout: 600000,
@@ -62,28 +70,30 @@
    })
 
    io.on('connection', (socket) => {
+     socket.on('join-room', async (room) => {
+       socket.join(room)
+       const roomMessages = await getMessagesFromRoom(room)
+       console.log(sortMessages(roomMessages))
+       socket.emit('room-messages', sortMessages(roomMessages))
+     })
+
+
      socket.on('new-user', async () => {
        const users = await User.find({});
        io.emit('new-user', users)
      })
 
-     socket.on('join-room', async (room) => {
-       socket.join(room)
-       const roomMessages = await getMessagesFromRoom(room)
-       socket.emit('room-messages', roomMessages)
-     })
+    //  socket.on("setup", (userId) => {
+    //    socket.join(userId);
+    //    socket.emit("connected");
+    //  })
 
-     socket.on("setup", (userId) => {
-       socket.join(userId);
-       socket.emit("connected");
-     })
-
-     socket.on('message-room', async (room, content, sender, time, date) => {
+     socket.on('message-room', async (rsoom, content, sender, time, date) => {
        const newMessage = await Message.create({content, from: sender, time, date, to: room});
        const allMessages = await getMessagesFromRoom(room);
 
        //send message to room
-       io.to(room).emit('room-messages', allMessages);
+       io.to(room).emit('room-messages', sortMessages(allMessages));
       //  socket.broadcast.emit('notifications', room);
      })
 

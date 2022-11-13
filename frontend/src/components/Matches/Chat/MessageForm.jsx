@@ -10,7 +10,8 @@ function MessageForm () {
   const { rememberRoom, setRememberRoom, socket, messages, setMessages, currentRoom, setCurrentRoom, storeRoom, currentRoomName } = useContext(ChatContext);
 
   socket.off('room-messages').on('room-messages', (roomMessages) => {
-    setMessages(roomMessages[0])
+    // console.log(roomMessages)
+    setMessages(roomMessages[0] )
   })
 
   const formatMinutes = (minutes) => {
@@ -22,8 +23,10 @@ function MessageForm () {
     e.preventDefault()
     const dateObj = new Date();
     const date = (dateObj.getMonth() + 1) + '/' + dateObj.getDate() +  '/' + (dateObj.getYear() - 100);
-    const time = dateObj.getHours() + ":" + formatMinutes(dateObj.getMinutes()) //+ ":" + dateObj.getSeconds();
-    socket.emit('message-room', currentRoom, msg, user, time, date);
+    const time = dateObj.getHours() + ":" + formatMinutes(dateObj.getMinutes())
+    const hackyRoomName = localStorage.getItem("currentRoom")
+    console.log( `current room is called ${hackyRoomName}`)
+    socket.emit('message-room', hackyRoomName, msg, user, time, date);
     setMsg("")
   }
 
@@ -34,6 +37,7 @@ function MessageForm () {
 
   let messagesList = messages?.messagesByDate ? Object.values(messages.messagesByDate) : null;
   messagesList = messagesList?.map((message, i) => <li key={i} id={message._id} className={`chat-message ${message.from._id === user._id ? "you" : "them"}`}>{message.content}</li>)
+
 
   return (
     <>
