@@ -78,10 +78,17 @@
        socket.emit('room-messages', sortMessages(roomMessages))
      })
 
-
      socket.on('new-user', async () => {
        const users = await User.find({});
        io.emit('new-user', users)
+     })
+
+     socket.on('bubbles', (room) => {
+      socket.in(room).emit('bubbles')
+     })
+
+     socket.on('stop-bubbles', (room) => {
+      socket.in(room).emit("stop-bubbles")
      })
 
     //  socket.on("setup", (userId) => {
