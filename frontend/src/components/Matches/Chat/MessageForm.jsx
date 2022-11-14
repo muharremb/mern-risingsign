@@ -10,8 +10,8 @@ function MessageForm () {
   const { rememberRoom, setRememberRoom, socket, messages, setMessages, currentRoom, setCurrentRoom, storeRoom, currentRoomName } = useContext(ChatContext);
 
   socket.off('room-messages').on('room-messages', (roomMessages) => {
-    // console.log(roomMessages)
-    setMessages(roomMessages[0] )
+    console.log(roomMessages)
+    setMessages(roomMessages[2])
   })
 
   const formatMinutes = (minutes) => {

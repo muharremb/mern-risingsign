@@ -12,7 +12,7 @@ function Sidebar () {
     socket.emit("new-user");
     socket.off("new-user").on("new-user", (users) => {
       // setCurrentRoom(storeRoom);
-      socket.emit('join-room', currentRoom);
+      // socket.emit('join-room', currentRoom);
       setMembers(users);
     });
   }, []); //used to have storeRoom
@@ -21,16 +21,16 @@ function Sidebar () {
     return name1 < name2 ? name1 + "-" + name2 : name2 + "-" + name1
   }
 
-  useEffect(()=> {
-    const retrievedRoom = localStorage.getItem('currentRoom')
-    localStorage.removeItem('currentRoom')
-    const retrievedRoomName = localStorage.getItem('currentRoomName')
-    localStorage.removeItem('currentRoomName')
-    setCurrentRoomName(retrievedRoomName)
-    setCurrentRoom(retrievedRoom);
-    setStoreRoom(retrievedRoom);
-    socket.emit('join-room', retrievedRoom);
-  }, [] )
+  // useEffect(()=> {
+  //   const retrievedRoom = localStorage.getItem('currentRoom')
+  //   localStorage.removeItem('currentRoom')
+  //   const retrievedRoomName = localStorage.getItem('currentRoomName')
+  //   localStorage.removeItem('currentRoomName')
+  //   setCurrentRoomName(retrievedRoomName)
+  //   setCurrentRoom(retrievedRoom);
+  //   setStoreRoom(retrievedRoom);
+  //   socket.emit('join-room', retrievedRoom);
+  // }, [] )
 
   const joinRoom = (e, isPublic = true) => {
     const memberId = (e.currentTarget.id);
@@ -46,10 +46,10 @@ function Sidebar () {
     socket.emit('join-room', roomName);
   };
 
-  useEffect(() => {
-    console.log("joined room you slut")
+  // useEffect(() => {
+  //   console.log("joined room you slut")
 
-  }, [currentRoomName])
+  // }, [currentRoomName])
 
   const membersList = Object.values(members).map((member, i) =>
   {if(user.likes.includes(member._id) && user.likers.includes(member._id)){

@@ -55,8 +55,8 @@
 
  const sortMessages = (messages) => {
   return messages.sort((a, b) =>{
-    const [monthA, dayA, yearA] = a._id.split("/")
-    const [monthB, dayB, yearB] = b._id.split("/")
+    const [monthA, dayA, yearA] = a._id.split("/");
+    const [monthB, dayB, yearB] = b._id.split("/");
     return yearA + monthA + dayA > yearB + monthB + dayB ? 1 : -1
   })
  }
@@ -72,8 +72,9 @@
    io.on('connection', (socket) => {
      socket.on('join-room', async (room) => {
        socket.join(room)
+       console.log(`room name in join room is ${room}`)
        const roomMessages = await getMessagesFromRoom(room)
-       console.log(sortMessages(roomMessages))
+      //  console.log(sortMessages(roomMessages))
        socket.emit('room-messages', sortMessages(roomMessages))
      })
 
@@ -88,9 +89,11 @@
     //    socket.emit("connected");
     //  })
 
-     socket.on('message-room', async (rsoom, content, sender, time, date) => {
+     socket.on('message-room', async (room, content, sender, time, date) => {
        const newMessage = await Message.create({content, from: sender, time, date, to: room});
        const allMessages = await getMessagesFromRoom(room);
+       console.log(`room inside message room is ${room}`)
+       console.log(`ARE YOU LISTENING ${content}`)
 
        //send message to room
        io.to(room).emit('room-messages', sortMessages(allMessages));
