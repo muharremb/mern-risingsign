@@ -42,7 +42,7 @@ function Sidebar () {
     setCurrentRoomName(currRoomName);
     localStorage.setItem('currentRoom', roomName);
     localStorage.setItem('currentRoomName',currRoomName)
-    console.log(`roomName is ${roomName}`)
+    // console.log(`roomName is ${roomName}`)
     socket.emit('join-room', roomName);
   };
 
