@@ -7,16 +7,31 @@ function BioPics ({user}) {
 
     const [mode, setMode] = useState('bio');
 
-    const handleClick = () => {
-        setMode(mode === 'bio' ? 'pics' : 'bio');
+    const rightClick = e => {
+      e.preventDefault();
+      setMode('pics');
+    }
+
+    const leftClick = e => {
+      e.preventDefault();
+      setMode('bio');
     }
 
 
   return (
     <div className='bio-pics-holder'>
-      <div className='bio-pics-slider'>
+      <div className='left-slider-button' onClick={e => leftClick(e)}>
+        {mode === 'pics' && <div className='left-arrow'></div>}
+      </div>
+      <div className='right-slider-button' onClick={e => rightClick(e)}>
+        {mode === 'bio' && <div className='right-arrow'></div>}
+      </div>
+      <div className='bio-pics-slider' data-mode={mode}>
         <UserBio user={user} />
-        <PicGrid user={user} />
+        <div className='pic-side'>
+          <PicGrid user={user} />
+          
+        </div>
       </div>
     </div>
   )

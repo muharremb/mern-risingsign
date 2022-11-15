@@ -117,3 +117,21 @@ input {
      box-shadow: 0 0 20px #fff, 0 0 30px #ffe37c, 0 0 40px #ffe37c, 0 0 50px #ffe37c, 0 0 60px #ffe37c, 0 0 70px #ffe37c, 0 0 80px #ffe37c;
      }
 }
+
+@keyframes arrow-glow {
+   from {
+     box-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #8e00e6, 0 0 40px #8e00e6, 0 0 50px #8e00e6, 0 0 60px #8e00e6, 0 0 70px #8e00e6;
+   }
+   to {
+     box-shadow: 0 0 20px #fff, 0 0 30px #b24dff, 0 0 40px #b24dff, 0 0 50px #b24dff, 0 0 60px #b24dff, 0 0 70px #b24dff, 0 0 80px #b24dff;
+     }
+}
+
+@keyframes unfurl {
+   from {
+      width: 6rem;
+   }
+   to {
+      width: 65%;
+   }
+}
