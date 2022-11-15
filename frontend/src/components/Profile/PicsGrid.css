@@ -1,5 +1,6 @@
 .user-pics{
     display: grid;
+    width: 50%;
     grid-template-columns: auto auto auto;
     gap: 10px;
 }
