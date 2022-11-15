@@ -111,11 +111,10 @@
 }
 
 @keyframes pulse {
-    from {
-        box-shadow: 0 0 3px 1px #e9c15d20;
+    0% {
+        box-shadow: 0 0 1px #fff, 0 0 1px #fff, 0 0 2px #e66b00, 0 0 4px #e66b00, 0 0 08px #e66b00, 0 0 10px #e66b00, 0 0 25px #e66b00;
     }
-
-    to {
-        box-shadow: 0 0 8px 5px #e9c15d50;
+    100% {
+        box-shadow: 0 0 1px #fff, 0 0 2px #ffe37c, 0 0 4px #ffe37c, 0 0 8px #ffe37c, 0 0 10px #ffe37c, 0 0 15px #ffe37c, 0 0 20px #ffe37c;
     }
 }
