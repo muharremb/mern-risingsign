@@ -7,7 +7,6 @@ import { BrowserRouter } from 'react-router-dom';
 import configureStore from './store/store';
 import { ChatContext, socket } from './context/chatContext'
 import { useState } from 'react'
-import * as picActions from './store/pics';
 import jwtFetch from './store/jwt';
 
 
