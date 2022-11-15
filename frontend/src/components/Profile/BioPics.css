@@ -8,6 +8,62 @@
     width: 65%;
     border-radius: 8px;
     overflow: hidden;
+    animation: unfurl 1.2s ease-in-out;
+}
+
+.pic-side {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    width: 50%;
+    border: 1px solid red;
+}
+
+.left-slider-button, .right-slider-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    width: 3rem;
+    height: 100%;
+    z-index: 5;
+    border-radius: 5px;
+    background-image: linear-gradient(to right, rgb(137, 137, 77) 0%, rgb(213, 194, 85) 45%, rgb(137, 137, 77) 100%)
+}
+
+.left-slider-button {
+    left: 0;
+}
+
+.right-slider-button {
+    right: 0;
+}
+
+.left-arrow {
+    border-left: 2px solid #5b296fc7;
+    border-bottom: 2px solid #5b296fc7;
+    width: 2rem;
+    height: 2rem;
+    rotate: 45deg;
+    position: relative;
+    left: .5rem;
+    animation: visible 1.2s;
+}
+
+.right-arrow {
+    border-right: 2px solid #5b296fc7;
+    border-top: 2px solid #5b296fc7;
+    width: 2rem;
+    height: 2rem;
+    rotate: 45deg;
+    position: relative;
+    right: .5rem;
+    animation: visible 1.2s;
+}
+
+.left-arrow:hover, .right-arrow:hover {
+    animation: arrow-glow 1s ease-in-out infinite alternate;
 }
 
 .bio-pics-slider {
@@ -15,6 +71,16 @@
     height: 100%;
     display: flex;
     width: 200%;
+    background-color: rgb(198, 185, 114);
+    transition: left 1.2s ease-in-out;
+}
+
+.bio-pics-slider[data-mode="bio"] {
+    left: 0;
+}
+
+.bio-pics-slider[data-mode="pics"] {
+    left: -100%;
 }
 
 #bio-pics-switch{
@@ -24,7 +90,7 @@
 
 button {
     border-radius: 8px;
-    border: 0;
+    border: 1px solid #5b296fc7;
     color: #300142;
     font-weight: bolder;
     background-color: #e9c15da0;

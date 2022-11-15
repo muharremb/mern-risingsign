@@ -1,6 +1,33 @@
 .user-bio-editor {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    width: 80%;
+    height: 80%;
+    gap: 1rem;
+}
+
+.user-bio-editor > textarea {
+    width: 100%;
+    height: 75%;
+}
+
+.user-bio-editor > * {
+    color: rgba(113,14,143);
+}
+
+.button-area {
+    display: flex;
+    justify-content: center;
+}
+
+.user-bio > span {
+    font-size: 2rem;
+    color: rgba(113,14,143);
+}
+
+.user-bio > * {
+    color: rgba(113,14,143);
 }
 
 .user-bio-editor button {

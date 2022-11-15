@@ -59,8 +59,10 @@ function UserBio ({user}) {
         <form className="user-bio-editor" id="user-bio-editor">
             <textarea className="user-bio-edit" id="user-bio-edit" onChange={editBio} rows="5" cols="42" maxLength="200" value={userBio}>
             </textarea>
-            <button onClick={handleUpdate}>Update</button>
-            <button onClick={handleCancel}>Cancel</button>
+            <div className='button-area'>
+              <button onClick={handleUpdate}>Update</button>
+              <button onClick={handleCancel}>Cancel</button>
+            </div>
         </form>
         }
     </div>
