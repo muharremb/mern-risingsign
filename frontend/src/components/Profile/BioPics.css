@@ -20,6 +20,10 @@
     border: 1px solid red;
 }
 
+.pic-side-input-container {
+    border: 1px solid green;
+}
+
 .left-slider-button, .right-slider-button {
     display: flex;
     justify-content: center;

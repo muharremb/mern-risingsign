@@ -17,7 +17,6 @@ const DisplayCircle = () => {
    const allowOrbiter = (location.pathname === "/" || location.pathname === "/signup" || location.pathname === "/login" || location.pathname === "/newprofilepic");
 
    const spinSwitch = () => {
-      console.log(location.pathname)
       let spinSpeed;
 
       switch(location.pathname) {

@@ -1,4 +1,5 @@
-import './PicsGrid.css'
+import './PicsGrid.css';
+
 function PicGrid ({user}) {
 
     const images = user.imageURLs || [];

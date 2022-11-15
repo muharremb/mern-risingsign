@@ -119,7 +119,7 @@ const NewProfilePicForm = () => {
                   <input className='file-text' onChange={e => handlePreview(e)} value={pic ? `${pic.name}` : ""}></input>
                </div>
                <label htmlFor='picture-input'>{ pic ? "" : "upload a picture or continue"}</label>
-               </div>
+            </div>
 
             {preview && <div className='preview-frame'>
                <img className="picture-preview" src={preview} alt=""></img>
