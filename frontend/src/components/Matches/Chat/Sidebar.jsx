@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import {socket, ChatContext} from '../../../context/chatContext';
 import './Sidebar.css'
 
-function Sidebar () {
+function Sidebar (props) {
   const user = useSelector(state => state.session.user ? state.session.user : null);
   const { setMembers, members, currentRoom, setCurrentRoom, setCurrentRoomName, currentRoomName } = useContext(ChatContext);
   const [storeRoom, setStoreRoom] = useState('');
@@ -33,6 +33,7 @@ function Sidebar () {
   // }, [] )
 
   const joinRoom = (e, isPublic = true) => {
+    e.preventDefault()
     const memberId = (e.currentTarget.id);
     const userId = (user._id);
     const roomName = makeRoomName(userId, memberId);
@@ -46,17 +47,14 @@ function Sidebar () {
     socket.emit('join-room', roomName);
   };
 
-  // useEffect(() => {
-  //   console.log("joined room you slut")
-
-  // }, [currentRoomName])
-
   const membersList = Object.values(members).map((member, i) =>
-  {if(user.likes.includes(member._id) && user.likers.includes(member._id)){
+  {
+    if(props.userId != member._id) return null;
+    if(user.likes.includes(member._id) && user.likers.includes(member._id)){
     return <li key={i}
     id={member._id}
     className={member.name}
-    onClick={joinRoom}>{member.name}</li>
+    onClick={joinRoom}>Chat with</li>
     };
     return null;
     }
@@ -64,8 +62,9 @@ function Sidebar () {
 
   return (
     <>
-      <h2>Available Matches</h2>
-      <ul className="matches-list">{membersList}</ul>
+      {/* <h2>Available Matches</h2> */}
+      {/* <p>{props.userId}</p> */}
+      <div className="matches-list">{membersList}</div>
     </>
   )
 }

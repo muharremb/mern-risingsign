@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useEffect, useState } from 'react';
 import { fetchUser, likeUser, unmatchUser } from '../../store/users';
 import './UserCard.css'
+import Sidebar from '../Matches/Chat/Sidebar'
 
 function UserCard({user}){
     const dispatch = useDispatch();
@@ -45,6 +46,7 @@ function UserCard({user}){
 
         <Link to={`/profile/${user._id}`} className="user-card">
             <div className="user-card-left">
+            {isMatched && <Sidebar userId={user._id}/>}
                 <h1>{user.name}</h1><br/>
                 <img style={{"maxWidth":"50px"}} src={user.profileImageURL} alt="profile"/>
             </div>
@@ -59,7 +61,7 @@ function UserCard({user}){
                     <span className="user-card-label">{user.horoscope.rising.label}:</span> {user.horoscope.rising.Sign.key}
                 </div>
                 {isMatched && (
-                    <div>MATCHED
+                    <div>
                         <button onClick={handleUnmatch}>Unmatch</button>
                     </div>
                 )}

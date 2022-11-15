@@ -54,7 +54,7 @@ function Matches () {
             <div className="heading">{sessionUser.name}'s Matches</div>
             <div id="filters">Filters | &nbsp;
                 <form className="page-filter">
-                    <label>Sun: 
+                    <label>Sun:
                     <select id="user-feed-filter" className="user-feed-filter-dropdown" defaultValue="all" onChange={filterSun}>
                         <option value="all">All</option>
                         <option value="aries">Aries</option>
@@ -70,9 +70,9 @@ function Matches () {
                         <option value="aquarius">Aquarius</option>
                         <option value="pisces">Pisces</option>
                     </select></label>
-                
-                
-                    <label>Moon: 
+
+
+                    <label>Moon:
                     <select id="user-feed-filter" className="user-feed-filter-dropdown" defaultValue="all" onChange={filterMoon}>
                         <option value="all">All</option>
                         <option value="aries">Aries</option>
@@ -88,9 +88,9 @@ function Matches () {
                         <option value="aquarius">Aquarius</option>
                         <option value="pisces">Pisces</option>
                     </select></label>
-                
-                
-                    <label>Rising: 
+
+
+                    <label>Rising:
                     <select id="user-feed-filter" className="user-feed-filter-dropdown" defaultValue="all" onChange={filterRising}>
                         <option value="all">All</option>
                         <option value="aries">Aries</option>
@@ -110,9 +110,9 @@ function Matches () {
             </div>
 
             <div className="matches-container">
-                
+
                 <div className="matches-left">
-                    {matches} 
+                    {matches}
                 </div>
 
                 <div className="matches-right">
