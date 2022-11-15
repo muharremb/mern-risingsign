@@ -54,7 +54,7 @@ function Sidebar (props) {
     return <li key={i}
     id={member._id}
     className={member.name}
-    onClick={joinRoom}>Chat with</li>
+    onClick={joinRoom}>Chat with <span>{member.name}</span></li>
     };
     return null;
     }

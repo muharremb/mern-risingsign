@@ -42,12 +42,15 @@ function UserCard({user}){
     if (!user) return null;
     if (!sessionUser) return null;
 
-    return (
+    const highlightCard = () => {
 
+    }
+
+    return (
         <Link to={`/profile/${user._id}`} className="user-card">
-            <div className="user-card-left">
-            {isMatched && <Sidebar userId={user._id}/>}
-                <h1>{user.name}</h1><br/>
+            <div className="">
+            {isMatched && <Sidebar userId={user._id} onClick={highlightCard}/>}
+                <h1>{!isMatched && user.name}</h1><br/>
                 <img style={{"maxWidth":"50px"}} src={user.profileImageURL} alt="profile"/>
             </div>
             <div className="user-card-right">

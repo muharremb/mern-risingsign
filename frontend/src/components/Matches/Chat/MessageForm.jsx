@@ -1,6 +1,7 @@
 import { useSelector } from 'react-redux'
 import { useState, useContext, useEffect } from 'react'
 import { ChatContext } from '../../../context/chatContext'
+import './Sidebar.css'
 
 function MessageForm () {
   const user = useSelector(state => state.session.user ? state.session.user : null);
@@ -70,8 +71,10 @@ function MessageForm () {
       }, 1000)
   }}
 
+  // if (!currentRoomName) return
+
   return (
-    <>
+    <> <div id="message-form-container" className={!currentRoomName ? "invisible" : "visible"}>
     {user && <>
       <h4>Chatting with {currentRoomName}</h4>
 
@@ -110,6 +113,7 @@ function MessageForm () {
     </>
     }
 
+    </div>
     </>
   )
 }

@@ -5,6 +5,7 @@ import { fetchUser, fetchUsers } from '../../store/users';
 import UserCard from '../UserCard/UserCard';
 import './Matches.css';
 import Chat from './Chat/Chat.jsx';
+import MessageForm from './Chat/MessageForm'
 
 function Matches () {
     const [sunFilter, setSunFilter] = useState('all');
@@ -115,8 +116,8 @@ function Matches () {
                     {matches}
                 </div>
 
-                <div className="matches-right">
-                    <Chat />
+                <div>
+                    <MessageForm />
                 </div>
             </div>
         </div>
