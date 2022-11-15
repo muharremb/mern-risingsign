@@ -34,7 +34,7 @@ function SignupForm () {
     return () => {
       dispatch(clearSessionErrors());
     };
-  }, [dispatch, currentField]);
+  }, [dispatch, currentField, signupLevel]);
 
   const update = field => {
     let setState;
@@ -113,7 +113,7 @@ function SignupForm () {
     e.preventDefault();
     if (isValidDate(birthDate) && checkTime(birthTime)) {
       setCurrentField(fieldArray[fieldArray.indexOf(currentField) + 1]);
-      setSignupLevel(3)
+      setSignupLevel(3);
     } else {
       if (!isValidDate(birthDate)) setBirthDateError("not a valid date of birth");
       if (!checkTime(birthTime)) setBirthTimeError("Invalid time of birth");
@@ -130,6 +130,7 @@ function SignupForm () {
 
   const userSubmit = e => {
     e.preventDefault();
+    setSignupLevel(1);
     const horoscope = {
       sun: {key: 'sun', label: 'Sun', Sign: {key: sunSign}},
       moon: {key: 'moon', label: 'Moon', Sign: {key: moonSign}},
