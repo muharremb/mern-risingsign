@@ -17,11 +17,11 @@
     align-items: center;
     justify-content: space-around;
     width: 50%;
-    border: 1px solid red;
+    /* border: 1px solid red; */
 }
 
 .pic-side-input-container {
-    border: 1px solid green;
+    /* border: 1px solid green; */
 }
 
 .left-slider-button, .right-slider-button {
