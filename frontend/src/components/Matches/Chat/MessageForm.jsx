@@ -54,6 +54,8 @@ function MessageForm () {
 
   const formatTime = (time) => {
     const [hours, minutes] = time.split(":")
+    // console.log(hours)
+    if (hours == 12 || hours == 0) return 12 + ":" + minutes + "pm"
     return hours < 12 ? time + " am" : hours-12 + ":" + minutes + " pm"
   }
 

@@ -47,7 +47,7 @@
 
 .display-messages {
     height: 27vh;
-    width: 30vw;
+    width: 100%;
     overflow: auto;
     /* overflow: scroll-y; */
     list-style: none;
@@ -57,6 +57,7 @@
     color: #ffbb10cf;
     display: flex;
     flex-direction: column-reverse;
+    /* width: */
     /* justify-content: flex-end; */
 }
 

@@ -39,14 +39,14 @@
 }
 
 .them {
-    background-color: powderblue;
+    /* background-color: powderblue; */
     display: flex;
     justify-content: right;
     /* scroll-snap-align: end; */
 }
 
 .you {
-    background-color: green;
+    /* background-color: green; */
     display: flex;
     margin-top: auto;
 }
