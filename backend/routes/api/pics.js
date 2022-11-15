@@ -51,9 +51,9 @@ router.post('/upload', upload.single('image-upload'), async (req, res) => {
 
    const user = await User.findById(req.body.uploaderId);
    const isProfile = req.body.isProfile;
-
+   
    try {
-      if (isProfile) {
+      if (isProfile === "true") {
          user.profileImageURL = goodUrl;
       } else {
          user.imageURLs.push(goodUrl);
