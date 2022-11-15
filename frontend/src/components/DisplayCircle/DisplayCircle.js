@@ -5,7 +5,6 @@ import LoginForm from '../SessionForms/LoginForm/LoginForm';
 import SignupForm from '../SessionForms/SignupForm/SignupForm';
 import Profile from '../Profile/Profile.jsx';
 import Discover from '../Discover/Discover';
-import Chat from '../Matches/Chat/Chat';
 import Matches from '../Matches/Matches';
 import Developers from '../Developers/Developers'
 import NewProfilePicForm from '../SessionForms/NewProfilePicForm/NewProfilePicForm';
@@ -25,40 +24,27 @@ const DisplayCircle = () => {
          case "/":
             spinSpeed = 0;
             break;
-         case "/login":
-            spinSpeed = 5;
-            break;
          case "/signup":
             spinSpeed = signupLevel;
             break;
          case "/newprofilepic":
             spinSpeed = 4;
             break;
+         case "/login":
+            spinSpeed = 5;
+            break;
          default:
             spinSpeed = "nope";
       }
 
       return spinSpeed;
-   } 
-   // const authSwitch = () => {
-   //    switch(location.pathname) {
-   //       case '/login':
-   //          return <LoginForm />
-   //          break;
-   //       case '/signup':
-   //          return <SignupForm />
-   //          break;
-   //       default:
-   //          return null
-   //    }
-   // }
+   }
 
    return (
       <div className='display-circle' data-page={location.pathname.split("/")[1]}>
          {allowOrbiter && <div data-spin={spinSwitch()} className='orbiter-container'>
             <div className='orbiter'></div>
          </div> }
-         {/* <AuthRoute exact path={location.pathname} component={authSwitch}/> */}
          <AuthRoute exact path="/login" component={LoginForm}/>
          <AuthRoute exact path="/signup" component={SignupForm}/>
 
