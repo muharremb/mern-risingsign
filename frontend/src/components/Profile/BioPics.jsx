@@ -62,7 +62,7 @@ function BioPics ({user}) {
           <form id='new-pic-form'></form>
           <PicGrid user={user} />
           <div className='pic-side-input-container'>
-               <input className='hidden-input' id='hidden-input' onChange={e => handleSubmit(e)} type="file" style={{display: "none"}}/>
+               <input className='hidden-input' id='hidden-input' accept="image/png, image/gif, image/jpeg" encType="multipart/form-data" onChange={e => handleSubmit(e)} type="file" style={{display: "none"}}/>
                <div className='picture-input' id='picture-input'>
                   <button type="button" onClick={hiddenClick}>Add a photo</button>
                   {/* <input className='file-text' value={pic ? `${pic.name}` : ""}></input> */}
