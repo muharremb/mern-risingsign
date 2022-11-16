@@ -53,8 +53,9 @@ function Sidebar (props) {
     if(user.likes.includes(member._id) && user.likers.includes(member._id)){
     return <li key={i}
     id={member._id}
-    className={member.name}
-    onClick={joinRoom}>Chat with <span>{member.name}</span></li>
+    className={`${member.name} chat-button`}
+    onClick={joinRoom}>Chat
+    </li>
     };
     return null;
     }
@@ -64,7 +65,7 @@ function Sidebar (props) {
     <>
       {/* <h2>Available Matches</h2> */}
       {/* <p>{props.userId}</p> */}
-      <div className="matches-list">{membersList}</div>
+      <div>{membersList}</div>
     </>
   )
 }

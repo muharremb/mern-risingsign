@@ -17,7 +17,8 @@
 #user-card-container {
     display: grid;
     grid-template-columns: auto auto;
-    row-gap: .5%;
+    row-gap: 5%;
+    column-gap: -100%;
     padding-bottom: 3.5rem;
 }
 
@@ -38,14 +39,22 @@ select {
 
 #filters {
     display: flex;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
     overflow-x: hidden;
     width: 1000px;
-    margin-bottom: 20px;
+    margin-bottom: 40px;
+    margin-top: 40px;
     margin-left: 20px;
     font-size: 2.1vh;
+    animation: fadeIn 5s;
 }
+
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+
 
 #filters select {
     width: 95px;

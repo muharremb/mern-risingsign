@@ -76,7 +76,7 @@ function MessageForm () {
   return (
     <> <div id="message-form-container" className={!currentRoomName ? "invisible" : "visible"}>
     {user && <>
-      <h4>Chatting with {currentRoomName}</h4>
+      {/* <h4>Chatting with {currentRoomName}</h4> */}
 
         <div className="display-messages" id="message-box">
           {/* {messagesList} */}

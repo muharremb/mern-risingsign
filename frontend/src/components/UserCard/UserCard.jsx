@@ -46,23 +46,37 @@ function UserCard({user}){
 
     }
 
+    const upFirstLetter = (str) => {
+        return str[0].toUpperCase() + str.slice(1)
+    }
+
     return (
         <Link to={`/profile/${user._id}`} className="user-card">
-            <div className="">
-            {isMatched && <Sidebar userId={user._id} onClick={highlightCard}/>}
-                <h1>{!isMatched && user.name}</h1><br/>
+        <div className="pic-and-name">
+            <div>
+                <h1>{user.name}</h1><br/>
+            </div>
+            <div className="prof-pic">
                 <img style={{"maxWidth":"50px"}} src={user.profileImageURL} alt="profile"/>
             </div>
+        </div>
+
             <div className="user-card-right">
-                <div className="user-card-sign sun-sign">
-                    <span className="user-card-label">{user.horoscope.sun.label}:</span> {user.horoscope.sun.Sign.key}
+
+                <div id="signs">
+
+                    <div className="user-card-sign sun-sign sign">
+                        <span className="user-card-label">Sun</span> {upFirstLetter(user.horoscope.sun.Sign.key)}
+                    </div>
+                    <div className="user-card-sign moon-sign sign">
+                        <span className="user-card-label">Moon</span> {upFirstLetter(user.horoscope.moon.Sign.key)}
+                    </div>
+                    <div className="user-card-sign rising-sign sign">
+                        <span className="user-card-label">Rising</span> {upFirstLetter(user.horoscope.rising.Sign.key)}
+                    </div>
+
                 </div>
-                <div className="user-card-sign moon-sign">
-                    <span className="user-card-label">{user.horoscope.moon.label}:</span> {user.horoscope.moon.Sign.key}
-                </div>
-                <div className="user-card-sign rising-sign">
-                    <span className="user-card-label">{user.horoscope.rising.label}:</span> {user.horoscope.rising.Sign.key}
-                </div>
+
                 {isMatched && (
                     <div>
                         <button onClick={handleUnmatch}>Unmatch</button>
@@ -72,9 +86,12 @@ function UserCard({user}){
                 {!isMatched && isLiked && (
                     <div>You liked {user.name}</div>
                 )}
+
                 {!isMatched && !isLiked && sessionUser._id !== user._id && (
                     <button onClick={handleLikeButtonClick}>Like</button>
                 )}
+
+                {isMatched && <Sidebar userId={user._id} onClick={highlightCard}/>}
                 </div>
             </Link>
     )

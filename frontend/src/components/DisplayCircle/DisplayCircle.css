@@ -12,7 +12,9 @@
    background-color: transparent;
    box-shadow: 0em 0em .2em .05em rgba(233, 193, 93), inset 0em 0em .2em .05em rgba(233, 193, 93);
    transition: all 3s ease;
+   animation: fadeIn 5s;
 }
+
 
 .display-circle[data-page=""] {
    display: block;
@@ -59,6 +61,7 @@
   -webkit-animation-timing-function: linear;
   transition: all 1.2s ease;
 }
+
 
 .orbiter-container[data-spin="0"] {
    animation-duration: 250s;

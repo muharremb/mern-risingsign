@@ -66,10 +66,10 @@ function Discover () {
 
 
         <div id="discover-container">
-            <h1 className="heading" >Discover</h1>
-            <div id="filters">Filters | &nbsp;
+            <h1 className="heading" ></h1>
+            <div id="filters">
                 <form className="page-filter">
-                    <label>Sun:
+                    <label>Sun &nbsp;
                     <select id="user-feed-filter" className="user-feed-filter-dropdown" defaultValue="all" onChange={filterSun}>
                         <option value="all">All</option>
                         <option value="aries">Aries</option>
@@ -87,7 +87,7 @@ function Discover () {
                     </select></label>
 
 
-                    <label>Moon:
+                    <label>Moon &nbsp;
                     <select id="user-feed-filter" className="user-feed-filter-dropdown" defaultValue="all" onChange={filterMoon}>
                         <option value="all">All</option>
                         <option value="aries">Aries</option>
@@ -105,7 +105,7 @@ function Discover () {
                     </select></label>
 
 
-                    <label>Rising:
+                    <label>Rising &nbsp;
                     <select id="user-feed-filter" className="user-feed-filter-dropdown" defaultValue="all" onChange={filterRising}>
                         <option value="all">All</option>
                         <option value="aries">Aries</option>

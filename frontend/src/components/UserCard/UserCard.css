@@ -1,13 +1,17 @@
 .user-card {
     display: flex;
-    width: 80%;
+    /* flex-direction:; */
+    width: 30%;
     min-width: 300px;
-    padding: 0.5% 0 3% 3%;
+    /* padding: 0.5% 0 1% 4%; */
     border-radius: 8px;
     transition: 0.2s ease-in;
     box-shadow: 0 0 5px #00000035;
-    background-color: #00000050;
+    /* background-color: #00000050; */
     cursor: pointer;
+    /* justify-content: center; */
+    /* align-items: center; */
+    text-align: center;
 }
 
 a {
@@ -22,13 +26,15 @@ a {
 .user-card-right {
     display: flex;
     flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
     font-size: 18px;
     margin: 15px 0 0 40px;
 }
 
 .user-card button {
     background-color: #5b0e7a;
-    margin-left: 10px;
+    /* margin-left: 10px; */
     margin-top: 7px;
     font-size: 12px;
     color: #d3a02099;
@@ -36,7 +42,8 @@ a {
     border-radius: 4px;
     transition: 0.2s;
     width: 100px;
-    
+    text-align: center;
+
 }
 
 .user-card button:hover {
@@ -44,9 +51,9 @@ a {
     cursor: pointer;
 }
 
-.user-card-left img {
+/* .user-card-left img {
     border-radius: 50%;
-}
+} */
 
 .user-card-label {
     font-weight: bold;
@@ -55,4 +62,18 @@ a {
 .user-card:hover {
     box-shadow: 0 0 50px #e9c15d45;
     background-color: #00000060;
+}
+
+
+.pic-and-name {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: space-evenly;
+    /* background-color:blue; */
+    width: 100px;
+}
+
+.sign {
+    color: #f0e0e89c;
 }

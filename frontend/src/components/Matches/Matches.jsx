@@ -19,7 +19,18 @@ function Matches () {
 
         const matches = likes.filter((like) => likers.includes(like));
         dispatch(fetchUsers({matches}));
+
+        turnOnFilters()
     }, [])
+
+    const [filtersOn, setFiltersOn] = useState(false)
+
+    const turnOnFilters= () =>{
+        setTimeout(()=>{
+            console.log("hi")
+            setFiltersOn(true)
+        }, 1000 )
+    }
 
     const fetchedUsers = useSelector(state => state.users);
     const sessionUser = useSelector(state => state.session.user);
@@ -46,16 +57,17 @@ function Matches () {
             ('all' === sunFilter || user.horoscope.sun.Sign.key === sunFilter) &&
             ('all' === moonFilter || user.horoscope.moon.Sign.key === moonFilter) &&
             ('all' === risingFilter || user.horoscope.rising.Sign.key === risingFilter) && (sessionUser.likes.includes(user._id) && sessionUser.likers.includes(user._id))
-        ) {return <UserCard key={user._id} user={user}/>};
+        ) {return <UserCard  key={user._id} user={user}/>};
         return null;
     });
 
     return (
         <div className="matches-outer-container">
-            <div className="heading">{sessionUser.name}'s Matches</div>
-            <div id="filters">Filters | &nbsp;
+            <div className="heading"></div>
+
+           {filtersOn && <div id="filters" style = {{ width: "100%", margin: 30}}>
                 <form className="page-filter">
-                    <label>Sun:
+                    <label>Sun &nbsp;
                     <select id="user-feed-filter" className="user-feed-filter-dropdown" defaultValue="all" onChange={filterSun}>
                         <option value="all">All</option>
                         <option value="aries">Aries</option>
@@ -73,7 +85,7 @@ function Matches () {
                     </select></label>
 
 
-                    <label>Moon:
+                    <label>Moon &nbsp;
                     <select id="user-feed-filter" className="user-feed-filter-dropdown" defaultValue="all" onChange={filterMoon}>
                         <option value="all">All</option>
                         <option value="aries">Aries</option>
@@ -91,7 +103,7 @@ function Matches () {
                     </select></label>
 
 
-                    <label>Rising:
+                    <label>Rising &nbsp;
                     <select id="user-feed-filter" className="user-feed-filter-dropdown" defaultValue="all" onChange={filterRising}>
                         <option value="all">All</option>
                         <option value="aries">Aries</option>
@@ -108,13 +120,14 @@ function Matches () {
                         <option value="pisces">Pisces</option>
                     </select></label>
                 </form>
-            </div>
+            </div>}
 
             <div className="matches-container">
 
-                <div className="matches-left">
+
+                {/* <div className="matches-left"> */}
                     {matches}
-                </div>
+                {/* </div> */}
 
                 <div>
                     <MessageForm />
