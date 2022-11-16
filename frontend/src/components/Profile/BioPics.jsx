@@ -59,7 +59,7 @@ function BioPics ({user}) {
       <div className='bio-pics-slider' data-mode={mode}>
         <UserBio user={user} />
         <div className='pic-side'>
-          <form id='new-pic-form'></form>
+          <form id='new-pic-form' encType='multipart/form-data'></form>
           <PicGrid user={user} />
           <div className='pic-side-input-container'>
                <input className='hidden-input' id='hidden-input' onChange={e => handleSubmit(e)} type="file" style={{display: "none"}}/>

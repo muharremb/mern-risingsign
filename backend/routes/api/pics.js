@@ -45,6 +45,7 @@ const upload = multer({
 // };
 
 router.post('/upload', upload.single('image-upload'), async (req, res) => {
+   console.log(req.file);
    const urlBeginning = req.file.location.substr(0, 8);
    const urlEnding = req.file.location.substr(38, (req.file.location.length - 1))       // url is being doubled somewhere in multer for some reason
    const goodUrl = urlBeginning + urlEnding;
