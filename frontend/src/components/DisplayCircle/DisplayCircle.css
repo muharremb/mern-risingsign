@@ -34,7 +34,7 @@
    transition: all 1.2s ease;
 }
 
-.display-circle[data-page="discover"], .display-circle[data-page="developers"], .display-circle[data-page="profile"], .display-circle[data-page="matches"]{
+.display-circle[data-page="discover"], .display-circle[data-page="developers"], .display-circle[data-page="profile"]{
    width: 100vw;
    height: 100%;
    border-radius: 0;
@@ -110,10 +110,10 @@
 
 @-webkit-keyframes orbit {
 	from {-webkit-transform: rotate(0);transform: rotate(0);}
-	to {-webkit-transform: rotate(360deg);transform: rotate(360deg);}	
+	to {-webkit-transform: rotate(360deg);transform: rotate(360deg);}
 }
 
 @keyframes orbit {
 	from {-webkit-transform: rotate(0);transform: rotate(0);}
-	to {-webkit-transform: rotate(360deg);transform: rotate(360deg);}	
+	to {-webkit-transform: rotate(360deg);transform: rotate(360deg);}
 }
