@@ -20,17 +20,13 @@ function Matches () {
         const matches = likes.filter((like) => likers.includes(like));
         dispatch(fetchUsers({matches}));
 
-        turnOnFilters()
     }, [])
 
     const [filtersOn, setFiltersOn] = useState(false)
+    const [cardsOn, setCardsOn] = useState(false)
 
-    const turnOnFilters= () =>{
-        setTimeout(()=>{
-            console.log("hi")
-            setFiltersOn(true)
-        }, 1000 )
-    }
+
+
 
     const fetchedUsers = useSelector(state => state.users);
     const sessionUser = useSelector(state => state.session.user);
@@ -63,9 +59,8 @@ function Matches () {
 
     return (
         <div className="matches-outer-container">
-            <div className="heading"></div>
 
-           {filtersOn && <div id="filters" style = {{ width: "100%", margin: 30}}>
+           {true && <div id="filters" style = {{ width: "100%"}}>
                 <form className="page-filter">
                     <label>Sun &nbsp;
                     <select id="user-feed-filter" className="user-feed-filter-dropdown" defaultValue="all" onChange={filterSun}>
@@ -124,15 +119,12 @@ function Matches () {
 
             <div className="matches-container">
 
-
-                {/* <div className="matches-left"> */}
                     {matches}
-                {/* </div> */}
-
+            </div>
                 <div>
                     <MessageForm />
                 </div>
-            </div>
+
         </div>
     )
 }

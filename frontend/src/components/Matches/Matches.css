@@ -1,25 +1,27 @@
 .matches-outer-container {
+    /* position:relative; */
     min-height: 100vh;
     padding-bottom: 50px;
-    padding-top: 2%;
-    padding-left: 3%;
+    /* padding-top: 2%; */
+    /* padding-left: 3%; */
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     display: flex;
     flex-direction: column;
     align-items: center;
-    text-align:
+    justify-content: flex-start;
+    /* margin-top: 800px; */
+    /* padding-top: 10000px; */
 }
 
 .matches-container {
     display: flex;
-    /* margin: 0 2% 0 1%; */
+
     flex-direction: row;
-    /* background-color:blue; */
-    /* justify-content: space-between; */
-    /* align-items: space-between; */
+    align-items: center;
 
     /* ; */
-    margin: 10%;
+    /* margin: 10%; */
+    margin-bottom: 0;
 }
 
 .heading {
@@ -65,14 +67,6 @@
     margin-top: auto;
 }
 
-/* ul{
-    overflow: auto;
-} */
-
-/* .you:last-child{
-    scroll-snap-align: end;
-    scroll-margin-block-end: 6rem;
-} */
 
 #messages-list{
     background-color:black;

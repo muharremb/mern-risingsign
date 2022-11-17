@@ -19,7 +19,7 @@ input {
 .clear-box {
    display: flex;
    justify-content: center;
-   align-items: center;
+   align-items:flex-start;
    position: fixed;
    width: 100vw;
    height: 100vh;

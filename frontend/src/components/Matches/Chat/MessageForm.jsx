@@ -50,7 +50,7 @@ function MessageForm () {
         reactMessages.push(<li className={`chat-message ${messages[i].messagesByDate[j].from._id === user._id ? "you" : "them"}`}><span>{formatTime(messages[i].messagesByDate[j].time)} &nbsp;</span>{messages[i].messagesByDate[j].content}</li>)
       }
     }
-    return reactMessages.reverse()
+    return reactMessages
   }
 
   const formatTime = (time) => {
@@ -84,9 +84,13 @@ function MessageForm () {
           {formatMessages(messages)}
         </div>
 
-      <form onSubmit={handleSubmit}
+
+        <div id="message-field-and-button">
+        <form onSubmit={handleSubmit}
         className="message-form">
-        <input type="text"
+        <input
+        id="message-input"
+        type="text"
         placeholder="be nice"
         value={msg}
         onChange={(e) => {
@@ -110,6 +114,11 @@ function MessageForm () {
         <button type="submit">
         <i className="fa-solid fa-plane-departure"/></button>
       </form>
+
+
+        </div>
+
+
     </>
     }
 

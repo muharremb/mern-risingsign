@@ -12,7 +12,6 @@
    background-color: transparent;
    box-shadow: 0em 0em .2em .05em rgba(233, 193, 93), inset 0em 0em .2em .05em rgba(233, 193, 93);
    transition: all 3s ease;
-   animation: fadeIn 5s;
 }
 
 
@@ -46,6 +45,36 @@
    transition: all 1.5s ease-in;
    overflow: visible;
 }
+
+.display-circle[data-page="matches"] {
+   /* margin-top: 200px; */
+   /* padding-top:100px; */
+   /* margin-bottom: 100px; */
+   display: flex;
+   width: 80%;
+   height: 100px;
+   align-items:flex-start;
+   justify-content: center;
+   margin-top: 40px;
+
+
+   /* min-width:100px; */
+   /* width: max-content; */
+   /* height: 700px; */
+   /* transition: width 5s ease; */
+   animation: changeWidth 1s, fadeIn 3s, gold-glow 2s ease-in-out infinite alternate;
+}
+@keyframes fadeIn {
+   0% { opacity: 0; background-color: white  }
+   100% { opacity: 1; background-color: black }
+ }
+
+ @keyframes changeWidth {
+   /* 0% {width: 0px; height: 0px; background-color: black; } */
+   /* 100% {width: 300px; height: 100px; background-color: rgb(193, 238, 233);} */
+ }
+
+
 
 .orbiter-container {
   width: 100%;
@@ -109,6 +138,11 @@
 .orbiter, .display-circle {
    animation: gold-glow 3s ease-in-out infinite alternate;
 }
+
+/* .orbiter {
+   animation: gold-glow 3s ease-in-out infinite alternate;
+} */
+
 
 
 @-webkit-keyframes orbit {

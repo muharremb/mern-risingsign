@@ -42,8 +42,8 @@ select {
     justify-content: center;
     align-items: center;
     overflow-x: hidden;
-    width: 1000px;
-    margin-bottom: 40px;
+    /* width: 1000px; */
+    margin-bottom: 70px;
     margin-top: 40px;
     margin-left: 20px;
     font-size: 2.1vh;
