@@ -36,7 +36,7 @@ function MessageForm () {
     socket.emit('message-room', hackyRoomName, msg, user, time, date);
     setMsg("")
     const messagesEl = document.getElementById("message-box")
-    messagesEl.scrollTop = messagesEl.scrollHeight + 1000; // might need null protection?
+    messagesEl.scrollTop = messagesEl.scrollHeight // might need null protection?
     socket.emit('stop-bubbles', hackyRoomName)
     setTyping(false)
   }
@@ -47,7 +47,14 @@ function MessageForm () {
     for (let i=0; i<messages.length; i++) {
       reactMessages.push(<h3>{messages[i]._id}</h3>)
       for (let j=0; j<messages[i].messagesByDate.length; j++){
-        reactMessages.push(<li className={`chat-message ${messages[i].messagesByDate[j].from._id === user._id ? "you" : "them"}`}><span>{formatTime(messages[i].messagesByDate[j].time)} &nbsp;</span>{messages[i].messagesByDate[j].content}</li>)
+        if (j != messages[i].messagesByDate.length -1 ) {
+          reactMessages.push(<li className={`chat-message ${messages[i].messagesByDate[j].from._id === user._id ? "you" : "them"}`}><span>{formatTime(messages[i].messagesByDate[j].time)} &nbsp;</span>{messages[i].messagesByDate[j].content}</li>)
+        } else {
+          reactMessages.push(<li className={`last-chat-message ${messages[i].messagesByDate[j].from._id === user._id ? "you" : "them"}`}><span>{formatTime(messages[i].messagesByDate[j].time)} &nbsp;</span>{messages[i].messagesByDate[j].content}</li>)
+
+        }
+
+
       }
     }
     return reactMessages
@@ -65,6 +72,8 @@ function MessageForm () {
     if (!typing) {
       setTyping(true)
       socket.emit('bubbles', localStorage.getItem("currentRoom") )
+
+
       setTimeout(() => {
         setTyping(false)
         socket.emit('stop-bubbles',localStorage.getItem("currentRoom") )
@@ -81,7 +90,9 @@ function MessageForm () {
         <div className="display-messages" id="message-box">
           {/* {messagesList} */}
           {formatMessages(messages)}
-          {typing && '...'}
+          <div className="typing-bubbles">
+          {typing && '. . .'}
+          </div>
         </div>
 
 
@@ -95,12 +106,14 @@ function MessageForm () {
         value={msg}
         onChange={(e) => {
           setMsg(e.target.value)
-          console.log('message is', msg)
-          console.log(e.target.value==="")
           setTyping(true)
+          const messagesEl = document.getElementById("message-box")
+
+          messagesEl.scrollTop = messagesEl.scrollHeight
           socket.emit('bubbles', localStorage.getItem("currentRoom") )
+
           if (e.target.value==="") {
-            console.log('empty message box')
+            // console.log('empty message box')
             socket.emit('stop-bubbles', localStorage.getItem("currentRoom") )
             setTyping(false)
           }

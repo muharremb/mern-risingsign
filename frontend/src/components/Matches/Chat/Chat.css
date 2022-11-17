@@ -55,9 +55,17 @@
     overflow-y: scroll;
 }
 
-.chat-message {
-    border-bottom: 1px solid #ffffff55;
+.display-messages > .chat-message {
+    border-bottom: .2px solid #ffffff55;
     padding-bottom: 5px;
+    padding-top: 5px;
+}
+
+.last-chat-message{
+
+    padding-top: 5px;
+    margin-bottom:-5px;
+    /* background-color:blue; */
 }
 
 .chat-message-current-user {

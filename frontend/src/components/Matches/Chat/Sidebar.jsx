@@ -43,8 +43,17 @@ function Sidebar (props) {
     setCurrentRoomName(currRoomName);
     localStorage.setItem('currentRoom', roomName);
     localStorage.setItem('currentRoomName',currRoomName)
-    // console.log(`roomName is ${roomName}`)
     socket.emit('join-room', roomName);
+
+    const selectedCard = e.target.parentElement.parentElement.parentElement.parentElement
+    const allCards =  e.target.parentElement.parentElement.parentElement.parentElement.parentElement.children
+    for (let i=0; i < allCards.length; i++) {
+      allCards[i].classList.remove("selected-chat-card")
+    }
+    selectedCard.classList.add("selected-chat-card")
+
+
+
   };
 
   const membersList = Object.values(members).map((member, i) =>

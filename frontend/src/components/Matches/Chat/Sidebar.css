@@ -14,30 +14,22 @@
   border-radius: 4px;
   margin-top: 4px;
   margin-bottom: 10px;
-
-  /* display: flex; */
-  /* align-items: center;
-  justify-content: center; */
-  /* list-style: none;
-  background-color: #5b0e7a;
-  margin-top: 7px;
-  font-size: 12px;
-  color: #d3a02099;
-  border: 0;
-  border-radius: 4px;
-  transition: 0.2s;
-  width: 100px;
-  padding: 5px 10px 5px 10px;
-  margin: 3px; */
-  /* margin-left: 21px; */
 }
 
-#message-input {
-  /* margin-bottom: 1000px; */
-  /* width: 800; */
-  /* background-color: blue; */
+.selected-chat-card {
+  /* background-color: rgb(146, 146, 182) */
+  border: 1px solid rgb(178, 178, 180);
 }
 
 #message-field-and-button {
   padding-bottom: 100px;;
+}
+
+.typing-bubbles {
+  display: flex;
+  justify-content: center;
+  font-weight: bolder;
+  font-size: 40px;
+  margin-bottom:10px;
+  /* margin-top:-20px; */
 }
