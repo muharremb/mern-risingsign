@@ -54,25 +54,30 @@ function UserCard({user}){
         <Link to={`/profile/${user._id}`} className="user-card">
 
             <div className="user-card-flexbox">
-
                 <div className="pic-and-name">
                     <div className="prof-pic">
                         <img src={user.profileImageURL} alt="profile"/>
                     </div>
-                </div>
 
-                <div className="user-card-right">
-                        <div id="signs">
-                            <div className="user-card-sign sun-sign sign">
-                                <span className="user-card-label">Sun</span> {upFirstLetter(user.horoscope.sun.Sign.key)}
-                            </div>
-                            <div className="user-card-sign moon-sign sign">
-                                <span className="user-card-label">Moon</span> {upFirstLetter(user.horoscope.moon.Sign.key)}
-                            </div>
-                            <div className="user-card-sign rising-sign sign">
-                                <span className="user-card-label">Rising</span> {upFirstLetter(user.horoscope.rising.Sign.key)}
-                            </div>
-                        </div>
+                    <div className="user-name">
+                    <p>{user.name}</p>
+                 </div>
+
+            </div>
+
+
+            <div className="user-card-right">
+            <div id="signs">
+                <div className="user-card-sign sun-sign sign">
+                    <span className="user-card-label">Sun</span> {upFirstLetter(user.horoscope.sun.Sign.key)}
+                </div>
+                <div className="user-card-sign moon-sign sign">
+                    <span className="user-card-label">Moon</span> {upFirstLetter(user.horoscope.moon.Sign.key)}
+                </div>
+                <div className="user-card-sign rising-sign sign">
+                    <span className="user-card-label">Rising</span> {upFirstLetter(user.horoscope.rising.Sign.key)}
+                </div>
+            </div>
 
                         {isMatched && (
                             <div>
@@ -90,9 +95,6 @@ function UserCard({user}){
 
                         {isMatched && <Sidebar userId={user._id} onClick={highlightCard}/>}
                 </div>
-            </div>
-            <div className="user-name">
-                    <p>{user.name}</p><br/>
             </div>
 
 

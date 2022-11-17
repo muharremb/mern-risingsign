@@ -11,12 +11,20 @@
     cursor: pointer;
     text-align: center;
     flex-grow: 0;
+    margin: 10px;
     /* animation: fadeIn 8s; */
 }
 
+.pic-and-name {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: 10px;
+}
 
 .prof-pic > img {
-    position: relative;
+    /* position: relative; */
     height: 90px;
     width: 100px;
     left: 10px;
@@ -26,12 +34,13 @@
     display: flex;
     width: 100%;
     text-align: center;
+    justify-content: space-evenly;
 }
 
 .user-name {
-    position: absolute;
-    bottom: 4px;
-    left: 4px;
+    /* position: absolute; */
+    /* bottom: 4px; */
+    /* left: 4px; */
     /* left: 10px; */
     display: flex;
     /* width: max-content; */
@@ -63,6 +72,7 @@ a {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     font-size: 18px;
     margin: 1px 0 0 40px;
 }
@@ -94,11 +104,6 @@ a {
     background-color: #00000060;
 }
 
-.pic-and-name {
-    margin-top: 10px;
-    display: flex;
-    flex-direction: column;
-}
 
 .sign {
     color: #f0e0e89c;
