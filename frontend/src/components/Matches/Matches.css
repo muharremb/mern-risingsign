@@ -16,11 +16,11 @@
 .matches-container {
     display: flex;
 
+    flex-wrap: wrap;
     flex-direction: row;
-    align-items: center;
-
-    /* ; */
-    /* margin: 10%; */
+    /* align-items: center; */
+    justify-content: center;
+    width: 100vw;
     margin-bottom: 0;
 }
 
@@ -67,7 +67,6 @@
     margin-top: auto;
 }
 
-
 #messages-list{
     background-color:black;
     display: flex;
@@ -83,6 +82,3 @@
     /* flex-flow: column; */
 }
 
-#matches-card {
-    margin:39px;
-}

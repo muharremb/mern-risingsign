@@ -14,7 +14,7 @@ function MessageForm () {
     setMessages(roomMessages)
   })
 
-  const [typing, setTyping] = useState(false)
+  const [typing, setTyping]  = useState(false)
 
   //format bubbles
   useEffect(()=> {
@@ -36,7 +36,7 @@ function MessageForm () {
     socket.emit('message-room', hackyRoomName, msg, user, time, date);
     setMsg("")
     const messagesEl = document.getElementById("message-box")
-    messagesEl.scrollTop = messagesEl.scrollHeight; // might need null protection?
+    messagesEl.scrollTop = messagesEl.scrollHeight + 1000; // might need null protection?
     socket.emit('stop-bubbles', hackyRoomName)
     setTyping(false)
   }
@@ -80,8 +80,8 @@ function MessageForm () {
 
         <div className="display-messages" id="message-box">
           {/* {messagesList} */}
-          {typing && '...'}
           {formatMessages(messages)}
+          {typing && '...'}
         </div>
 
 

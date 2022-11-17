@@ -52,48 +52,51 @@ function UserCard({user}){
 
     return (
         <Link to={`/profile/${user._id}`} className="user-card">
-        <div className="pic-and-name">
-            <div>
-                <h1>{user.name}</h1><br/>
-            </div>
-            <div className="prof-pic">
-                <img style={{"maxWidth":"50px"}} src={user.profileImageURL} alt="profile"/>
-            </div>
-        </div>
 
-            <div className="user-card-right">
+            <div className="user-card-flexbox">
 
-                <div id="signs">
-
-                    <div className="user-card-sign sun-sign sign">
-                        <span className="user-card-label">Sun</span> {upFirstLetter(user.horoscope.sun.Sign.key)}
+                <div className="pic-and-name">
+                    <div className="prof-pic">
+                        <img src={user.profileImageURL} alt="profile"/>
                     </div>
-                    <div className="user-card-sign moon-sign sign">
-                        <span className="user-card-label">Moon</span> {upFirstLetter(user.horoscope.moon.Sign.key)}
-                    </div>
-                    <div className="user-card-sign rising-sign sign">
-                        <span className="user-card-label">Rising</span> {upFirstLetter(user.horoscope.rising.Sign.key)}
-                    </div>
-
                 </div>
 
-                {isMatched && (
-                    <div>
-                        <button onClick={handleUnmatch}>Unmatch</button>
-                    </div>
-                )}
+                <div className="user-card-right">
+                        <div id="signs">
+                            <div className="user-card-sign sun-sign sign">
+                                <span className="user-card-label">Sun</span> {upFirstLetter(user.horoscope.sun.Sign.key)}
+                            </div>
+                            <div className="user-card-sign moon-sign sign">
+                                <span className="user-card-label">Moon</span> {upFirstLetter(user.horoscope.moon.Sign.key)}
+                            </div>
+                            <div className="user-card-sign rising-sign sign">
+                                <span className="user-card-label">Rising</span> {upFirstLetter(user.horoscope.rising.Sign.key)}
+                            </div>
+                        </div>
 
-                {!isMatched && isLiked && (
-                    <div>You liked {user.name}</div>
-                )}
+                        {isMatched && (
+                            <div>
+                                <button onClick={handleUnmatch}>Unmatch</button>
+                            </div>
+                        )}
 
-                {!isMatched && !isLiked && sessionUser._id !== user._id && (
-                    <button onClick={handleLikeButtonClick}>Like</button>
-                )}
+                        {!isMatched && isLiked && (
+                            <div>You liked {user.name}</div>
+                        )}
 
-                {isMatched && <Sidebar userId={user._id} onClick={highlightCard}/>}
+                        {!isMatched && !isLiked && sessionUser._id !== user._id && (
+                            <button onClick={handleLikeButtonClick}>Like</button>
+                        )}
+
+                        {isMatched && <Sidebar userId={user._id} onClick={highlightCard}/>}
                 </div>
-            </Link>
+            </div>
+            <div className="user-name">
+                    <p>{user.name}</p><br/>
+            </div>
+
+
+        </Link>
     )
 }
 

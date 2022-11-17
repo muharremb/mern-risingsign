@@ -1,14 +1,49 @@
 .user-card {
-    display: flex;
+    position: relative;
+    /* display: flex; */
+    /* justify-content: flex-start; */
     width: 30%;
     min-width: 300px;
+    max-width: 300px;
     border-radius: 8px;
     transition: 0.2s ease-in;
     box-shadow: 0 0 5px #00000035;
     cursor: pointer;
     text-align: center;
+    flex-grow: 0;
     /* animation: fadeIn 8s; */
-}`
+}
+
+
+.prof-pic > img {
+    position: relative;
+    height: 90px;
+    width: 100px;
+    left: 10px;
+}
+
+.user-card-flexbox {
+    display: flex;
+    width: 100%;
+    text-align: center;
+}
+
+.user-name {
+    position: absolute;
+    bottom: 4px;
+    left: 4px;
+    /* left: 10px; */
+    display: flex;
+    /* width: max-content; */
+    /* background-color:#5b0e7a;  */
+    border-radius: 5%;
+    font-size: 16px;
+}
+
+.user-name > p {
+    color: rgba(233, 193, 93);
+}
+
 
 @keyframes fadeIn {
     0% { opacity: 0; }
@@ -27,10 +62,9 @@ a {
 .user-card-right {
     display: flex;
     flex-direction: column;
-    /* justify-content: center; */
     align-items: center;
     font-size: 18px;
-    margin: 15px 0 0 40px;
+    margin: 1px 0 0 40px;
 }
 
 .user-card button {
@@ -44,17 +78,12 @@ a {
     transition: 0.2s;
     width: 100px;
     text-align: center;
-
 }
 
 .user-card button:hover {
     background-color: #661985;
     cursor: pointer;
 }
-
-/* .user-card-left img {
-    border-radius: 50%;
-} */
 
 .user-card-label {
     font-weight: bold;
@@ -65,14 +94,10 @@ a {
     background-color: #00000060;
 }
 
-
 .pic-and-name {
+    margin-top: 10px;
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
-    align-items: space-evenly;
-    /* background-color:blue; */
-    width: 100px;
 }
 
 .sign {
