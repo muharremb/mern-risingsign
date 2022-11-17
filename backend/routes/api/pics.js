@@ -27,33 +27,18 @@ const upload = multer({
    })
 })
 
-// export const getUserPics = async (req, res, next) => {
-//    const userId = req.params.userId;
-//    const user = await User.findById(userId).exec();
-//    if (user) {
-//      const pics = user.imageURLS;
-//      if (!pics) return res.json(null)
-//      res.json({
-//        pics
-//      })
-//    } else {
-//      const err = new Error('Unable to find that user');
-//      err.statusCode = 404;
-//      err.errors = { user: 'Unable to find that user'};
-//      return next(err);
-//    }
-// };
-
 router.post('/upload', upload.single('image-upload'), async (req, res) => {
+   console.log(req);
+   console.log(req.file.location);
    const urlBeginning = req.file.location.substr(0, 8);
    const urlEnding = req.file.location.substr(38, (req.file.location.length - 1))       // url is being doubled somewhere in multer for some reason
    const goodUrl = urlBeginning + urlEnding;
 
    const user = await User.findById(req.body.uploaderId);
    const isProfile = req.body.isProfile;
-
+   
    try {
-      if (isProfile) {
+      if (isProfile === "true") {
          user.profileImageURL = goodUrl;
       } else {
          user.imageURLs.push(goodUrl);
@@ -70,3 +55,22 @@ router.post('/upload', upload.single('image-upload'), async (req, res) => {
 })
 
 module.exports = router;
+
+
+
+// export const getUserPics = async (req, res, next) => {
+   //    const userId = req.params.userId;
+   //    const user = await User.findById(userId).exec();
+   //    if (user) {
+   //      const pics = user.imageURLS;
+   //      if (!pics) return res.json(null)
+   //      res.json({
+   //        pics
+   //      })
+   //    } else {
+   //      const err = new Error('Unable to find that user');
+   //      err.statusCode = 404;
+   //      err.errors = { user: 'Unable to find that user'};
+   //      return next(err);
+   //    }
+   // };

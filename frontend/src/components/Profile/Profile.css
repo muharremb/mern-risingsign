@@ -124,10 +124,11 @@
 .user-bio {
    display: flex;
    flex-direction: column;
-   justify-content: center;
+   justify-content: space-around;
    align-items: center;
    height: 100%;
    width: 50%;
+   animation: visible 2s ease-in-out;
 }
 
 /* .profile-buttons {
@@ -163,6 +164,4 @@ body {
    border-bottom: 1vw groove rgba(233, 193, 93);
    box-shadow: inset 0em 0em .4em .15em rgb(78, 78, 78);
    /* box-sizing: border-box; */
-  
-   
 }
