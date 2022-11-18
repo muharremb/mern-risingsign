@@ -39,7 +39,6 @@ export const uploadPic = picData => async dispatch => {
     formData.append("uploaderId", uploaderId)
     formData.append("isProfile", isProfile)
 
-
     const res = await jwtFetch('/api/pics/upload', {
        method: 'POST',
        body: formData
