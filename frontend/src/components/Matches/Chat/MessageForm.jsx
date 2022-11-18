@@ -96,7 +96,7 @@ function MessageForm () {
 
       setTimeout(() => {
         setTyping(false)
-        socket.emit('stop-bubbles',localStorage.getItem("currentRoom") )
+        socket.emit('stop-bubbles', localStorage.getItem("currentRoom") )
       }, 1000)
   }}
 

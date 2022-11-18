@@ -58,7 +58,6 @@ function UserCard({user}){
                     <div className="prof-pic">
                         <img src={user.profileImageURL} alt="profile"/>
                     </div>
-
                     <div className="user-name">
                     <p>{user.name}</p>
                  </div>

@@ -11,6 +11,7 @@ function Matches () {
     const [sunFilter, setSunFilter] = useState('all');
     const [moonFilter, setMoonFilter] = useState('all');
     const [risingFilter, setRisingFilter] = useState('all');
+    const [matchesExist, setMatchesExist] = useState(true);
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -20,13 +21,11 @@ function Matches () {
         const matches = likes.filter((like) => likers.includes(like));
         dispatch(fetchUsers({matches}));
 
+        matches.length === 0 ? setMatchesExist(false) : setMatchesExist(true)
     }, [])
 
     const [filtersOn, setFiltersOn] = useState(false)
     const [cardsOn, setCardsOn] = useState(false)
-
-
-
 
     const fetchedUsers = useSelector(state => state.users);
     const sessionUser = useSelector(state => state.session.user);
@@ -58,6 +57,7 @@ function Matches () {
     });
 
     const messageFormRef = useRef(null);
+    // console.log(matches.every)
 
 
     return (
@@ -119,6 +119,8 @@ function Matches () {
                     </select></label>
                 </form>
             </div>}
+
+            {matchesExist || <h1>no matches yet</h1>  }
 
             <div className="matches-container">
                     {matches}
