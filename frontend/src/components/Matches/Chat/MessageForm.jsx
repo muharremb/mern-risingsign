@@ -36,7 +36,7 @@ function MessageForm () {
   //format bubbles
   useEffect(()=> {
     socket.off('bubbles').on('bubbles', () => setTyping(true))
-    socket.off('stop-bubbles').on('stop-bubbles', ()=> setTyping(false) )
+    socket.off('stop-bubbles').on('stop-bubbles', () => setTyping(false) )
     autoScroll()
   }, [])
 
