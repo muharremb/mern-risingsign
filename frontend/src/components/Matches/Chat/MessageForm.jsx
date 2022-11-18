@@ -67,20 +67,20 @@ function MessageForm () {
     if (!messages) return
     const reactMessages = []
     for (let i=0; i<messages.length; i++) {
-      reactMessages.push(<h3  className="messages-date">{messages[i]._id}</h3>)
+      reactMessages.push(<h3 className="messages-date">{messages[i]._id}</h3>)
       for (let j=0; j<messages[i].messagesByDate.length; j++){
         const daysMessages = messages[i].messagesByDate;
-        if (j != daysMessages.length -1 ) {
+        if (j != daysMessages.length - 1) {
           if (daysMessages[j].from._id === user._id) {
-            reactMessages.push(<li className="chat-message you"><span className="message-time">{formatTime(messages[i].messagesByDate[j].time)} &nbsp;</span>{messages[i].messagesByDate[j].content}</li>)
+            reactMessages.push(<li className="chat-message you"><span className="message-time">{formatTime(daysMessages[j].time)} &nbsp;</span>{daysMessages[j].content}</li>)
           } else {
-            reactMessages.push(<li className="chat-message them">{messages[i].messagesByDate[j].content} &nbsp;<span className="message-time">{formatTime(messages[i].messagesByDate[j].time)}</span></li>)
+            reactMessages.push(<li className="chat-message them">{daysMessages[j].content} &nbsp;<span className="message-time">{formatTime(daysMessages[j].time)}</span></li>)
           }
         } else {
-          if (messages[i].messagesByDate[j].from._id === user._id) {
-            reactMessages.push(<li className="last-chat-message you"><span className="message-time">{formatTime(messages[i].messagesByDate[j].time)} &nbsp;</span>{messages[i].messagesByDate[j].content}</li>)
+          if (daysMessages[j].from._id === user._id) {
+            reactMessages.push(<li className=" last-chat-message you"><span className="message-time">{formatTime(daysMessages[j].time)} &nbsp;</span>{messages[i].messagesByDate[j].content}</li>)
           } else {
-            reactMessages.push(<li className="last-chat-message them">{messages[i].messagesByDate[j].content} &nbsp;<span className="message-time">{formatTime(messages[i].messagesByDate[j].time)}</span></li>)
+            reactMessages.push(<li className="last-chat-message them">{daysMessages[j].content} &nbsp;<span className="message-time">{formatTime(daysMessages[j].time)}</span></li>)
           }
         }
       }
