@@ -21,18 +21,22 @@
    width: 700px;
    height: 700px;
    transition: all 1.2s ease;
+   margin-top: 100px;
+
 }
 
 .display-circle[data-page="login"] {
    width: 400px;
    height: 400px;
    transition: all 1.2s ease;
+   margin-top: 200px;
 }
 
 .display-circle[data-page="signup"], .display-circle[data-page="newprofilepic"] {
    width: 600px;
    height: 600px;
    transition: all 1.2s ease;
+   margin-top: 130px;
 }
 
 .display-circle[data-page="discover"], .display-circle[data-page="developers"], .display-circle[data-page="profile"]{
