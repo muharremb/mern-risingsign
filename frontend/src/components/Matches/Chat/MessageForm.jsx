@@ -20,6 +20,8 @@ function MessageForm () {
   useEffect(()=> {
     socket.on('bubbles', () => setTyping(true))
     socket.on('stop-bubbles', ()=> setTyping(false) )
+    const messagesEl = document.getElementById("message-box")
+    messagesEl.scrollTop = messagesEl.scrollHeight // might need null protection?
   }, [])
 
   const formatMinutes = (minutes) => {
@@ -45,16 +47,22 @@ function MessageForm () {
     if (!messages) return
     const reactMessages = []
     for (let i=0; i<messages.length; i++) {
-      reactMessages.push(<h3>{messages[i]._id}</h3>)
+      reactMessages.push(<h3  className="messages-date">{messages[i]._id}</h3>)
       for (let j=0; j<messages[i].messagesByDate.length; j++){
         if (j != messages[i].messagesByDate.length -1 ) {
-          reactMessages.push(<li className={`chat-message ${messages[i].messagesByDate[j].from._id === user._id ? "you" : "them"}`}><span>{formatTime(messages[i].messagesByDate[j].time)} &nbsp;</span>{messages[i].messagesByDate[j].content}</li>)
+          if (messages[i].messagesByDate[j].from._id === user._id) {
+            reactMessages.push(<li className="chat-message you"><span className="message-time">{formatTime(messages[i].messagesByDate[j].time)} &nbsp;</span>{messages[i].messagesByDate[j].content}</li>)
+          } else {
+            reactMessages.push(<li className="chat-message them">{messages[i].messagesByDate[j].content} &nbsp;<span className="message-time">{formatTime(messages[i].messagesByDate[j].time)}</span></li>)
+          }
         } else {
-          reactMessages.push(<li className={`last-chat-message ${messages[i].messagesByDate[j].from._id === user._id ? "you" : "them"}`}><span>{formatTime(messages[i].messagesByDate[j].time)} &nbsp;</span>{messages[i].messagesByDate[j].content}</li>)
+          if (messages[i].messagesByDate[j].from._id === user._id) {
+            reactMessages.push(<li className="last-chat-message you"><span className="message-time">{formatTime(messages[i].messagesByDate[j].time)} &nbsp;</span>{messages[i].messagesByDate[j].content}</li>)
+          } else {
+            reactMessages.push(<li className="last-chat-message them">{messages[i].messagesByDate[j].content} &nbsp;<span className="message-time">{formatTime(messages[i].messagesByDate[j].time)}</span></li>)
+          }
 
         }
-
-
       }
     }
     return reactMessages
@@ -80,13 +88,19 @@ function MessageForm () {
       }, 1000)
   }}
 
+  useEffect(()=>{
+    const messagesEl = document.getElementById("message-box")
+    messagesEl.scrollTop = messagesEl.scrollHeight
+
+  }, [messages, currentRoomName])
+
   // if (!currentRoomName) return
 
   return (
-    <> <div id="message-form-container" className={!currentRoomName ? "invisible" : "visible"}>
-    {user && <>
-      {/* <h4>Chatting with {currentRoomName}</h4> */}
+    <>
+    <div id="message-form-container" className={!currentRoomName ? "invisible" : "visible"}>
 
+    {user && <>
         <div className="display-messages" id="message-box">
           {/* {messagesList} */}
           {formatMessages(messages)}
@@ -94,7 +108,6 @@ function MessageForm () {
           {typing && '. . .'}
           </div>
         </div>
-
 
         <div id="message-field-and-button">
         <form onSubmit={handleSubmit}
@@ -107,9 +120,10 @@ function MessageForm () {
         onChange={(e) => {
           setMsg(e.target.value)
           setTyping(true)
-          const messagesEl = document.getElementById("message-box")
 
+          const messagesEl = document.getElementById("message-box")
           messagesEl.scrollTop = messagesEl.scrollHeight
+
           socket.emit('bubbles', localStorage.getItem("currentRoom") )
 
           if (e.target.value==="") {
@@ -117,10 +131,6 @@ function MessageForm () {
             socket.emit('stop-bubbles', localStorage.getItem("currentRoom") )
             setTyping(false)
           }
-      //     setTimeout(() => {
-      //       socket.emit('stop-bubles', localStorage.getItem("currentRoom"))
-      //     setTyping(false)
-      // }, 1000)
 
         } }
         />

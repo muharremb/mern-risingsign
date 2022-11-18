@@ -33,3 +33,9 @@
   margin-bottom:10px;
   /* margin-top:-20px; */
 }
+
+.messages-date {
+  /* background-color:blue; */
+  margin-top: 5px;
+  text-align: center;
+}

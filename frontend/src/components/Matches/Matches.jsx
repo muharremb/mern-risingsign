@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { fetchUser, fetchUsers } from '../../store/users';
 import UserCard from '../UserCard/UserCard';
 import './Matches.css';
@@ -56,6 +56,9 @@ function Matches () {
         ) {return <UserCard  key={user._id} user={user}/>};
         return null;
     });
+
+    const messageFormRef = useRef(null);
+
 
     return (
         <div className="matches-outer-container">
@@ -118,12 +121,12 @@ function Matches () {
             </div>}
 
             <div className="matches-container">
-
                     {matches}
             </div>
-                <div>
-                    <MessageForm />
-                </div>
+
+            <div ref={messageFormRef}>
+                <MessageForm />
+            </div>
 
         </div>
     )

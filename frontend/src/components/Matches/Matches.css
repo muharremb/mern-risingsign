@@ -58,6 +58,7 @@
     /* background-color: powderblue; */
     display: flex;
     justify-content: right;
+    /* flex-direction: row-reverse; */
     /* scroll-snap-align: end; */
 }
 
@@ -82,3 +83,9 @@
     /* flex-flow: column; */
 }
 
+
+.message-time {
+    /* background-color: blue; */
+    font-weight: lighter;
+    color: grey;
+}
