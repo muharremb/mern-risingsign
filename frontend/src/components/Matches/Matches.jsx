@@ -1,15 +1,17 @@
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { fetchUser, fetchUsers } from '../../store/users';
 import UserCard from '../UserCard/UserCard';
 import './Matches.css';
 import Chat from './Chat/Chat.jsx';
+import MessageForm from './Chat/MessageForm'
 
 function Matches () {
     const [sunFilter, setSunFilter] = useState('all');
     const [moonFilter, setMoonFilter] = useState('all');
     const [risingFilter, setRisingFilter] = useState('all');
+    const [matchesExist, setMatchesExist] = useState(true);
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -18,7 +20,12 @@ function Matches () {
 
         const matches = likes.filter((like) => likers.includes(like));
         dispatch(fetchUsers({matches}));
+
+        matches.length === 0 ? setMatchesExist(false) : setMatchesExist(true)
     }, [])
+
+    const [filtersOn, setFiltersOn] = useState(false)
+    const [cardsOn, setCardsOn] = useState(false)
 
     const fetchedUsers = useSelector(state => state.users);
     const sessionUser = useSelector(state => state.session.user);
@@ -45,16 +52,20 @@ function Matches () {
             ('all' === sunFilter || user.horoscope.sun.Sign.key === sunFilter) &&
             ('all' === moonFilter || user.horoscope.moon.Sign.key === moonFilter) &&
             ('all' === risingFilter || user.horoscope.rising.Sign.key === risingFilter) && (sessionUser.likes.includes(user._id) && sessionUser.likers.includes(user._id))
-        ) {return <UserCard key={user._id} user={user}/>};
+        ) {return <UserCard  key={user._id} user={user}/>};
         return null;
     });
 
+    const messageFormRef = useRef(null);
+    // console.log(matches.every)
+
+
     return (
         <div className="matches-outer-container">
-            <div className="heading">{sessionUser.name}'s Matches</div>
-            <div id="filters">Filters | &nbsp;
+
+           {true && <div id="filters" style = {{ width: "100%"}}>
                 <form className="page-filter">
-                    <label>Sun: 
+                    <label>Sun &nbsp;
                     <select id="user-feed-filter" className="user-feed-filter-dropdown" defaultValue="all" onChange={filterSun}>
                         <option value="all">All</option>
                         <option value="aries">Aries</option>
@@ -70,9 +81,9 @@ function Matches () {
                         <option value="aquarius">Aquarius</option>
                         <option value="pisces">Pisces</option>
                     </select></label>
-                
-                
-                    <label>Moon: 
+
+
+                    <label>Moon &nbsp;
                     <select id="user-feed-filter" className="user-feed-filter-dropdown" defaultValue="all" onChange={filterMoon}>
                         <option value="all">All</option>
                         <option value="aries">Aries</option>
@@ -88,9 +99,9 @@ function Matches () {
                         <option value="aquarius">Aquarius</option>
                         <option value="pisces">Pisces</option>
                     </select></label>
-                
-                
-                    <label>Rising: 
+
+
+                    <label>Rising &nbsp;
                     <select id="user-feed-filter" className="user-feed-filter-dropdown" defaultValue="all" onChange={filterRising}>
                         <option value="all">All</option>
                         <option value="aries">Aries</option>
@@ -107,18 +118,18 @@ function Matches () {
                         <option value="pisces">Pisces</option>
                     </select></label>
                 </form>
-            </div>
+            </div>}
+
+            {matchesExist || <h1>no matches yet</h1>  }
 
             <div className="matches-container">
-                
-                <div className="matches-left">
-                    {matches} 
-                </div>
-
-                <div className="matches-right">
-                    <Chat />
-                </div>
+                    {matches}
             </div>
+
+            <div ref={messageFormRef}>
+                <MessageForm />
+            </div>
+
         </div>
     )
 }

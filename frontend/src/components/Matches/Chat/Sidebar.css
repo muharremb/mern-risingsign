@@ -1,0 +1,41 @@
+.invisible {
+  display:none;
+  /* height: 10px; */
+  /* width: 0px; */
+  background-color:black;
+}
+
+.chat-button {
+  list-style: none;
+  background-color: #5b0e7a;
+
+  width: 100px;
+  text-align: center;
+  border-radius: 4px;
+  margin-top: 4px;
+  margin-bottom: 10px;
+}
+
+.selected-chat-card {
+  /* background-color: rgb(146, 146, 182) */
+  border: 1px solid rgb(178, 178, 180);
+}
+
+#message-field-and-button {
+  padding-bottom: 100px;;
+}
+
+.typing-bubbles {
+  display: flex;
+  justify-content: center;
+  font-weight: bolder;
+  font-size: 40px;
+  margin-bottom:10px;
+  /* margin-top:-20px; */
+}
+
+.messages-date {
+  /* background-color:blue; */
+  margin-top: 5px;
+  text-align: center;
+}

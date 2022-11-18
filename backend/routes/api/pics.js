@@ -30,8 +30,10 @@ const upload = multer({
 router.post('/upload', upload.single('image-upload'), async (req, res) => {
    console.log(req);
    console.log(req.file.location);
+
    const possibleDouble = req.file.location.substr(8, 29);
    let goodUrl;
+
    const urlBeginning = req.file.location.substr(0, 8);
    const urlEnding = req.file.location.substr(38, (req.file.location.length - 1)) 
 

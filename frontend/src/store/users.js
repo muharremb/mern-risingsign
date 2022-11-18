@@ -39,18 +39,13 @@ export const uploadPic = picData => async dispatch => {
     formData.append("uploaderId", uploaderId)
     formData.append("isProfile", isProfile)
 
-    for (let [key, value] of formData) {
-        console.log(key, value);
-    }
- 
- 
     const res = await jwtFetch('/api/pics/upload', {
        method: 'POST',
        body: formData
     })
-    
+
     let data = await res.json();
- 
+
     return dispatch(receiveCurrentUser(data));
 }
 
@@ -84,6 +79,7 @@ export const fetchUsers = (options) => async dispatch => {
         res = await jwtFetch(`/api/users/index?${optionsParams}`);
     }
     const users = await res.json();
+    console.log("in fetch users, users are", users)
     dispatch(receiveUsers(users));
 }
 
@@ -105,7 +101,7 @@ export const likeUser = (likerId, likeeId) => async dispatch => {
     const {liker} = await res.json();
     dispatch(receiveUser(liker));
     dispatch(receiveCurrentUser(liker));
-} 
+}
 export const unmatchUser = (likerId, likeeId) => async dispatch => {
     const reqBody = {
         liker: likerId,
@@ -120,7 +116,7 @@ export const unmatchUser = (likerId, likeeId) => async dispatch => {
     const {liker} = await res.json();
     dispatch(receiveUser(liker));
     dispatch(receiveCurrentUser(liker));
-} 
+}
 
 const initialState = {};
 

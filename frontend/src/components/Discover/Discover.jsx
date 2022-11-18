@@ -23,17 +23,22 @@ function Discover () {
         };
     }, []);
 
+
+    async function fetchData() {
+        console.log("fetching data")
+        await dispatch(fetchUsers({skip: userCount.current, limit: 8, likes: sessionUser.likes}));
+        isFetching.current = false;
+        userCount.current += 8;
+    }
+
     const handleScroll = () => {
+        console.log("in handle scroll")
         if (window.innerHeight + document.querySelector("#clear-box").scrollTop < document.querySelector("#clear-box").scrollHeight || isFetching.current) {
+            console.log("returning in handle scroll")
             return;
         };
+        console.log("made it past early return")
         isFetching.current = true;
-        async function fetchData() {
-            await dispatch(fetchUsers({skip: userCount.current, limit: 8, likes: sessionUser.likes}));
-            isFetching.current = false;
-            userCount.current += 8;
-        }
-
         fetchData();
     }
 
@@ -61,10 +66,10 @@ function Discover () {
 
 
         <div id="discover-container">
-            <h1 className="heading" >Discover</h1>
-            <div id="filters">Filters | &nbsp;
+            <h1 className="heading" ></h1>
+            <div id="filters">
                 <form className="page-filter">
-                    <label>Sun:
+                    <label>Sun &nbsp;
                     <select id="user-feed-filter" className="user-feed-filter-dropdown" defaultValue="all" onChange={filterSun}>
                         <option value="all">All</option>
                         <option value="aries">Aries</option>
@@ -82,7 +87,7 @@ function Discover () {
                     </select></label>
 
 
-                    <label>Moon:
+                    <label>Moon &nbsp;
                     <select id="user-feed-filter" className="user-feed-filter-dropdown" defaultValue="all" onChange={filterMoon}>
                         <option value="all">All</option>
                         <option value="aries">Aries</option>
@@ -100,7 +105,7 @@ function Discover () {
                     </select></label>
 
 
-                    <label>Rising:
+                    <label>Rising &nbsp;
                     <select id="user-feed-filter" className="user-feed-filter-dropdown" defaultValue="all" onChange={filterRising}>
                         <option value="all">All</option>
                         <option value="aries">Aries</option>

@@ -3,62 +3,39 @@
     width: 70%;
 }
 
-.matches-list {
-    margin-top: 5px;
-    display: flex;
-    flex-direction: column;
-    max-width: 25%;
-    border-radius: 8px;
-    padding: 0 5px 0 5px;
-    background-color: #410b5f;
-    height: 80px;
-    overflow-y: scroll;
+#message-form-container {
+    animation: changeIn 2s, fadeIn 2s;
+    width: 70vw;
 }
 
-.matches-list li {
-    cursor: pointer;
-    list-style: none;
-    margin: 5px 0 5px 0;
-    padding-left: 10px;
-    transition: 0.2s;
-    border-radius: 4px;
-    color: #ffbb10cf;
-}
-
-.matches-list li:hover {
-    background-color: #530f73;
-}
-
-.matches-list::-webkit-scrollbar {
-    background-color: #410b5f;
-    border-radius: 0 8px 8px 0;
-    width: 12px;
-}
-
-
-.matches-list::-webkit-scrollbar-thumb {
-    border-radius: 8px;
-    background-color: #ffbb1090;
-}
-
-.matches-list:hover::-webkit-scrollbar-thumb {
-    background-color: #ffbb10cf;
-}
 
 .display-messages {
-    height: 27vh;
-    width: 30vw;
+    height: 40vh;
     overflow: auto;
-    /* overflow: scroll-y; */
     list-style: none;
     border: 1px solid #ffffff55;
     padding: 5px 10px;
     border-radius: 8px;
     color: #ffbb10cf;
-    display: flex;
+    /* align-items: center; */
+    /* display: flex; */
     flex-direction: column-reverse;
-    /* justify-content: flex-end; */
+    margin-top: 40px;
+    overflow-x: hidden;
+
+    /* width: */
 }
+
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+
+  @keyframes changeIn {
+    0% { width: 0; }
+    100% { width: 70vw; }
+  }
+
 
 .display-messages::-webkit-scrollbar {
     background-color: #410b5f;
@@ -78,9 +55,17 @@
     overflow-y: scroll;
 }
 
-.chat-message {
-    border-bottom: 1px solid #ffffff55;
+.display-messages > .chat-message {
+    border-bottom: .2px solid #ffffff55;
     padding-bottom: 5px;
+    padding-top: 5px;
+}
+
+.last-chat-message{
+
+    padding-top: 5px;
+    margin-bottom:-5px;
+    /* background-color:blue; */
 }
 
 .chat-message-current-user {
@@ -89,8 +74,11 @@
 
 
 .message-form {
-    margin-top: 10px;
-    width: 33.4vw;
+    margin-top: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* width: 100; */
 }
 
 .message-form input {
@@ -129,7 +117,3 @@
 #chat h2 {
     margin: 0;
 }
-
-/* .messages-list{
-    overflow-y: scroll;
-} */

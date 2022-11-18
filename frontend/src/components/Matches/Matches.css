@@ -1,14 +1,27 @@
 .matches-outer-container {
+    /* position:relative; */
     min-height: 100vh;
     padding-bottom: 50px;
-    padding-top: 2%;
-    padding-left: 3%;
+    /* padding-top: 2%; */
+    /* padding-left: 3%; */
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    /* margin-top: 800px; */
+    /* padding-top: 10000px; */
 }
 
 .matches-container {
     display: flex;
-    margin: 0 2% 0 1%;
+
+    flex-wrap: wrap;
+    flex-direction: row;
+    /* align-items: center; */
+    justify-content: center;
+    width: 100vw;
+    margin-bottom: 0;
 }
 
 .heading {
@@ -32,6 +45,9 @@
     display: flex;
     flex-direction: column;
     width: 50%;
+    background-color:black;
+    align-items: flex-start;
+   /* justify-content:center; */
 }
 
 .matches-left .user-card {
@@ -39,31 +55,23 @@
 }
 
 .them {
-    background-color: powderblue;
+    /* background-color: powderblue; */
     display: flex;
     justify-content: right;
+    /* flex-direction: row-reverse; */
     /* scroll-snap-align: end; */
 }
 
 .you {
-    background-color: green;
+    /* background-color: green; */
     display: flex;
     margin-top: auto;
 }
 
-/* ul{
-    overflow: auto;
-} */
-
-/* .you:last-child{
-    scroll-snap-align: end;
-    scroll-margin-block-end: 6rem;
-} */
-
 #messages-list{
     background-color:black;
     display: flex;
-    flex-direction: column;
+    /* flex-direction: column; */
     overflow-y:scroll;
     /* justify-content:end; */
     margin-top: auto;
@@ -72,5 +80,12 @@
 #messages-container {
     border: 3px solid black;
     display: flex;
-    flex-flow: column;
+    /* flex-flow: column; */
+}
+
+
+.message-time {
+    /* background-color: blue; */
+    font-weight: lighter;
+    color: grey;
 }
