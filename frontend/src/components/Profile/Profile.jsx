@@ -11,7 +11,7 @@ function Profile () {
   const {userId} = useParams();
   const user = useSelector(state => state.users[userId] ? state.users[userId] : '');
 
- 
+
   const restoreUser = async () => {
     await dispatch(fetchUser(userId));
   }
@@ -19,7 +19,7 @@ function Profile () {
   if (!user){
     restoreUser();
   }
-  
+
   const [ pic, setPic ] = useState("");
 
   const picSubmit = e => {
@@ -37,7 +37,7 @@ function Profile () {
 
     return null
   }
- 
+
   return (
     <>
       <div className='profile-container'>
@@ -47,7 +47,7 @@ function Profile () {
           </div>
           <h1>{user.name.trim()}</h1>
         </div>
-        
+
 
         <BioPics user={user}/>
 
@@ -59,7 +59,7 @@ function Profile () {
 
       </div>
     </>
-    
+
   )
 }
 
