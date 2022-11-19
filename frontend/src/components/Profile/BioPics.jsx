@@ -8,14 +8,10 @@ import { useDispatch, useSelector } from 'react-redux';
 
 function BioPics ({user}) {
     const currentUser = useSelector(state => state.session.user ? state.session.user : null);
-    console.log("current user is", currentUser )
-    console.log("looking at user", user)
-    console.log( currentUser._id ===  user._id)
     const dispatch = useDispatch();
     // const [ pic, setPic ] = useState("");
     const [mode, setMode] = useState('bio');
 
-    // const loggedInUser =
 
     // useEffect(() => {
     //   console.log("refreshing")
@@ -69,7 +65,7 @@ function BioPics ({user}) {
           <div className='pic-side-input-container'>
                <input className='hidden-input' id='hidden-input' accept="image/png, image/gif, image/jpeg" encType="multipart/form-data" onChange={e => handleSubmit(e)} type="file" style={{display: "none"}}/>
                <div className='picture-input' id='picture-input'>
-                  {currentUser._id ===  user._id &&
+                  {currentUser._id === user._id &&
                     <button type="button" onClick={hiddenClick}>Add a photo</button>}
                   {/* <input className='file-text' value={pic ? `${pic.name}` : ""}></input> */}
                </div>
