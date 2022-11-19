@@ -18,7 +18,7 @@ function Discover () {
 
     const dispatch = useDispatch();
 
-    const {modalProfUrl, modal, modalName} = useContext(ChatContext)
+    const {modalProfUrl, modalName} = useContext(ChatContext)
 
     useEffect(() => {
         document.getElementById('clear-box').addEventListener('scroll', handleScroll);
@@ -70,7 +70,7 @@ function Discover () {
 
     return (
 
-        <div id="discover-container">
+     <div id="discover-container">
         {<MatchedModal profUrl={modalProfUrl} name={modalName}/>}
 
             <h1 className="heading" ></h1>

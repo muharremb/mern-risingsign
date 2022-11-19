@@ -1,18 +1,38 @@
 #matched-modal {
     position: fixed;
-    min-height: 25vh;
-    min-width: 35.2vh;
+    /* min-height: 25vh; */
+    /* min-width: 35.2vh; */
     margin: auto;
     background: radial-gradient(circle, rgba(113,14,143,1) 0%, rgba(74,23,84,0.8) 40%, rgba(14,0,20,0) 100%);
     color: inherit;
     border: none;
     border-radius: 10%;
     z-index: 5;
+    animation: bringForward 3s;
+    /* background-color: blue; */
+
 }
 
 #matched-modal::backdrop {
+    /* background-color: #00000090; */
+    /* background-color: #000000; */
+    /* background-color: transparent; */
     background-color: #00000090;
+
+    animation: changeBackgroundColor 4s;
 }
+
+@keyframes changeBackgroundColor {
+    from {
+        background-color: transparent;
+    }
+
+    to {
+        background-color: #00000090;
+    }
+}
+
+
 
 #matched-modal a {
     color: orange;
@@ -21,6 +41,7 @@
 }
 
 #matched-modal-contents {
+
     display: flex;
     flex-direction: column;
     /* height: 25vh; */
@@ -28,7 +49,29 @@
     align-items: center;
 }
 
-.modal-pic {
-    width: 600px;
-    height: 500px;
+@keyframes bringForward {
+    from {
+       opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
 }
+
+.modal-pic {
+    margin-top: 40px;
+    margin-bottom: 40px;
+    width: 600px;
+    height: 550px;
+}
+
+#matched-with {
+    padding: 60px;
+    padding-top: 30px;
+    /* background-color: blue; */
+}
+
+.bring-forward {
+    z-index: 50;
+}
+

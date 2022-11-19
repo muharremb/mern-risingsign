@@ -9,6 +9,7 @@ import './UserCard.css'
 
 
 function UserCard({user}){
+
     const dispatch = useDispatch();
 
     const sessionUser = useSelector(state => state.session.user);
@@ -17,6 +18,7 @@ function UserCard({user}){
     const {setModalProfUrl, setModalName} = useContext(ChatContext)
 
     useEffect(() => {
+
         if(sessionUser.likes.includes(user._id) && sessionUser.likers.includes(user._id)) {
             setIsLiked(true)
             setIsMatched(true);
@@ -32,6 +34,8 @@ function UserCard({user}){
         // document.getElementById('matched-modal').classList.add('a')
        setModalProfUrl(user.profileImageURL)
        setModalName(user.name)
+       document.getElementById('background').classList.add('bring-forward')
+
        if (sessionUser) document.getElementById('matched-modal').showModal();
 
         if(sessionUser.likers.includes(user._id)) {

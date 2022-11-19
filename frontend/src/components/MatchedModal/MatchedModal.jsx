@@ -10,14 +10,17 @@ function MatchedModal(props){
 
     const {setActivateModal} = useContext(ChatContext)
 
-    const closeModal = () => {
-        // console.log("exiting from modal")
-        document.getElementById('matched-modal').close();
-        // props.modalFunc(false)
-    }
+    // const closeModal = () => {
+    //     // console.log("exiting from modal")
+    //     document.getElementById('matched-modal').close();
+    //    document.getElementById('background').classList.remove('bring-forward')
+    //     // props.modalFunc(false)
+    // }
+
     window.onclick = function(event) {
         if (event.target == modal) {
-        document.getElementById('matched-modal').close();
+       document.getElementById('matched-modal').close();
+       document.getElementById('background').classList.remove('bring-forward')
 
         }
       }
@@ -27,13 +30,18 @@ function MatchedModal(props){
         // console.log("there is a user", user)
     }, [])
 
+    const test= () => {
+       document.getElementById('background').classList.remove('bring-forward')
+
+    }
+
     return (
         // { }
-        <dialog id="matched-modal">
+        <dialog id="matched-modal" >
             <div id="matched-modal-contents">
           <img className="modal-pic" src={profUrl}></img>
                 <h1>You matched with {props.name}!</h1>
-                <Link to="/matches">Go to Matches Page to Chat</Link>
+                <Link onClick={test} to="/matches" id="matched-with">Go to Matches Page to Chat</Link>
                 {/* <button onClick={closeModal}>Stay Here</button> */}
             </div>
         </dialog>
