@@ -17,6 +17,7 @@
 #matched-modal a {
     color: orange;
     text-decoration: underline;
+    font-size: 50px;
 }
 
 #matched-modal-contents {
