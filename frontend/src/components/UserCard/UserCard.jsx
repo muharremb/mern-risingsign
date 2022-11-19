@@ -1,9 +1,12 @@
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import { fetchUser, likeUser, unmatchUser } from '../../store/users';
-import './UserCard.css'
 import Sidebar from '../Matches/Chat/Sidebar'
+import {ChatContext} from '../../context/chatContext'
+import './UserCard.css'
+
+
 
 function UserCard({user}){
     const dispatch = useDispatch();
@@ -11,6 +14,7 @@ function UserCard({user}){
     const sessionUser = useSelector(state => state.session.user);
     const [isMatched, setIsMatched] = useState(false);
     const [isLiked, setIsLiked] = useState(false);
+    const {setModalProfUrl} = useContext(ChatContext)
 
     useEffect(() => {
         if(sessionUser.likes.includes(user._id) && sessionUser.likers.includes(user._id)) {
@@ -23,7 +27,12 @@ function UserCard({user}){
 
     const handleLikeButtonClick = (e) => {
         e.preventDefault();
+        console.log("handle click is running")
         setIsLiked(true);
+        // document.getElementById('matched-modal').classList.add('a')
+       setModalProfUrl(user.profileImageURL)
+       if (sessionUser) document.getElementById('matched-modal').showModal();
+
         if(sessionUser.likers.includes(user._id)) {
             setIsMatched(true);
             document.getElementById('matched-modal').showModal();
@@ -63,7 +72,6 @@ function UserCard({user}){
                  </div>
 
             </div>
-
 
             <div className="user-card-right">
             <div id="signs">

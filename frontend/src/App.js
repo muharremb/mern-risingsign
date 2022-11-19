@@ -6,7 +6,7 @@ import NavBar from './components/NavBar/NavBar';
 import TitlePage from './components/TitlePage/TitlePage';
 import {getCurrentUser} from './store/session';
 import DevButton from './components/Developers/DevButton';
-import MatchedModal from './components/MatchedModal/MatchedModal';
+// import MatchedModal from './components/MatchedModal/MatchedModal';
 import Background from './components/Background/Background';
 import DisplayCircle from './components/DisplayCircle/DisplayCircle';
 
@@ -41,10 +41,10 @@ function App() {
   return loaded && (
     <>
 
-    {!onMatchPage && <MatchedModal />}
+    {/* {!onMatchPage && <MatchedModal />} */}
 
       <Background />
-      
+
       <div className='clear-box' id='clear-box'>
         <DisplayCircle />
         { location.pathname === "/" && <TitlePage/>}
@@ -52,7 +52,7 @@ function App() {
       </div>
 
       { location.pathname !== "/developers" && <DevButton /> }
-    
+
 
     </>
   );

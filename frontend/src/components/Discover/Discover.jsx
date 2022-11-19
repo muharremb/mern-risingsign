@@ -3,7 +3,10 @@ import { useEffect, useState } from 'react';
 import { fetchUsers } from '../../store/users';
 import UserCard from '../UserCard/UserCard';
 import './Discover.css';
-import { useRef } from 'react';
+import { useRef, useContext } from 'react';
+import MatchedModal from '../MatchedModal/MatchedModal';
+import {ChatContext} from '../../context/chatContext'
+
 
 function Discover () {
     const [sunFilter, setSunFilter] = useState('all');
@@ -13,6 +16,9 @@ function Discover () {
     const userCount = useRef(0);
 
     const dispatch = useDispatch();
+
+    const {modalProfUrl} = useContext(ChatContext)
+    console.log("modal prof url is", modalProfUrl)
 
     useEffect(() => {
         document.getElementById('clear-box').addEventListener('scroll', handleScroll);
@@ -32,12 +38,12 @@ function Discover () {
     }
 
     const handleScroll = () => {
-        console.log("in handle scroll")
+        // console.log("in handle scroll")
         if (window.innerHeight + document.querySelector("#clear-box").scrollTop < document.querySelector("#clear-box").scrollHeight || isFetching.current) {
-            console.log("returning in handle scroll")
+            // console.log("returning in handle scroll")
             return;
         };
-        console.log("made it past early return")
+        // console.log("made it past early return")
         isFetching.current = true;
         fetchData();
     }
@@ -64,8 +70,9 @@ function Discover () {
 
     return (
 
-
         <div id="discover-container">
+        <MatchedModal profUrl={modalProfUrl}/>
+
             <h1 className="heading" ></h1>
             <div id="filters">
                 <form className="page-filter">
@@ -124,6 +131,7 @@ function Discover () {
                 </form>
             </div>
             <div id="user-card-container">
+
                 {users[0] && users.map((user) => {
                     if (
                         ('all' === sunFilter || user.horoscope.sun.Sign.key === sunFilter) &&

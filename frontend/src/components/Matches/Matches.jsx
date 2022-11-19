@@ -14,6 +14,9 @@ function Matches () {
     const [matchesExist, setMatchesExist] = useState(true);
     const dispatch = useDispatch();
 
+    // const user = useSelector(state => state.users ? state.users[userId] : '');
+
+
     useEffect(() => {
         const likes = sessionUser.likes;
         const likers = sessionUser.likers;

@@ -20,6 +20,12 @@
     row-gap: 5%;
     column-gap: -100%;
     padding-bottom: 3.5rem;
+
+    /* display: flex;
+    flex-direction: column; */
+
+
+
 }
 
 .heading {
