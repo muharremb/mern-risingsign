@@ -22,7 +22,12 @@
 #matched-modal-contents {
     display: flex;
     flex-direction: column;
-    height: 25vh;
+    /* height: 25vh; */
     justify-content: space-around;
     align-items: center;
+}
+
+.modal-pic {
+    width: 600px;
+    height: 500px;
 }

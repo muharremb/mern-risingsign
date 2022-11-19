@@ -1,14 +1,19 @@
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { useEffect, useState, memo} from 'react';
+import { useEffect, useState, memo, useContext} from 'react';
+import {ChatContext} from '../../context/chatContext'
 import './MatchedModal.css'
 
 function MatchedModal(props){
     const profUrl = props.profUrl
+    const modal = document.getElementById('matched-modal')
+
+    const {setActivateModal} = useContext(ChatContext)
 
     const closeModal = () => {
         // console.log("exiting from modal")
         document.getElementById('matched-modal').close();
+        // props.modalFunc(false)
     }
 
     useEffect(() => {
@@ -19,12 +24,9 @@ function MatchedModal(props){
     return (
         // { }
         <dialog id="matched-modal">
-       {/* { console.log("user in modal is", user) } */}
             <div id="matched-modal-contents">
-          {/* <h1>{profUrl}</h1> */}
-          <img src={profUrl}></img>
-            {/* <h1>{ document.getElementById('matched-modal').classList}</h1> */}
-                <h1>You matched!</h1>
+          <img className="modal-pic" src={profUrl}></img>
+                <h1>You matched with {props.name}!</h1>
                 <Link to="/matches">Go to Matches Page to Chat</Link>
                 <button onClick={closeModal}>Stay Here</button>
             </div>

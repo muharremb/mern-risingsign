@@ -14,7 +14,7 @@ function UserCard({user}){
     const sessionUser = useSelector(state => state.session.user);
     const [isMatched, setIsMatched] = useState(false);
     const [isLiked, setIsLiked] = useState(false);
-    const {setModalProfUrl} = useContext(ChatContext)
+    const {setModalProfUrl, setModalName} = useContext(ChatContext)
 
     useEffect(() => {
         if(sessionUser.likes.includes(user._id) && sessionUser.likers.includes(user._id)) {
@@ -31,6 +31,7 @@ function UserCard({user}){
         setIsLiked(true);
         // document.getElementById('matched-modal').classList.add('a')
        setModalProfUrl(user.profileImageURL)
+       setModalName(user.name)
        if (sessionUser) document.getElementById('matched-modal').showModal();
 
         if(sessionUser.likers.includes(user._id)) {

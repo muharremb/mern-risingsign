@@ -25,13 +25,17 @@ function Root() {
   const [privateMsg, setPrivateMsg] = useState({});
   const [newMsgs, setNewMsgs] = useState([]);
   const [currentRoomName, setCurrentRoomName] = useState('');
-  const [ signupLevel, setSignupLevel ] = useState(1);
-  const [modalProfUrl, setModalProfUrl] = useState(false);
+
+  const [signupLevel, setSignupLevel] = useState(1);
+  const [modalProfUrl, setModalProfUrl] = useState('');
+  const [modalName, setModalName] = useState('');
+
+
 
 
   return (
     <Provider store={store}>
-      <ChatContext.Provider value={{ modalProfUrl, setModalProfUrl, signupLevel, setSignupLevel, socket, rooms, setRooms, currentRoom, setCurrentRoom, members, setMembers, messages, setMessages, privateMsg, setPrivateMsg, newMsgs, setNewMsgs, currentRoomName, setCurrentRoomName }}>
+      <ChatContext.Provider value={{ setModalName, modalName, modalProfUrl, setModalProfUrl, signupLevel, setSignupLevel, socket, rooms, setRooms, currentRoom, setCurrentRoom, members, setMembers, messages, setMessages, privateMsg, setPrivateMsg, newMsgs, setNewMsgs, currentRoomName, setCurrentRoomName }}>
         <BrowserRouter>
             <App />
         </BrowserRouter>
