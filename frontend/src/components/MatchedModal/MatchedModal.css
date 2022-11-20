@@ -10,7 +10,7 @@
     z-index: 5;
     width: 750px;
     height: 600px;
-    animation: zoomIn 3s, bringForward 3s, gold-glow 2s ease-in-out infinite alternate;
+    animation: zoomIn 1s, bringForward 3s, gold-glow 2s ease-in-out infinite alternate;
 }
 
 @keyframes zoomIn {
@@ -18,7 +18,7 @@
     height: 100%;
     width: 70vw;
     }
-    
+
     to {
     width: 750px;
     height: 600px;
@@ -39,8 +39,6 @@
     }
 }
 
-
-
 #matched-modal a {
     color: orange;
     text-decoration: underline;
@@ -53,7 +51,7 @@
     /* height: 25vh; */
     justify-content: space-around;
     align-items: center;
-    animation: fadeIn 8s;
+    animation: fadeIn 5s;
 }
 
 @keyframes bringForward {
@@ -70,25 +68,27 @@
     margin-bottom: 40px;
     width: 400px;
     height: 350px;
-    animation: fadeIn 10s;
+    animation: fadeIn 4s;
 
 }
 
 #matched-with {
     padding: 60px;
     padding-top: 30px;
-    animation: fadeIn 8s;
+    animation: fadeIn 5s;
 
     /* background-color: blue; */
 }
 
 #you-matched {
-    animation: fadeIn 8s;
-
-
+    animation: fadeIn 5s;
 }
 
 .bring-forward {
     z-index: 50;
+}
+
+.glowing {
+    animation: gold-glow 2s ease-in-out infinite alternate;
 }
 

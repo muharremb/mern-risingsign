@@ -22,10 +22,6 @@
     flex-direction: column-reverse;
     margin-top: 40px;
     overflow-x: hidden;
-    border: 2px solid green;
-
-
-    /* width: */
 }
 
 @keyframes fadeIn {

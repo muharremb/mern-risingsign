@@ -17,9 +17,33 @@
 }
 
 .selected-chat-card {
-  /* background-color: rgb(146, 146, 182) */
-  border: 1px solid rgb(178, 178, 180);
+  animation: selected-glow 2s ease-in-out infinite alternate;
+  position: relative;
+  /* width: 400px; */
+  border-radius: 8px;
+  transition: 0.2s ease-in;
+  box-shadow: 0 0 5px #00000035;
+  cursor: pointer;
+  text-align: center;
+  flex-grow: 0;
+  /* margin: 20px 30px 20px 30px; */
+  margin: 20px;
+  width: 400px;
+
+  height: 130px;
+
+
 }
+
+@keyframes selected-glow {
+  from {
+    box-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #985ddb, 0 0 40px #241b49, 0 0 50px #e66b00, 0 0 60px #e66b00, 0 0 70px #e66b00;
+  }
+  to {
+    box-shadow: 0 0 10px #fff, 0 0 20px #ffe37c, 0 0 40px #ffe37c, 0 0 50px #ffe37c, 0 0 60px #ffe37c, 0 0 70px #faf9f7, 0 0 80px #ece6cf;
+    }
+}
+
 
 #message-field-and-button {
   padding-bottom: 100px;;
@@ -39,3 +63,4 @@
   margin-top: 5px;
   text-align: center;
 }
+

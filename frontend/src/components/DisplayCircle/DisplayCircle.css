@@ -79,21 +79,12 @@
 }
 
 .display-circle[data-page="matches"] {
-   /* margin-top: 200px; */
-   /* padding-top:100px; */
-   /* margin-bottom: 100px; */
    display: flex;
    width: 80%;
    height: 100px;
    align-items:flex-start;
    justify-content: center;
    margin-top: 40px;
-
-
-   /* min-width:100px; */
-   /* width: max-content; */
-   /* height: 700px; */
-   /* transition: width 5s ease; */
    animation: changeWidth 1s, fadeIn 3s, gold-glow 2s ease-in-out infinite alternate;
 }
 @keyframes fadeIn {

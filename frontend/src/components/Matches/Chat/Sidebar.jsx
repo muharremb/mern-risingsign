@@ -48,7 +48,11 @@ function Sidebar (props) {
     const allCards =  e.target.parentElement.parentElement.parentElement.parentElement.parentElement.children
     for (let i=0; i < allCards.length; i++) {
       allCards[i].classList.remove("selected-chat-card")
+    allCards[i].classList.add("user-card")
+
     }
+    selectedCard.classList.remove("user-card")
+
     selectedCard.classList.add("selected-chat-card")
 
 

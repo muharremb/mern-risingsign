@@ -12,9 +12,10 @@
     cursor: pointer;
     text-align: center;
     flex-grow: 0;
-    /* margin: 10px; */
+    margin: 20px;
     /* padding: 0; */
     animation:fadeIn 3s;
+    height: 130px;
     /* height: 8rem; */
     /* height: 20vh; */
 }

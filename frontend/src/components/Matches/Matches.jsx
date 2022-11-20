@@ -133,7 +133,7 @@ function Matches () {
                 <MessageForm />
             </div>
             <div />
-            <h1 id="bottom-of-matches"> i'm the bottom</h1>
+            <h1 id="bottom-of-matches"></h1>
 
         </div>
     )

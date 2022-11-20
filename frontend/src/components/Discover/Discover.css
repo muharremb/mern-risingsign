@@ -31,16 +31,11 @@
 
     /* /* display: flex; */
     display: flex;
-    flex-direction: column; 
+    flex-direction: column;
     align-items: center;
     justify-content: flex-start;
     row-gap: 60px;
     transition: all 1.2s ease;
-
-    /* margin-top: 100px; */
-
-
-
 }
 
 .heading {

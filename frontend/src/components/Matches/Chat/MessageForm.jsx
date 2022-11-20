@@ -22,21 +22,14 @@ function MessageForm () {
     messagesEl.scrollTop = messagesEl.scrollHeight
   }
 
-  // useEffect(()=>{
-  //   autoScroll()
-  // }, [messages, currentRoomName])
+  useEffect(()=>{
+    setTimeout(()=>{autoScroll()}, 500)
+  }, [messages, currentRoomName])
 
 
   useEffect(()=>{
     const bottom = document.getElementById("bottom-of-matches")
-    console.log("in use effect setting room name to", currentRoomName)
     refBottom.current.scrollIntoView({behavior:'smooth'})
-    setTimeout(() => {
-      }, 1500)
-
-    // console.log("in use effect current room is", currentRoomName)
-    // console.log("bottom is", bottom)
-
   }, [currentRoomName])
 
 
@@ -164,7 +157,7 @@ function MessageForm () {
     }
 
     </div>
-    <h1 ref={refBottom}>ref bottom</h1>
+    <h1 ref={refBottom}></h1>
     </>
   )
 }
