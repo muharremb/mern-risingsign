@@ -28,6 +28,7 @@ function MessageForm () {
 
   useEffect(()=>{
     const bottom = document.getElementById("message-field-and-button")
+
     bottom.scrollIntoView({behavior:'smooth'})
 
   }, [currentRoomName])

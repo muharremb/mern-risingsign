@@ -39,7 +39,24 @@
    margin-top: 130px;
 }
 
-.display-circle[data-page="discover"], .display-circle[data-page="developers"], .display-circle[data-page="profile"]{
+.display-circle[data-page="discover"]{
+
+   width: 60vw;
+   /* height: 800px; */
+   border-radius: 0;
+   /* animation: none; */
+   border: none;
+   box-shadow: none;
+   transition: all 1.5s ease-in;
+   overflow: visible;
+
+   display: flex;
+   /* display: flex;
+   justify-content: center;; */
+   /* overflow: ; */
+}
+
+.display-circle[data-page="developers"], .display-circle[data-page="profile"]{
    width: 100vw;
    height: 100%;
    border-radius: 0;

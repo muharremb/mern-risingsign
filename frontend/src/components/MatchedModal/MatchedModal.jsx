@@ -40,7 +40,7 @@ function MatchedModal(props){
         <dialog id="matched-modal" >
             <div id="matched-modal-contents">
           <img className="modal-pic" src={profUrl}></img>
-                <h1>You matched with {props.name}!</h1>
+                <h1 id="you-matched">You matched with {props.name}!</h1>
                 <Link onClick={test} to="/matches" id="matched-with">Go to Matches Page to Chat</Link>
                 {/* <button onClick={closeModal}>Stay Here</button> */}
             </div>

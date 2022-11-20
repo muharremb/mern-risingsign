@@ -8,17 +8,27 @@
     border: none;
     border-radius: 10%;
     z-index: 5;
-    animation: bringForward 3s;
-    /* background-color: blue; */
+    width: 750px;
+    height: 600px;
+    animation: zoomIn 3s, bringForward 3s, gold-glow 5s ease-in-out infinite alternate;
 
 }
 
-#matched-modal::backdrop {
-    /* background-color: #00000090; */
-    /* background-color: #000000; */
-    /* background-color: transparent; */
-    background-color: #00000090;
+@keyframes zoomIn {
+    from {
+        height: 100%;
+        width: 70vw;
 
+    }
+    to {
+    width: 750px;
+    height: 600px;
+
+    }
+}
+
+#matched-modal::backdrop {
+    background-color: #00000090;
     animation: changeBackgroundColor 4s;
 }
 
@@ -26,7 +36,6 @@
     from {
         background-color: transparent;
     }
-
     to {
         background-color: #00000090;
     }
@@ -41,12 +50,12 @@
 }
 
 #matched-modal-contents {
-
     display: flex;
     flex-direction: column;
     /* height: 25vh; */
     justify-content: space-around;
     align-items: center;
+    animation: fadeIn 8s;
 }
 
 @keyframes bringForward {
@@ -61,14 +70,24 @@
 .modal-pic {
     margin-top: 40px;
     margin-bottom: 40px;
-    width: 600px;
-    height: 550px;
+    width: 400px;
+    height: 350px;
+    animation: fadeIn 10s;
+
 }
 
 #matched-with {
     padding: 60px;
     padding-top: 30px;
+    animation: fadeIn 8s;
+
     /* background-color: blue; */
+}
+
+#you-matched {
+    animation: fadeIn 8s;
+
+
 }
 
 .bring-forward {

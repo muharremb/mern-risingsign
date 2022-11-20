@@ -36,9 +36,10 @@ function UserCard({user}){
        setModalName(user.name)
        document.getElementById('background').classList.add('bring-forward')
 
-       if (sessionUser) document.getElementById('matched-modal').showModal();
+          if (sessionUser) document.getElementById('matched-modal').showModal();
 
-        if(sessionUser.likers.includes(user._id)) {
+       if(sessionUser.likers.includes(user._id)) {
+               document.getElementById('background').classList.add('bring-forward')
             setIsMatched(true);
             document.getElementById('matched-modal').showModal();
         }
@@ -56,9 +57,6 @@ function UserCard({user}){
     if (!user) return null;
     if (!sessionUser) return null;
 
-    const highlightCard = () => {
-
-    }
 
     const upFirstLetter = (str) => {
         return str[0].toUpperCase() + str.slice(1)
@@ -105,7 +103,7 @@ function UserCard({user}){
                             <button onClick={handleLikeButtonClick}>Like</button>
                         )}
 
-                        {isMatched && <Sidebar userId={user._id} onClick={highlightCard}/>}
+                        {isMatched && <Sidebar userId={user._id}/>}
                 </div>
             </div>
 
