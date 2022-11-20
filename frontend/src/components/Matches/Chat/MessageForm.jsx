@@ -6,7 +6,7 @@ import './Sidebar.css'
 function MessageForm () {
   const user = useSelector(state => state.session.user ? state.session.user : null);
   const userName = useSelector(state => state.session.user.name);
-  const bottomRef = useRef(null)
+  const refBottom = useRef(null);
 
   const [msg, setMsg] = useState('');
   const { rememberRoom, setRememberRoom, socket, messages, setMessages, currentRoom, setCurrentRoom, storeRoom, currentRoomName } = useContext(ChatContext);
@@ -22,14 +22,20 @@ function MessageForm () {
     messagesEl.scrollTop = messagesEl.scrollHeight
   }
 
-  useEffect(()=>{
-    autoScroll()
-  }, [messages, currentRoomName])
+  // useEffect(()=>{
+  //   autoScroll()
+  // }, [messages, currentRoomName])
+
 
   useEffect(()=>{
-    const bottom = document.getElementById("message-field-and-button")
+    const bottom = document.getElementById("bottom-of-matches")
+    console.log("in use effect setting room name to", currentRoomName)
+    refBottom.current.scrollIntoView({behavior:'smooth'})
+    setTimeout(() => {
+      }, 1500)
 
-    bottom.scrollIntoView({behavior:'smooth'})
+    // console.log("in use effect current room is", currentRoomName)
+    // console.log("bottom is", bottom)
 
   }, [currentRoomName])
 
@@ -123,9 +129,7 @@ function MessageForm () {
           </div>
         </div>
 
-        <div id="message-field-and-button"
-        ref={bottomRef}
-        >
+        <div id="message-field-and-button">
         <form onSubmit={handleSubmit}
         className="message-form">
         <input
@@ -160,6 +164,7 @@ function MessageForm () {
     }
 
     </div>
+    <h1 ref={refBottom}>ref bottom</h1>
     </>
   )
 }

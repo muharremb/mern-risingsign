@@ -16,7 +16,7 @@
    height: 93vh;
    width: 100%;
    background: transparent;
-   box-shadow: 0em 0em .4em .08em rgb(78, 78, 78);
+   /* box-shadow: 0em 0em .4em .08em rgb(78, 78, 78); */
    z-index: 1;
    animation: visible 1.2s;
 }
@@ -38,16 +38,16 @@
 }
 
 .picture > img {
-   
+
    border-radius: 50%;
    width: 122%;
    height: 132%;
    position: relative;
    top: 3.1px;
    right: 0;
-   
 
-   
+
+
 }
 
 
@@ -140,7 +140,7 @@
 /* .profile-button-row {
    margin-top: 5vh;
    padding-left: 2.6vw;
-   
+
 } */
 
 body {

@@ -14,7 +14,18 @@
     flex-grow: 0;
     /* margin: 10px; */
     /* padding: 0; */
-    /* animation: fadeIn 8s; */
+    animation:fadeIn 3s;
+    /* height: 8rem; */
+    /* height: 20vh; */
+}
+
+@keyframes expandCard {
+    from {
+        height: 0
+    }
+    to {
+        height: 8rem;
+    }
 }
 
 .pic-and-name {

@@ -11,26 +11,31 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    /* height: 100%; */
+    /* padding-bottom: 100px; */
 
 }
 
 #discover-container h1 {
     margin: 0;
+    /* margin-top: 1000px; */
 }
 
 #user-card-container {
-    /* position:fixed; */
-    display: grid;
-    grid-template-columns: auto auto;
+    position:relative;
+    /* display: grid;
+    grid-template-columns: auto auto; */
     /* row-gap: 5%; */
     /* column-gap: -100%; */
     padding-bottom: 3.5rem;
 
+    /* /* display: flex; */
     display: flex;
-    flex-direction: column;
+    flex-direction: column; 
     align-items: center;
     justify-content: flex-start;
     row-gap: 60px;
+    transition: all 1.2s ease;
 
     /* margin-top: 100px; */
 

@@ -34,12 +34,11 @@ function Sidebar (props) {
 
   const joinRoom = (e, isPublic = true) => {
     e.preventDefault()
+    // console.log("chat button", e.target)
     const memberId = (e.currentTarget.id);
     const userId = (user._id);
     const roomName = makeRoomName(userId, memberId);
-    // setCurrentRoom(roomName);
-    // setStoreRoom(roomName);
-    const currRoomName = e.currentTarget.className;
+    const currRoomName = e.currentTarget.classList[0];
     setCurrentRoomName(currRoomName);
     localStorage.setItem('currentRoom', roomName);
     localStorage.setItem('currentRoomName',currRoomName)
@@ -51,7 +50,6 @@ function Sidebar (props) {
       allCards[i].classList.remove("selected-chat-card")
     }
     selectedCard.classList.add("selected-chat-card")
-
 
 
   };

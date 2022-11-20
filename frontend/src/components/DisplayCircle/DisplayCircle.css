@@ -14,6 +14,22 @@
    transition: all 3s ease;
 }
 
+.display-circle[data-page="discover"]{
+
+   /* width: 60vw;
+   border-radius: 0;
+   /* display: flex; */
+
+   display: flex;
+   border-radius: 0;
+   /* width: 60vw; */
+   /* box-shadow: 0; */
+
+
+   justify-content: center;
+
+   /* transition: all 3.2s ease; */
+}
 
 .display-circle[data-page=""] {
    display: block;
@@ -22,7 +38,6 @@
    height: 700px;
    transition: all 1.2s ease;
    margin-top: 100px;
-
 }
 
 .display-circle[data-page="login"] {
@@ -39,22 +54,18 @@
    margin-top: 130px;
 }
 
-.display-circle[data-page="discover"]{
+
+
+/* .display-circle[data-page="discover"]{
 
    width: 60vw;
-   /* height: 800px; */
    border-radius: 0;
-   /* animation: none; */
-   border: none;
-   box-shadow: none;
-   transition: all 1.5s ease-in;
-   overflow: visible;
-
    display: flex;
-   /* display: flex;
-   justify-content: center;; */
-   /* overflow: ; */
-}
+
+
+   justify-content: center;
+
+} */
 
 .display-circle[data-page="developers"], .display-circle[data-page="profile"]{
    width: 100vw;

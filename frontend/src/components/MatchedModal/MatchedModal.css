@@ -10,20 +10,18 @@
     z-index: 5;
     width: 750px;
     height: 600px;
-    animation: zoomIn 3s, bringForward 3s, gold-glow 5s ease-in-out infinite alternate;
-
+    animation: zoomIn 3s, bringForward 3s, gold-glow 2s ease-in-out infinite alternate;
 }
 
 @keyframes zoomIn {
     from {
-        height: 100%;
-        width: 70vw;
-
+    height: 100%;
+    width: 70vw;
     }
+    
     to {
     width: 750px;
     height: 600px;
-
     }
 }
 
@@ -34,7 +32,7 @@
 
 @keyframes changeBackgroundColor {
     from {
-        background-color: transparent;
+        background-color: black;
     }
     to {
         background-color: #00000090;
