@@ -32,14 +32,14 @@ function UserCard({user}){
         console.log("handle click is running")
         setIsLiked(true);
         // document.getElementById('matched-modal').classList.add('a')
-       setModalProfUrl(user.profileImageURL)
-       setModalName(user.name)
-       document.getElementById('background').classList.add('bring-forward')
+        // document.getElementById('background').classList.add('bring-forward')
 
-          if (sessionUser) document.getElementById('matched-modal').showModal();
+        // if (sessionUser) document.getElementById('matched-modal').showModal();
 
-       if(sessionUser.likers.includes(user._id)) {
-               document.getElementById('background').classList.add('bring-forward')
+        if(sessionUser.likers.includes(user._id)) {
+           setModalProfUrl(user.profileImageURL)
+           setModalName(user.name)
+            document.getElementById('background').classList.add('bring-forward')
             setIsMatched(true);
             document.getElementById('matched-modal').showModal();
         }
