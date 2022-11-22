@@ -25,19 +25,15 @@ function Discover () {
 
 
     async function fetchData() {
-        console.log("fetching data")
         await dispatch(fetchUsers({skip: userCount.current, limit: 8, likes: sessionUser.likes}));
         isFetching.current = false;
         userCount.current += 8;
     }
 
     const handleScroll = () => {
-        console.log("in handle scroll")
-        if (window.innerHeight + document.querySelector("#clear-box").scrollTop < document.querySelector("#clear-box").scrollHeight || isFetching.current) {
-            console.log("returning in handle scroll")
+        if (window.innerHeight + Math.ceil(document.querySelector("#clear-box").scrollTop) < document.querySelector("#clear-box").scrollHeight || isFetching.current) {
             return;
         };
-        console.log("made it past early return")
         isFetching.current = true;
         fetchData();
     }
