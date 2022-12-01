@@ -65,7 +65,8 @@
    const io = require('socket.io')(chatServer, {
      pingTimeout: 600000,
      cors: {
-       origin: 'http://localhost:3000'  //https://rising-sign.herokuapp.com/
+      //  origin: 'http://localhost:3000'  //https://rising-sign.herokuapp.com/
+      origin: 'https://rising-sign.onrender.com/'
      }
    })
 
