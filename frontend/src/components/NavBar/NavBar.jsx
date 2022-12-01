@@ -49,7 +49,7 @@ function NavBar () {
   const getLinks = () => {
     return (
       <div className='navbar-mid'>
-        <Link className="discover-link" to={'/discover'}>discovery</Link>
+        <Link className="discover-link" to={'/discover'}>discover more</Link>
           <Link className="profile-link" to={`/profile/${currentUser._id}`}>profile</Link>
           <Link className="matches-link" to={'/matches'}>matches</Link>
       </div>
