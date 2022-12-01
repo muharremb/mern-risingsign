@@ -67,8 +67,8 @@
      cors: {
       //  origin: 'http://localhost:3000'  //https://rising-sign.herokuapp.com/
       origin: 'https://rising-sign.onrender.com/'
+      allowedHeaders: *
      }
-     allowedHeaders: *
    })
 
    io.on('connection', (socket) => {
