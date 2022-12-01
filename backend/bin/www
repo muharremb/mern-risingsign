@@ -68,6 +68,7 @@
       //  origin: 'http://localhost:3000'  //https://rising-sign.herokuapp.com/
       origin: 'https://rising-sign.onrender.com/'
      }
+     allowedHeaders: *
    })
 
    io.on('connection', (socket) => {
