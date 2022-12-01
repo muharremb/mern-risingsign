@@ -12,7 +12,7 @@ function NavBar () {
   // const { picSent, setPicSent } = useContext(ChatContext);
   const currentUser = useSelector(state => state.session.user ? state.session.user:{});
   const loggedInPic = currentUser.profileImageURL ? currentUser.profileImageURL:null;
-  
+
   const dispatch = useDispatch();
 
   const homePageRedirect = () => {
@@ -49,7 +49,7 @@ function NavBar () {
   const getLinks = () => {
     return (
       <div className='navbar-mid'>
-        <Link className="discover-link" to={'/discover'}>discover</Link>
+        <Link className="discover-link" to={'/discover'}>discover more</Link>
           <Link className="profile-link" to={`/profile/${currentUser._id}`}>profile</Link>
           <Link className="matches-link" to={'/matches'}>matches</Link>
       </div>

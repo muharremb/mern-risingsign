@@ -6,6 +6,7 @@
     width: 100%;
     /* padding-bottom: 3.5rem; */
     /* padding-left: 3%; */
+
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     animation: visible 1.2s;
     display: flex;
@@ -36,6 +37,7 @@
     justify-content: flex-start;
     row-gap: 60px;
     transition: all 1.2s ease;
+
 }
 
 .heading {
@@ -54,16 +56,19 @@ select {
 }
 
 #filters {
+    position: sticky;
+    top: 0px;
+    height: 5vh;
+    width: 100vw;
+    background-color: black;
     display: flex;
     justify-content: center;
     align-items: center;
-    overflow-x: hidden;
-    /* width: 1000px; */
-    margin-bottom: 70px;
-    margin-top: 40px;
-    margin-left: 20px;
-    font-size: 2.1vh;
+    margin-bottom: 2vh;
+    font-size: 2.5vh;
+    border-bottom: 2px solid rgba(233, 193, 93);
     animation: fadeIn 5s;
+    z-index: 2;
 }
 
 @keyframes fadeIn {
