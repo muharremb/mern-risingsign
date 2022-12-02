@@ -21,7 +21,7 @@
 //  if (process.env.NODE_ENV === 'production') port = 'https://rising-sign.onrender.com/'
  app.set('port', port);
 
- if process.env.NODE_ENV === 'production' (console.log("environment variable worked"))
+ if (process.env.NODE_ENV === 'production') console.log("environment variable worked")
  /**
   * Create HTTP server.
   */
