@@ -10,7 +10,7 @@ https://user-images.githubusercontent.com/102887694/199010944-02d8b36f-30e4-40c8
 - **Rising Sign is a dating app with depth, which allows users to filter prospective matches by astrological sign.** Standard features of a dating app are implemented including: live chat, matching and unmatching and picture uploads.
 
 
-The site is live here: https://rising-sign.herokuapp.com/
+The site is live here: https://rising-sign.onrender.com/
  ...get matching!
 
  We aim to combine the fun of modern dating application with the ancient matchmaking wisdom of astrology.
