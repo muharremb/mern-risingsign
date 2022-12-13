@@ -85,6 +85,7 @@ function MessageForm () {
         }
       }
     }
+    console.log("reat messages are", reactMessages)
     return reactMessages
   }
 
@@ -115,7 +116,6 @@ function MessageForm () {
 
     {user && <>
         <div className="display-messages" id="message-box">
-          {/* {messagesList} */}
           {formatMessages(messages)}
           <div className="typing-bubbles">
           {typing && '. . .'}

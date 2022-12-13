@@ -79,7 +79,6 @@ export const fetchUsers = (options) => async dispatch => {
         res = await jwtFetch(`/api/users/index?${optionsParams}`);
     }
     const users = await res.json();
-    console.log("in fetch users, users are", users)
     dispatch(receiveUsers(users));
 }
 
