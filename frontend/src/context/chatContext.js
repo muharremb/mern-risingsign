@@ -3,7 +3,7 @@ import { createContext } from 'react';
 
 let ENDPT = "http://localhost:5000" //is this correct/?
 if (process.env.NODE_ENV === 'production') {
-  let ENDPT = 'https://rising-sign.onrender.com/'
+  ENDPT = 'https://rising-sign.onrender.com/'
   console.log("in production mode")
 }
 
