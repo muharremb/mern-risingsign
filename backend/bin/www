@@ -55,10 +55,8 @@
  }
 
  const sortMessages = (messages) => {
-  return messages.sort((a, b) =>{
-    const [monthA, dayA, yearA] = a._id.split("/");
-    const [monthB, dayB, yearB] = b._id.split("/");
-    return yearA + monthA + dayA > yearB + monthB + dayB ? 1 : -1
+  return messages.sort((a, b) => {
+    return new Date(a._id) > new Date(b._id) ? 1 : -1;
   })
  }
 
@@ -66,7 +64,7 @@
    const io = require('socket.io')(chatServer, {
      pingTimeout: 600000,
      cors: {
-       origin: 'http://localhost:3000'  
+       origin: 'http://localhost:3000'
      }
    })
 
