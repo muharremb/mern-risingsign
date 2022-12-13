@@ -10,7 +10,7 @@ import { useState } from 'react'
 import jwtFetch from './store/jwt';
 
 
-const initialState = {}j
+const initialState = {};
 
 let store = configureStore(initialState);
 
