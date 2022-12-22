@@ -1,10 +1,9 @@
 .user-card {
     position: relative;
-    /* display: flex; */
-    /* justify-content: flex-start; */
-    width: 30%;
+    background-color: #00000035;
+    padding: 10px;
     min-width: 300px;
-    max-width: 300px;
+    max-width: 500px;
     border-radius: 8px;
     transition: 0.2s ease-in;
     box-shadow: 0 0 5px #00000035;
@@ -12,7 +11,6 @@
     text-align: center;
     flex-grow: 0;
     margin: 10px;
-    /* animation: fadeIn 8s; */
 }
 
 .pic-and-name {
