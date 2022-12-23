@@ -1,11 +1,17 @@
 .matches-outer-container {
-    position: fixed;
-    top: 0;
+    /* position: fixed;
+    top: 0; */
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
+    /* overflow: scroll; */
+}
+
+#filters {
+    position: fixed;
+    top: 0;
 }
 
 .matches-container {
@@ -13,7 +19,7 @@
     grid-template-columns: auto auto auto;
     justify-content: center;
     width: 100vw;
-    height: 200px;
+    /* height: 200px; */
 }
 
 .heading {
