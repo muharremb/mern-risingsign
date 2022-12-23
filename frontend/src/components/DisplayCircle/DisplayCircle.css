@@ -46,7 +46,7 @@
    animation: none;
    border: none;
    transition: all 1.5s ease-in;
-   overflow: visible;
+   overflow: scroll;
 }
 
 .display-circle[data-page="matches"] {
