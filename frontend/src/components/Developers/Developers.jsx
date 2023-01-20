@@ -54,13 +54,13 @@ function Developers() {
            name: "BooooTube (YouTube Clone)",
            link: "https://booootube.herokuapp.com/"
         }
-    };    
+    };
     const ben = {
-        photo: "https://rising-sign-profile-pics-schwartz.s3.amazonaws.com/Rising_Schwartz_Prof.png",
+        photo: "https://rising-sign-profile-pics-schwartz.s3.amazonaws.com/Rising_Schwartz_Prof.jpg",
         role: "Project Lead",
         job_description: "Envision application from experiential standpoint and work on chat feature.",
         name: "Benjamin Schwartz",
-        blurb: "I am interested in the notion of \"romantic engineering,\" building technology that supports individual and collective emotional expression.",
+        blurb: "I am interested in \"romantic engineering\": building technology that supports emotional expression!",
         github: "https://github.com/bwschwartz",
         linkedIn: "https://www.linkedin.com/in/benjamin-schwartz-b98622255/",
         project_1: {
@@ -72,7 +72,7 @@ function Developers() {
             link: "https://slick-slack-clone-one.herokuapp.com/"
         }
     };
-    
+
     return (
 
         <>
@@ -86,8 +86,8 @@ function Developers() {
                 </div>
             </div>
             <Link className="home-link" to={'/'}>Rising Sign</Link>
-        </>     
-        
+        </>
+
     )
 }
 
