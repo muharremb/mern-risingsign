@@ -6,7 +6,7 @@ function DevCard({dev}){
 
         <div className="dev-card">
             <h2>{dev.name}</h2>
-            <img src={dev.photo} alt="Developer Photo"/>
+            <img src={dev.photo} alt="Developer"/>
             <h3>{dev.role}</h3>
             <p className="job-description">{dev.job_description}</p>
             <p>{dev.blurb}</p>

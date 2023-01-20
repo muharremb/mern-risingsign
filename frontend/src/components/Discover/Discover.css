@@ -16,9 +16,10 @@
 #user-card-container {
     display: grid;
     grid-template-columns: auto auto;
-    row-gap: 5%;
-    column-gap: -100%;
+    row-gap: 25px;
+    column-gap: 50px;
     padding: 0 3% 3% 3%;
+    margin: 5%;
 }
 
 .heading {

@@ -17,13 +17,9 @@
     padding: 5px 10px;
     border-radius: 8px;
     color: #ffbb10cf;
-    /* align-items: center; */
-    /* display: flex; */
     flex-direction: column-reverse;
     margin-top: 40px;
     overflow-x: hidden;
-
-    /* width: */
 }
 
 @keyframes fadeIn {
@@ -41,7 +37,6 @@
     background-color: #410b5f;
     border-radius: 0 8px 8px 0;
     width: 12px;
-    /* overflow:scroll; */
 }
 
 
@@ -65,7 +60,6 @@
 
     padding-top: 5px;
     margin-bottom:-5px;
-    /* background-color:blue; */
 }
 
 .chat-message-current-user {
@@ -78,7 +72,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    /* width: 100; */
 }
 
 .message-form input {

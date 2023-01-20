@@ -15,11 +15,10 @@ function Discover () {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        document.getElementById('clear-box').addEventListener('scroll', handleScroll);
-        const interval = setInterval(handleScroll, 2000);
+        document.querySelector('.display-circle').addEventListener('scroll', handleScroll);
+        handleScroll();
         return () => {
-            document.getElementById('clear-box').removeEventListener('scroll', handleScroll);
-            clearInterval(interval);
+            document.querySelector('.display-circle').removeEventListener('scroll', handleScroll);
         };
     }, []);
 
@@ -31,7 +30,7 @@ function Discover () {
     }
 
     const handleScroll = () => {
-        if (window.innerHeight + Math.ceil(document.querySelector("#clear-box").scrollTop) < document.querySelector("#clear-box").scrollHeight || isFetching.current) {
+        if (window.innerHeight + Math.ceil(document.querySelector(".display-circle").scrollTop) < document.querySelector(".display-circle").scrollHeight || isFetching.current) {
             return;
         };
         isFetching.current = true;
@@ -126,9 +125,7 @@ function Discover () {
                         ('all' === moonFilter || user.horoscope.moon.Sign.key === moonFilter) &&
                         ('all' === risingFilter || user.horoscope.rising.Sign.key === risingFilter) && user._id !== sessionUser._id &&
                         (!sessionUser.likes.includes(user._id))
-
                     ) {return <UserCard key={user._id} user={user}/>};
-                    return null;
                 })}
             </div>
         </div>
